@@ -229,6 +229,27 @@
     color:var(--text-dim2);
   }
 
+  /* REF CARD */
+  .ref-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:18px 20px;
+    text-decoration:none;
+    color:inherit;
+    margin-bottom:48px;
+    transition:border-color 0.15s,background 0.15s;
+  }
+  .ref-card:hover{border-color:rgba(139,148,116,0.5);background:rgba(139,148,116,0.05);}
+  .ref-card-left{display:flex;align-items:center;gap:14px;}
+  .ref-icon{font-size:22px;line-height:1;}
+  .ref-title{font-size:14.5px;font-weight:700;margin-bottom:4px;}
+  .ref-desc{font-size:12px;color:var(--text-dim);}
+  .ref-arrow{font-family:var(--mono);color:var(--accent);font-size:18px;}
+
   @media(max-width:560px){
     h1{font-size:28px;}
     .stats{grid-template-columns:1fr 1fr;}
@@ -284,6 +305,18 @@
       <div class="feature-desc">Just describe what you ate. Claude analyses the log, estimates nutrients, and builds the full dashboard automatically.</div>
     </div>
   </div>
+
+  <div class="section-title">References</div>
+  <a href="food-reference.html" class="ref-card">
+    <div class="ref-card-left">
+      <span class="ref-icon">🍽️</span>
+      <div>
+        <div class="ref-title">Food Reference</div>
+        <div class="ref-desc">49 foods — macros, micronutrients &amp; serving data</div>
+      </div>
+    </div>
+    <span class="ref-arrow">→</span>
+  </a>
 
   <div class="section-title">Protocol Pillars</div>
   <div class="pillars">
