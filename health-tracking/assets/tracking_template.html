@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tracking</title>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --warn-soft:rgba(217,160,91,0.14);
+    --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.14);
+    --good:#7FAE8E;
+    --good-soft:rgba(127,174,142,0.14);
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding:28px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:640px;
+    margin:0 auto;
+  }
+  /* HEADER */
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .header .label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:600;
+  }
+  .header .date{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-dim2);
+  }
+  /* VERDICT BANNER */
+  .verdict{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid var(--panel-border);
+  }
+  .verdict.good{background:var(--good-soft);border-color:rgba(127,174,142,0.3);}
+  .verdict.warn{background:var(--warn-soft);border-color:rgba(217,160,91,0.3);}
+  .verdict.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.3);}
+  .verdict-icon{
+    font-size:22px;
+    width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .verdict.good .verdict-icon{background:rgba(127,174,142,0.25);}
+  .verdict.warn .verdict-icon{background:rgba(217,160,91,0.25);}
+  .verdict.bad .verdict-icon{background:rgba(194,96,79,0.25);}
+  .verdict-text{font-size:14.5px;line-height:1.4;font-weight:500;}
+  .verdict-text .kcal{font-family:var(--mono);font-weight:700;}
+
+  /* MACRO GAUGES */
+  .macros{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .macro-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 12px;
+  }
+  .macro-name{
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .macro-value{
+    font-family:var(--mono);
+    font-size:21px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .macro-target{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim2);
+    margin-bottom:10px;
+  }
+  .gauge-track{
+    height:6px;
+    background:#171A1C;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gauge-fill{
+    height:100%;
+    border-radius:6px;
+    transition:width 0.3s ease;
+  }
+  .gauge-fill.good{background:var(--good);}
+  .gauge-fill.warn{background:var(--warn);}
+  .gauge-fill.bad{background:var(--bad);}
+  .macro-pct{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    margin-top:6px;
+    text-align:right;
+  }
+  .macro-pct.good{color:var(--good);}
+  .macro-pct.warn{color:var(--warn);}
+  .macro-pct.bad{color:var(--bad);}
+
+  /* SECTION TITLE */
+  .section-title{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin:24px 0 10px;
+  }
+
+  /* COVERAGE TABLE */
+  .coverage{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .cov-row{
+    display:grid;
+    grid-template-columns:28px 1fr auto;
+    align-items:center;
+    gap:10px;
+    padding:11px 14px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .cov-row:last-child{border-bottom:none;}
+  .cov-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    justify-self:center;
+  }
+  .cov-dot.good{background:var(--good);}
+  .cov-dot.warn{background:var(--warn);}
+  .cov-dot.bad{background:var(--bad);}
+  .cov-main{min-width:0;}
+  .cov-name{
+    font-size:13.5px;
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .cov-note{
+    font-size:12px;
+    color:var(--text-dim2);
+    line-height:1.35;
+  }
+  .cov-coverage{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-weight:700;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .cov-coverage.good{color:var(--good);}
+  .cov-coverage.warn{color:var(--warn);}
+  .cov-coverage.bad{color:var(--bad);}
+
+  /* FEEDBACK */
+  .feedback{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:22px;
+  }
+  .fb-card{
+    border-radius:14px;
+    padding:14px 16px;
+    border:1px solid var(--panel-border);
+  }
+  .fb-card.good{background:var(--good-soft);border-color:rgba(127,174,142,0.25);}
+  .fb-card.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.25);}
+  .fb-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .fb-card.good .fb-title{color:var(--good);}
+  .fb-card.bad .fb-title{color:var(--bad);}
+  .fb-list{list-style:none;}
+  .fb-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding-left:14px;
+    position:relative;
+    margin-bottom:6px;
+    color:var(--text);
+  }
+  .fb-list li:last-child{margin-bottom:0;}
+  .fb-list li::before{
+    content:"–";
+    position:absolute;left:0;
+    color:var(--text-dim2);
+  }
+
+  .footer-note{
+    margin-top:18px;
+    font-size:11px;
+    color:var(--text-dim2);
+    text-align:center;
+  }
+
+  /* DAY LOG + ADJUSTMENTS */
+  .day-section{
+    margin-top:24px;
+  }
+  .day-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .day-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .day-card-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:10px;
+    display:flex;align-items:center;gap:6px;
+    color:var(--text-dim2);
+  }
+  .log-list{
+    list-style:none;
+  }
+  .log-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:5px 0;
+    border-bottom:1px solid var(--panel-border);
+    color:var(--text);
+  }
+  .log-list li:last-child{border-bottom:none;}
+  .adj-list{
+    list-style:none;
+  }
+  .adj-item{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:7px 0;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .adj-item:last-child{border-bottom:none;}
+  .adj-from{
+    color:var(--bad);
+    text-decoration:line-through;
+    opacity:0.75;
+  }
+  .adj-to{
+    color:var(--good);
+    font-weight:600;
+  }
+  .adj-arrow{
+    color:var(--text-dim2);
+    margin:0 4px;
+  }
+  .adj-reason{
+    display:block;
+    color:var(--text-dim2);
+    font-size:11.5px;
+    margin-top:2px;
+  }
+
+  /* FULL NUTRIENT TABLE */
+  .full-table-wrap{
+    margin-top:24px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  table.full-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  table.full-table th{
+    background:var(--panel);
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    text-align:left;
+    padding:10px 10px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  table.full-table th:first-child{width:28px;text-align:center;}
+  table.full-table th:nth-child(2){width:22%;}
+  table.full-table th:nth-child(3){width:20%;}
+  table.full-table th:nth-child(4){width:18%;}
+  table.full-table td{
+    font-size:11.5px;
+    line-height:1.4;
+    padding:9px 10px;
+    border-bottom:1px solid var(--panel-border);
+    vertical-align:top;
+    color:var(--text);
+  }
+  table.full-table tr:last-child td{border-bottom:none;}
+  table.full-table tr:nth-child(even){background:rgba(255,255,255,0.015);}
+  .ft-num{
+    text-align:center;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11px;
+  }
+  .ft-nutrient{font-weight:600;}
+  .ft-impact{color:var(--text-dim2);font-size:11px;}
+  .ft-coverage{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  .ft-coverage.good{color:var(--good);}
+  .ft-coverage.warn{color:var(--warn);}
+  .ft-coverage.bad{color:var(--bad);}
+  .ft-note{color:var(--text-dim2);font-size:11px;}
+
+  @media (max-width:600px){
+    table.full-table{table-layout:auto;}
+    table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+  }
+
+
+  @media (max-width:480px){
+    .macros{grid-template-columns:1fr 1fr 1fr;gap:7px;}
+    .macro-card{padding:10px 8px;}
+    .macro-value{font-size:17px;}
+    .feedback{grid-template-columns:1fr;}
+    .day-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+  <div class="app" id="app"></div>
+
+<script>
+/*
+  DATA CONTRACT — fill this object, everything else renders automatically.
+  status values: "good" | "warn" | "bad"
+*/
+const DATA = {
+  date: "June 23, 2026",
+  dayType: "Rest day",
+  verdict: {
+    status: "warn",
+    icon: "⚖️",
+    text_html: 'Close to target — <span class="kcal">2,350 kcal</span> (-65 vs TDEE). Fat is running high.'
+  },
+  loggedItems: [
+    "Black coffee (½ tsp sugar)",
+    "4 eggs & 1 scoop whey",
+    "Khobz 35g + oat 35g with 1 small avocado",
+    "2 tbsp olive oil",
+    "Mint tea (1 tsp sugar)",
+    "Vegetables 300g cooked",
+    "Kefta 250g raw with 1 onion & rice 40g raw",
+    "Black coffee (½ tsp sugar)",
+    "Mixed nuts 20g (night)",
+    "1 small kiwi (night)",
+    "Jaouda 110g with 1 scoop protein"
+  ],
+  adjustments: [
+    { from:"Olive oil 2 tbsp", to:"1 tbsp + ½ avocado kept as-is", reason:"Fat is 187% of target — oil is the easiest source to trim without losing a meal" },
+    { from:"Avocado (small, ~100g)", to:"Skip on kefta days", reason:"Kefta alone already covers fat needs for lunch — stacking avocado pushes fat further over" },
+    { from:"Jaouda 110g + protein scoop", to:"Swap jaouda for raib or fromage blanc 150g", reason:"Matches protocol's approved fermented dairy list — better gut/probiotic value for the same protein" },
+    { from:"Mixed nuts 20g (5-way mix)", to:"Walnuts 20g only", reason:"Protocol's omega-3 priority — walnuts are the best ALA source in the rotation, no need to mix 5 types" }
+  ],
+  macros: [
+    { name:"Protein", value:"155g", target:"/ 150g", pct:103, status:"good" },
+    { name:"Carbs",   value:"143g", target:"/ 140g", pct:102, status:"good" },
+    { name:"Fat",     value:"131g", target:"/ 70g",  pct:187, status:"bad"  }
+  ],
+  coverage: [
+    { status:"warn", name:"Calories", coverage:"2,350 / 2,415 (97%)", note:"~65 kcal under TDEE, close to ideal" },
+    { status:"good", name:"Protein", coverage:"155g / 150g (103%)", note:"Kefta, eggs, 2x whey" },
+    { status:"good", name:"Carbs", coverage:"143g / 140g (102%)", note:"Rice, oat, khobz, veg" },
+    { status:"bad",  name:"Fat", coverage:"131g / 70g (187%)", note:"5 fat sources stacked same day" },
+    { status:"good", name:"Fiber", coverage:"~28g (~75%)", note:"Veg, avocado, oat cover most" },
+    { status:"good", name:"Gas / bloat risk", coverage:"Low", note:"Onion cooked, no raw veg main" },
+    { status:"good", name:"Protocol adherence", coverage:"Good", note:"Carb stacking fixed vs prior day" }
+  ],
+  good: [
+    "Calories landed almost exactly on TDEE",
+    "Protein and carbs both within 5% of target",
+    "Fiber solid, no major gas triggers"
+  ],
+  bad: [
+    "Fat at 187% of target",
+    "5 fat sources stacked same day (kefta, oil, eggs, avocado, jaouda/nuts)"
+  ],
+  fullTable: [
+    { n:1,  nutrient:"Protein", impact:"Muscle loss, weakness", status:"good", coverage:"155g/150g (103%)", note:"Kefta 50g, eggs 25g, whey x2 48g, rest from khobz/rice/jaouda" },
+    { n:2,  nutrient:"Water", impact:"Dehydration, fatigue", status:"good", coverage:"2.5L/2.5L (100%)", note:"Target hit as logged" },
+    { n:3,  nutrient:"Fiber", impact:"Constipation, gut issues", status:"good", coverage:"~28g/30-38g (~75%)", note:"Veg, avocado, oat, khobz are main drivers" },
+    { n:4,  nutrient:"Omega-3 (EPA/DHA)", impact:"Inflammation, poor recovery", status:"warn", coverage:"~0.4g ALA only", note:"20g mixed nuts add some ALA, no EPA/DHA — no fatty fish today" },
+    { n:5,  nutrient:"Vitamin D", impact:"Bone weakness, low mood", status:"bad", coverage:"~1.7µg/15µg (~11%)", note:"4 egg yolks only source — typical gap without fish or fortified dairy" },
+    { n:6,  nutrient:"Iron", impact:"Fatigue, anemia", status:"good", coverage:"~6mg/8-11mg (~65%)", note:"Kefta is the main driver, eggs add the rest" },
+    { n:7,  nutrient:"Vitamin B12", impact:"Nerve damage, fatigue", status:"good", coverage:"~3.8µg/2.4µg (~158%)", note:"Kefta and eggs cover this well" },
+    { n:8,  nutrient:"Magnesium", impact:"Cramps, poor sleep", status:"warn", coverage:"~110mg/350-400mg (~30%)", note:"Khobz, oat, nuts contribute small amounts" },
+    { n:9,  nutrient:"Calcium", impact:"Bone loss, fractures", status:"warn", coverage:"~380mg/1000mg (~38%)", note:"Eggs, whey, jaouda contribute — still under half target" },
+    { n:10, nutrient:"Zinc", impact:"Poor immunity, slow healing", status:"good", coverage:"~8mg/11mg (~73%)", note:"Kefta is the major contributor" },
+    { n:11, nutrient:"Potassium", impact:"Cramps, irregular heartbeat", status:"warn", coverage:"~1500mg/3500-4700mg (~35%)", note:"Kiwi, onion, kefta, avocado contribute — still under target" },
+    { n:12, nutrient:"Folate (B9)", impact:"Anemia, fatigue", status:"bad", coverage:"~90µg/400µg (~23%)", note:"Eggs and onion contribute modestly — no leafy greens today" },
+    { n:13, nutrient:"Vitamin C", impact:"Weak immunity, slow healing", status:"good", coverage:"~75mg/90mg (~83%)", note:"Kiwi and onion are the main drivers" },
+    { n:14, nutrient:"Vitamin A", impact:"Poor vision, weak immunity", status:"warn", coverage:"~250µg/900µg (~28%)", note:"Egg yolks are the main source" },
+    { n:15, nutrient:"Iodine", impact:"Thyroid issues, fatigue", status:"warn", coverage:"~50µg/150µg (~33%)", note:"Eggs and iodized salt main contributors" },
+    { n:16, nutrient:"Vitamin E", impact:"Nerve issues, weak immunity", status:"bad", coverage:"~3mg/15mg (~20%)", note:"Olive oil and nuts contribute, still low" },
+    { n:17, nutrient:"Vitamin K", impact:"Poor blood clotting", status:"bad", coverage:"~10µg/120µg (~8%)", note:"Olive oil, eggs, kiwi only minor sources — no leafy greens" },
+    { n:18, nutrient:"Vitamin B6", impact:"Mood issues, fatigue", status:"good", coverage:"~1.3mg/1.7mg (~76%)", note:"Kefta and eggs contribute well" },
+    { n:19, nutrient:"Selenium", impact:"Weak immunity, thyroid issues", status:"good", coverage:"~42µg/55µg (~76%)", note:"Eggs are an excellent source, kefta adds more" },
+    { n:20, nutrient:"Thiamine (B1)", impact:"Fatigue, nerve issues", status:"warn", coverage:"~0.5mg/1.2mg (~42%)", note:"Rice, khobz, kefta contribute moderately" },
+    { n:21, nutrient:"Riboflavin (B2)", impact:"Skin issues, fatigue", status:"good", coverage:"~1.0mg/1.3mg (~77%)", note:"Eggs and whey are strong contributors" },
+    { n:22, nutrient:"Niacin (B3)", impact:"Skin issues, fatigue", status:"good", coverage:"~13mg/16mg (~81%)", note:"Kefta is the dominant source" },
+    { n:23, nutrient:"Copper", impact:"Anemia, weak bones", status:"warn", coverage:"~0.35mg/0.9mg (~39%)", note:"Kefta and rice contribute modestly" },
+    { n:24, nutrient:"Choline", impact:"Liver issues, memory issues", status:"good", coverage:"~580mg/550mg (~105%)", note:"Eggs do the heavy lifting" },
+    { n:25, nutrient:"Probiotics / fermented foods", impact:"Poor gut health", status:"warn", coverage:"1 serving (jaouda)", note:"Jaouda isn't on the approved fermented list — less probiotic value than lben/raib/yogurt" },
+    { n:26, nutrient:"Sodium balance", impact:"Cramps (too low) or bloating (too high)", status:"good", coverage:"Moderate", note:"Within normal range for home-cooked meals" },
+    { n:27, nutrient:"Antioxidants (polyphenols)", impact:"Faster aging, inflammation", status:"warn", coverage:"Low-moderate", note:"Olive oil and mint tea are main contributors — no berries logged" },
+    { n:28, nutrient:"Phosphorus", impact:"Bone/teeth weakness, fatigue", status:"good", coverage:"~820mg/700mg (~117%)", note:"Eggs, kefta, whey, rice all contribute well" },
+    { n:29, nutrient:"Manganese", impact:"Weak bones, poor metabolism", status:"warn", coverage:"~0.8mg/2.3mg (~35%)", note:"Rice and khobz are main sources" },
+    { n:30, nutrient:"Chromium", impact:"Poor blood sugar control", status:"warn", coverage:"~12µg/35µg (~34%)", note:"Onion is a notable source, rice/khobz add a little" },
+    { n:31, nutrient:"Vitamin B5 (Pantothenic acid)", impact:"Fatigue, irritability", status:"good", coverage:"~3mg/5mg (~60%)", note:"Eggs and kefta are main contributors" },
+    { n:32, nutrient:"Biotin (B7)", impact:"Hair/skin issues, fatigue", status:"good", coverage:"~18µg/30µg (~60%)", note:"Egg yolks are the main source" }
+  ]
+};
+
+function render(data){
+  const app = document.getElementById('app');
+
+  const macrosHtml = data.macros.map(m => `
+    <div class="macro-card">
+      <div class="macro-name">${m.name}</div>
+      <div class="macro-value">${m.value}</div>
+      <div class="macro-target">${m.target}</div>
+      <div class="gauge-track"><div class="gauge-fill ${m.status}" style="width:${Math.min(m.pct,100)}%"></div></div>
+      <div class="macro-pct ${m.status}">${m.pct}%</div>
+    </div>
+  `).join('');
+
+  const coverageHtml = data.coverage.map(c => `
+    <div class="cov-row">
+      <div class="cov-dot ${c.status}"></div>
+      <div class="cov-main">
+        <div class="cov-name">${c.name}</div>
+        <div class="cov-note">${c.note}</div>
+      </div>
+      <div class="cov-coverage ${c.status}">${c.coverage}</div>
+    </div>
+  `).join('');
+
+  const goodHtml = data.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = data.bad.map(b => `<li>${b}</li>`).join('');
+
+  const loggedHtml = (data.loggedItems || []).map(i => `<li>${i}</li>`).join('');
+
+  const adjustmentsHtml = (data.adjustments || []).map(a => `
+    <li class="adj-item">
+      <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
+      <span class="adj-reason">${a.reason}</span>
+    </li>
+  `).join('');
+
+  const fullTableRows = (data.fullTable || []).map(r => `
+    <tr>
+      <td class="ft-num">${r.n}</td>
+      <td class="ft-nutrient">${r.nutrient}</td>
+      <td class="ft-impact">${r.impact}</td>
+      <td class="ft-coverage ${r.status}">${r.coverage}</td>
+      <td class="ft-note">${r.note}</td>
+    </tr>
+  `).join('');
+
+  app.innerHTML = `
+    <div class="header">
+      <div class="label">Tracking · Health Protocol</div>
+      <div class="date">${data.date} · ${data.dayType}</div>
+    </div>
+
+    <div class="verdict ${data.verdict.status}">
+      <div class="verdict-icon">${data.verdict.icon}</div>
+      <div class="verdict-text">${data.verdict.text_html}</div>
+    </div>
+
+    <div class="macros">${macrosHtml}</div>
+
+    <div class="section-title">Nutrient Coverage</div>
+    <div class="coverage">${coverageHtml}</div>
+
+    <div class="feedback">
+      <div class="fb-card good">
+        <div class="fb-title">✓ Good</div>
+        <ul class="fb-list">${goodHtml}</ul>
+      </div>
+      <div class="fb-card bad">
+        <div class="fb-title">! Watch</div>
+        <ul class="fb-list">${badHtml}</ul>
+      </div>
+    </div>
+
+    <div class="section-title">Today's log &amp; suggested adjustments</div>
+    <div class="day-section">
+      <div class="day-grid">
+        <div class="day-card">
+          <div class="day-card-title">What you ate</div>
+          <ul class="log-list">${loggedHtml}</ul>
+        </div>
+        <div class="day-card">
+          <div class="day-card-title">Suggested tweaks</div>
+          <ul class="adj-list">${adjustmentsHtml}</ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Nutrient Coverage Tracker</div>
+    <div class="full-table-wrap">
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nutrient</th>
+            <th>Impact if missing</th>
+            <th>Coverage</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>${fullTableRows}</tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">Mehdi's Health & Body Protocol</div>
+  `;
+}
+
+render(DATA);
+</script>
+</body>
+</html>
