@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Reference · Health &amp; Body</title>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --bad:#C2604F;
+    --good:#7FAE8E;
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* NAV */
+  .nav{
+    max-width:960px;
+    margin:0 auto;
+    padding:24px 28px 0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .nav-back{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    color:var(--text-dim);
+    text-decoration:none;
+    font-weight:500;
+    transition:color 0.15s;
+  }
+  .nav-back:hover{color:var(--text);}
+  .nav-sep{color:var(--panel-border);font-size:13px;}
+  .nav-crumb{font-size:13px;color:var(--text-dim2);}
+
+  /* HEADER */
+  .header{
+    max-width:960px;
+    margin:0 auto;
+    padding:32px 28px 24px;
+  }
+  .header-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:var(--accent-soft);
+    border:1px solid rgba(139,148,116,0.3);
+    color:var(--accent);
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+  .header-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+  h1{
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.2;
+    margin-bottom:8px;
+  }
+  h1 em{font-style:normal;color:var(--accent);}
+  .header-sub{font-size:14px;color:var(--text-dim);line-height:1.6;}
+
+  /* CONTROLS */
+  .controls{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 28px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .search-wrap{position:relative;}
+  .search-icon{
+    position:absolute;
+    left:13px;top:50%;transform:translateY(-50%);
+    color:var(--text-dim2);
+    pointer-events:none;
+    display:flex;
+  }
+  #search{
+    width:100%;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    padding:11px 14px 11px 40px;
+    color:var(--text);
+    font-size:14px;
+    font-family:var(--sans);
+    outline:none;
+    transition:border-color 0.15s;
+  }
+  #search:focus{border-color:rgba(139,148,116,0.5);}
+  #search::placeholder{color:var(--text-dim2);}
+
+  .filters{display:flex;flex-wrap:wrap;gap:6px;}
+  .filter-btn{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:100px;
+    padding:5px 13px;
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--text-dim);
+    cursor:pointer;
+    transition:all 0.15s;
+    letter-spacing:0.02em;
+    font-family:var(--sans);
+  }
+  .filter-btn:hover{border-color:rgba(139,148,116,0.4);color:var(--text);}
+  .filter-btn.active{
+    background:var(--accent-soft);
+    border-color:rgba(139,148,116,0.5);
+    color:var(--accent);
+  }
+
+  /* COUNT BAR */
+  .count-bar{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 28px 16px;
+    font-size:12px;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+  }
+  .count-bar span{color:var(--accent);}
+
+  /* GRID */
+  .grid{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 28px 64px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  /* CARD */
+  .card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    transition:border-color 0.15s;
+  }
+  .card:hover{border-color:rgba(139,148,116,0.3);}
+
+  .card-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .card-left{display:flex;gap:9px;align-items:flex-start;flex:1;min-width:0;}
+  .card-emoji{font-size:20px;flex-shrink:0;line-height:1.2;}
+  .card-info{min-width:0;flex:1;}
+  .card-name{
+    font-size:12.5px;
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:3px;
+    overflow:hidden;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+  }
+  .card-serving{
+    font-size:10.5px;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+  }
+  .cat-badge{
+    flex-shrink:0;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:100px;
+    white-space:nowrap;
+    border:1px solid transparent;
+  }
+
+  /* NOTE */
+  .card-note{
+    font-size:10.5px;
+    color:var(--text-dim2);
+    line-height:1.5;
+    font-style:italic;
+    border-left:2px solid var(--panel-border);
+    padding-left:8px;
+  }
+
+  /* MACRO BAR */
+  .macro-bar{
+    height:3px;
+    border-radius:2px;
+    overflow:hidden;
+    display:flex;
+    background:rgba(255,255,255,0.05);
+  }
+  .bar-p{background:#7FAE8E;}
+  .bar-c{background:#7B8EC8;}
+  .bar-f{background:#D9A05B;}
+  .macro-legend{
+    display:flex;
+    gap:8px;
+    margin-top:5px;
+  }
+  .macro-legend-item{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+  }
+  .leg-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+
+  /* MAIN NUTRIENTS */
+  .nutrients{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:4px;
+  }
+  .nut-cell{
+    background:rgba(255,255,255,0.03);
+    border-radius:8px;
+    padding:7px 4px;
+    text-align:center;
+  }
+  .nut-val{
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:700;
+    margin-bottom:2px;
+    color:var(--text);
+  }
+  .nut-val.is-kcal{color:var(--warn);}
+  .nut-val.is-prot{color:var(--good);}
+  .nut-label{
+    font-size:8.5px;
+    color:var(--text-dim2);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+
+  /* EXTRA NUTRIENTS */
+  .extras{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    padding-top:2px;
+  }
+  .extra-chip{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    padding:3px 7px;
+    font-size:10px;
+    color:var(--text-dim);
+    line-height:1;
+  }
+  .extra-chip b{
+    color:var(--text-dim2);
+    font-weight:600;
+    margin-right:2px;
+  }
+
+  /* EMPTY */
+  .empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:64px 20px;
+    color:var(--text-dim2);
+  }
+  .empty-icon{font-size:32px;margin-bottom:10px;}
+  .empty-text{font-size:14px;}
+
+  /* FOOTER */
+  .footer{
+    border-top:1px solid var(--panel-border);
+    padding:20px 28px;
+    max-width:960px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .footer-name{font-family:var(--mono);font-size:12px;color:var(--text-dim2);}
+  .footer-back{font-size:11px;color:var(--text-dim2);text-decoration:none;}
+  .footer-back:hover{color:var(--text-dim);}
+
+  /* RESPONSIVE */
+  @media(max-width:800px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .nav,.header,.controls,.count-bar,.grid,.footer{padding-left:18px;padding-right:18px;}
+    h1{font-size:24px;}
+  }
+  @media(max-width:500px){
+    .grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    Health &amp; Body
+  </a>
+  <span class="nav-sep">/</span>
+  <span class="nav-crumb">Food Reference</span>
+</div>
+
+<div class="header">
+  <div class="header-badge"><span class="header-dot"></span>Food Database</div>
+  <h1>🍽️ <em>Food</em> Reference</h1>
+  <p class="header-sub">Personal food database — macros, micronutrients, and serving data for every food in the protocol.</p>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </span>
+    <input id="search" type="text" placeholder="Search foods…" autocomplete="off">
+  </div>
+  <div class="filters" id="filters"></div>
+</div>
+
+<div class="count-bar" id="count-bar"></div>
+
+<div class="grid" id="grid">
+  <div class="empty"><div class="empty-icon">⏳</div><div class="empty-text">Loading…</div></div>
+</div>
+
+<div class="footer">
+  <div class="footer-name">Mehdi · Health &amp; Body Protocol</div>
+  <a href="index.html" class="footer-back">← Back to dashboard</a>
+</div>
+
+<script>
+const CAT_COLORS = {
+  'Supplement': {bg:'rgba(139,148,116,0.14)',border:'rgba(139,148,116,0.4)',text:'#8B9474'},
+  'Poultry':    {bg:'rgba(217,160,91,0.14)', border:'rgba(217,160,91,0.4)', text:'#D9A05B'},
+  'Meat':       {bg:'rgba(194,96,79,0.14)',  border:'rgba(194,96,79,0.4)',  text:'#C2604F'},
+  'Fish':       {bg:'rgba(127,174,142,0.14)',border:'rgba(127,174,142,0.4)',text:'#7FAE8E'},
+  'Egg':        {bg:'rgba(217,160,91,0.14)', border:'rgba(217,160,91,0.4)', text:'#D9A05B'},
+  'Grain/Carb': {bg:'rgba(123,142,200,0.14)',border:'rgba(123,142,200,0.4)',text:'#7B8EC8'},
+  'Fat/Nut':    {bg:'rgba(200,168,123,0.14)',border:'rgba(200,168,123,0.4)',text:'#C8A87B'},
+  'Vegetable':  {bg:'rgba(127,174,142,0.14)',border:'rgba(127,174,142,0.4)',text:'#7FAE8E'},
+  'Fruit':      {bg:'rgba(200,123,142,0.14)',border:'rgba(200,123,142,0.4)',text:'#C87B8E'},
+};
+
+let allFoods = [];
+let activeCategory = 'All';
+let allCategories = [];
+
+function fmt(n) {
+  if (n === 0) return '0';
+  const r = Math.round(n * 10) / 10;
+  return r % 1 === 0 ? String(r) : String(r);
+}
+
+function macroBar(food) {
+  const pCal = food.protein * 4;
+  const cCal = food.carbs * 4;
+  const fCal = food.fat * 9;
+  const total = pCal + cCal + fCal;
+  if (total === 0) return '';
+  const pp = (pCal / total * 100).toFixed(0);
+  const cp = (cCal / total * 100).toFixed(0);
+  const fp = (fCal / total * 100).toFixed(0);
+  return `
+    <div>
+      <div class="macro-bar">
+        <div class="bar-p" style="width:${pp}%"></div>
+        <div class="bar-c" style="width:${cp}%"></div>
+        <div class="bar-f" style="width:${fp}%"></div>
+      </div>
+      <div class="macro-legend">
+        <div class="macro-legend-item"><div class="leg-dot" style="background:#7FAE8E"></div>P ${pp}%</div>
+        <div class="macro-legend-item"><div class="leg-dot" style="background:#7B8EC8"></div>C ${cp}%</div>
+        <div class="macro-legend-item"><div class="leg-dot" style="background:#D9A05B"></div>F ${fp}%</div>
+      </div>
+    </div>`;
+}
+
+function renderCard(f) {
+  const c = CAT_COLORS[f.category] || {bg:'rgba(255,255,255,0.04)',border:'rgba(255,255,255,0.1)',text:'#9A9FA3'};
+  const badge = `<span class="cat-badge" style="background:${c.bg};border-color:${c.border};color:${c.text}">${f.category}</span>`;
+  const note = f.note ? `<div class="card-note">${f.note}</div>` : '';
+  const extras = f.extra && f.extra.length
+    ? `<div class="extras">${f.extra.map(e=>`<span class="extra-chip"><b>${e.name}</b>${e.value}</span>`).join('')}</div>`
+    : '';
+  return `<div class="card">
+    <div class="card-head">
+      <div class="card-left">
+        <div class="card-emoji">${f.emoji}</div>
+        <div class="card-info">
+          <div class="card-name">${f.name}</div>
+          <div class="card-serving">${f.serving}</div>
+        </div>
+      </div>
+      ${badge}
+    </div>
+    ${note}
+    ${macroBar(f)}
+    <div class="nutrients">
+      <div class="nut-cell"><div class="nut-val is-kcal">${f.kcal}</div><div class="nut-label">kcal</div></div>
+      <div class="nut-cell"><div class="nut-val is-prot">${fmt(f.protein)}g</div><div class="nut-label">protein</div></div>
+      <div class="nut-cell"><div class="nut-val">${fmt(f.carbs)}g</div><div class="nut-label">carbs</div></div>
+      <div class="nut-cell"><div class="nut-val">${fmt(f.fat)}g</div><div class="nut-label">fat</div></div>
+      <div class="nut-cell"><div class="nut-val">${fmt(f.fiber)}g</div><div class="nut-label">fiber</div></div>
+    </div>
+    ${extras}
+  </div>`;
+}
+
+function render() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const filtered = allFoods.filter(f => {
+    const catOk = activeCategory === 'All' || f.category === activeCategory;
+    const qOk = !q || f.name.toLowerCase().includes(q) || f.category.toLowerCase().includes(q);
+    return catOk && qOk;
+  });
+
+  const grid = document.getElementById('grid');
+  const countBar = document.getElementById('count-bar');
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">No foods match your search.</div></div>`;
+    countBar.innerHTML = '<span>0</span> foods';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(renderCard).join('');
+  const cat = activeCategory !== 'All' ? ` · ${activeCategory}` : '';
+  countBar.innerHTML = `<span>${filtered.length}</span> food${filtered.length !== 1 ? 's' : ''}${cat}`;
+}
+
+function buildFilters() {
+  const el = document.getElementById('filters');
+  const cats = ['All', ...allCategories];
+  el.innerHTML = cats.map(cat =>
+    `<button class="filter-btn${cat === activeCategory ? ' active' : ''}" data-cat="${cat}">${cat}</button>`
+  ).join('');
+  el.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeCategory = btn.dataset.cat;
+      buildFilters();
+      render();
+    });
+  });
+}
+
+fetch('data/food-reference.json')
+  .then(r => r.json())
+  .then(data => {
+    allFoods = data.foods;
+    allCategories = data.categories;
+    buildFilters();
+    render();
+  })
+  .catch(() => {
+    document.getElementById('grid').innerHTML = `<div class="empty"><div class="empty-icon">❌</div><div class="empty-text">Could not load food data.</div></div>`;
+  });
+
+document.getElementById('search').addEventListener('input', render);
+</script>
+
+</body>
+</html>

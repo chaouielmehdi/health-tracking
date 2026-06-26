@@ -1,0 +1,783 @@
+{
+  "meta": {
+    "title": "Health & Body Food Reference",
+    "updated": "2026-06-26"
+  },
+  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit"],
+  "foods": [
+    {
+      "id": "whey-iso100-100g",
+      "emoji": "🥤",
+      "name": "Whey protein — Dymatize ISO100",
+      "note": "Hydrolyzed whey isolate, vanilla — from MesProtéine",
+      "category": "Supplement",
+      "serving": "per 100g",
+      "kcal": 367,
+      "protein": 83.3,
+      "carbs": 6.7,
+      "fat": 1.7,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sugar", "value": "~1.7g"},
+        {"name": "BCAAs", "value": "18.3g"}
+      ]
+    },
+    {
+      "id": "whey-iso100-30g",
+      "emoji": "🥤",
+      "name": "Whey protein — Dymatize ISO100",
+      "note": "Hydrolyzed whey isolate, vanilla — from MesProtéine",
+      "category": "Supplement",
+      "serving": "per scoop (30g)",
+      "kcal": 110,
+      "protein": 25,
+      "carbs": 2,
+      "fat": 0.5,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sugar", "value": "~0.5g"},
+        {"name": "BCAAs", "value": "5.5g"}
+      ]
+    },
+    {
+      "id": "chicken-breast",
+      "emoji": "🍗",
+      "name": "Chicken breast (raw, skinless)",
+      "note": null,
+      "category": "Poultry",
+      "serving": "per 100g",
+      "kcal": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "116mg"},
+        {"name": "Potassium", "value": "370mg"},
+        {"name": "Vitamin B12", "value": "0.2µg"}
+      ]
+    },
+    {
+      "id": "chicken-wings",
+      "emoji": "🍗",
+      "name": "Chicken wings (raw, bone-in, skin removed)",
+      "note": "As weighed before any prep",
+      "category": "Poultry",
+      "serving": "per 100g",
+      "kcal": 146,
+      "protein": 19.6,
+      "carbs": 0,
+      "fat": 7.1,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "69mg"},
+        {"name": "Potassium", "value": "165mg"},
+        {"name": "Vitamin B12", "value": "0.34µg"}
+      ]
+    },
+    {
+      "id": "chicken-drumstick",
+      "emoji": "🍗",
+      "name": "Chicken drumstick (raw, bone-in, skin removed)",
+      "note": "As weighed before any prep",
+      "category": "Poultry",
+      "serving": "per 100g",
+      "kcal": 136,
+      "protein": 19,
+      "carbs": 0,
+      "fat": 6,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "75mg"},
+        {"name": "Potassium", "value": "213mg"},
+        {"name": "Vitamin B12", "value": "0.26µg"}
+      ]
+    },
+    {
+      "id": "chicken-full-leg",
+      "emoji": "🍗",
+      "name": "Chicken full leg (raw, bone-in, skin removed)",
+      "note": "As weighed before any prep",
+      "category": "Poultry",
+      "serving": "per 100g",
+      "kcal": 168,
+      "protein": 17.9,
+      "carbs": 0,
+      "fat": 13.7,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "77mg"},
+        {"name": "Potassium", "value": "204mg"},
+        {"name": "Vitamin B12", "value": "0.26µg"}
+      ]
+    },
+    {
+      "id": "kefta",
+      "emoji": "🥩",
+      "name": "Kefta (beef/veal mix, raw)",
+      "note": "~20% fat raw mince, standard Moroccan kefta",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 216,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 15,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "1.9mg"},
+        {"name": "Zinc", "value": "4.2mg"},
+        {"name": "Vitamin B12", "value": "2.1µg"}
+      ]
+    },
+    {
+      "id": "ground-beef-9010",
+      "emoji": "🥩",
+      "name": "Bœuf (ground beef, 90/10, raw)",
+      "note": "90% lean / 10% fat raw mince",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 176,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 10,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "2.1mg"},
+        {"name": "Zinc", "value": "4.6mg"},
+        {"name": "Vitamin B12", "value": "2.3µg"}
+      ]
+    },
+    {
+      "id": "lamb",
+      "emoji": "🐑",
+      "name": "Sheep (lamb, raw, lean+fat)",
+      "note": "Leg, trimmed to 1/4\" fat",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 230,
+      "protein": 18,
+      "carbs": 0,
+      "fat": 17,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "56mg"},
+        {"name": "Iron", "value": "1.6mg"},
+        {"name": "Zinc", "value": "2.5mg"},
+        {"name": "Vitamin B12", "value": "2µg"}
+      ]
+    },
+    {
+      "id": "tuna-isabel",
+      "emoji": "🐟",
+      "name": "Thon Isabel (en aceite vegetal)",
+      "note": "In vegetable oil, 3×80g pack",
+      "category": "Fish",
+      "serving": "per 100g",
+      "kcal": 198,
+      "protein": 27,
+      "carbs": 0,
+      "fat": 10,
+      "fiber": 0,
+      "extra": []
+    },
+    {
+      "id": "egg",
+      "emoji": "🥚",
+      "name": "Egg (average size)",
+      "note": null,
+      "category": "Egg",
+      "serving": "per egg (~44g)",
+      "kcal": 63,
+      "protein": 5.5,
+      "carbs": 0.4,
+      "fat": 4.8,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "62mg"},
+        {"name": "Vitamin B12", "value": "0.44µg"},
+        {"name": "Choline", "value": "129mg"}
+      ]
+    },
+    {
+      "id": "khobz-complet",
+      "emoji": "🫓",
+      "name": "Khobz complet (whole wheat bread, packaged)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 247,
+      "protein": 13,
+      "carbs": 41,
+      "fat": 3.6,
+      "fiber": 6,
+      "extra": [
+        {"name": "Sodium", "value": "490mg"}
+      ]
+    },
+    {
+      "id": "oats",
+      "emoji": "🌾",
+      "name": "Oats (dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 389,
+      "protein": 16.9,
+      "carbs": 66.3,
+      "fat": 6.9,
+      "fiber": 10.6,
+      "extra": [
+        {"name": "Sodium", "value": "2mg"}
+      ]
+    },
+    {
+      "id": "brown-rice",
+      "emoji": "🍚",
+      "name": "Brown rice (dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 367,
+      "protein": 7.5,
+      "carbs": 72.6,
+      "fat": 2.7,
+      "fiber": 3.5,
+      "extra": [
+        {"name": "Sodium", "value": "5mg"}
+      ]
+    },
+    {
+      "id": "potatoes",
+      "emoji": "🥔",
+      "name": "Potatoes (raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 77,
+      "protein": 2,
+      "carbs": 17.5,
+      "fat": 0.1,
+      "fiber": 2.1,
+      "extra": [
+        {"name": "Sodium", "value": "6mg"}
+      ]
+    },
+    {
+      "id": "bulgur",
+      "emoji": "🌾",
+      "name": "Bulgur — belboula (dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 342,
+      "protein": 12.1,
+      "carbs": 75.7,
+      "fat": 1.4,
+      "fiber": 12.9,
+      "extra": [
+        {"name": "Sodium", "value": "17mg"}
+      ]
+    },
+    {
+      "id": "barley",
+      "emoji": "🌿",
+      "name": "Barley — ch3ir (pearled, dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 352,
+      "protein": 9.9,
+      "carbs": 77.7,
+      "fat": 1.2,
+      "fiber": 17.3,
+      "extra": [
+        {"name": "Sodium", "value": "9mg"}
+      ]
+    },
+    {
+      "id": "lentils",
+      "emoji": "🫘",
+      "name": "Lentils — 3des (dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 353,
+      "protein": 24.6,
+      "carbs": 63.4,
+      "fat": 1.1,
+      "fiber": 10.7,
+      "extra": [
+        {"name": "Sodium", "value": "6mg"},
+        {"name": "Iron", "value": "7.5mg"},
+        {"name": "Folate", "value": "479µg"}
+      ]
+    },
+    {
+      "id": "bissara",
+      "emoji": "🟢",
+      "name": "Bissara — baysara (dried fava beans, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 341,
+      "protein": 26.1,
+      "carbs": 58.3,
+      "fat": 1.5,
+      "fiber": 25,
+      "extra": [
+        {"name": "Sodium", "value": "13mg"}
+      ]
+    },
+    {
+      "id": "white-beans",
+      "emoji": "🫘",
+      "name": "Beans — loubia (white beans, dry, raw)",
+      "note": null,
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 333,
+      "protein": 23.4,
+      "carbs": 60.3,
+      "fat": 0.85,
+      "fiber": 15.3,
+      "extra": [
+        {"name": "Sodium", "value": "16mg"}
+      ]
+    },
+    {
+      "id": "olive-oil",
+      "emoji": "🫒",
+      "name": "Olive oil",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 884,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 100,
+      "fiber": 0,
+      "extra": []
+    },
+    {
+      "id": "avocado",
+      "emoji": "🥑",
+      "name": "Avocado",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 160,
+      "protein": 2,
+      "carbs": 8.5,
+      "fat": 14.7,
+      "fiber": 6.7,
+      "extra": [
+        {"name": "Potassium", "value": "485mg"}
+      ]
+    },
+    {
+      "id": "walnuts",
+      "emoji": "🌰",
+      "name": "Walnuts",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 654,
+      "protein": 15,
+      "carbs": 13.7,
+      "fat": 65.2,
+      "fiber": 6.7,
+      "extra": [
+        {"name": "Omega-3", "value": "9.1g"}
+      ]
+    },
+    {
+      "id": "almonds",
+      "emoji": "🌰",
+      "name": "Almonds",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 579,
+      "protein": 21.2,
+      "carbs": 21.6,
+      "fat": 49.9,
+      "fiber": 12.5,
+      "extra": [
+        {"name": "Magnesium", "value": "270mg"}
+      ]
+    },
+    {
+      "id": "pistachios",
+      "emoji": "🤜",
+      "name": "Pistachios",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 560,
+      "protein": 20.2,
+      "carbs": 27.2,
+      "fat": 45.3,
+      "fiber": 10.6,
+      "extra": [
+        {"name": "Potassium", "value": "1025mg"}
+      ]
+    },
+    {
+      "id": "cashews",
+      "emoji": "🥜",
+      "name": "Cashews",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 553,
+      "protein": 18.2,
+      "carbs": 30.2,
+      "fat": 43.9,
+      "fiber": 3.3,
+      "extra": []
+    },
+    {
+      "id": "pumpkin-seeds",
+      "emoji": "🌱",
+      "name": "Pumpkin seeds",
+      "note": null,
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 446,
+      "protein": 18.5,
+      "carbs": 35.4,
+      "fat": 19,
+      "fiber": 18,
+      "extra": [
+        {"name": "Zinc", "value": "7.6mg"},
+        {"name": "Magnesium", "value": "262mg"}
+      ]
+    },
+    {
+      "id": "carrot",
+      "emoji": "🥕",
+      "name": "Carrot",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 41,
+      "protein": 0.9,
+      "carbs": 9.6,
+      "fat": 0.2,
+      "fiber": 2.8,
+      "extra": []
+    },
+    {
+      "id": "zucchini",
+      "emoji": "🥒",
+      "name": "Courgette / Zucchini",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 17,
+      "protein": 1.2,
+      "carbs": 3.1,
+      "fat": 0.3,
+      "fiber": 1,
+      "extra": []
+    },
+    {
+      "id": "pumpkin-veg",
+      "emoji": "🎃",
+      "name": "Pumpkin",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 20,
+      "protein": 0.7,
+      "carbs": 4.6,
+      "fat": 0.1,
+      "fiber": 0.5,
+      "extra": []
+    },
+    {
+      "id": "spinach",
+      "emoji": "🌿",
+      "name": "Spinach",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 23,
+      "protein": 2.9,
+      "carbs": 3.6,
+      "fat": 0.4,
+      "fiber": 2.2,
+      "extra": []
+    },
+    {
+      "id": "bell-pepper",
+      "emoji": "🫑",
+      "name": "Bell pepper",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 20,
+      "protein": 0.9,
+      "carbs": 4.6,
+      "fat": 0.2,
+      "fiber": 1.7,
+      "extra": []
+    },
+    {
+      "id": "onion",
+      "emoji": "🧅",
+      "name": "Onion",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 40,
+      "protein": 1.1,
+      "carbs": 9.3,
+      "fat": 0.1,
+      "fiber": 1.7,
+      "extra": []
+    },
+    {
+      "id": "garlic",
+      "emoji": "🧄",
+      "name": "Garlic",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 143,
+      "protein": 6.6,
+      "carbs": 28.2,
+      "fat": 0.4,
+      "fiber": 2.7,
+      "extra": []
+    },
+    {
+      "id": "tomato",
+      "emoji": "🍅",
+      "name": "Tomato",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 18,
+      "protein": 0.9,
+      "carbs": 3.9,
+      "fat": 0.2,
+      "fiber": 1.2,
+      "extra": []
+    },
+    {
+      "id": "cucumber",
+      "emoji": "🥒",
+      "name": "Cucumber",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 12,
+      "protein": 0.6,
+      "carbs": 1.9,
+      "fat": 0.1,
+      "fiber": 0.5,
+      "extra": []
+    },
+    {
+      "id": "cauliflower",
+      "emoji": "🥦",
+      "name": "Cauliflower",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 25,
+      "protein": 1.9,
+      "carbs": 5,
+      "fat": 0.3,
+      "fiber": 2,
+      "extra": []
+    },
+    {
+      "id": "broccoli",
+      "emoji": "🥦",
+      "name": "Broccoli",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 34,
+      "protein": 2.8,
+      "carbs": 6.6,
+      "fat": 0.4,
+      "fiber": 2.6,
+      "extra": []
+    },
+    {
+      "id": "cabbage",
+      "emoji": "🥬",
+      "name": "Cabbage",
+      "note": null,
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 25,
+      "protein": 1.3,
+      "carbs": 5.8,
+      "fat": 0.1,
+      "fiber": 2.5,
+      "extra": []
+    },
+    {
+      "id": "grapes",
+      "emoji": "🍇",
+      "name": "Grapes",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 69,
+      "protein": 0.7,
+      "carbs": 18.1,
+      "fat": 0.2,
+      "fiber": 0.9,
+      "extra": [
+        {"name": "Sugar", "value": "16g"}
+      ]
+    },
+    {
+      "id": "mango",
+      "emoji": "🥭",
+      "name": "Mango",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 60,
+      "protein": 0.8,
+      "carbs": 15,
+      "fat": 0.4,
+      "fiber": 1.6,
+      "extra": [
+        {"name": "Sugar", "value": "13.7g"}
+      ]
+    },
+    {
+      "id": "watermelon",
+      "emoji": "🍉",
+      "name": "Watermelon / Melon",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 30,
+      "protein": 0.6,
+      "carbs": 7.6,
+      "fat": 0.2,
+      "fiber": 0.4,
+      "extra": [
+        {"name": "Sugar", "value": "6.2g"}
+      ]
+    },
+    {
+      "id": "banana",
+      "emoji": "🍌",
+      "name": "Banana",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 89,
+      "protein": 1.1,
+      "carbs": 22.8,
+      "fat": 0.3,
+      "fiber": 2.6,
+      "extra": [
+        {"name": "Sugar", "value": "12.2g"}
+      ]
+    },
+    {
+      "id": "dates",
+      "emoji": "🌴",
+      "name": "Dates",
+      "note": "Deglet Noor type",
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 282,
+      "protein": 2.5,
+      "carbs": 75,
+      "fat": 0.4,
+      "fiber": 8,
+      "extra": [
+        {"name": "Sugar", "value": "63g"}
+      ]
+    },
+    {
+      "id": "apple",
+      "emoji": "🍎",
+      "name": "Apple",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 52,
+      "protein": 0.3,
+      "carbs": 13.8,
+      "fat": 0.2,
+      "fiber": 2.4,
+      "extra": [
+        {"name": "Sugar", "value": "10.4g"}
+      ]
+    },
+    {
+      "id": "orange",
+      "emoji": "🍊",
+      "name": "Orange",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 47,
+      "protein": 0.9,
+      "carbs": 11.8,
+      "fat": 0.1,
+      "fiber": 2.4,
+      "extra": [
+        {"name": "Vitamin C", "value": "53mg"}
+      ]
+    },
+    {
+      "id": "clementine",
+      "emoji": "🍊",
+      "name": "Clementine",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 47,
+      "protein": 0.85,
+      "carbs": 12,
+      "fat": 0.2,
+      "fiber": 1.7,
+      "extra": []
+    },
+    {
+      "id": "kiwi",
+      "emoji": "🥝",
+      "name": "Kiwi",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 61,
+      "protein": 1.1,
+      "carbs": 14.7,
+      "fat": 0.5,
+      "fiber": 3,
+      "extra": []
+    },
+    {
+      "id": "strawberry",
+      "emoji": "🍓",
+      "name": "Berries (strawberry)",
+      "note": null,
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 32,
+      "protein": 0.67,
+      "carbs": 7.7,
+      "fat": 0.3,
+      "fiber": 2,
+      "extra": [
+        {"name": "Sugar", "value": "4.9g"}
+      ]
+    }
+  ]
+}
