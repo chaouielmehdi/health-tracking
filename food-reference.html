@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Food Reference · Health &amp; Body</title>
 <style>
   :root{
@@ -56,7 +56,7 @@
   .header{
     max-width:960px;
     margin:0 auto;
-    padding:32px 28px 24px;
+    padding:28px 28px 20px;
   }
   .header-badge{
     display:inline-flex;
@@ -86,12 +86,23 @@
 
   /* CONTROLS */
   .controls{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(26,29,31,0.92);
+    -webkit-backdrop-filter:blur(16px);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--panel-border);
+    max-width:100%;
+    padding:14px 0 12px;
+  }
+  .controls-inner{
     max-width:960px;
     margin:0 auto;
-    padding:0 28px 20px;
+    padding:0 28px;
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:10px;
   }
   .search-wrap{position:relative;}
   .search-icon{
@@ -105,18 +116,31 @@
     width:100%;
     background:var(--panel);
     border:1px solid var(--panel-border);
-    border-radius:10px;
-    padding:11px 14px 11px 40px;
+    border-radius:12px;
+    padding:13px 14px 13px 42px;
     color:var(--text);
-    font-size:14px;
+    font-size:16px; /* 16px prevents iOS auto-zoom on focus */
     font-family:var(--sans);
     outline:none;
-    transition:border-color 0.15s;
+    transition:border-color 0.2s,box-shadow 0.2s;
+    -webkit-appearance:none;
   }
-  #search:focus{border-color:rgba(139,148,116,0.5);}
+  #search:focus{
+    border-color:rgba(139,148,116,0.6);
+    box-shadow:0 0 0 3px rgba(139,148,116,0.1);
+  }
   #search::placeholder{color:var(--text-dim2);}
 
-  .filters{display:flex;flex-wrap:wrap;gap:6px;}
+  .filters{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:6px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-bottom:2px;
+  }
+  .filters::-webkit-scrollbar{display:none;}
   .filter-btn{
     background:var(--panel);
     border:1px solid var(--panel-border);
@@ -141,10 +165,11 @@
   .count-bar{
     max-width:960px;
     margin:0 auto;
-    padding:0 28px 16px;
-    font-size:12px;
+    padding:14px 28px 10px;
+    font-size:11.5px;
     color:var(--text-dim2);
     font-family:var(--mono);
+    letter-spacing:0.04em;
   }
   .count-bar span{color:var(--accent);}
 
@@ -320,7 +345,7 @@
   /* RESPONSIVE */
   @media(max-width:800px){
     .grid{grid-template-columns:repeat(2,1fr);}
-    .nav,.header,.controls,.count-bar,.grid,.footer{padding-left:18px;padding-right:18px;}
+    .nav,.header,.controls-inner,.count-bar,.grid,.footer{padding-left:18px;padding-right:18px;}
     h1{font-size:24px;}
   }
   @media(max-width:500px){
@@ -346,13 +371,15 @@
 </div>
 
 <div class="controls">
-  <div class="search-wrap">
-    <span class="search-icon">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </span>
-    <input id="search" type="text" placeholder="Search foods…" autocomplete="off">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input id="search" type="text" placeholder="Search foods…" autocomplete="off">
+    </div>
+    <div class="filters" id="filters"></div>
   </div>
-  <div class="filters" id="filters"></div>
 </div>
 
 <div class="count-bar" id="count-bar"></div>
