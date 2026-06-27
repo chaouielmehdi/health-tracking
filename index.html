@@ -419,9 +419,9 @@
     .then(r => r.json())
     .then(d => {
       if (!d.deployedAt) return;
-      const dt = new Date(d.deployedAt);
+      const dt = new Date(new Date(d.deployedAt).getTime() + 60*60*1000);
       const pad = n => String(n).padStart(2,'0');
-      const label = `deployed ${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} UTC`;
+      const label = `deployed ${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} GMT+1`;
       document.getElementById('footer-deploy').textContent = label;
     })
     .catch(() => {});
