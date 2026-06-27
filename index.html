@@ -16,10 +16,8 @@
     --accent:#8B9474;
     --accent-soft:rgba(139,148,116,0.16);
     --warn:#D9A05B;
-    --warn-soft:rgba(217,160,91,0.14);
     --bad:#C2604F;
     --good:#7FAE8E;
-    --good-soft:rgba(127,174,142,0.14);
     --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
     --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
   }
@@ -86,64 +84,6 @@
     margin-bottom:48px;
   }
 
-  /* STATS */
-  .stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-bottom:48px;
-  }
-  .stat-card{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    padding:18px 16px;
-  }
-  .stat-value{
-    font-family:var(--mono);
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:5px;
-  }
-  .stat-value.good{color:var(--good);}
-  .stat-value.warn{color:var(--warn);}
-  .stat-value.accent{color:var(--accent);}
-  .stat-label{
-    font-size:11px;
-    color:var(--text-dim2);
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    font-weight:600;
-  }
-
-  /* FEATURES */
-  .features{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-bottom:48px;
-  }
-  .feature-card{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    padding:22px 20px;
-  }
-  .feature-icon{
-    font-size:22px;
-    margin-bottom:12px;
-  }
-  .feature-title{
-    font-size:14.5px;
-    font-weight:700;
-    margin-bottom:7px;
-  }
-  .feature-desc{
-    font-size:12.5px;
-    color:var(--text-dim);
-    line-height:1.6;
-  }
-
   /* PROTOCOL PILLARS */
   .section-title{
     font-size:11px;
@@ -186,65 +126,8 @@
     font-family:var(--mono);
   }
 
-  /* NUTRIENT MINI GRID */
-  .nutrient-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-bottom:48px;
-  }
-  .nutrient-chip{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:10px;
-    padding:10px 12px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .nutrient-chip-dot{
-    width:6px;height:6px;
-    border-radius:50%;
-    flex-shrink:0;
-  }
-  .nutrient-chip-dot.good{background:var(--good);}
-  .nutrient-chip-dot.warn{background:var(--warn);}
-  .nutrient-chip-dot.bad{background:var(--bad);}
-  .nutrient-chip-name{
-    font-size:11.5px;
-    font-weight:600;
-    color:var(--text-dim);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-
-  /* REF CARD */
-  .ref-card{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    padding:18px 20px;
-    text-decoration:none;
-    color:inherit;
-    margin-bottom:48px;
-    transition:border-color 0.15s,background 0.15s;
-  }
-  .ref-card:hover{border-color:rgba(139,148,116,0.5);background:rgba(139,148,116,0.05);}
-  .ref-card-left{display:flex;align-items:center;gap:14px;}
-  .ref-icon{font-size:22px;line-height:1;}
-  .ref-title{font-size:14.5px;font-weight:700;margin-bottom:4px;}
-  .ref-desc{font-size:12px;color:var(--text-dim);}
-  .ref-arrow{font-family:var(--mono);color:var(--accent);font-size:18px;}
-
   @media(max-width:560px){
     h1{font-size:28px;}
-    .stats{grid-template-columns:1fr 1fr;}
-    .features{grid-template-columns:1fr;}
-    .nutrient-grid{grid-template-columns:repeat(2,1fr);}
     .hero{padding:48px 18px 36px;}
   }
 </style>
@@ -257,56 +140,6 @@
 
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
   <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
-
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-value accent">32</div>
-      <div class="stat-label">Nutrients tracked</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value good">2,415</div>
-      <div class="stat-label">Daily kcal target</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value warn">150g</div>
-      <div class="stat-label">Protein target</div>
-    </div>
-  </div>
-
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <div class="feature-title">Daily Dashboard</div>
-      <div class="feature-desc">Full macro &amp; micronutrient breakdown with coverage gauges, verdict banner, and protocol adherence score for every logged day.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <div class="feature-title">Smart Adjustments</div>
-      <div class="feature-desc">Targeted swap suggestions to optimise meals without overhauling the whole day — small, reasoned tweaks with real impact.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🧬</div>
-      <div class="feature-title">Deep Micronutrients</div>
-      <div class="feature-desc">Beyond macros — vitamins, minerals, omega-3, fiber, probiotics, and more tracked against daily targets with gap notes.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-title">Zero Manual Entry</div>
-      <div class="feature-desc">Just describe what you ate. Claude analyses the log, estimates nutrients, and builds the full dashboard automatically.</div>
-    </div>
-  </div>
-
-  <div class="section-title">References</div>
-  <a href="food-reference.html" class="ref-card">
-    <div class="ref-card-left">
-      <span class="ref-icon">🍽️</span>
-      <div>
-        <div class="ref-title">Food Reference</div>
-        <div class="ref-desc">49 foods — macros, micronutrients &amp; serving data</div>
-      </div>
-    </div>
-    <span class="ref-arrow">→</span>
-  </a>
 
   <div class="section-title">Protocol Pillars</div>
   <div class="pillars">
@@ -345,42 +178,6 @@
       <div class="pillar-name">Key gaps to watch</div>
       <div class="pillar-note">Vitamin D · Omega-3 · Magnesium</div>
     </div>
-  </div>
-
-  <div class="section-title">32 Nutrients Monitored</div>
-  <div class="nutrient-grid">
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Protein</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Water</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Fiber</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Omega-3</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin D</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Iron</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B12</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Magnesium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Calcium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Zinc</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Potassium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Folate B9</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin C</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Vitamin A</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Iodine</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin E</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin K</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B6</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Selenium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Thiamine B1</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Riboflavin B2</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Niacin B3</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Copper</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Choline</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Probiotics</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Sodium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Antioxidants</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Phosphorus</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Manganese</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Chromium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B5</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Biotin B7</div></div>
   </div>
 </div>
 
