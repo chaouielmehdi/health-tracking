@@ -262,6 +262,20 @@
   .ref-desc{font-size:12px;color:var(--text-dim);}
   .ref-arrow{font-family:var(--mono);color:var(--accent);font-size:18px;}
 
+  /* HERO TOP */
+  .hero-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:32px;
+  }
+  .hero-name{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim2);
+    letter-spacing:0.04em;
+  }
+
   @media(max-width:560px){
     h1{font-size:28px;}
     .stats{grid-template-columns:1fr 1fr;}
@@ -275,7 +289,10 @@
 <body>
 
 <div class="hero">
-  <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
+  <div class="hero-top">
+    <div class="hero-name">Mehdi · Health &amp; Body Protocol</div>
+    <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
+  </div>
 
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
   <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
@@ -407,8 +424,7 @@
 </div>
 
 <div class="footer">
-  <div class="footer-name">Mehdi · Health &amp; Body Protocol</div>
-  <div class="footer-right">
+  <div class="footer-right" style="margin-left:auto">
     <div class="footer-powered">Powered by Claude</div>
     <div class="footer-deploy" id="footer-deploy"></div>
   </div>
