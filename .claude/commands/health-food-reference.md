@@ -34,7 +34,7 @@ Adds a new food/product entry to `data/food-reference.json` in the **chaouielmeh
   "id": "jaouda-fromage-frais-110g",
   "emoji": "🧀",
   "name": "Jaouda Fromage Frais",
-  "note": "[Dairy] Plain, unsweetened — Jaouda brand",
+  "note": "Plain, unsweetened — Jaouda brand",
   "category": "Dairy",
   "serving": "per 110g",
   "kcal": 95,
