@@ -415,7 +415,7 @@
 </div>
 
 <script>
-  fetch('data/deploy.json')
+  fetch('data/deploy.json?v=' + Date.now())
     .then(r => r.json())
     .then(d => {
       if (!d.deployedAt) return;
