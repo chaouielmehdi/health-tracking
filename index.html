@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Health &amp; Body · Mehdi</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root{
     --bg:#1A1D1F;
@@ -209,38 +210,6 @@
     text-overflow:ellipsis;
   }
 
-  /* FOOTER */
-  .footer{
-    border-top:1px solid var(--panel-border);
-    padding:22px 28px;
-    max-width:680px;
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .footer-name{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-dim2);
-  }
-  .footer-right{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:4px;
-  }
-  .footer-powered{
-    font-size:11px;
-    color:var(--text-dim2);
-  }
-  .footer-deploy{
-    font-family:var(--mono);
-    font-size:10px;
-    color:var(--text-dim2);
-    opacity:0.6;
-  }
-
   /* REF CARD */
   .ref-card{
     display:flex;
@@ -262,20 +231,6 @@
   .ref-desc{font-size:12px;color:var(--text-dim);}
   .ref-arrow{font-family:var(--mono);color:var(--accent);font-size:18px;}
 
-  /* HERO TOP */
-  .hero-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:32px;
-  }
-  .hero-name{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-dim2);
-    letter-spacing:0.04em;
-  }
-
   @media(max-width:560px){
     h1{font-size:28px;}
     .stats{grid-template-columns:1fr 1fr;}
@@ -289,10 +244,7 @@
 <body>
 
 <div class="hero">
-  <div class="hero-top">
-    <div class="hero-name">Mehdi · Health &amp; Body Protocol</div>
-    <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
-  </div>
+  <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
 
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
   <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
@@ -423,25 +375,7 @@
   </div>
 </div>
 
-<div class="footer">
-  <div class="footer-right" style="margin-left:auto">
-    <div class="footer-powered">Powered by Claude</div>
-    <div class="footer-deploy" id="footer-deploy"></div>
-  </div>
-</div>
-
-<script>
-  fetch('data/deploy.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(d => {
-      if (!d.deployedAt) return;
-      const dt = new Date(new Date(d.deployedAt).getTime() + 60*60*1000);
-      const pad = n => String(n).padStart(2,'0');
-      const label = `deployed ${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} GMT+1`;
-      document.getElementById('footer-deploy').textContent = label;
-    })
-    .catch(() => {});
-</script>
+<script src="shared.js"></script>
 
 </body>
 </html>

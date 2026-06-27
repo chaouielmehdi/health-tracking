@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Food Reference · Health &amp; Body</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root{
     --bg:#1A1D1F;
@@ -328,20 +329,6 @@
   .empty-icon{font-size:32px;margin-bottom:10px;}
   .empty-text{font-size:14px;}
 
-  /* FOOTER */
-  .footer{
-    border-top:1px solid var(--panel-border);
-    padding:20px 28px;
-    max-width:960px;
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .footer-name{font-family:var(--mono);font-size:12px;color:var(--text-dim2);}
-  .footer-back{font-size:11px;color:var(--text-dim2);text-decoration:none;}
-  .footer-back:hover{color:var(--text-dim);}
-
   /* RESPONSIVE */
   @media(max-width:800px){
     .grid{grid-template-columns:repeat(2,1fr);}
@@ -388,11 +375,7 @@
   <div class="empty"><div class="empty-icon">⏳</div><div class="empty-text">Loading…</div></div>
 </div>
 
-<div class="footer">
-  <div class="footer-name">Mehdi · Health &amp; Body Protocol</div>
-  <a href="index.html" class="footer-back">← Back to dashboard</a>
-</div>
-
+<script src="shared.js"></script>
 <script>
 const CAT_COLORS = {
   'Supplement': {bg:'rgba(139,148,116,0.14)',border:'rgba(139,148,116,0.4)',text:'#8B9474'},
