@@ -63,11 +63,19 @@
     font-weight:700;
     line-height:1.15;
     letter-spacing:-0.025em;
-    margin-bottom:18px;
+    margin-bottom:8px;
   }
   h1 em{
     font-style:normal;
     color:var(--accent);
+  }
+  .hero-deploy{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--text-dim2);
+    opacity:0.5;
+    margin-bottom:22px;
+    min-height:14px;
   }
   .subtitle{
     font-size:15.5px;
@@ -237,7 +245,6 @@
     .features{grid-template-columns:1fr;}
     .nutrient-grid{grid-template-columns:repeat(2,1fr);}
     .hero{padding:48px 18px 36px;}
-    .footer{padding:20px 18px;}
   }
 </style>
 </head>
@@ -247,6 +254,7 @@
   <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
 
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
+  <div class="hero-deploy" id="hero-deploy"></div>
   <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
 
   <div class="stats">
@@ -375,7 +383,18 @@
   </div>
 </div>
 
-<script src="shared.js"></script>
+<script>
+  fetch('data/deploy.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      if (!d.deployedAt) return;
+      const dt = new Date(new Date(d.deployedAt).getTime() + 3600000);
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('hero-deploy').textContent =
+        `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} GMT+1`;
+    })
+    .catch(() => {});
+</script>
 
 </body>
 </html>
