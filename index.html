@@ -51,31 +51,32 @@
     font-weight:700;
     padding:5px 13px;
     border-radius:100px;
-    margin-bottom:32px;
+    margin-bottom:8px;
   }
   .badge-dot{
     width:6px;height:6px;
     border-radius:50%;
     background:var(--accent);
   }
-  h1{
-    font-size:40px;
-    font-weight:700;
-    line-height:1.15;
-    letter-spacing:-0.025em;
-    margin-bottom:8px;
-  }
-  h1 em{
-    font-style:normal;
-    color:var(--accent);
-  }
   .hero-deploy{
     font-family:var(--mono);
     font-size:10.5px;
     color:var(--text-dim2);
     opacity:0.5;
-    margin-bottom:22px;
+    margin-bottom:28px;
     min-height:14px;
+    display:block;
+  }
+  h1{
+    font-size:40px;
+    font-weight:700;
+    line-height:1.15;
+    letter-spacing:-0.025em;
+    margin-bottom:18px;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--accent);
   }
   .subtitle{
     font-size:15.5px;
@@ -252,9 +253,9 @@
 
 <div class="hero">
   <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
+  <div class="hero-deploy" id="hero-deploy"></div>
 
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
-  <div class="hero-deploy" id="hero-deploy"></div>
   <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
 
   <div class="stats">
