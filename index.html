@@ -78,8 +78,13 @@
   .goal-item{font-size:13px;color:var(--text-dim);line-height:1.6;padding:4px 0;display:flex;align-items:flex-start;gap:8px;}
   .goal-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
 
+  /* PROTOCOL CARD */
+  .protocol-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
+  .protocol-block{border-bottom:1px solid var(--panel-border);}
+  .protocol-block:last-child{border-bottom:none;}
+  .protocol-block-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;padding:10px 16px;background:rgba(255,255,255,0.025);border-bottom:1px solid var(--panel-border);}
+
   /* PILLARS */
-  .pillars{border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:20px;}
   .pillar-row{display:grid;grid-template-columns:26px 1fr auto;align-items:start;gap:12px;padding:14px 16px;border-bottom:1px solid var(--panel-border);}
   .pillar-row:last-child{border-bottom:none;}
   .pillar-dot{width:8px;height:8px;border-radius:50%;justify-self:center;margin-top:4px;}
@@ -90,7 +95,6 @@
   .pillar-note{font-size:12px;color:var(--text-dim2);font-family:var(--mono);text-align:right;line-height:1.5;}
 
   /* RULES */
-  .rules-panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
   .rules-body{padding:10px 14px;}
   .rule-row{display:grid;grid-template-columns:10px 1fr auto;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
   .rule-row:last-child{border-bottom:none;}
@@ -101,13 +105,12 @@
   .rule-text strong{color:var(--text);font-weight:600;}
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
 
-
-  /* SUPPLEMENTS */
-  .supp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-  .supp-chip{background:var(--panel);border:1px solid var(--panel-border);border-radius:12px;padding:16px 12px;text-align:center;}
-  .supp-icon{font-size:20px;margin-bottom:8px;}
-  .supp-name{font-size:12px;font-weight:600;margin-bottom:4px;}
-  .supp-reason{font-size:10.5px;color:var(--text-dim2);font-family:var(--mono);}
+  /* SUPPLEMENTS (inside protocol card) */
+  .supp-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .supp-row:last-child{border-bottom:none;}
+  .supp-row-icon{font-size:16px;text-align:center;}
+  .supp-row-name{font-size:13px;font-weight:600;}
+  .supp-row-reason{font-size:11px;color:var(--text-dim2);font-family:var(--mono);}
 
   /* HISTORY */
   .history-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:12px;}
@@ -155,7 +158,6 @@
     .profile-stats{grid-template-columns:1fr 1fr;}
     .profile-stats .stat-block:nth-child(3){border-top:1px solid var(--panel-border);grid-column:1/-1;border-right:none;}
     .goals-grid{grid-template-columns:1fr;}
-    .supp-grid{grid-template-columns:repeat(2,1fr);}
     .features{grid-template-columns:1fr;}
     .nutrient-grid{grid-template-columns:repeat(2,1fr);}
   }
@@ -173,7 +175,6 @@
   <div class="section" id="s-issues"></div>
   <div class="section" id="s-goals"></div>
   <div class="section" id="s-protocol"></div>
-  <div class="section" id="s-supplements"></div>
   <div class="section" id="s-history"></div>
 
   <!-- 07 · THE APP — static UI copy, not data -->
@@ -267,21 +268,27 @@
           ${r.reason?`<span class="rule-reason">${r.reason}</span>`:'<span></span>'}
         </div>`).join('');
 
-      document.getElementById('s-protocol').innerHTML=sectionLabel('04','The Protocol')+`
-        <div class="sub-label">Macro Targets</div>
-        <div class="pillars">${pillarsHtml}</div>
-        <div class="sub-label">Daily Rules</div>
-        <div class="rules-panel"><div class="rules-body">${rulesHtml}</div></div>`;
+      const suppsHtml=d.supplements.map(s=>`
+        <div class="supp-row">
+          <div class="supp-row-icon">${s.icon}</div>
+          <div class="supp-row-name">${s.name}</div>
+          <div class="supp-row-reason">${s.reason}</div>
+        </div>`).join('');
 
-      /* 05 · Supplements */
-      document.getElementById('s-supplements').innerHTML=sectionLabel('05','Supplements')+`
-        <div class="supp-grid">
-          ${d.supplements.map(s=>`
-            <div class="supp-chip">
-              <div class="supp-icon">${s.icon}</div>
-              <div class="supp-name">${s.name}</div>
-              <div class="supp-reason">${s.reason}</div>
-            </div>`).join('')}
+      document.getElementById('s-protocol').innerHTML=sectionLabel('04','The Protocol')+`
+        <div class="protocol-card">
+          <div class="protocol-block">
+            <div class="protocol-block-label">Nutrition Targets</div>
+            ${pillarsHtml}
+          </div>
+          <div class="protocol-block">
+            <div class="protocol-block-label">Daily Rules</div>
+            <div class="rules-body">${rulesHtml}</div>
+          </div>
+          <div class="protocol-block">
+            <div class="protocol-block-label">Supplements</div>
+            ${suppsHtml}
+          </div>
         </div>`;
 
       /* 32 Nutrients */
