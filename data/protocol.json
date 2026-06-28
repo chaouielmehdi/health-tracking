@@ -49,7 +49,7 @@
     { "name": "Micronutrients",  "note": "Vitamin D · Omega-3 · Mg · Probiotics",                         "status": "warn" }
   ],
   "rules": [
-    { "type": "do",   "text": "Eat slowly at breakfast",     "reason": "sensitive gut" },
+    { "type": "do",   "text": "Eat slowly always",            "reason": "sensitive gut" },
     { "type": "do",   "text": "Cumin in every meal",         "reason": "anti-gas"      },
     { "type": "do",   "text": "Control daily fat intake",    "reason": "fat loss"      },
     { "type": "do",   "text": "Consistent 7–8h · same schedule weekends", "reason": "cortisol · gut" },
