@@ -71,12 +71,6 @@
     { "type": "dont", "text": "Bran cereals",      "reason": "gas" },
     { "type": "dont", "text": "Wheat bran",        "reason": "gas" }
   ],
-  "supplements": [
-    { "icon": "☀️", "name": "Vitamin D",  "reason": "sun exposure" },
-    { "icon": "🐟", "name": "Omega-3",    "reason": "anti-inflam." },
-    { "icon": "🌙", "name": "Magnesium",  "reason": "sleep · stress" },
-    { "icon": "🦠", "name": "Probiotics", "reason": "gas · gut" }
-  ],
   "nutrients": [
     { "name": "Protein",      "status": "good" },
     { "name": "Water",        "status": "good" },
