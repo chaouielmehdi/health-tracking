@@ -53,7 +53,7 @@
     { "type": "do",   "text": "Cumin in every meal",         "reason": "anti-gas"      },
     { "type": "do",   "text": "Control daily fat intake",    "reason": "fat loss"      },
     { "type": "do",   "text": "Consistent 7–8h · same schedule weekends", "reason": "cortisol · gut" },
-    { "type": "do",   "text": "Dinner at 22h max",           "reason": "sleep"         },
+    { "type": "do",   "text": "Dinner by 21h max",            "reason": "gut · circadian" },
     { "type": "dont", "text": "Milk / dairy",                "reason": "gas"           },
     { "type": "dont", "text": "Water during meals",          "reason": "enzymes"       },
     { "type": "dont", "text": "Bread twice in a day",        "reason": "gas"           },
