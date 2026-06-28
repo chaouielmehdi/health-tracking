@@ -267,43 +267,7 @@
   </a>
 
   <div class="section-title">Protocol Pillars</div>
-  <div class="pillars">
-    <div class="pillar-row">
-      <div class="pillar-dot good"></div>
-      <div class="pillar-name">Calories</div>
-      <div class="pillar-note">2,500 TDEE · eat 2,250 (90%)</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot good"></div>
-      <div class="pillar-name">Protein</div>
-      <div class="pillar-note">150g / day min</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot good"></div>
-      <div class="pillar-name">Carbs</div>
-      <div class="pillar-note">Bread once per day max</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot warn"></div>
-      <div class="pillar-name">Fat</div>
-      <div class="pillar-note">Adjusted daily by Claude</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot warn"></div>
-      <div class="pillar-name">Fiber</div>
-      <div class="pillar-note">25–30g / day target</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot good"></div>
-      <div class="pillar-name">Hydration</div>
-      <div class="pillar-note">2.5L / day · not w/ meals</div>
-    </div>
-    <div class="pillar-row">
-      <div class="pillar-dot warn"></div>
-      <div class="pillar-name">Micronutrients</div>
-      <div class="pillar-note">Vitamin D · Omega-3 · Mg</div>
-    </div>
-  </div>
+  <div class="pillars" id="pillars"></div>
 
   <div class="section-title">32 Nutrients Monitored</div>
   <div class="nutrient-grid">
@@ -351,6 +315,19 @@
       const pad = n => String(n).padStart(2, '0');
       document.getElementById('hero-deploy').textContent =
         `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} GMT+1`;
+    })
+    .catch(() => {});
+
+  fetch('data/protocol.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('pillars').innerHTML = d.pillars.map(p =>
+        `<div class="pillar-row">
+          <div class="pillar-dot ${p.status}"></div>
+          <div class="pillar-name">${p.name}</div>
+          <div class="pillar-note">${p.note}</div>
+        </div>`
+      ).join('');
     })
     .catch(() => {});
 </script>
