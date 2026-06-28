@@ -4,7 +4,7 @@
   },
   "profile": {
     "name": "Mehdi",
-    "age": 31,
+    "age": 32,
     "height_cm": 185,
     "weight_kg": 75,
     "location": "Casablanca, Sidi Maârouf",
@@ -16,9 +16,8 @@
       "training": 2300
     },
     "context_tags": [
-      "💼 Software Engineer · 9h–18h",
-      "👶 New parent",
-      "⚽ Football · 1×/week",
+      "💼 Software Engineer · 9h–18h · sedentary",
+"⚽ Football · 1×/week",
       "🏃 Workout · 1×/week",
       "📅 Protocol started · June 2026"
     ]
