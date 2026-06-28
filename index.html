@@ -106,7 +106,7 @@
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
 
   /* NOTES EDITOR */
-  .notes-editor{width:100%;min-height:680px;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:18px 20px;color:var(--text-dim);font-family:var(--mono);font-size:12.5px;line-height:1.9;resize:vertical;outline:none;transition:border-color 0.15s;caret-color:var(--accent);}
+  .notes-editor{width:100%;min-height:0;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:18px 20px;color:var(--text-dim);font-family:var(--mono);font-size:12.5px;line-height:1.9;resize:vertical;outline:none;transition:border-color 0.15s;caret-color:var(--accent);}
   .notes-editor:focus{border-color:rgba(139,148,116,0.4);color:var(--text);}
   .notes-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;min-height:18px;}
   .notes-save{font-size:10.5px;color:var(--accent);font-family:var(--mono);opacity:0;transition:opacity 0.3s;}
@@ -200,7 +200,7 @@
       <span class="section-name">Today's Routine</span>
       <span class="section-line"></span>
     </div>
-    <textarea class="notes-editor" id="notes-editor" spellcheck="false" placeholder="Write your daily routine here..."></textarea>
+    <textarea class="notes-editor" id="notes-editor" rows="30" spellcheck="false" placeholder="Write your daily routine here..."></textarea>
     <div class="notes-footer">
       <button class="notes-copy" id="notes-copy">copy</button>
       <span class="notes-save" id="notes-save">saved</span>
