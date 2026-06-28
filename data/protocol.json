@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "updated": "2026-06-28"
+  },
+  "pillars": [
+    { "name": "Calories", "note": "2,500 TDEE · eat 2,250 (90%)", "status": "good" },
+    { "name": "Protein",  "note": "150g / day min", "status": "good" },
+    { "name": "Carbs",    "note": "255g / day · bread once max", "status": "good" },
+    { "name": "Fat",      "note": "70g / day · Claude-managed", "status": "warn" },
+    { "name": "Fiber",    "note": "25–30g / day", "status": "warn" },
+    { "name": "Hydration", "note": "2.5L / day · not w/ meals", "status": "good" },
+    { "name": "Micronutrients", "note": "Vitamin D · Omega-3 · Mg", "status": "warn" }
+  ]
+}
