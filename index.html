@@ -128,6 +128,7 @@
   .score-val.mid{color:var(--warn);}
   .score-val.low{color:var(--bad);}
   .score-val.kg{color:var(--text-dim);}
+  .history-summary{font-size:12px;color:var(--text-dim2);font-style:italic;padding:10px 18px;border-top:1px solid var(--panel-border);}
 
   /* APP FEATURES */
   .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
@@ -321,6 +322,7 @@
                 <div><div class="score-metric">${m.name}</div><div class="score-note">${m.note}</div></div>
                 <div class="score-val ${scoreClass(m.score)}">${m.score}/10</div>
               </div>`).join('')}
+            ${e.note?`<div class="history-summary">${e.note}</div>`:''}
           </div>`).join('');
     }).catch(()=>{});
 </script>

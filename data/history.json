@@ -6,6 +6,7 @@
       "overall_score": 5.5,
       "weight_kg": 75,
       "weight_note": "Protocol started — baseline set",
+      "note": "Foundation is there, July needs cleaner food and more consistent training",
       "metrics": [
         { "icon": "💨", "name": "Gas",      "score": 3, "note": "Main issue — first priority to fix" },
         { "icon": "⚡", "name": "Energy",   "score": 5, "note": "Functional but not optimal yet" },
