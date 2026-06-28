@@ -105,6 +105,12 @@
   .rule-text strong{color:var(--text);font-weight:600;}
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
 
+  /* NOTES EDITOR */
+  .notes-editor{width:100%;min-height:240px;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:18px 20px;color:var(--text-dim);font-family:var(--mono);font-size:12.5px;line-height:1.9;resize:vertical;outline:none;transition:border-color 0.15s;caret-color:var(--accent);}
+  .notes-editor:focus{border-color:rgba(139,148,116,0.4);color:var(--text);}
+  .notes-save{font-size:10.5px;color:var(--accent);font-family:var(--mono);text-align:right;margin-top:6px;min-height:14px;opacity:0;transition:opacity 0.3s;}
+  .notes-save.visible{opacity:1;}
+
   /* HISTORY */
   .history-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:12px;}
   .history-card:last-child{margin-bottom:0;}
@@ -182,6 +188,16 @@
     </a>
     <div class="sub-label">32 Nutrients Monitored</div>
     <div class="nutrient-grid" id="nutrients"></div>
+  </div>
+
+  <!-- TODAY'S ROUTINE — localStorage editor -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-name">Today's Routine</span>
+      <span class="section-line"></span>
+    </div>
+    <textarea class="notes-editor" id="notes-editor" spellcheck="false" placeholder="Write your daily routine here..."></textarea>
+    <div class="notes-save" id="notes-save">saved</div>
   </div>
 
   <div class="section" id="s-history"></div>
@@ -308,6 +324,52 @@
             ${e.note?`<div class="history-summary">${e.note}</div>`:''}
           </div>`).join('');
     }).catch(()=>{});
+
+  /* Today's Routine — localStorage editor */
+  (function(){
+    const el=document.getElementById('notes-editor');
+    const ind=document.getElementById('notes-save');
+    const KEY='health-routine';
+    const DEFAULT=`09:00 — Wake up
+09:00–13:00 — Work & Water (1L)
+13:00 — Black coffee (1 tsp sugar)
+
+14:00 — 🌅 Breakfast
+  · 20g khobz + 3 tbsp olive oil
+  · Mint tea (1 tsp sugar)
+  · 30g raw oat + 10g agave syrup
+  · 250g avocado
+  · 1 scoop whey
+
+14:00–18:00 — Work & Water (1L)
+18:00 — Out from work
+
+18:00 — ☀️ Lunch
+  · 285g fish (potato + tomato + onion cooked)
+  · 300g steamed veg (carrot, courgette, onion)
+19:00 — Black coffee · Water 0.5L
+19:00 — 1 banana — training days only
+19:00–21:00 — 🏋️ Training / 🎱 Billiard / 🥱 Rest
+
+21:00 — 🌙 Dinner
+  · 1 fruit
+  · Protein + Jaouda sans lactose
+  · 85g mixed nuts (almonds, walnuts, pistachios)
+  · 3 dates — training days only
+
+01:00 — Sleep`;
+    el.value=localStorage.getItem(KEY)||DEFAULT;
+    let t;
+    el.addEventListener('input',()=>{
+      clearTimeout(t);
+      ind.classList.remove('visible');
+      t=setTimeout(()=>{
+        localStorage.setItem(KEY,el.value);
+        ind.classList.add('visible');
+        setTimeout(()=>ind.classList.remove('visible'),1500);
+      },600);
+    });
+  })();
 </script>
 </body>
 </html>
