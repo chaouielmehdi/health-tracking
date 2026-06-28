@@ -100,7 +100,7 @@
   .rule-text{font-size:12.5px;color:var(--text-dim);line-height:1.4;}
   .rule-text strong{color:var(--text);font-weight:600;}
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
-  .rule-group-label{font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bad);font-weight:600;padding:10px 0 2px;opacity:0.55;grid-column:1/-1;}
+
 
   /* SUPPLEMENTS */
   .supp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
@@ -261,18 +261,12 @@
           <div class="pillar-note">${p.note}</div>
         </div>`).join('');
 
-      let lastGroup=null;
-      const rulesHtml=d.rules.map(r=>{
-        let out='';
-        const g=r.group||null;
-        if(g!==lastGroup){lastGroup=g;if(g)out+=`<div class="rule-row"><div class="rule-group-label">${g}</div></div>`;}
-        out+=`<div class="rule-row">
+      const rulesHtml=d.rules.map(r=>`
+        <div class="rule-row">
           <div class="rule-dot ${r.type}"></div>
           <span class="rule-text">${bold(r.text)}</span>
           ${r.reason?`<span class="rule-reason">${r.reason}</span>`:'<span></span>'}
-        </div>`;
-        return out;
-      }).join('');
+        </div>`).join('');
 
       document.getElementById('s-protocol').innerHTML=sectionLabel('04','The Protocol')+`
         <div class="sub-label">Macro Targets</div>
