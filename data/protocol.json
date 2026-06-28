@@ -2,13 +2,123 @@
   "meta": {
     "updated": "2026-06-28"
   },
+  "profile": {
+    "name": "Mehdi",
+    "age": 31,
+    "height_cm": 185,
+    "weight_kg": 75,
+    "location": "Casablanca, Sidi Maârouf",
+    "bmr": 1756,
+    "tdee": 2100,
+    "target": 1950,
+    "cycling": {
+      "rest": 1800,
+      "training": 2300
+    },
+    "context_tags": [
+      "💼 Software Engineer · 9h–18h",
+      "👶 New parent",
+      "⚽ Football · 1×/week",
+      "🏃 Workout · 1×/week",
+      "📅 Protocol started · June 2026"
+    ]
+  },
+  "issues": [
+    { "icon": "💨", "text": "Gas and bloating",                            "priority": "primary" },
+    { "icon": "🔥", "text": "Belly & legs fat",                            "priority": "warn" },
+    { "icon": "💪", "text": "Underdeveloped chest, arms and back",          "priority": "warn" },
+    { "icon": "🎯", "text": "No visible abs / core definition",             "priority": "warn" },
+    { "icon": "😴", "text": "Weekend oversleeping (12h) → Headaches",       "priority": "warn" }
+  ],
+  "goals": {
+    "short_term": {
+      "timeframe": "2026",
+      "items": ["Reduce gas and bloating", "Reduce leg & belly fat"]
+    },
+    "long_term": {
+      "timeframe": "2027/28",
+      "items": ["Gain refined muscles & core definition", "Footballer body"]
+    }
+  },
   "pillars": [
-    { "name": "Calories", "note": "~2,100 real TDEE · target 1,950 · Rest 1,800 / Training 2,300", "status": "good" },
-    { "name": "Protein",  "note": "165g / day min", "status": "good" },
-    { "name": "Carbs",    "note": "Rest ~130g · Training ~250g · low-FODMAP only", "status": "good" },
-    { "name": "Fat",      "note": "70g / day", "status": "warn" },
-    { "name": "Fiber",    "note": "25–30g / day · soluble sources only", "status": "warn" },
-    { "name": "Hydration", "note": "3L / day · not w/ meals", "status": "good" },
-    { "name": "Micronutrients", "note": "Vitamin D · Omega-3 · Mg · Probiotics", "status": "warn" }
+    { "name": "Calories",        "note": "~2,100 real TDEE · target 1,950 · Rest 1,800 / Training 2,300", "status": "good" },
+    { "name": "Protein",         "note": "165g / day min",                                                 "status": "good" },
+    { "name": "Carbs",           "note": "Rest ~130g · Training ~250g · low-FODMAP only",                 "status": "good" },
+    { "name": "Fat",             "note": "70g / day",                                                      "status": "warn" },
+    { "name": "Fiber",           "note": "25–30g / day · soluble sources only",                            "status": "warn" },
+    { "name": "Hydration",       "note": "3L / day · not w/ meals",                                        "status": "good" },
+    { "name": "Micronutrients",  "note": "Vitamin D · Omega-3 · Mg · Probiotics",                         "status": "warn" }
+  ],
+  "rules": {
+    "do": [
+      { "text": "No milk at all",               "reason": "gas" },
+      { "text": "Control daily fat intake",     "reason": null },
+      { "text": "Eat slowly at breakfast",      "reason": "sensitive gut" },
+      { "text": "Hit **165g protein** daily",   "reason": "muscle" },
+      { "text": "No bread twice in a day",      "reason": "gas" },
+      { "text": "Cumin in every meal",          "reason": "anti-gas" },
+      { "text": "Sleep max 9h on weekends",     "reason": "cortisol" },
+      { "text": "Drink **3L water**/day min",   "reason": "digestion" },
+      { "text": "No water during meals",        "reason": "enzymes" },
+      { "text": "Dinner at 22h max",            "reason": "3h before sleep" }
+    ],
+    "dont": [
+      { "name": "Bread twice/day",       "reason": "gas",     "group": null },
+      { "name": "Fruit juice",           "reason": "sugar",   "group": null },
+      { "name": "Raw veg as main",       "reason": "gas",     "group": null },
+      { "name": "Smida",                 "reason": "insulin", "group": null },
+      { "name": "Milk (hlib)",           "reason": "gas",     "group": null },
+      { "name": "Chicken with skin",     "reason": "fat",     "group": null },
+      { "name": "Lentils",               "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Chickpeas",             "reason": "gas",     "group": "Gas triggers" },
+      { "name": "White beans",           "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Onion (raw)",           "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Garlic (raw)",          "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Cauliflower",           "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Broccoli (raw)",        "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Carbonated drinks",     "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Bran cereals",          "reason": "gas",     "group": "Gas triggers" },
+      { "name": "Wheat bran",            "reason": "gas",     "group": "Gas triggers" }
+    ]
+  },
+  "supplements": [
+    { "icon": "☀️", "name": "Vitamin D",  "reason": "sun exposure" },
+    { "icon": "🐟", "name": "Omega-3",    "reason": "anti-inflam." },
+    { "icon": "🌙", "name": "Magnesium",  "reason": "sleep · stress" },
+    { "icon": "🦠", "name": "Probiotics", "reason": "gas · gut" }
+  ],
+  "nutrients": [
+    { "name": "Protein",      "status": "good" },
+    { "name": "Water",        "status": "good" },
+    { "name": "Fiber",        "status": "good" },
+    { "name": "Omega-3",      "status": "warn" },
+    { "name": "Vitamin D",    "status": "bad"  },
+    { "name": "Iron",         "status": "good" },
+    { "name": "Vitamin B12",  "status": "good" },
+    { "name": "Magnesium",    "status": "warn" },
+    { "name": "Calcium",      "status": "warn" },
+    { "name": "Zinc",         "status": "good" },
+    { "name": "Potassium",    "status": "warn" },
+    { "name": "Folate B9",    "status": "bad"  },
+    { "name": "Vitamin C",    "status": "good" },
+    { "name": "Vitamin A",    "status": "warn" },
+    { "name": "Iodine",       "status": "warn" },
+    { "name": "Vitamin E",    "status": "bad"  },
+    { "name": "Vitamin K",    "status": "bad"  },
+    { "name": "Vitamin B6",   "status": "good" },
+    { "name": "Selenium",     "status": "good" },
+    { "name": "Thiamine B1",  "status": "warn" },
+    { "name": "Riboflavin B2","status": "good" },
+    { "name": "Niacin B3",    "status": "good" },
+    { "name": "Copper",       "status": "warn" },
+    { "name": "Choline",      "status": "good" },
+    { "name": "Probiotics",   "status": "warn" },
+    { "name": "Sodium",       "status": "good" },
+    { "name": "Antioxidants", "status": "warn" },
+    { "name": "Phosphorus",   "status": "good" },
+    { "name": "Manganese",    "status": "warn" },
+    { "name": "Chromium",     "status": "warn" },
+    { "name": "Vitamin B5",   "status": "good" },
+    { "name": "Biotin B7",    "status": "good" }
   ]
 }
