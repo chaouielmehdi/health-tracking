@@ -18,6 +18,7 @@
     --warn:#D9A05B;
     --warn-soft:rgba(217,160,91,0.14);
     --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.12);
     --good:#7FAE8E;
     --good-soft:rgba(127,174,142,0.14);
     --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
@@ -32,180 +33,245 @@
     -webkit-font-smoothing:antialiased;
   }
 
-  /* HERO */
-  .hero{
+  .wrap{
     max-width:680px;
     margin:0 auto;
-    padding:80px 28px 56px;
+    padding:80px 28px 80px;
   }
+
+  /* HERO */
   .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:var(--accent-soft);
-    border:1px solid rgba(139,148,116,0.3);
-    color:var(--accent);
-    font-size:10.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    font-weight:700;
-    padding:5px 13px;
-    border-radius:100px;
-    margin-bottom:8px;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent-soft);border:1px solid rgba(139,148,116,0.3);
+    color:var(--accent);font-size:10.5px;letter-spacing:0.14em;
+    text-transform:uppercase;font-weight:700;padding:5px 13px;
+    border-radius:100px;margin-bottom:8px;
   }
-  .badge-dot{
-    width:6px;height:6px;
-    border-radius:50%;
-    background:var(--accent);
-  }
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
   .hero-deploy{
-    font-family:var(--mono);
-    font-size:10.5px;
-    color:var(--text-dim2);
-    opacity:0.5;
-    margin-bottom:28px;
-    min-height:14px;
-    display:block;
+    font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);
+    opacity:0.5;margin-bottom:28px;min-height:14px;display:block;
   }
   h1{
-    font-size:40px;
-    font-weight:700;
-    line-height:1.15;
-    letter-spacing:-0.025em;
-    margin-bottom:18px;
+    font-size:40px;font-weight:700;line-height:1.15;
+    letter-spacing:-0.025em;margin-bottom:18px;
   }
-  h1 em{
-    font-style:normal;
-    color:var(--accent);
-  }
-  .subtitle{
-    font-size:15.5px;
-    color:var(--text-dim);
-    line-height:1.65;
-    max-width:520px;
-    margin-bottom:48px;
+  h1 em{font-style:normal;color:var(--accent);}
+  .hero-sub{
+    font-size:15px;color:var(--text-dim);line-height:1.7;
+    max-width:520px;margin-bottom:64px;
   }
 
-  /* FEATURES */
-  .features{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-bottom:48px;
+  /* SECTION STRUCTURE */
+  .section{margin-bottom:56px;}
+  .section-label{
+    display:flex;align-items:center;gap:12px;margin-bottom:18px;
   }
-  .feature-card{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    padding:22px 20px;
+  .section-num{
+    font-family:var(--mono);font-size:10px;color:var(--accent);
+    opacity:0.7;letter-spacing:0.1em;flex-shrink:0;
   }
-  .feature-icon{
-    font-size:22px;
-    margin-bottom:12px;
+  .section-name{
+    font-size:10.5px;letter-spacing:0.13em;text-transform:uppercase;
+    color:var(--text-dim2);font-weight:700;flex-shrink:0;
   }
-  .feature-title{
-    font-size:14.5px;
-    font-weight:700;
-    margin-bottom:7px;
-  }
-  .feature-desc{
-    font-size:12.5px;
-    color:var(--text-dim);
-    line-height:1.6;
+  .section-line{flex:1;height:1px;background:var(--panel-border);}
+  .sub-label{
+    font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--text-dim2);font-weight:700;margin-bottom:10px;
   }
 
-  /* PROTOCOL PILLARS */
-  .section-title{
-    font-size:11px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--text-dim2);
-    font-weight:700;
-    margin-bottom:10px;
+  /* PROFILE CARD */
+  .profile-card{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:16px;overflow:hidden;
   }
+  .profile-identity{
+    padding:20px 20px 16px;border-bottom:1px solid var(--panel-border);
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  }
+  .profile-name{font-size:18px;font-weight:700;}
+  .profile-meta{font-size:13px;color:var(--text-dim);}
+  .profile-stats{
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .stat-block{padding:16px 18px;border-right:1px solid var(--panel-border);}
+  .stat-block:last-child{border-right:none;}
+  .stat-label{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-dim2);font-weight:600;margin-bottom:6px;
+  }
+  .stat-value{
+    font-size:22px;font-weight:700;font-family:var(--mono);
+    letter-spacing:-0.02em;color:var(--text);
+  }
+  .stat-unit{font-size:11px;color:var(--text-dim2);font-family:var(--mono);margin-top:2px;}
+  .calorie-cycling{
+    display:grid;grid-template-columns:1fr 1fr;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .cycling-block{padding:14px 18px;border-right:1px solid var(--panel-border);}
+  .cycling-block:last-child{border-right:none;}
+  .cycling-label{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-dim2);margin-bottom:5px;
+  }
+  .cycling-kcal{font-family:var(--mono);font-size:18px;font-weight:700;}
+  .cycling-kcal.rest{color:var(--text-dim);}
+  .cycling-kcal.training{color:var(--good);}
+  .context-row{
+    padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .ctx-tag{
+    font-size:11.5px;background:rgba(255,255,255,0.04);
+    border:1px solid var(--panel-border);border-radius:100px;
+    padding:4px 12px;color:var(--text-dim);
+  }
+
+  /* ISSUES */
+  .issues-list{display:flex;flex-direction:column;gap:8px;}
+  .issue-row{
+    display:flex;align-items:center;gap:12px;
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-left:3px solid var(--warn);border-radius:10px;padding:12px 16px;
+  }
+  .issue-row.primary{border-left-color:var(--bad);}
+  .issue-icon{font-size:15px;flex-shrink:0;}
+  .issue-text{font-size:13.5px;}
+
+  /* GOALS */
+  .goals-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .goal-card{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:14px;padding:20px;
+  }
+  .goal-timeframe{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:12px;
+  }
+  .goal-item{
+    font-size:13px;color:var(--text-dim);line-height:1.6;
+    padding:4px 0;display:flex;align-items:flex-start;gap:8px;
+  }
+  .goal-dot{
+    width:5px;height:5px;border-radius:50%;background:var(--accent);
+    flex-shrink:0;margin-top:6px;
+  }
+
+  /* PILLARS */
   .pillars{
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    overflow:hidden;
-    margin-bottom:48px;
+    border:1px solid var(--panel-border);border-radius:14px;
+    overflow:hidden;margin-bottom:20px;
   }
   .pillar-row{
-    display:grid;
-    grid-template-columns:26px 1fr auto;
-    align-items:start;
-    gap:12px;
-    padding:14px 16px;
+    display:grid;grid-template-columns:26px 1fr auto;
+    align-items:start;gap:12px;padding:14px 16px;
     border-bottom:1px solid var(--panel-border);
   }
   .pillar-row:last-child{border-bottom:none;}
-  .pillar-dot{
-    width:8px;height:8px;
-    border-radius:50%;
-    justify-self:center;
-    margin-top:4px;
-  }
+  .pillar-dot{width:8px;height:8px;border-radius:50%;justify-self:center;margin-top:4px;}
   .pillar-dot.good{background:var(--good);}
   .pillar-dot.warn{background:var(--warn);}
   .pillar-dot.bad{background:var(--bad);}
-  .pillar-name{
-    font-size:13.5px;
-    font-weight:600;
-    line-height:1.4;
-  }
-  .pillar-note{
-    font-size:12px;
-    color:var(--text-dim2);
-    font-family:var(--mono);
-    text-align:right;
-    line-height:1.5;
-  }
+  .pillar-name{font-size:13.5px;font-weight:600;line-height:1.4;}
+  .pillar-note{font-size:12px;color:var(--text-dim2);font-family:var(--mono);text-align:right;line-height:1.5;}
 
-  /* NUTRIENT MINI GRID */
-  .nutrient-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-bottom:48px;
+  /* RULES */
+  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .rules-panel{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:14px;overflow:hidden;
   }
-  .nutrient-chip{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:10px;
-    padding:10px 12px;
-    display:flex;
-    align-items:center;
-    gap:8px;
+  .rules-header{
+    padding:12px 16px;border-bottom:1px solid var(--panel-border);
+    display:flex;align-items:center;gap:8px;
   }
-  .nutrient-chip-dot{
-    width:6px;height:6px;
-    border-radius:50%;
-    flex-shrink:0;
+  .rules-header-title{
+    font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
   }
-  .nutrient-chip-dot.good{background:var(--good);}
-  .nutrient-chip-dot.warn{background:var(--warn);}
-  .nutrient-chip-dot.bad{background:var(--bad);}
-  .nutrient-chip-name{
-    font-size:11.5px;
-    font-weight:600;
-    color:var(--text-dim);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+  .rules-header.do .rules-header-title{color:var(--good);}
+  .rules-header.dont .rules-header-title{color:var(--bad);}
+  .rules-body{padding:10px 14px;}
+  .rule-item{
+    display:flex;gap:10px;padding:6px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);align-items:flex-start;
   }
+  .rule-item:last-child{border-bottom:none;}
+  .rule-num{
+    font-family:var(--mono);font-size:10px;color:var(--text-dim2);
+    flex-shrink:0;margin-top:2px;min-width:16px;
+  }
+  .rule-text{font-size:12px;color:var(--text-dim);line-height:1.5;}
+  .rule-text strong{color:var(--text);font-weight:600;}
+  .rule-reason{color:var(--text-dim2);font-family:var(--mono);font-size:10.5px;}
+  .never-group-label{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--bad);font-weight:600;padding:10px 0 4px;opacity:0.6;
+  }
+  .never-item{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .never-item:last-child{border-bottom:none;}
+  .never-name{font-size:12px;color:var(--text-dim);}
+  .never-reason{font-size:10px;font-family:var(--mono);color:var(--bad);opacity:0.6;}
+
+  /* SUPPLEMENTS */
+  .supp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .supp-chip{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:12px;padding:16px 12px;text-align:center;
+  }
+  .supp-icon{font-size:20px;margin-bottom:8px;}
+  .supp-name{font-size:12px;font-weight:600;margin-bottom:4px;}
+  .supp-reason{font-size:10.5px;color:var(--text-dim2);font-family:var(--mono);}
+
+  /* HISTORY */
+  .history-card{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:14px;overflow:hidden;
+  }
+  .history-header{
+    padding:14px 18px;border-bottom:1px solid var(--panel-border);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .history-month-name{font-size:14px;font-weight:700;}
+  .history-score-badge{
+    font-family:var(--mono);font-size:13px;font-weight:700;color:var(--warn);
+    background:var(--warn-soft);border:1px solid rgba(217,160,91,0.25);
+    border-radius:100px;padding:3px 12px;
+  }
+  .score-row{
+    display:grid;grid-template-columns:28px 1fr auto;align-items:center;
+    gap:12px;padding:11px 18px;border-bottom:1px solid var(--panel-border);
+  }
+  .score-row:last-child{border-bottom:none;}
+  .score-emoji{font-size:15px;text-align:center;}
+  .score-metric{font-size:13px;font-weight:600;}
+  .score-note{font-size:11.5px;color:var(--text-dim2);margin-top:1px;}
+  .score-val{font-family:var(--mono);font-size:15px;font-weight:700;text-align:right;}
+  .score-val.high{color:var(--good);}
+  .score-val.mid{color:var(--warn);}
+  .score-val.low{color:var(--bad);}
+  .score-val.kg{color:var(--text-dim);}
+
+  /* FEATURES */
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .feature-card{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:14px;padding:22px 20px;
+  }
+  .feature-icon{font-size:22px;margin-bottom:12px;}
+  .feature-title{font-size:14.5px;font-weight:700;margin-bottom:7px;}
+  .feature-desc{font-size:12.5px;color:var(--text-dim);line-height:1.6;}
 
   /* REF CARD */
   .ref-card{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:14px;
-    padding:18px 20px;
-    text-decoration:none;
-    color:inherit;
-    margin-bottom:48px;
-    transition:border-color 0.15s,background 0.15s;
+    display:flex;align-items:center;justify-content:space-between;
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:14px;padding:18px 20px;text-decoration:none;
+    color:inherit;margin-bottom:16px;transition:border-color 0.15s,background 0.15s;
   }
   .ref-card:hover{border-color:rgba(139,148,116,0.5);background:rgba(139,148,116,0.05);}
   .ref-card-left{display:flex;align-items:center;gap:14px;}
@@ -214,123 +280,403 @@
   .ref-desc{font-size:12px;color:var(--text-dim);}
   .ref-arrow{font-family:var(--mono);color:var(--accent);font-size:18px;}
 
+  /* NUTRIENT GRID */
+  .nutrient-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .nutrient-chip{
+    background:var(--panel);border:1px solid var(--panel-border);
+    border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;
+  }
+  .nutrient-chip-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .nutrient-chip-dot.good{background:var(--good);}
+  .nutrient-chip-dot.warn{background:var(--warn);}
+  .nutrient-chip-dot.bad{background:var(--bad);}
+  .nutrient-chip-name{
+    font-size:11.5px;font-weight:600;color:var(--text-dim);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
   @media(max-width:560px){
+    .wrap{padding:48px 18px 56px;}
     h1{font-size:28px;}
+    .profile-stats{grid-template-columns:1fr 1fr;}
+    .profile-stats .stat-block:nth-child(3){
+      border-top:1px solid var(--panel-border);grid-column:1/-1;border-right:none;
+    }
+    .goals-grid{grid-template-columns:1fr;}
+    .rules-grid{grid-template-columns:1fr;}
+    .supp-grid{grid-template-columns:repeat(2,1fr);}
     .features{grid-template-columns:1fr;}
     .nutrient-grid{grid-template-columns:repeat(2,1fr);}
-    .hero{padding:48px 18px 36px;}
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="hero">
+  <!-- HERO -->
   <div class="badge"><span class="badge-dot"></span>Personal Protocol</div>
   <div class="hero-deploy" id="hero-deploy"></div>
-
   <h1>Health &amp; Body<br><em>Tracking System</em></h1>
-  <p class="subtitle">A personal nutrition dashboard tracking daily macros, 32 micronutrients, and protocol adherence — analysed and reported by Claude from a simple food log.</p>
+  <p class="hero-sub">A personal record of who I am, what I'm fixing, and the exact protocol I follow every day to get there — analysed and reported by Claude from a simple food log.</p>
 
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <div class="feature-title">Daily Dashboard</div>
-      <div class="feature-desc">Full macro &amp; micronutrient breakdown with coverage gauges, verdict banner, and protocol adherence score for every logged day.</div>
+  <!-- 01 · WHO I AM -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">01</span>
+      <span class="section-name">Who I Am</span>
+      <span class="section-line"></span>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <div class="feature-title">Smart Adjustments</div>
-      <div class="feature-desc">Targeted swap suggestions to optimise meals without overhauling the whole day — small, reasoned tweaks with real impact.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🧬</div>
-      <div class="feature-title">Deep Micronutrients</div>
-      <div class="feature-desc">Beyond macros — vitamins, minerals, omega-3, fiber, probiotics, and more tracked against daily targets with gap notes.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-title">Zero Manual Entry</div>
-      <div class="feature-desc">Just describe what you ate. Claude analyses the log, estimates nutrients, and builds the full dashboard automatically.</div>
-    </div>
-  </div>
-
-  <div class="section-title">References</div>
-  <a href="food-reference.html" class="ref-card">
-    <div class="ref-card-left">
-      <span class="ref-icon">🍽️</span>
-      <div>
-        <div class="ref-title">Food Reference</div>
-        <div class="ref-desc">49 foods — macros, micronutrients &amp; serving data</div>
+    <div class="profile-card">
+      <div class="profile-identity">
+        <span class="profile-name">Mehdi</span>
+        <span class="profile-meta">31 yo &middot; 1.85 m &middot; 75 kg &middot; Casablanca, Sidi Ma&acirc;rouf</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat-block">
+          <div class="stat-label">BMR</div>
+          <div class="stat-value">1,756</div>
+          <div class="stat-unit">kcal / day</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">TDEE</div>
+          <div class="stat-value">2,100</div>
+          <div class="stat-unit">kcal / day &middot; sedentary</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Target</div>
+          <div class="stat-value">1,950</div>
+          <div class="stat-unit">kcal / day &middot; &minus;10%</div>
+        </div>
+      </div>
+      <div class="calorie-cycling">
+        <div class="cycling-block">
+          <div class="cycling-label">Rest days</div>
+          <div class="cycling-kcal rest">1,800 kcal</div>
+        </div>
+        <div class="cycling-block">
+          <div class="cycling-label">Training days</div>
+          <div class="cycling-kcal training">2,300 kcal</div>
+        </div>
+      </div>
+      <div class="context-row">
+        <span class="ctx-tag">💼 Software Engineer &middot; 9h&ndash;18h</span>
+        <span class="ctx-tag">👶 New parent &middot; May 2026</span>
+        <span class="ctx-tag">⚽ Football &middot; 1&times;/week</span>
+        <span class="ctx-tag">🏃 Workout &middot; 1&times;/week</span>
+        <span class="ctx-tag">📅 Since June 2026</span>
       </div>
     </div>
-    <span class="ref-arrow">→</span>
-  </a>
-
-  <div class="section-title">Protocol Pillars</div>
-  <div class="pillars" id="pillars"></div>
-
-  <div class="section-title">32 Nutrients Monitored</div>
-  <div class="nutrient-grid">
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Protein</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Water</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Fiber</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Omega-3</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin D</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Iron</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B12</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Magnesium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Calcium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Zinc</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Potassium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Folate B9</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin C</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Vitamin A</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Iodine</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin E</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin K</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B6</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Selenium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Thiamine B1</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Riboflavin B2</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Niacin B3</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Copper</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Choline</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Probiotics</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Sodium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Antioxidants</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Phosphorus</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Manganese</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Chromium</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B5</div></div>
-    <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Biotin B7</div></div>
   </div>
+
+  <!-- 02 · CURRENT ISSUES -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">02</span>
+      <span class="section-name">Current Issues</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="issues-list">
+      <div class="issue-row primary">
+        <span class="issue-icon">💨</span>
+        <span class="issue-text">Gas and bloating</span>
+      </div>
+      <div class="issue-row">
+        <span class="issue-icon">🔥</span>
+        <span class="issue-text">Belly &amp; legs fat</span>
+      </div>
+      <div class="issue-row">
+        <span class="issue-icon">💪</span>
+        <span class="issue-text">Underdeveloped chest, arms and back</span>
+      </div>
+      <div class="issue-row">
+        <span class="issue-icon">🎯</span>
+        <span class="issue-text">No visible abs / core definition</span>
+      </div>
+      <div class="issue-row">
+        <span class="issue-icon">😴</span>
+        <span class="issue-text">Weekend oversleeping (12h) &rarr; Headaches</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 · MY GOALS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">03</span>
+      <span class="section-name">My Goals</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-timeframe">🏁 Short-term &middot; 2026</div>
+        <div class="goal-item"><span class="goal-dot"></span>Reduce gas and bloating</div>
+        <div class="goal-item"><span class="goal-dot"></span>Reduce leg &amp; belly fat</div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-timeframe">🏁 Long-term &middot; 2027/28</div>
+        <div class="goal-item"><span class="goal-dot"></span>Gain refined muscles &amp; core definition</div>
+        <div class="goal-item"><span class="goal-dot"></span>Footballer body</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 · THE PROTOCOL -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">04</span>
+      <span class="section-name">The Protocol</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="sub-label">Macro Targets</div>
+    <div class="pillars" id="pillars"></div>
+
+    <div class="sub-label">Daily Rules</div>
+    <div class="rules-grid">
+
+      <div class="rules-panel">
+        <div class="rules-header do">
+          <span>✅</span>
+          <span class="rules-header-title">Survival Mode</span>
+        </div>
+        <div class="rules-body">
+          <div class="rule-item"><span class="rule-num">01</span><span class="rule-text">No milk at all <span class="rule-reason">&rarr; gas</span></span></div>
+          <div class="rule-item"><span class="rule-num">02</span><span class="rule-text">Control daily fat intake</span></div>
+          <div class="rule-item"><span class="rule-num">03</span><span class="rule-text">Eat slowly at breakfast <span class="rule-reason">&rarr; sensitive gut</span></span></div>
+          <div class="rule-item"><span class="rule-num">04</span><span class="rule-text">Hit <strong>165g protein</strong> daily <span class="rule-reason">&rarr; muscle</span></span></div>
+          <div class="rule-item"><span class="rule-num">05</span><span class="rule-text">No bread twice in a day <span class="rule-reason">&rarr; gas</span></span></div>
+          <div class="rule-item"><span class="rule-num">06</span><span class="rule-text">Cumin in every meal <span class="rule-reason">&rarr; anti-gas</span></span></div>
+          <div class="rule-item"><span class="rule-num">07</span><span class="rule-text">Sleep max 9h on weekends <span class="rule-reason">&rarr; cortisol</span></span></div>
+          <div class="rule-item"><span class="rule-num">08</span><span class="rule-text">Drink <strong>3L water</strong>/day min <span class="rule-reason">&rarr; digestion</span></span></div>
+          <div class="rule-item"><span class="rule-num">09</span><span class="rule-text">No water during meals <span class="rule-reason">&rarr; enzymes</span></span></div>
+          <div class="rule-item"><span class="rule-num">10</span><span class="rule-text">Dinner at 22h max <span class="rule-reason">&rarr; 3h before sleep</span></span></div>
+        </div>
+      </div>
+
+      <div class="rules-panel">
+        <div class="rules-header dont">
+          <span>❌</span>
+          <span class="rules-header-title">Never</span>
+        </div>
+        <div class="rules-body">
+          <div class="never-item"><span class="never-name">Bread twice/day</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Fruit juice</span><span class="never-reason">sugar</span></div>
+          <div class="never-item"><span class="never-name">Raw veg as main</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Smida</span><span class="never-reason">insulin</span></div>
+          <div class="never-item"><span class="never-name">Milk (hlib)</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Chicken with skin</span><span class="never-reason">fat</span></div>
+          <div class="never-group-label">Gas triggers</div>
+          <div class="never-item"><span class="never-name">Lentils</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Chickpeas</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">White beans</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Onion (raw)</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Garlic (raw)</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Cauliflower</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Broccoli (raw)</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Carbonated drinks</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Bran cereals</span><span class="never-reason">gas</span></div>
+          <div class="never-item"><span class="never-name">Wheat bran</span><span class="never-reason">gas</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 05 · SUPPLEMENTS -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">05</span>
+      <span class="section-name">Supplements</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="supp-grid">
+      <div class="supp-chip">
+        <div class="supp-icon">☀️</div>
+        <div class="supp-name">Vitamin D</div>
+        <div class="supp-reason">sun exposure</div>
+      </div>
+      <div class="supp-chip">
+        <div class="supp-icon">🐟</div>
+        <div class="supp-name">Omega-3</div>
+        <div class="supp-reason">anti-inflam.</div>
+      </div>
+      <div class="supp-chip">
+        <div class="supp-icon">🌙</div>
+        <div class="supp-name">Magnesium</div>
+        <div class="supp-reason">sleep &middot; stress</div>
+      </div>
+      <div class="supp-chip">
+        <div class="supp-icon">🦠</div>
+        <div class="supp-name">Probiotics</div>
+        <div class="supp-reason">gas &middot; gut</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 · HISTORY & TRACKING -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">06</span>
+      <span class="section-name">History &amp; Tracking</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="history-card">
+      <div class="history-header">
+        <span class="history-month-name">📆 June 2026</span>
+        <span class="history-score-badge">5.5 / 10</span>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">⚖️</div>
+        <div>
+          <div class="score-metric">Weight</div>
+          <div class="score-note">Protocol started — baseline set</div>
+        </div>
+        <div class="score-val kg">75 kg</div>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">💨</div>
+        <div>
+          <div class="score-metric">Gas</div>
+          <div class="score-note">Main issue — first priority to fix</div>
+        </div>
+        <div class="score-val low">3/10</div>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">⚡</div>
+        <div>
+          <div class="score-metric">Energy</div>
+          <div class="score-note">Functional but not optimal yet</div>
+        </div>
+        <div class="score-val mid">5/10</div>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">😴</div>
+        <div>
+          <div class="score-metric">Sleep</div>
+          <div class="score-note">Solid even with newborn</div>
+        </div>
+        <div class="score-val high">8/10</div>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">💪</div>
+        <div>
+          <div class="score-metric">Muscles</div>
+          <div class="score-note">Maintained — no progression yet</div>
+        </div>
+        <div class="score-val mid">5/10</div>
+      </div>
+      <div class="score-row">
+        <div class="score-emoji">🏃</div>
+        <div>
+          <div class="score-metric">Training</div>
+          <div class="score-note">One session/week — acceptable for now</div>
+        </div>
+        <div class="score-val mid">5/10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 · THE APP -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-num">07</span>
+      <span class="section-name">The App</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Daily Dashboard</div>
+        <div class="feature-desc">Full macro &amp; micronutrient breakdown with coverage gauges, verdict banner, and protocol adherence score for every logged day.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Smart Adjustments</div>
+        <div class="feature-desc">Targeted swap suggestions to optimise meals without overhauling the whole day — small, reasoned tweaks with real impact.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧬</div>
+        <div class="feature-title">Deep Micronutrients</div>
+        <div class="feature-desc">Beyond macros — vitamins, minerals, omega-3, fiber, probiotics, and more tracked against daily targets with gap notes.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Zero Manual Entry</div>
+        <div class="feature-desc">Just describe what you ate. Claude analyses the log, estimates nutrients, and builds the full dashboard automatically.</div>
+      </div>
+    </div>
+
+    <a href="food-reference.html" class="ref-card">
+      <div class="ref-card-left">
+        <span class="ref-icon">🍽️</span>
+        <div>
+          <div class="ref-title">Food Reference</div>
+          <div class="ref-desc">49 foods — macros, micronutrients &amp; serving data</div>
+        </div>
+      </div>
+      <span class="ref-arrow">&rarr;</span>
+    </a>
+
+    <div class="sub-label">32 Nutrients Monitored</div>
+    <div class="nutrient-grid">
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Protein</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Water</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Fiber</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Omega-3</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin D</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Iron</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B12</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Magnesium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Calcium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Zinc</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Potassium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Folate B9</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin C</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Vitamin A</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Iodine</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin E</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot bad"></div><div class="nutrient-chip-name">Vitamin K</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B6</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Selenium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Thiamine B1</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Riboflavin B2</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Niacin B3</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Copper</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Choline</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Probiotics</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Sodium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Antioxidants</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Phosphorus</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Manganese</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot warn"></div><div class="nutrient-chip-name">Chromium</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Vitamin B5</div></div>
+      <div class="nutrient-chip"><div class="nutrient-chip-dot good"></div><div class="nutrient-chip-name">Biotin B7</div></div>
+    </div>
+  </div>
+
 </div>
-
 <script>
-  fetch('data/deploy.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(d => {
-      if (!d.deployedAt) return;
-      const dt = new Date(new Date(d.deployedAt).getTime() + 3600000);
-      const pad = n => String(n).padStart(2, '0');
-      document.getElementById('hero-deploy').textContent =
+  fetch('data/deploy.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(d=>{
+      if(!d.deployedAt)return;
+      const dt=new Date(new Date(d.deployedAt).getTime()+3600000);
+      const pad=n=>String(n).padStart(2,'0');
+      document.getElementById('hero-deploy').textContent=
         `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth()+1)}-${pad(dt.getUTCDate())} ${pad(dt.getUTCHours())}:${pad(dt.getUTCMinutes())} GMT+1`;
-    })
-    .catch(() => {});
+    }).catch(()=>{});
 
-  fetch('data/protocol.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(d => {
-      document.getElementById('pillars').innerHTML = d.pillars.map(p =>
+  fetch('data/protocol.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(d=>{
+      document.getElementById('pillars').innerHTML=d.pillars.map(p=>
         `<div class="pillar-row">
           <div class="pillar-dot ${p.status}"></div>
           <div class="pillar-name">${p.name}</div>
           <div class="pillar-note">${p.note}</div>
         </div>`
       ).join('');
-    })
-    .catch(() => {});
+    }).catch(()=>{});
 </script>
-
 </body>
 </html>
