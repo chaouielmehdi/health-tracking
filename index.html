@@ -105,13 +105,6 @@
   .rule-text strong{color:var(--text);font-weight:600;}
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
 
-  /* SUPPLEMENTS (inside protocol card) */
-  .supp-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .supp-row:last-child{border-bottom:none;}
-  .supp-row-icon{font-size:16px;text-align:center;}
-  .supp-row-name{font-size:13px;font-weight:600;}
-  .supp-row-reason{font-size:11px;color:var(--text-dim2);font-family:var(--mono);}
-
   /* HISTORY */
   .history-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:12px;}
   .history-card:last-child{margin-bottom:0;}
@@ -270,13 +263,6 @@
           ${r.reason?`<span class="rule-reason">${r.reason}</span>`:'<span></span>'}
         </div>`).join('');
 
-      const suppsHtml=d.supplements.map(s=>`
-        <div class="supp-row">
-          <div class="supp-row-icon">${s.icon}</div>
-          <div class="supp-row-name">${s.name}</div>
-          <div class="supp-row-reason">${s.reason}</div>
-        </div>`).join('');
-
       document.getElementById('s-protocol').innerHTML=sectionLabel('04','The Protocol')+`
         <div class="protocol-card">
           <div class="protocol-block">
@@ -286,10 +272,6 @@
           <div class="protocol-block">
             <div class="protocol-block-label">Daily Rules</div>
             <div class="rules-body">${rulesHtml}</div>
-          </div>
-          <div class="protocol-block">
-            <div class="protocol-block-label">Supplements</div>
-            ${suppsHtml}
           </div>
         </div>`;
 
