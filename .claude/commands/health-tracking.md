@@ -1,6 +1,6 @@
 ---
 name: health-tracking
-description: Use this skill whenever Mehdi says "track my day", "track this", "log my food", or gives a list of foods he ate/will eat and asks for feedback, analysis, or a nutrition report. Always use this skill for any daily food log + feedback request from Mehdi, even if he doesn't use those exact words — e.g. "here's what I ate today, what do you think", "analyse cette journée", "give me feedback on this day". Produces a standardized health-app-style dashboard artifact (same UI every time) against Mehdi's Health & Body Protocol (Notion page ID 376c5670-6687-810c-a6ab-cbf594dbc3ac).
+description: Use this skill whenever Mehdi says "track my day", "track this", "log my food", or gives a list of foods he ate/will eat and asks for feedback, analysis, or a nutrition report. Always use this skill for any daily food log + feedback request from Mehdi, even if he doesn't use those exact words — e.g. "here's what I ate today, what do you think", "analyse cette journée", "give me feedback on this day". Produces a standardized health-app-style dashboard artifact (same UI every time) against Mehdi's Health & Body - Protocol (Notion page ID 376c5670-6687-810c-a6ab-cbf594dbc3ac).
 ---
 
 # Health Tracking (Daily Nutrition Report)
@@ -13,7 +13,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 ## Workflow
 
-1. **Get protocol context.** If not already in this conversation, fetch the Notion page (id `376c5670-6687-810c-a6ab-cbf594dbc3ac`) for current targets: TDEE (~2,415 kcal), protein target (150g), fat target, carb targets (rest day vs training day — confirm current numbers, don't assume stale ones), vegetable/fruit/dairy rules, and the "Never" list.
+1. **Get protocol context.** If not already in this conversation, fetch the Notion page (id `376c5670-6687-810c-a6ab-cbf594dbc3ac`) — "Health & Body - Protocol" — for current targets: TDEE (~2,415 kcal), protein target (150g), fat target, carb targets (rest day vs training day — confirm current numbers, don't assume stale ones), vegetable/fruit/dairy rules, and the "Never" list.
 
 2. **Determine rest day vs training day.** If ambiguous, ask once. This changes the carb target.
 
