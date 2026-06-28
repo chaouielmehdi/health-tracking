@@ -90,24 +90,17 @@
   .pillar-note{font-size:12px;color:var(--text-dim2);font-family:var(--mono);text-align:right;line-height:1.5;}
 
   /* RULES */
-  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .rules-panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
-  .rules-header{padding:12px 16px;border-bottom:1px solid var(--panel-border);display:flex;align-items:center;gap:8px;}
-  .rules-header-title{font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
-  .rules-header.do .rules-header-title{color:var(--good);}
-  .rules-header.dont .rules-header-title{color:var(--bad);}
   .rules-body{padding:10px 14px;}
-  .rule-item{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:flex-start;}
-  .rule-item:last-child{border-bottom:none;}
-  .rule-num{font-family:var(--mono);font-size:10px;color:var(--text-dim2);flex-shrink:0;margin-top:2px;min-width:16px;}
-  .rule-text{font-size:12px;color:var(--text-dim);line-height:1.5;}
+  .rule-row{display:grid;grid-template-columns:10px 1fr auto;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .rule-row:last-child{border-bottom:none;}
+  .rule-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .rule-dot.do{background:var(--good);}
+  .rule-dot.dont{background:var(--bad);}
+  .rule-text{font-size:12.5px;color:var(--text-dim);line-height:1.4;}
   .rule-text strong{color:var(--text);font-weight:600;}
-  .rule-reason{color:var(--text-dim2);font-family:var(--mono);font-size:10.5px;}
-  .never-group-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bad);font-weight:600;padding:10px 0 4px;opacity:0.6;}
-  .never-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .never-item:last-child{border-bottom:none;}
-  .never-name{font-size:12px;color:var(--text-dim);}
-  .never-reason{font-size:10px;font-family:var(--mono);color:var(--bad);opacity:0.6;}
+  .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
+  .rule-group-label{font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bad);font-weight:600;padding:10px 0 2px;opacity:0.55;grid-column:1/-1;}
 
   /* SUPPLEMENTS */
   .supp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
@@ -161,7 +154,7 @@
     h1{font-size:28px;}
     .profile-stats{grid-template-columns:1fr 1fr;}
     .profile-stats .stat-block:nth-child(3){border-top:1px solid var(--panel-border);grid-column:1/-1;border-right:none;}
-    .goals-grid,.rules-grid{grid-template-columns:1fr;}
+    .goals-grid{grid-template-columns:1fr;}
     .supp-grid{grid-template-columns:repeat(2,1fr);}
     .features{grid-template-columns:1fr;}
     .nutrient-grid{grid-template-columns:repeat(2,1fr);}
@@ -268,17 +261,16 @@
           <div class="pillar-note">${p.note}</div>
         </div>`).join('');
 
-      const doHtml=d.rules.do.map((r,i)=>`
-        <div class="rule-item">
-          <span class="rule-num">${String(i+1).padStart(2,'0')}</span>
-          <span class="rule-text">${bold(r.text)}${r.reason?` <span class="rule-reason">&rarr; ${r.reason}</span>`:''}</span>
-        </div>`).join('');
-
       let lastGroup=null;
-      const dontHtml=d.rules.dont.map(r=>{
+      const rulesHtml=d.rules.map(r=>{
         let out='';
-        if(r.group!==lastGroup){lastGroup=r.group;if(r.group)out+=`<div class="never-group-label">${r.group}</div>`;}
-        out+=`<div class="never-item"><span class="never-name">${r.name}</span><span class="never-reason">${r.reason}</span></div>`;
+        const g=r.group||null;
+        if(g!==lastGroup){lastGroup=g;if(g)out+=`<div class="rule-row"><div class="rule-group-label">${g}</div></div>`;}
+        out+=`<div class="rule-row">
+          <div class="rule-dot ${r.type}"></div>
+          <span class="rule-text">${bold(r.text)}</span>
+          ${r.reason?`<span class="rule-reason">${r.reason}</span>`:'<span></span>'}
+        </div>`;
         return out;
       }).join('');
 
@@ -286,16 +278,7 @@
         <div class="sub-label">Macro Targets</div>
         <div class="pillars">${pillarsHtml}</div>
         <div class="sub-label">Daily Rules</div>
-        <div class="rules-grid">
-          <div class="rules-panel">
-            <div class="rules-header do"><span>✅</span><span class="rules-header-title">Survival Mode</span></div>
-            <div class="rules-body">${doHtml}</div>
-          </div>
-          <div class="rules-panel">
-            <div class="rules-header dont"><span>❌</span><span class="rules-header-title">Never</span></div>
-            <div class="rules-body">${dontHtml}</div>
-          </div>
-        </div>`;
+        <div class="rules-panel"><div class="rules-body">${rulesHtml}</div></div>`;
 
       /* 05 · Supplements */
       document.getElementById('s-supplements').innerHTML=sectionLabel('05','Supplements')+`
