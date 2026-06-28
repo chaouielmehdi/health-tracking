@@ -51,7 +51,6 @@
   "rules": [
     { "type": "do",   "text": "Eat slowly always",            "reason": "sensitive gut" },
     { "type": "do",   "text": "Cumin in every meal",         "reason": "anti-gas"      },
-    { "type": "do",   "text": "Control daily fat intake",    "reason": "fat loss"      },
     { "type": "do",   "text": "Consistent 7–8h · same schedule weekends", "reason": "cortisol · gut" },
     { "type": "do",   "text": "Dinner by 21h max",            "reason": "gut · circadian" },
     { "type": "dont", "text": "Milk / dairy",                "reason": "gas"           },
