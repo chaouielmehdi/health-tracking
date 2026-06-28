@@ -8,7 +8,7 @@ jobs:
     if: |
       github.event.deployment_status.state == 'success' &&
       github.event.deployment.environment == 'github-pages' &&
-      github.event.deployment.creator.login != 'github-actions[bot]'
+      github.event.deployment.creator.login == 'chaouielmehdi'
     runs-on: ubuntu-latest
     permissions:
       contents: write
