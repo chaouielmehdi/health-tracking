@@ -53,7 +53,7 @@
     { "type": "do",   "text": "Eat slowly at breakfast",     "reason": "sensitive gut" },
     { "type": "do",   "text": "Hit **165g protein** daily",  "reason": "muscle"        },
     { "type": "do",   "text": "Cumin in every meal",         "reason": "anti-gas"      },
-    { "type": "do",   "text": "Control daily fat intake",    "reason": null            },
+    { "type": "do",   "text": "Control daily fat intake",    "reason": "fat loss"      },
     { "type": "do",   "text": "Sleep max 9h on weekends",    "reason": "cortisol"      },
     { "type": "do",   "text": "Drink **3L water**/day min",  "reason": "digestion"     },
     { "type": "do",   "text": "Dinner at 22h max",           "reason": "sleep"         },
