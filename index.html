@@ -108,8 +108,12 @@
   /* NOTES EDITOR */
   .notes-editor{width:100%;min-height:240px;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:18px 20px;color:var(--text-dim);font-family:var(--mono);font-size:12.5px;line-height:1.9;resize:vertical;outline:none;transition:border-color 0.15s;caret-color:var(--accent);}
   .notes-editor:focus{border-color:rgba(139,148,116,0.4);color:var(--text);}
-  .notes-save{font-size:10.5px;color:var(--accent);font-family:var(--mono);text-align:right;margin-top:6px;min-height:14px;opacity:0;transition:opacity 0.3s;}
+  .notes-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;min-height:18px;}
+  .notes-save{font-size:10.5px;color:var(--accent);font-family:var(--mono);opacity:0;transition:opacity 0.3s;}
   .notes-save.visible{opacity:1;}
+  .notes-copy{font-size:10.5px;font-family:var(--mono);color:var(--text-dim2);background:none;border:1px solid var(--panel-border);border-radius:6px;padding:3px 10px;cursor:pointer;transition:color 0.15s,border-color 0.15s;}
+  .notes-copy:hover{color:var(--text);border-color:rgba(139,148,116,0.4);}
+  .notes-copy.copied{color:var(--good);border-color:var(--good);}
 
   /* HISTORY */
   .history-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:12px;}
@@ -197,7 +201,10 @@
       <span class="section-line"></span>
     </div>
     <textarea class="notes-editor" id="notes-editor" spellcheck="false" placeholder="Write your daily routine here..."></textarea>
-    <div class="notes-save" id="notes-save">saved</div>
+    <div class="notes-footer">
+      <button class="notes-copy" id="notes-copy">copy</button>
+      <span class="notes-save" id="notes-save">saved</span>
+    </div>
   </div>
 
   <div class="section" id="s-history"></div>
@@ -329,6 +336,7 @@
   (function(){
     const el=document.getElementById('notes-editor');
     const ind=document.getElementById('notes-save');
+    const copyBtn=document.getElementById('notes-copy');
     const KEY='health-routine';
     const DEFAULT=`09:00 — Wake up
 09:00–13:00 — Work & Water (1L)
@@ -359,6 +367,13 @@
 
 01:00 — Sleep`;
     el.value=localStorage.getItem(KEY)||DEFAULT;
+    copyBtn.addEventListener('click',()=>{
+      navigator.clipboard.writeText(el.value).then(()=>{
+        copyBtn.textContent='copied!';
+        copyBtn.classList.add('copied');
+        setTimeout(()=>{copyBtn.textContent='copy';copyBtn.classList.remove('copied');},1500);
+      });
+    });
     let t;
     el.addEventListener('input',()=>{
       clearTimeout(t);
