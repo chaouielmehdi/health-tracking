@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tracking</title>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --warn-soft:rgba(217,160,91,0.14);
+    --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.14);
+    --good:#7FAE8E;
+    --good-soft:rgba(127,174,142,0.14);
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding:28px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:640px;
+    margin:0 auto;
+  }
+  /* HEADER */
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .header .label{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:600;
+  }
+  .header .date{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-dim2);
+  }
+
+  /* VERSION TOGGLE */
+  .version-toggle{
+    display:flex;
+    gap:5px;
+    padding:4px;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:12px;
+    margin-bottom:20px;
+  }
+  .version-btn{
+    flex:1;
+    padding:8px 16px;
+    border-radius:9px;
+    border:none;
+    background:transparent;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background 0.15s,color 0.15s;
+    letter-spacing:0.04em;
+    text-align:center;
+  }
+  .version-btn.v-active{
+    background:var(--bg);
+    color:var(--text);
+  }
+  .version-btn.v-opt-active{
+    background:var(--bg);
+    color:var(--good);
+  }
+
+  /* VERDICT BANNER */
+  .verdict{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid var(--panel-border);
+  }
+  .verdict.good{background:var(--good-soft);border-color:rgba(127,174,142,0.3);}
+  .verdict.warn{background:var(--warn-soft);border-color:rgba(217,160,91,0.3);}
+  .verdict.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.3);}
+  .verdict-icon{
+    font-size:22px;
+    width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .verdict.good .verdict-icon{background:rgba(127,174,142,0.25);}
+  .verdict.warn .verdict-icon{background:rgba(217,160,91,0.25);}
+  .verdict.bad .verdict-icon{background:rgba(194,96,79,0.25);}
+  .verdict-text{font-size:14.5px;line-height:1.4;font-weight:500;}
+  .verdict-text .kcal{font-family:var(--mono);font-weight:700;}
+
+  /* MACRO GAUGES */
+  .macros{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .macro-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 12px;
+  }
+  .macro-name{
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .macro-value{
+    font-family:var(--mono);
+    font-size:21px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .macro-target{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim2);
+    margin-bottom:10px;
+  }
+  .gauge-track{
+    height:6px;
+    background:#171A1C;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gauge-fill{
+    height:100%;
+    border-radius:6px;
+    transition:width 0.3s ease;
+  }
+  .gauge-fill.good{background:var(--good);}
+  .gauge-fill.warn{background:var(--warn);}
+  .gauge-fill.bad{background:var(--bad);}
+  .macro-pct{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    margin-top:6px;
+    text-align:right;
+  }
+  .macro-pct.good{color:var(--good);}
+  .macro-pct.warn{color:var(--warn);}
+  .macro-pct.bad{color:var(--bad);}
+
+  /* SECTION TITLE */
+  .section-title{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin:24px 0 10px;
+  }
+
+  /* COVERAGE TABLE */
+  .coverage{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .cov-row{
+    display:grid;
+    grid-template-columns:28px 1fr auto;
+    align-items:center;
+    gap:10px;
+    padding:11px 14px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .cov-row:last-child{border-bottom:none;}
+  .cov-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    justify-self:center;
+  }
+  .cov-dot.good{background:var(--good);}
+  .cov-dot.warn{background:var(--warn);}
+  .cov-dot.bad{background:var(--bad);}
+  .cov-main{min-width:0;}
+  .cov-name{
+    font-size:13.5px;
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .cov-note{
+    font-size:12px;
+    color:var(--text-dim2);
+    line-height:1.35;
+  }
+  .cov-coverage{
+    font-family:var(--mono);
+    font-size:12.5px;
+    font-weight:700;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .cov-coverage.good{color:var(--good);}
+  .cov-coverage.warn{color:var(--warn);}
+  .cov-coverage.bad{color:var(--bad);}
+
+  /* FEEDBACK */
+  .feedback{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:22px;
+  }
+  .fb-card{
+    border-radius:14px;
+    padding:14px 16px;
+    border:1px solid var(--panel-border);
+  }
+  .fb-card.good{background:var(--good-soft);border-color:rgba(127,174,142,0.25);}
+  .fb-card.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.25);}
+  .fb-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .fb-card.good .fb-title{color:var(--good);}
+  .fb-card.bad .fb-title{color:var(--bad);}
+  .fb-list{list-style:none;}
+  .fb-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding-left:14px;
+    position:relative;
+    margin-bottom:6px;
+    color:var(--text);
+  }
+  .fb-list li:last-child{margin-bottom:0;}
+  .fb-list li::before{
+    content:"–";
+    position:absolute;left:0;
+    color:var(--text-dim2);
+  }
+
+  .footer-note{
+    margin-top:18px;
+    font-size:11px;
+    color:var(--text-dim2);
+    text-align:center;
+  }
+
+  /* DAY LOG + ADJUSTMENTS */
+  .day-section{
+    margin-top:24px;
+  }
+  .day-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .day-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .day-card-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:10px;
+    display:flex;align-items:center;gap:6px;
+    color:var(--text-dim2);
+  }
+  .log-list{
+    list-style:none;
+  }
+  .log-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:5px 0;
+    border-bottom:1px solid var(--panel-border);
+    color:var(--text);
+  }
+  .log-list li:last-child{border-bottom:none;}
+  .log-list li.log-changed{
+    color:var(--good);
+    font-weight:600;
+  }
+  .log-list li.log-changed::before{
+    content:"⚡ ";
+  }
+  .adj-list{
+    list-style:none;
+  }
+  .adj-item{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:7px 0;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .adj-item:last-child{border-bottom:none;}
+  .adj-from{
+    color:var(--bad);
+    text-decoration:line-through;
+    opacity:0.75;
+  }
+  .adj-to{
+    color:var(--good);
+    font-weight:600;
+  }
+  .adj-arrow{
+    color:var(--text-dim2);
+    margin:0 4px;
+  }
+  .adj-reason{
+    display:block;
+    color:var(--text-dim2);
+    font-size:11.5px;
+    margin-top:2px;
+  }
+
+  /* FULL NUTRIENT TABLE */
+  .full-table-wrap{
+    margin-top:24px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  table.full-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  table.full-table th{
+    background:var(--panel);
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    text-align:left;
+    padding:10px 10px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  table.full-table th:first-child{width:28px;text-align:center;}
+  table.full-table th:nth-child(2){width:22%;}
+  table.full-table th:nth-child(3){width:20%;}
+  table.full-table th:nth-child(4){width:18%;}
+  table.full-table td{
+    font-size:11.5px;
+    line-height:1.4;
+    padding:9px 10px;
+    border-bottom:1px solid var(--panel-border);
+    vertical-align:top;
+    color:var(--text);
+  }
+  table.full-table tr:last-child td{border-bottom:none;}
+  table.full-table tr:nth-child(even){background:rgba(255,255,255,0.015);}
+  .ft-num{
+    text-align:center;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11px;
+  }
+  .ft-nutrient{font-weight:600;}
+  .ft-impact{color:var(--text-dim2);font-size:11px;}
+  .ft-coverage{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  .ft-coverage.good{color:var(--good);}
+  .ft-coverage.warn{color:var(--warn);}
+  .ft-coverage.bad{color:var(--bad);}
+  .ft-note{color:var(--text-dim2);font-size:11px;}
+
+  @media (max-width:600px){
+    table.full-table{table-layout:auto;}
+    table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+  }
+
+  @media (max-width:480px){
+    .macros{grid-template-columns:1fr 1fr 1fr;gap:7px;}
+    .macro-card{padding:10px 8px;}
+    .macro-value{font-size:17px;}
+    .feedback{grid-template-columns:1fr;}
+    .day-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+  <div class="app" id="app"></div>
+
+<script>
+/*
+  DATA CONTRACT — fill this object, everything else renders automatically.
+  status values: "good" | "warn" | "bad"
+
+  Structure:
+    DATA.date, DATA.dayType                — shared header
+    DATA.adjustments                       — list of original → optimized changes (always shown)
+    DATA.original { verdict, macros, coverage, good, bad, loggedItems, fullTable }
+    DATA.optimized { verdict, macros, coverage, good, bad, loggedItems, fullTable }
+*/
+const DATA = {
+  date: "June 29, 2026",
+  dayType: "Rest day",
+
+  adjustments: [
+    { from:"Mixed nuts 85g", to:"40g (reduced by half)", reason:"Nuts alone contributed ~45g fat — halving brings fat into range without removing a food group" },
+    { from:"1 scoop whey protein", to:"2 scoops whey protein", reason:"Protein at 68% of target — adding a second scoop is the cleanest fix with near-zero fat impact" }
+  ],
+
+  original: {
+    verdict: {
+      status: "bad",
+      icon: "⚠️",
+      text_html: 'Needs work — <span class="kcal">1,970 kcal</span> (+170 vs rest target). Protein critically low at 68%, fat at 146%.'
+    },
+    macros: [
+      { name:"Protein", value:"113g", target:"/ 165g", pct:68,  status:"bad"  },
+      { name:"Carbs",   value:"160g", target:"/ 130g", pct:123, status:"warn" },
+      { name:"Fat",     value:"102g", target:"/ 70g",  pct:146, status:"bad"  }
+    ],
+    coverage: [
+      { status:"warn", name:"Calories",           coverage:"1,970 / 1,800 (109%)", note:"+170 kcal over rest-day target" },
+      { status:"bad",  name:"Protein",             coverage:"113g / 165g (68%)",    note:"Kefta 50g, whey 25g — no eggs, structural gap" },
+      { status:"warn", name:"Carbs",               coverage:"160g / 130g (123%)",   note:"Rice 50g, bread 29g, nuts 18g, banana 27g stack" },
+      { status:"bad",  name:"Fat",                 coverage:"102g / 70g (146%)",    note:"Nuts 85g alone = 45g fat + kefta 37g fat" },
+      { status:"warn", name:"Fiber",               coverage:"~23g / 30g (76%)",     note:"Bread, nuts, veg — moderate" },
+      { status:"good", name:"Gas / bloat risk",    coverage:"Low",                  note:"Onion cooked, sauté not raw — no gas triggers fired" },
+      { status:"warn", name:"Protocol adherence",  coverage:"Fair",                 note:"Cumin present, dinner timing OK, but no eggs and nut portion oversized" }
+    ],
+    good: [
+      "Calories only 170 kcal over rest target",
+      "Zinc close to target — kefta doing the work",
+      "Vitamin B12 covered well by kefta",
+      "Gas risk is low — all onion cooked"
+    ],
+    bad: [
+      "Protein at 68% — critically low without eggs",
+      "Fat at 146% — 85g nuts + kefta stack is too much",
+      "No eggs today — choline, biotin, vitamin D, B2 all collapse",
+      "Vitamin C very low — no citrus or raw veg"
+    ],
+    loggedItems: [
+      "Black coffee + 1 tsp sugar (×2)",
+      "Whole wheat bread 70g",
+      "Olive oil 10g/day (70g box / week)",
+      "Mint tea + 1 tsp sugar",
+      "Rice boiled 70g raw",
+      "Kefta 250g raw + ½ onion",
+      "Legume sauté 200g (carrot, courgette, onion)",
+      "1 banana ~120g",
+      "Whey protein 1 scoop (30g)",
+      "Jaouda sans lactose 110g",
+      "Mixed nuts 85g (almonds, walnuts, pistachios)"
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"bad",  coverage:"113g / 165g (68%)",     note:"Kefta 50g, whey 25g, bread 9g, other 29g — no eggs today" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",         note:"1L morning + 1L afternoon + 1L evening — target met" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"warn", coverage:"~23g / 30g (76%)",       note:"Bread 4g, nuts 8g, veg 4g, banana 3g, rice 2.5g" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~2.6g ALA / no EPA/DHA", note:"Walnuts 28g are the main ALA source — no fatty fish" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1µg / 15µg (7%)",       note:"No eggs, no fish — structural gap on this plan" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~7.5mg / 11mg (68%)",    note:"Kefta 4.75mg, bread 1.9mg, veg 0.85mg" },
+      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~5.3µg / 2.4µg (220%)",  note:"Kefta 250g alone covers B12 more than 2×" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~180mg / 400mg (45%)",   note:"Almonds 76mg, banana 32mg, bread 28mg, nuts 74mg total" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~280mg / 1000mg (28%)",  note:"Jaouda 132mg, almonds 74mg, bread 70mg — still very low" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~10.5mg / 11mg (95%)",   note:"Kefta 250g × 4.2mg/100g = 10.5mg — nearly on target" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~1800mg / 4700mg (38%)", note:"Kefta 700mg, banana 430mg, pistachios 290mg, veg 300mg" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~80µg / 400µg (20%)",    note:"Bread 35µg, vegetables 30µg, banana 20µg — no leafy greens" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~28mg / 90mg (31%)",     note:"Courgette 11mg, banana 10mg, carrot 4mg — no citrus" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~580µg / 900µg (64%)",   note:"Carrot 67g delivers ~560µg RAE — the star of this plan" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"bad",  coverage:"~20µg / 150µg (13%)",    note:"Jaouda small amount, otherwise no iodine-rich foods" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"warn", coverage:"~9mg / 15mg (60%)",      note:"Almonds 7.2mg, olive oil 1.4mg — nuts are the main source" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~15µg / 120µg (13%)",    note:"Olive oil 6µg, vegetables small — no leafy greens" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"warn", coverage:"~1.4mg / 1.7mg (82%)",   note:"Kefta 0.75mg, banana 0.44mg — close to target" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~52µg / 55µg (95%)",     note:"Kefta 35µg, bread 17µg — nearly on target" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.4mg / 1.2mg (33%)",   note:"Bread 0.14mg, rice 0.05mg, kefta small — low" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"bad",  coverage:"~0.5mg / 1.3mg (38%)",   note:"Jaouda 0.2mg, whey 0.15mg — no eggs hurts here" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"warn", coverage:"~14mg / 16mg (88%)",     note:"Kefta 12.5mg, rice 1mg, bread 0.5mg" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"good", coverage:"~0.85mg / 0.9mg (94%)",  note:"Walnuts 0.45mg, almonds 0.29mg — nuts cover this well" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"bad",  coverage:"~200mg / 550mg (36%)",   note:"No eggs — massive gap. Kefta ~150mg, nuts small amount" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"bad",  coverage:"Low (Jaouda s/l)",        note:"Lactose-free milk has minimal live cultures vs raib/lben" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~800mg (moderate)",       note:"Bread 343mg, salt/cumin in kefta — within normal range" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate",               note:"Carrot beta-carotene, olive oil polyphenols, nuts" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~800mg / 700mg (114%)",   note:"Kefta 438mg, whey 120mg, bread 70mg, nuts 100mg" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~2.2mg / 2.3mg (96%)",   note:"Brown rice 1.4mg, almonds 0.62mg — nearly on target" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~5µg / 35µg (14%)",      note:"Whole wheat bread small amount — structural gap" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~2.8mg / 5mg (56%)",     note:"Kefta 1.9mg, bread 0.2mg, nuts small" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"bad",  coverage:"~5µg / 30µg (17%)",      note:"No eggs (main source) — nuts and bread contribute minimally" }
+    ]
+  },
+
+  optimized: {
+    verdict: {
+      status: "warn",
+      icon: "📈",
+      text_html: 'Better — <span class="kcal">1,811 kcal</span> (+11 vs rest target). Fat fixed, protein improved to 78%, calories on target.'
+    },
+    macros: [
+      { name:"Protein", value:"129g", target:"/ 165g", pct:78,  status:"warn" },
+      { name:"Carbs",   value:"152g", target:"/ 130g", pct:117, status:"warn" },
+      { name:"Fat",     value:"79g",  target:"/ 70g",  pct:113, status:"good" }
+    ],
+    coverage: [
+      { status:"good", name:"Calories",           coverage:"1,811 / 1,800 (101%)", note:"Almost exactly on rest-day target" },
+      { status:"warn", name:"Protein",             coverage:"129g / 165g (78%)",    note:"+16g from 2nd scoop — still below target, eggs would fix this structurally" },
+      { status:"warn", name:"Carbs",               coverage:"152g / 130g (117%)",   note:"Slightly over — unchanged from original, manageable" },
+      { status:"good", name:"Fat",                 coverage:"79g / 70g (113%)",     note:"In range — halving nuts brought fat down from 146% to 113%" },
+      { status:"bad",  name:"Fiber",               coverage:"~18g / 30g (61%)",     note:"Dropped 5g by reducing nuts — compensate with extra veg serving" },
+      { status:"good", name:"Gas / bloat risk",    coverage:"Low",                  note:"No changes — onion still cooked, no gas triggers" },
+      { status:"warn", name:"Protocol adherence",  coverage:"Better",               note:"Nut portion now reasonable, protein slightly improved, fat in range" }
+    ],
+    good: [
+      "Calories land exactly on rest-day target",
+      "Fat in protocol range after halving nuts",
+      "Second whey scoop adds 25g clean protein with almost no fat",
+      "Gas risk unchanged — cooked onion is fine"
+    ],
+    bad: [
+      "Protein still at 78% — structural fix needed (add 2–3 eggs daily)",
+      "Fiber dropped to 61% — reduced nuts removed a fiber source",
+      "Carbs still 17% over — rice + bread stack adds up"
+    ],
+    loggedItems: [
+      "Black coffee + 1 tsp sugar (×2)",
+      "Whole wheat bread 70g",
+      "Olive oil 10g/day (70g box / week)",
+      "Mint tea + 1 tsp sugar",
+      "Rice boiled 70g raw",
+      "Kefta 250g raw + ½ onion",
+      "Legume sauté 200g (carrot, courgette, onion)",
+      "1 banana ~120g",
+      { "text": "2 scoops whey protein + Jaouda sans lactose 110g", "changed": true },
+      { "text": "Mixed nuts 40g (almonds, walnuts, pistachios)", "changed": true }
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"warn", coverage:"129g / 165g (78%)",     note:"Kefta 50g, whey 2×25g=50g, bread 9g, other 20g" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",         note:"Unchanged — 3L target met" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~18g / 30g (61%)",       note:"Nuts reduced from 85g to 40g — lost 4.5g fiber. Add extra veg" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~1.3g ALA / no EPA/DHA", note:"Fewer walnuts — ALA dropped from 2.6g. Still no EPA/DHA" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1µg / 15µg (7%)",       note:"Unchanged structural gap — no eggs or fish" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~7.5mg / 11mg (68%)",    note:"Unchanged — kefta is still the main source" },
+      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~5.5µg / 2.4µg (229%)",  note:"Kefta dominates, 2nd whey scoop adds a small amount" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~155mg / 400mg (39%)",   note:"Slightly lower — fewer almonds (less magnesium from nuts)" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~255mg / 1000mg (26%)",  note:"Fewer almonds reduces calcium slightly vs original" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~10.5mg / 11mg (95%)",   note:"Unchanged — kefta covers zinc" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~1600mg / 4700mg (34%)", note:"Fewer pistachios (major K source) — slightly lower" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~80µg / 400µg (20%)",    note:"Unchanged — no leafy greens added" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~28mg / 90mg (31%)",     note:"Unchanged — no citrus added" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~580µg / 900µg (64%)",   note:"Unchanged — carrot 67g still the star" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"bad",  coverage:"~20µg / 150µg (13%)",    note:"Unchanged structural gap" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"warn", coverage:"~6mg / 15mg (40%)",      note:"Fewer almonds — slightly lower than original 9mg" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~15µg / 120µg (13%)",    note:"Unchanged — no leafy greens" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"warn", coverage:"~1.4mg / 1.7mg (82%)",   note:"Unchanged — kefta + banana" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~55µg / 55µg (100%)",    note:"2nd whey scoop adds a small selenium boost" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.4mg / 1.2mg (33%)",   note:"Unchanged structural gap — bread + rice not enough" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"bad",  coverage:"~0.65mg / 1.3mg (50%)",  note:"2nd whey scoop adds ~0.15mg B2 — slight improvement" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"warn", coverage:"~14mg / 16mg (88%)",     note:"Unchanged — kefta dominates" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"warn", coverage:"~0.4mg / 0.9mg (44%)",   note:"Fewer nuts — copper drops from 0.85mg to 0.4mg" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"bad",  coverage:"~200mg / 550mg (36%)",   note:"Unchanged — no eggs means choline gap persists" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"bad",  coverage:"Low (Jaouda s/l)",        note:"Unchanged — Jaouda sans lactose has minimal live cultures" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~800mg (moderate)",       note:"Unchanged — within normal range" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate",               note:"Slightly lower — fewer nuts means less vitamin E/polyphenols" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~840mg / 700mg (120%)",   note:"2nd whey scoop adds ~120mg phosphorus — slightly above original" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~2.0mg / 2.3mg (87%)",   note:"Slightly lower — fewer almonds (rice still the main source)" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~5µg / 35µg (14%)",      note:"Unchanged structural gap" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~3.0mg / 5mg (60%)",     note:"2nd whey scoop adds ~0.2mg B5 — small improvement" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"bad",  coverage:"~5µg / 30µg (17%)",      note:"Unchanged — no eggs means biotin gap persists" }
+    ]
+  }
+};
+
+let _v = 'original';
+
+function render(v) {
+  if (v) _v = v;
+  const vd = DATA[_v];
+  const isOpt = _v === 'optimized';
+
+  const macrosHtml = vd.macros.map(m => `
+    <div class="macro-card">
+      <div class="macro-name">${m.name}</div>
+      <div class="macro-value">${m.value}</div>
+      <div class="macro-target">${m.target}</div>
+      <div class="gauge-track"><div class="gauge-fill ${m.status}" style="width:${Math.min(m.pct,100)}%"></div></div>
+      <div class="macro-pct ${m.status}">${m.pct}%</div>
+    </div>
+  `).join('');
+
+  const coverageHtml = vd.coverage.map(c => `
+    <div class="cov-row">
+      <div class="cov-dot ${c.status}"></div>
+      <div class="cov-main">
+        <div class="cov-name">${c.name}</div>
+        <div class="cov-note">${c.note}</div>
+      </div>
+      <div class="cov-coverage ${c.status}">${c.coverage}</div>
+    </div>
+  `).join('');
+
+  const goodHtml = vd.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
+
+  const loggedHtml = vd.loggedItems.map(i => {
+    const text = typeof i === 'string' ? i : i.text;
+    const changed = isOpt && typeof i === 'object' && i.changed;
+    return `<li${changed ? ' class="log-changed"' : ''}>${text}</li>`;
+  }).join('');
+
+  const adjustmentsHtml = DATA.adjustments.map(a => `
+    <li class="adj-item">
+      <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
+      <span class="adj-reason">${a.reason}</span>
+    </li>
+  `).join('');
+
+  const fullTableRows = vd.fullTable.map(r => `
+    <tr>
+      <td class="ft-num">${r.n}</td>
+      <td class="ft-nutrient">${r.nutrient}</td>
+      <td class="ft-impact">${r.impact}</td>
+      <td class="ft-coverage ${r.status}">${r.coverage}</td>
+      <td class="ft-note">${r.note}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="header">
+      <div class="label">Tracking · Health Protocol</div>
+      <div class="date">${DATA.date} · ${DATA.dayType}</div>
+    </div>
+
+    <div class="version-toggle">
+      <button class="version-btn ${!isOpt ? 'v-active' : ''}" onclick="render('original')">Original</button>
+      <button class="version-btn ${isOpt ? 'v-opt-active' : ''}" onclick="render('optimized')">⚡ Optimized</button>
+    </div>
+
+    <div class="verdict ${vd.verdict.status}">
+      <div class="verdict-icon">${vd.verdict.icon}</div>
+      <div class="verdict-text">${vd.verdict.text_html}</div>
+    </div>
+
+    <div class="macros">${macrosHtml}</div>
+
+    <div class="section-title">Nutrient Coverage</div>
+    <div class="coverage">${coverageHtml}</div>
+
+    <div class="feedback">
+      <div class="fb-card good">
+        <div class="fb-title">✓ Good</div>
+        <ul class="fb-list">${goodHtml}</ul>
+      </div>
+      <div class="fb-card bad">
+        <div class="fb-title">! Watch</div>
+        <ul class="fb-list">${badHtml}</ul>
+      </div>
+    </div>
+
+    <div class="section-title">${isOpt ? 'Optimized plan &amp; changes applied' : 'Today\'s log &amp; suggested adjustments'}</div>
+    <div class="day-section">
+      <div class="day-grid">
+        <div class="day-card">
+          <div class="day-card-title">${isOpt ? '⚡ Optimized plan' : 'What you ate'}</div>
+          <ul class="log-list">${loggedHtml}</ul>
+        </div>
+        <div class="day-card">
+          <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
+          <ul class="adj-list">${adjustmentsHtml}</ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Nutrient Coverage Tracker</div>
+    <div class="full-table-wrap">
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nutrient</th>
+            <th>Impact if missing</th>
+            <th>Coverage</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>${fullTableRows}</tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">Mehdi's Health &amp; Body - Protocol</div>
+  `;
+}
+
+render();
+</script>
+</body>
+</html>
