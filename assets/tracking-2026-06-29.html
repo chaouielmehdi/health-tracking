@@ -378,10 +378,10 @@
     padding:10px 10px;
     border-bottom:1px solid var(--panel-border);
   }
-  table.full-table th:first-child{width:28px;text-align:center;}
-  table.full-table th:nth-child(2){width:22%;}
-  table.full-table th:nth-child(3){width:25%;}
-  table.full-table th:nth-child(4){width:22%;}
+  table.full-table th:first-child{width:5%;text-align:center;}
+  table.full-table th:nth-child(2){width:18%;}
+  table.full-table th:nth-child(3){width:32%;}
+  table.full-table th:nth-child(4){width:45%;}
   table.full-table td{
     font-size:11.5px;
     line-height:1.4;
@@ -434,11 +434,11 @@
   Structure:
     DATA.date, DATA.dayType                — shared header
     DATA.routineText                       — raw input text verbatim (shown in monospace block)
+    DATA.optimizedText                     — same format as routineText but with changes applied (same line count)
     DATA.adjustments                       — list of original → optimized changes (always shown)
     DATA.original { verdict, macros, coverage, good, bad, loggedItems, fullTable }
     DATA.optimized { verdict, macros, coverage, good, bad, loggedItems, fullTable }
       coverage rows: always include Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
-      optimized.loggedItems: plain strings for unchanged, { text, changed:true } for changed items
 */
 const DATA = {
   date: "June 29, 2026",
@@ -468,6 +468,33 @@ const DATA = {
   · 1 fruit
   · Protein + Jaouda sans lactose
   · 85g mixed nuts (almonds, walnuts, pistachios)
+
+01:00 — Sleep`,
+  optimizedText: `09:00 — Wake up
+09:00–13:00 — Work & Water (1L)
+13:00 — Black coffee + 1 tsp of sugar
+
+14:00 — 🌅 Breakfast
+  · whole wheat bread 70g
+  · olive oil 10g/day
+  · mint tea + 1 tsp of sugar
+  · cumin & salt
+
+14:00–18:00 — Work & Water (1L)
+18:00 — Out from work
+
+18:00 — ☀️ Lunch
+  · rice boiled (70g raw)
+  · kefta cooked (250g raw) with 1/2 onion
+  · 200g legume sauté (carrot, courgette, onion)
+
+19:00 — Black coffee · Water 1L
+19:00–21:00 — Rest
+
+21:00 — 🌙 Dinner
+  · 1 banana ~120g
+  · 2 scoops whey protein + Jaouda sans lactose
+  · 40g mixed nuts (almonds, walnuts, pistachios)
 
 01:00 — Sleep`,
 
@@ -675,7 +702,15 @@ function render(v) {
   const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
 
   _texts.orig = DATA.routineText || '';
-  _texts.opt = DATA.optimized.loggedItems.map(i => typeof i === 'string' ? i : i.text).join('\n');
+  _texts.opt = DATA.optimizedText || '';
+
+  const origLines = (DATA.routineText || '').split('\n');
+  const optLines = (DATA.optimizedText || '').split('\n');
+  const optRendered = optLines.map((line, i) => {
+    const escaped = esc(line);
+    const changed = line !== (origLines[i] || '');
+    return (changed && line.trim()) ? `<span class="line-changed">⚡ ${escaped}</span>` : escaped;
+  }).join('\n');
 
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap">
@@ -683,12 +718,7 @@ function render(v) {
         <button class="routine-copy" onclick="doCopy(this,'orig')">copy</button>
       </div>`
     : `<div class="routine-block-wrap">
-        <div class="routine-pre">${DATA.optimized.loggedItems.map(i => {
-          const t = typeof i === 'string' ? i : i.text;
-          return (typeof i === 'object' && i.changed)
-            ? `<span class="line-changed">⚡ ${esc(t)}</span>`
-            : esc(t);
-        }).join('\n')}</div>
+        <div class="routine-pre">${optRendered}</div>
         <button class="routine-copy" onclick="doCopy(this,'opt')">copy</button>
       </div>`;
 
