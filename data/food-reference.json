@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-06-29"
+    "updated": "2026-06-29 (2)"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -112,9 +112,9 @@
       ]
     },
     {
-      "id": "kefta",
+      "id": "kefta-8020",
       "emoji": "🥩",
-      "name": "Kefta (beef/veal mix, raw)",
+      "name": "Kefta 80/20 (beef/veal mix, raw)",
       "note": "~20% fat raw mince, standard Moroccan kefta",
       "category": "Meat",
       "serving": "per 100g",
@@ -128,6 +128,25 @@
         {"name": "Iron", "value": "1.9mg"},
         {"name": "Zinc", "value": "4.2mg"},
         {"name": "Vitamin B12", "value": "2.1µg"}
+      ]
+    },
+    {
+      "id": "kefta-9010",
+      "emoji": "🥩",
+      "name": "Kefta 90/10 (beef/veal mix, raw)",
+      "note": "~10% fat raw mince, lean Moroccan kefta",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 152,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 8,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "2.1mg"},
+        {"name": "Zinc", "value": "4.4mg"},
+        {"name": "Vitamin B12", "value": "2.2µg"}
       ]
     },
     {
