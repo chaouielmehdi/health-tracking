@@ -336,67 +336,22 @@
           </div>`).join('');
     }).catch(()=>{});
 
-  /* Today's Routine — localStorage editor */
+  /* Today's Routine — always loads last tracked day */
   (function(){
     const el=document.getElementById('notes-editor');
-    const ind=document.getElementById('notes-save');
     const copyBtn=document.getElementById('notes-copy');
-    const KEY='health-routine';
-    const DEFAULT=`09:00 — Wake up
-09:00–13:00 — Work & Water (1L)
-13:00 — Black coffee (1 tsp sugar)
-
-14:00 — 🌅 Breakfast
-  · 20g khobz + 3 tbsp olive oil
-  · Mint tea (1 tsp sugar)
-  · 30g raw oat + 10g agave syrup
-  · 250g avocado
-  · 1 scoop whey
-
-14:00–18:00 — Work & Water (1L)
-18:00 — Out from work
-
-18:00 — ☀️ Lunch
-  · 285g fish (potato + tomato + onion cooked)
-  · 300g steamed veg (carrot, courgette, onion)
-19:00 — Black coffee · Water 0.5L
-19:00 — 1 banana — training days only
-19:00–21:00 — 🏋️ Training / 🎱 Billiard / 🥱 Rest
-
-21:00 — 🌙 Dinner
-  · 1 fruit
-  · Protein + Jaouda sans lactose
-  · 85g mixed nuts (almonds, walnuts, pistachios)
-  · 3 dates — training days only
-
-01:00 — Sleep`;
-    const _saved=localStorage.getItem(KEY);
-    if(_saved){el.value=_saved;}
-    else{
-      el.value=DEFAULT;
-      fetch('data/routines-index.json')
-        .then(r=>r.json())
-        .then(idx=>{if(!idx||!idx.length)throw new Error();return fetch(`data/routine-${idx[0].date}.json`);})
-        .then(r=>r.json())
-        .then(d=>{if(d&&d.routineText)el.value=d.routineText;})
-        .catch(()=>{});
-    }
+    fetch('data/routines-index.json')
+      .then(r=>r.json())
+      .then(idx=>{if(!idx||!idx.length)throw new Error();return fetch(`data/routine-${idx[0].date}.json`);})
+      .then(r=>r.json())
+      .then(d=>{if(d&&d.routineText)el.value=d.routineText;})
+      .catch(()=>{});
     copyBtn.addEventListener('click',()=>{
       navigator.clipboard.writeText(el.value).then(()=>{
         copyBtn.textContent='copied!';
         copyBtn.classList.add('copied');
         setTimeout(()=>{copyBtn.textContent='copy';copyBtn.classList.remove('copied');},1500);
       });
-    });
-    let t;
-    el.addEventListener('input',()=>{
-      clearTimeout(t);
-      ind.classList.remove('visible');
-      t=setTimeout(()=>{
-        localStorage.setItem(KEY,el.value);
-        ind.classList.add('visible');
-        setTimeout(()=>ind.classList.remove('visible'),1500);
-      },600);
     });
   })();
 </script>
