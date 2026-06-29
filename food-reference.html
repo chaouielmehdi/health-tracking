@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Food Reference · Health &amp; Body</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="header.js"></script>
 <style>
   :root{
     --bg:#1A1D1F;
@@ -30,51 +31,12 @@
     -webkit-font-smoothing:antialiased;
   }
 
-  /* NAV */
-  .nav{
-    max-width:960px;
-    margin:0 auto;
-    padding:24px 28px 0;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .nav-back{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:13px;
-    color:var(--text-dim);
-    text-decoration:none;
-    font-weight:500;
-    transition:color 0.15s;
-  }
-  .nav-back:hover{color:var(--text);}
-  .nav-sep{color:var(--panel-border);font-size:13px;}
-  .nav-crumb{font-size:13px;color:var(--text-dim2);}
-
   /* HEADER */
-  .header{
+  #page-header{
     max-width:960px;
     margin:0 auto;
-    padding:28px 28px 20px;
+    padding:28px 28px 0;
   }
-  .header-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    background:var(--accent-soft);
-    border:1px solid rgba(139,148,116,0.3);
-    color:var(--accent);
-    font-size:10px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    font-weight:700;
-    padding:4px 12px;
-    border-radius:100px;
-    margin-bottom:18px;
-  }
-  .header-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
   h1{
     font-size:30px;
     font-weight:700;
@@ -332,7 +294,7 @@
   /* RESPONSIVE */
   @media(max-width:800px){
     .grid{grid-template-columns:repeat(2,1fr);}
-    .nav,.header,.controls-inner,.count-bar,.grid,.footer{padding-left:18px;padding-right:18px;}
+    #page-header,.controls-inner,.count-bar,.grid,.footer{padding-left:18px;padding-right:18px;}
     h1{font-size:24px;}
   }
   @media(max-width:500px){
@@ -342,18 +304,13 @@
 </head>
 <body>
 
-<div class="nav">
-  <a href="index.html" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
-    Health &amp; Body
-  </a>
-  <span class="nav-sep">/</span>
-  <span class="nav-crumb">Food Reference</span>
+<div id="page-header"
+  data-badge="Food Database"
+  data-title="🍽️ <em>Food</em> Reference"
+  data-back-href="index.html"
+  data-back-label="Health &amp; Body">
 </div>
-
-<div class="header">
-  <div class="header-badge"><span class="header-dot"></span>Food Database</div>
-  <h1>🍽️ <em>Food</em> Reference</h1>
+<div style="max-width:960px;margin:0 auto;padding:0 28px 20px;">
   <p class="header-sub">Personal food database — macros, micronutrients, and serving data for every food in the protocol.</p>
 </div>
 
