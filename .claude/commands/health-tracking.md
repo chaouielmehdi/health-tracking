@@ -21,7 +21,15 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 3. **Calculate macros precisely.** Use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Read `data/food-reference.json` for nutritional values — use the `kcal`, `protein`, `carbs`, `fat`, `fiber` fields per food entry, scaled to the consumed quantity relative to the entry's `serving` field. For foods not found in `data/food-reference.json`, fall back to standard USDA values.
 
-4. **Save the routine to the repo.**
+   **Missing foods notification:** After calculating, if any food was not found in `data/food-reference.json`, list them at the end of your reply with their estimated USDA values (kcal, protein, carbs, fat, fiber per serving), and ask Mehdi if he wants to add them to `data/food-reference.json`.
+
+4. **Generate the optimized version.** After scoring the original day, produce a lightly-tweaked version that brings all macros as close to protocol targets as possible:
+   - Keep changes small and realistic — quantity adjustments, one swap, one addition or removal at most
+   - Ground every tweak in `data/protocol.json` rules, issues, or goals
+   - Recalculate macros for the optimized version
+   - Build the optimized food list: items that differ from the original get `{ "text": "...", "changed": true }`, unchanged items stay plain strings
+
+5. **Save the routine to the repo.**
 
    Save input text as `data/routine-YYYY-MM-DD.json`:
    ```json
@@ -29,6 +37,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
      "date": "YYYY-MM-DD",
      "dayType": "rest|training",
      "routineText": "<raw input text verbatim>",
+     "optimizedText": "<optimized food list, one item per line>",
      "savedAt": "<ISO timestamp>"
    }
    ```
@@ -40,38 +49,60 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    ]
    ```
 
-5. **Render the tracking artifact.** Copy `assets/tracking_template.html` verbatim, edit ONLY the `const DATA = {...}` object — never touch the CSS or the `render()` function or layout markup. Save to `assets/tracking-YYYY-MM-DD.html`.
+6. **Render the tracking artifact.** Copy `.claude/commands/assets/tracking_template.html` verbatim, edit ONLY the `const DATA = {...}` object — never touch the CSS or the `render()` function or layout markup. Save to `assets/tracking-YYYY-MM-DD.html`.
 
-6. **Commit and push all changes.**
+7. **Commit and push all changes.**
    ```bash
    git add data/routine-YYYY-MM-DD.json data/routines-index.json assets/tracking-YYYY-MM-DD.html
    git commit -m "track: log routine and report for YYYY-MM-DD"
    git push origin main
    ```
 
-7. **Status field logic** (used throughout DATA — `"good" | "warn" | "bad"`):
+8. **Status field logic** (used throughout DATA — `"good" | "warn" | "bad"`):
    - Protein/Carbs: good = 90–110% of target, warn = 75–90% or 110–125%, bad = <75% or >125%
    - Fat: good = 85–115%, warn = 70–85% or 115–140%, bad = <70% or >140%
    - Calories: good = within 100 kcal of target, warn = 100–300 kcal off, bad = >300 kcal off
    - Gas/bloat risk and Protocol adherence: judge qualitatively from the `rules` array in `data/protocol.json` (dont entries with reason "gas" are the trigger list)
 
-8. **DATA object fields to fill:**
-   - `date`, `dayType` ("Rest day" / "Training day")
-   - `verdict`: one-line headline status + short html text mentioning the kcal delta
-   - `macros`: array of exactly 3 entries — Protein, Carbs, Fat — each with value, target, pct, status
-   - `coverage`: array of rows, always including Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence — add 1–3 more only when something stands out
-   - `good`: 2–4 short bullet strings
-   - `bad`: 2–4 short bullet strings (key is `bad` even though UI labels it "Watch")
-   - `loggedItems`: array of strings — the exact food list from the input, lightly cleaned (one item per line, in order eaten)
-   - `adjustments`: array of 2–5 suggested tweaks, each with `from`, `to`, `reason`. Keep adjustments SMALL and realistic. Ground every suggestion in `data/protocol.json` rules, issues, or goals. If the day is already well-balanced, return only 1–2 minor tweaks.
-   - `fullTable`: the complete nutrient breakdown, ALWAYS all 32 rows matching the standard nutrient list in `data/protocol.json` nutrients array order (Protein, Water, Fiber, Omega-3, Vitamin D, Iron, B12, Magnesium, Calcium, Zinc, Potassium, Folate B9, Vitamin C, Vitamin A, Iodine, Vitamin E, Vitamin K, B6, Selenium, Thiamine B1, Riboflavin B2, Niacin B3, Copper, Choline, Probiotics, Sodium, Antioxidants, Phosphorus, Manganese, Chromium, B5, Biotin B7). Each row: `n` (priority number), `nutrient`, `impact` (short), `status`, `coverage` (amount/target (%) format), `note` (short food-source breakdown). Calculate from actual foods logged — don't copy example numbers.
+9. **DATA object structure to fill:**
 
-9. **Never redesign the UI.** If Mehdi asks for a different look later, edit `assets/tracking_template.html` once. Every report after that will inherit it.
+   ```js
+   const DATA = {
+     date,        // "Month DD, YYYY"
+     dayType,     // "Rest day" or "Training day"
 
-10. **Never touch Notion.** Protocol context comes exclusively from `data/protocol.json`.
+     adjustments, // array of { from, to, reason } — the specific changes original → optimized
+
+     original: {
+       verdict,      // { status, icon, text_html } — one-line headline + kcal delta
+       macros,       // array of exactly 3: Protein, Carbs, Fat — each { name, value, target, pct, status }
+       coverage,     // array of rows: always Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
+       good,         // 2–4 short bullet strings
+       bad,          // 2–4 short bullet strings (key is `bad` even though UI labels it "Watch")
+       loggedItems,  // array of strings — exact food list from the input, lightly cleaned
+       fullTable     // all 32 nutrient rows (see nutrient order below)
+     },
+
+     optimized: {
+       verdict,      // updated verdict for the optimized version
+       macros,       // recalculated macros for optimized version
+       coverage,     // recalculated coverage for optimized version
+       good,         // updated strengths
+       bad,          // remaining gaps after optimization
+       loggedItems,  // mixed array: unchanged items = plain strings, changed items = { text, changed: true }
+       fullTable     // all 32 nutrient rows recalculated for optimized version
+     }
+   };
+   ```
+
+   **fullTable** nutrient order (always all 32 rows, matching `data/protocol.json` nutrients array):
+   Protein, Water, Fiber, Omega-3, Vitamin D, Iron, B12, Magnesium, Calcium, Zinc, Potassium, Folate B9, Vitamin C, Vitamin A, Iodine, Vitamin E, Vitamin K, B6, Selenium, Thiamine B1, Riboflavin B2, Niacin B3, Copper, Choline, Probiotics, Sodium, Antioxidants, Phosphorus, Manganese, Chromium, B5, Biotin B7.
+   Each row: `n` (priority number), `nutrient`, `impact` (short), `status`, `coverage` (amount/target (%) format), `note` (short food-source breakdown). Calculate from actual foods logged — don't copy example numbers.
+
+10. **Never redesign the UI.** If Mehdi asks for a different look later, edit `.claude/commands/assets/tracking_template.html` once. Every report after that will inherit it.
 
 ## Output
 
-- The artifact (`assets/tracking-YYYY-MM-DD.html`) is the primary deliverable — present it via `present_files`.
-- The routine and report are saved to the repo and will appear on `routines.html`.
+- Give Mehdi a direct clickable link to the report: `[View report →](https://chaouielmehdi.github.io/health-tracking/assets/tracking-YYYY-MM-DD.html)`
 - Accompany with at most 1–2 sentences of plain text. Do not repeat the full breakdown in chat — the artifact already contains it.
+- If any foods were missing from `data/food-reference.json`, list them with estimated values and ask if he wants to add them.
