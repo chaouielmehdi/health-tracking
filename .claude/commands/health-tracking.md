@@ -13,39 +13,13 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 ## Workflow
 
-1. **Get protocol context.** Read `data/protocol.json` from the repo. Extract:
-   - `profile`: TDEE, calorie target, calorie cycling (rest/training)
-   - `pillars`: protein target (165g), carb targets (rest ~130g / training ~250g), fat (70g), fiber (25–30g), hydration (3L)
-   - `rules`: the full do/don't list — used for gas risk and protocol adherence scoring
-   - `issues` and `goals` — for contextual adjustments
+1. **Get protocol context.** Read `data/protocol.json` from the repo. Use whatever fields are present — the structure may evolve over time. Use the protocol data to understand current targets, rules, issues, and goals.
 
 2. **Determine date and day type.**
    - Date: today (`YYYY-MM-DD` from current date) unless the input specifies another date explicitly
    - Day type: rest vs training — infer from routine text (look for "Training", "Football", "Running", "Workout", "max effort") or ask once if ambiguous
 
-3. **Calculate macros precisely.** Use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Reference values (USDA-style, per typical serving):
-   - Eggs: ~78 kcal, 6.3g protein, 0.6g carb, 5.3g fat each (large)
-   - Whey scoop: ~120 kcal, 24g protein, 3g carb, 1.5g fat
-   - Khobz complet: ~265 kcal/100g, 10g protein, 50g carb, 3g fat, 7g fiber
-   - Oats dry: ~380 kcal/100g, 13.5g protein, 67g carb, 7g fat, 10g fiber
-   - White rice dry: ~360 kcal/100g, 7g protein, 78g carb, 0.7g fat, 1.3g fiber
-   - Kefta/beef 20% fat raw: ~216 kcal/100g, 20g protein, 0g carb, 15g fat
-   - Olive oil: ~120 kcal/tbsp (14g), 14g fat
-   - Avocado: ~160 kcal/100g, 2g protein, 8.5g carb, 14.7g fat, 6.7g fiber
-   - Mixed nuts/seeds: ~580 kcal/100g, 20g protein, 20g carb, 50g fat, 8g fiber
-   - Almonds: ~579 kcal/100g, 21g protein, 22g carb, 50g fat, 12.5g fiber
-   - Walnuts: ~654 kcal/100g, 15g protein, 14g carb, 65g fat, 6.7g fiber
-   - Pistachios: ~562 kcal/100g, 20g protein, 28g carb, 45g fat, 10g fiber
-   - Banana: ~90 kcal, 1.1g protein, 23g carb, 0.3g fat, 2.6g fiber
-   - Kiwi (small, ~70g): ~42 kcal, 0.8g protein, 10g carb, 0.4g fat, 2g fiber
-   - Jaouda sans lactose milk (100ml): ~61 kcal, 3.2g protein, 4.8g carb, 3.3g fat
-   - Onion 1 medium (~110g): ~44 kcal, 1.2g protein, 10.3g carb, 0.1g fat, 1.9g fiber
-   - Cooked mixed vegetables: ~30 kcal/100g, 1.3g protein, 6g carb, 0.2g fat, 3g fiber
-   - Dates (1 medjool ~24g): ~66 kcal, 0.4g protein, 18g carb, 0g fat, 1.6g fiber
-   - Fish (generic lean, 100g): ~82 kcal, 18g protein, 0g carb, 1.3g fat
-   - Agave syrup (10g): ~30 kcal, 0g protein, 8g carb, 0g fat
-   - Black coffee: ~2 kcal, negligible macros
-   - Sugar (1 tsp ~4g): ~16 kcal, 4g carb
+3. **Calculate macros precisely.** Use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Read `data/food-reference.json` for nutritional values — use the `kcal`, `protein`, `carbs`, `fat`, `fiber` fields per food entry, scaled to the consumed quantity relative to the entry's `serving` field. For foods not found in `data/food-reference.json`, fall back to standard USDA values.
 
 4. **Save the routine to the repo.**
 
