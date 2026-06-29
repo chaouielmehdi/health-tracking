@@ -55,6 +55,41 @@
     font-size:13px;
     color:var(--text-dim2);
   }
+
+  /* VERSION TOGGLE */
+  .version-toggle{
+    display:flex;
+    gap:5px;
+    padding:4px;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:12px;
+    margin-bottom:20px;
+  }
+  .version-btn{
+    flex:1;
+    padding:8px 16px;
+    border-radius:9px;
+    border:none;
+    background:transparent;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background 0.15s,color 0.15s;
+    letter-spacing:0.04em;
+    text-align:center;
+  }
+  .version-btn.v-active{
+    background:var(--bg);
+    color:var(--text);
+  }
+  .version-btn.v-opt-active{
+    background:var(--bg);
+    color:var(--good);
+  }
+
   /* VERDICT BANNER */
   .verdict{
     display:flex;
@@ -279,6 +314,13 @@
     color:var(--text);
   }
   .log-list li:last-child{border-bottom:none;}
+  .log-list li.log-changed{
+    color:var(--good);
+    font-weight:600;
+  }
+  .log-list li.log-changed::before{
+    content:"⚡ ";
+  }
   .adj-list{
     list-style:none;
   }
@@ -370,7 +412,6 @@
     table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
   }
 
-
   @media (max-width:480px){
     .macros{grid-template-columns:1fr 1fr 1fr;gap:7px;}
     .macro-card{padding:10px 8px;}
@@ -387,97 +428,187 @@
 /*
   DATA CONTRACT — fill this object, everything else renders automatically.
   status values: "good" | "warn" | "bad"
+
+  Structure:
+    DATA.date, DATA.dayType                — shared header
+    DATA.adjustments                       — list of original → optimized changes (always shown)
+    DATA.original { verdict, macros, coverage, good, bad, loggedItems, fullTable }
+    DATA.optimized { verdict, macros, coverage, good, bad, loggedItems, fullTable }
 */
 const DATA = {
   date: "June 23, 2026",
   dayType: "Rest day",
-  verdict: {
-    status: "warn",
-    icon: "⚖️",
-    text_html: 'Close to target — <span class="kcal">2,350 kcal</span> (-65 vs TDEE). Fat is running high.'
-  },
-  loggedItems: [
-    "Black coffee (½ tsp sugar)",
-    "4 eggs & 1 scoop whey",
-    "Khobz 35g + oat 35g with 1 small avocado",
-    "2 tbsp olive oil",
-    "Mint tea (1 tsp sugar)",
-    "Vegetables 300g cooked",
-    "Kefta 250g raw with 1 onion & rice 40g raw",
-    "Black coffee (½ tsp sugar)",
-    "Mixed nuts 20g (night)",
-    "1 small kiwi (night)",
-    "Jaouda 110g with 1 scoop protein"
-  ],
   adjustments: [
-    { from:"Olive oil 2 tbsp", to:"1 tbsp + ½ avocado kept as-is", reason:"Fat is 187% of target — oil is the easiest source to trim without losing a meal" },
-    { from:"Avocado (small, ~100g)", to:"Skip on kefta days", reason:"Kefta alone already covers fat needs for lunch — stacking avocado pushes fat further over" },
-    { from:"Jaouda 110g + protein scoop", to:"Swap jaouda for raib or fromage blanc 150g", reason:"Matches protocol's approved fermented dairy list — better gut/probiotic value for the same protein" },
-    { from:"Mixed nuts 20g (5-way mix)", to:"Walnuts 20g only", reason:"Protocol's omega-3 priority — walnuts are the best ALA source in the rotation, no need to mix 5 types" }
+    { from:"Olive oil 2 tbsp", to:"1 tbsp", reason:"Fat running at 187% — trimming oil is the easiest lever, saves ~60 kcal / 7g fat" },
+    { from:"Avocado (small, ~100g)", to:"Skip on kefta days", reason:"Kefta already covers fat for lunch — stacking avocado pushes fat further over target" },
+    { from:"Jaouda 110g", to:"Raib or fromage blanc 150g", reason:"Better probiotic value for same protein — protocol favours fermented dairy over regular" },
+    { from:"Mixed nuts 20g (5-way mix)", to:"Walnuts 20g only", reason:"Protocol omega-3 priority — walnuts deliver the best ALA in the rotation" }
   ],
-  macros: [
-    { name:"Protein", value:"155g", target:"/ 150g", pct:103, status:"good" },
-    { name:"Carbs",   value:"143g", target:"/ 140g", pct:102, status:"good" },
-    { name:"Fat",     value:"131g", target:"/ 70g",  pct:187, status:"bad"  }
-  ],
-  coverage: [
-    { status:"warn", name:"Calories", coverage:"2,350 / 2,415 (97%)", note:"~65 kcal under TDEE, close to ideal" },
-    { status:"good", name:"Protein", coverage:"155g / 150g (103%)", note:"Kefta, eggs, 2x whey" },
-    { status:"good", name:"Carbs", coverage:"143g / 140g (102%)", note:"Rice, oat, khobz, veg" },
-    { status:"bad",  name:"Fat", coverage:"131g / 70g (187%)", note:"5 fat sources stacked same day" },
-    { status:"good", name:"Fiber", coverage:"~28g (~75%)", note:"Veg, avocado, oat cover most" },
-    { status:"good", name:"Gas / bloat risk", coverage:"Low", note:"Onion cooked, no raw veg main" },
-    { status:"good", name:"Protocol adherence", coverage:"Good", note:"Carb stacking fixed vs prior day" }
-  ],
-  good: [
-    "Calories landed almost exactly on TDEE",
-    "Protein and carbs both within 5% of target",
-    "Fiber solid, no major gas triggers"
-  ],
-  bad: [
-    "Fat at 187% of target",
-    "5 fat sources stacked same day (kefta, oil, eggs, avocado, jaouda/nuts)"
-  ],
-  fullTable: [
-    { n:1,  nutrient:"Protein", impact:"Muscle loss, weakness", status:"good", coverage:"155g/150g (103%)", note:"Kefta 50g, eggs 25g, whey x2 48g, rest from khobz/rice/jaouda" },
-    { n:2,  nutrient:"Water", impact:"Dehydration, fatigue", status:"good", coverage:"2.5L/2.5L (100%)", note:"Target hit as logged" },
-    { n:3,  nutrient:"Fiber", impact:"Constipation, gut issues", status:"good", coverage:"~28g/30-38g (~75%)", note:"Veg, avocado, oat, khobz are main drivers" },
-    { n:4,  nutrient:"Omega-3 (EPA/DHA)", impact:"Inflammation, poor recovery", status:"warn", coverage:"~0.4g ALA only", note:"20g mixed nuts add some ALA, no EPA/DHA — no fatty fish today" },
-    { n:5,  nutrient:"Vitamin D", impact:"Bone weakness, low mood", status:"bad", coverage:"~1.7µg/15µg (~11%)", note:"4 egg yolks only source — typical gap without fish or fortified dairy" },
-    { n:6,  nutrient:"Iron", impact:"Fatigue, anemia", status:"good", coverage:"~6mg/8-11mg (~65%)", note:"Kefta is the main driver, eggs add the rest" },
-    { n:7,  nutrient:"Vitamin B12", impact:"Nerve damage, fatigue", status:"good", coverage:"~3.8µg/2.4µg (~158%)", note:"Kefta and eggs cover this well" },
-    { n:8,  nutrient:"Magnesium", impact:"Cramps, poor sleep", status:"warn", coverage:"~110mg/350-400mg (~30%)", note:"Khobz, oat, nuts contribute small amounts" },
-    { n:9,  nutrient:"Calcium", impact:"Bone loss, fractures", status:"warn", coverage:"~380mg/1000mg (~38%)", note:"Eggs, whey, jaouda contribute — still under half target" },
-    { n:10, nutrient:"Zinc", impact:"Poor immunity, slow healing", status:"good", coverage:"~8mg/11mg (~73%)", note:"Kefta is the major contributor" },
-    { n:11, nutrient:"Potassium", impact:"Cramps, irregular heartbeat", status:"warn", coverage:"~1500mg/3500-4700mg (~35%)", note:"Kiwi, onion, kefta, avocado contribute — still under target" },
-    { n:12, nutrient:"Folate (B9)", impact:"Anemia, fatigue", status:"bad", coverage:"~90µg/400µg (~23%)", note:"Eggs and onion contribute modestly — no leafy greens today" },
-    { n:13, nutrient:"Vitamin C", impact:"Weak immunity, slow healing", status:"good", coverage:"~75mg/90mg (~83%)", note:"Kiwi and onion are the main drivers" },
-    { n:14, nutrient:"Vitamin A", impact:"Poor vision, weak immunity", status:"warn", coverage:"~250µg/900µg (~28%)", note:"Egg yolks are the main source" },
-    { n:15, nutrient:"Iodine", impact:"Thyroid issues, fatigue", status:"warn", coverage:"~50µg/150µg (~33%)", note:"Eggs and iodized salt main contributors" },
-    { n:16, nutrient:"Vitamin E", impact:"Nerve issues, weak immunity", status:"bad", coverage:"~3mg/15mg (~20%)", note:"Olive oil and nuts contribute, still low" },
-    { n:17, nutrient:"Vitamin K", impact:"Poor blood clotting", status:"bad", coverage:"~10µg/120µg (~8%)", note:"Olive oil, eggs, kiwi only minor sources — no leafy greens" },
-    { n:18, nutrient:"Vitamin B6", impact:"Mood issues, fatigue", status:"good", coverage:"~1.3mg/1.7mg (~76%)", note:"Kefta and eggs contribute well" },
-    { n:19, nutrient:"Selenium", impact:"Weak immunity, thyroid issues", status:"good", coverage:"~42µg/55µg (~76%)", note:"Eggs are an excellent source, kefta adds more" },
-    { n:20, nutrient:"Thiamine (B1)", impact:"Fatigue, nerve issues", status:"warn", coverage:"~0.5mg/1.2mg (~42%)", note:"Rice, khobz, kefta contribute moderately" },
-    { n:21, nutrient:"Riboflavin (B2)", impact:"Skin issues, fatigue", status:"good", coverage:"~1.0mg/1.3mg (~77%)", note:"Eggs and whey are strong contributors" },
-    { n:22, nutrient:"Niacin (B3)", impact:"Skin issues, fatigue", status:"good", coverage:"~13mg/16mg (~81%)", note:"Kefta is the dominant source" },
-    { n:23, nutrient:"Copper", impact:"Anemia, weak bones", status:"warn", coverage:"~0.35mg/0.9mg (~39%)", note:"Kefta and rice contribute modestly" },
-    { n:24, nutrient:"Choline", impact:"Liver issues, memory issues", status:"good", coverage:"~580mg/550mg (~105%)", note:"Eggs do the heavy lifting" },
-    { n:25, nutrient:"Probiotics / fermented foods", impact:"Poor gut health", status:"warn", coverage:"1 serving (jaouda)", note:"Jaouda isn't on the approved fermented list — less probiotic value than lben/raib/yogurt" },
-    { n:26, nutrient:"Sodium balance", impact:"Cramps (too low) or bloating (too high)", status:"good", coverage:"Moderate", note:"Within normal range for home-cooked meals" },
-    { n:27, nutrient:"Antioxidants (polyphenols)", impact:"Faster aging, inflammation", status:"warn", coverage:"Low-moderate", note:"Olive oil and mint tea are main contributors — no berries logged" },
-    { n:28, nutrient:"Phosphorus", impact:"Bone/teeth weakness, fatigue", status:"good", coverage:"~820mg/700mg (~117%)", note:"Eggs, kefta, whey, rice all contribute well" },
-    { n:29, nutrient:"Manganese", impact:"Weak bones, poor metabolism", status:"warn", coverage:"~0.8mg/2.3mg (~35%)", note:"Rice and khobz are main sources" },
-    { n:30, nutrient:"Chromium", impact:"Poor blood sugar control", status:"warn", coverage:"~12µg/35µg (~34%)", note:"Onion is a notable source, rice/khobz add a little" },
-    { n:31, nutrient:"Vitamin B5 (Pantothenic acid)", impact:"Fatigue, irritability", status:"good", coverage:"~3mg/5mg (~60%)", note:"Eggs and kefta are main contributors" },
-    { n:32, nutrient:"Biotin (B7)", impact:"Hair/skin issues, fatigue", status:"good", coverage:"~18µg/30µg (~60%)", note:"Egg yolks are the main source" }
-  ]
+  original: {
+    verdict: {
+      status: "warn",
+      icon: "⚖️",
+      text_html: 'Close to target — <span class="kcal">2,350 kcal</span> (+250 vs rest target). Fat is running high at 187%.'
+    },
+    macros: [
+      { name:"Protein", value:"155g", target:"/ 165g", pct:94, status:"good" },
+      { name:"Carbs",   value:"143g", target:"/ 130g", pct:110, status:"good" },
+      { name:"Fat",     value:"131g", target:"/ 70g",  pct:187, status:"bad"  }
+    ],
+    coverage: [
+      { status:"warn", name:"Calories", coverage:"2,350 / 1,800 (131%)", note:"~550 kcal over rest-day target" },
+      { status:"good", name:"Protein", coverage:"155g / 165g (94%)", note:"Kefta, eggs, 2x whey" },
+      { status:"good", name:"Carbs", coverage:"143g / 130g (110%)", note:"Rice, oat, khobz, veg — slightly over" },
+      { status:"bad",  name:"Fat", coverage:"131g / 70g (187%)", note:"5 fat sources stacked same day" },
+      { status:"good", name:"Fiber", coverage:"~28g / 30g (93%)", note:"Veg, avocado, oat cover most" },
+      { status:"good", name:"Gas / bloat risk", coverage:"Low", note:"Onion cooked, no raw veg main" },
+      { status:"good", name:"Protocol adherence", coverage:"Good", note:"Cumin used, dinner before 21h" }
+    ],
+    good: [
+      "Protein close to target (94%)",
+      "Carbs and fiber solid for a rest day",
+      "No major gas triggers — onion cooked"
+    ],
+    bad: [
+      "Fat at 187% of target — 5 sources stacked",
+      "Calories 550 kcal over rest-day target"
+    ],
+    loggedItems: [
+      "Black coffee (½ tsp sugar)",
+      "4 eggs & 1 scoop whey",
+      "Khobz 35g + oat 35g with 1 small avocado",
+      "2 tbsp olive oil",
+      "Mint tea (1 tsp sugar)",
+      "Vegetables 300g cooked",
+      "Kefta 250g raw with 1 onion & rice 40g raw",
+      "Black coffee (½ tsp sugar)",
+      "Mixed nuts 20g (night)",
+      "1 small kiwi (night)",
+      "Jaouda 110g with 1 scoop protein"
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",        impact:"Muscle loss, weakness",           status:"good", coverage:"155g/165g (94%)",     note:"Kefta 50g, eggs 25g, whey x2 48g, khobz/rice/jaouda rest" },
+      { n:2,  nutrient:"Water",          impact:"Dehydration, fatigue",            status:"good", coverage:"2.5L/3L (83%)",       note:"Needs 0.5L more — avoid during meals" },
+      { n:3,  nutrient:"Fiber",          impact:"Constipation, gut issues",        status:"good", coverage:"~28g/30g (93%)",      note:"Veg, avocado, oat, khobz are main drivers" },
+      { n:4,  nutrient:"Omega-3",        impact:"Inflammation, poor recovery",     status:"warn", coverage:"~0.4g ALA only",      note:"20g mixed nuts, no fatty fish today" },
+      { n:5,  nutrient:"Vitamin D",      impact:"Bone weakness, low mood",         status:"bad",  coverage:"~1.7µg/15µg (11%)",  note:"Egg yolks only — typical gap without fish" },
+      { n:6,  nutrient:"Iron",           impact:"Fatigue, anemia",                 status:"good", coverage:"~6mg/11mg (55%)",     note:"Kefta main driver, eggs add rest" },
+      { n:7,  nutrient:"Vitamin B12",    impact:"Nerve damage, fatigue",           status:"good", coverage:"~3.8µg/2.4µg (158%)",note:"Kefta and eggs cover well" },
+      { n:8,  nutrient:"Magnesium",      impact:"Cramps, poor sleep",              status:"warn", coverage:"~110mg/400mg (28%)", note:"Khobz, oat, nuts contribute small amounts" },
+      { n:9,  nutrient:"Calcium",        impact:"Bone loss, fractures",            status:"warn", coverage:"~380mg/1000mg (38%)",note:"Eggs, whey, jaouda — still under half" },
+      { n:10, nutrient:"Zinc",           impact:"Poor immunity, slow healing",     status:"good", coverage:"~8mg/11mg (73%)",    note:"Kefta is major contributor" },
+      { n:11, nutrient:"Potassium",      impact:"Cramps, irregular heartbeat",     status:"warn", coverage:"~1500mg/4700mg (32%)",note:"Kiwi, onion, kefta, avocado — still under" },
+      { n:12, nutrient:"Folate B9",      impact:"Anemia, fatigue",                 status:"bad",  coverage:"~90µg/400µg (23%)", note:"Eggs and onion only — no leafy greens" },
+      { n:13, nutrient:"Vitamin C",      impact:"Weak immunity, slow healing",     status:"good", coverage:"~75mg/90mg (83%)",  note:"Kiwi and onion are main drivers" },
+      { n:14, nutrient:"Vitamin A",      impact:"Poor vision, weak immunity",      status:"warn", coverage:"~250µg/900µg (28%)",note:"Egg yolks main source" },
+      { n:15, nutrient:"Iodine",         impact:"Thyroid issues, fatigue",         status:"warn", coverage:"~50µg/150µg (33%)", note:"Eggs and iodized salt main contributors" },
+      { n:16, nutrient:"Vitamin E",      impact:"Nerve issues, weak immunity",     status:"bad",  coverage:"~3mg/15mg (20%)",  note:"Olive oil and nuts, still low" },
+      { n:17, nutrient:"Vitamin K",      impact:"Poor blood clotting",             status:"bad",  coverage:"~10µg/120µg (8%)", note:"Olive oil, eggs, kiwi only — no leafy greens" },
+      { n:18, nutrient:"Vitamin B6",     impact:"Mood issues, fatigue",            status:"good", coverage:"~1.3mg/1.7mg (76%)",note:"Kefta and eggs contribute well" },
+      { n:19, nutrient:"Selenium",       impact:"Weak immunity, thyroid issues",   status:"good", coverage:"~42µg/55µg (76%)", note:"Eggs excellent source, kefta adds more" },
+      { n:20, nutrient:"Thiamine B1",    impact:"Fatigue, nerve issues",           status:"warn", coverage:"~0.5mg/1.2mg (42%)",note:"Rice, khobz, kefta moderately" },
+      { n:21, nutrient:"Riboflavin B2",  impact:"Skin issues, fatigue",            status:"good", coverage:"~1.0mg/1.3mg (77%)",note:"Eggs and whey strong contributors" },
+      { n:22, nutrient:"Niacin B3",      impact:"Skin issues, fatigue",            status:"good", coverage:"~13mg/16mg (81%)", note:"Kefta dominant source" },
+      { n:23, nutrient:"Copper",         impact:"Anemia, weak bones",              status:"warn", coverage:"~0.35mg/0.9mg (39%)",note:"Kefta and rice modestly" },
+      { n:24, nutrient:"Choline",        impact:"Liver issues, memory issues",     status:"good", coverage:"~580mg/550mg (105%)",note:"Eggs do the heavy lifting" },
+      { n:25, nutrient:"Probiotics",     impact:"Poor gut health",                 status:"warn", coverage:"1 serving (jaouda)",note:"Jaouda less probiotic value than raib/lben" },
+      { n:26, nutrient:"Sodium",         impact:"Cramps or bloating",              status:"good", coverage:"Moderate",         note:"Within normal range for home-cooked meals" },
+      { n:27, nutrient:"Antioxidants",   impact:"Faster aging, inflammation",      status:"warn", coverage:"Low-moderate",     note:"Olive oil and mint tea main contributors" },
+      { n:28, nutrient:"Phosphorus",     impact:"Bone/teeth weakness, fatigue",    status:"good", coverage:"~820mg/700mg (117%)",note:"Eggs, kefta, whey, rice contribute well" },
+      { n:29, nutrient:"Manganese",      impact:"Weak bones, poor metabolism",     status:"warn", coverage:"~0.8mg/2.3mg (35%)",note:"Rice and khobz main sources" },
+      { n:30, nutrient:"Chromium",       impact:"Poor blood sugar control",        status:"warn", coverage:"~12µg/35µg (34%)", note:"Onion notable source, rice adds a little" },
+      { n:31, nutrient:"Vitamin B5",     impact:"Fatigue, irritability",           status:"good", coverage:"~3mg/5mg (60%)",   note:"Eggs and kefta main contributors" },
+      { n:32, nutrient:"Biotin B7",      impact:"Hair/skin issues, fatigue",       status:"good", coverage:"~18µg/30µg (60%)", note:"Egg yolks main source" }
+    ]
+  },
+  optimized: {
+    verdict: {
+      status: "good",
+      icon: "✅",
+      text_html: 'On protocol — <span class="kcal">1,830 kcal</span> (+30 vs rest target). Macros balanced, fat in range.'
+    },
+    macros: [
+      { name:"Protein", value:"158g", target:"/ 165g", pct:96, status:"good" },
+      { name:"Carbs",   value:"143g", target:"/ 130g", pct:110, status:"good" },
+      { name:"Fat",     value:"76g",  target:"/ 70g",  pct:109, status:"good" }
+    ],
+    coverage: [
+      { status:"good", name:"Calories", coverage:"1,830 / 1,800 (102%)", note:"Right on rest-day target" },
+      { status:"good", name:"Protein", coverage:"158g / 165g (96%)", note:"Kefta, eggs, 2x whey, raib" },
+      { status:"good", name:"Carbs", coverage:"143g / 130g (110%)", note:"Rice, oat, khobz, veg" },
+      { status:"good", name:"Fat", coverage:"76g / 70g (109%)", note:"1 tbsp oil + kefta + eggs — clean stack" },
+      { status:"good", name:"Fiber", coverage:"~25g / 30g (83%)", note:"Veg, oat, khobz — avocado removed" },
+      { status:"good", name:"Gas / bloat risk", coverage:"Low", note:"No changes to gas risk — onion still cooked" },
+      { status:"good", name:"Protocol adherence", coverage:"Excellent", note:"Fermented dairy, cumin, dinner timing all good" }
+    ],
+    good: [
+      "Calories land exactly on rest-day target",
+      "Fat in range after trimming oil and removing avocado",
+      "Raib swap adds real probiotic value",
+      "Walnuts improve omega-3 ALA intake"
+    ],
+    bad: [
+      "Fiber slightly lower without avocado — compensate with extra veg serving",
+      "Potassium still below target — structural gap on this food list"
+    ],
+    loggedItems: [
+      "Black coffee (½ tsp sugar)",
+      "4 eggs & 1 scoop whey",
+      { text:"Khobz 35g + oat 35g", changed:true },
+      { text:"1 tbsp olive oil", changed:true },
+      "Mint tea (1 tsp sugar)",
+      "Vegetables 300g cooked",
+      "Kefta 250g raw with 1 onion & rice 40g raw",
+      "Black coffee (½ tsp sugar)",
+      { text:"Walnuts 20g (night)", changed:true },
+      "1 small kiwi (night)",
+      { text:"Raib 150g with 1 scoop protein", changed:true }
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",        impact:"Muscle loss, weakness",           status:"good", coverage:"158g/165g (96%)",    note:"Kefta 50g, eggs 25g, whey x2 48g, raib adds ~5g" },
+      { n:2,  nutrient:"Water",          impact:"Dehydration, fatigue",            status:"good", coverage:"2.5L/3L (83%)",      note:"Same — 0.5L still needed away from meals" },
+      { n:3,  nutrient:"Fiber",          impact:"Constipation, gut issues",        status:"warn", coverage:"~25g/30g (83%)",     note:"Avocado removed — compensate with extra veg serving" },
+      { n:4,  nutrient:"Omega-3",        impact:"Inflammation, poor recovery",     status:"warn", coverage:"~0.6g ALA",          note:"Walnuts deliver better ALA than mixed nuts" },
+      { n:5,  nutrient:"Vitamin D",      impact:"Bone weakness, low mood",         status:"bad",  coverage:"~1.7µg/15µg (11%)", note:"Still a structural gap — no fish today" },
+      { n:6,  nutrient:"Iron",           impact:"Fatigue, anemia",                 status:"good", coverage:"~6mg/11mg (55%)",    note:"Kefta main driver, unchanged" },
+      { n:7,  nutrient:"Vitamin B12",    impact:"Nerve damage, fatigue",           status:"good", coverage:"~4µg/2.4µg (167%)", note:"Kefta, eggs, raib all contribute" },
+      { n:8,  nutrient:"Magnesium",      impact:"Cramps, poor sleep",              status:"warn", coverage:"~115mg/400mg (29%)",note:"Walnuts slightly better than mixed nuts" },
+      { n:9,  nutrient:"Calcium",        impact:"Bone loss, fractures",            status:"warn", coverage:"~420mg/1000mg (42%)",note:"Raib 150g adds more calcium than jaouda 110g" },
+      { n:10, nutrient:"Zinc",           impact:"Poor immunity, slow healing",     status:"good", coverage:"~8mg/11mg (73%)",   note:"Kefta unchanged" },
+      { n:11, nutrient:"Potassium",      impact:"Cramps, irregular heartbeat",     status:"warn", coverage:"~1400mg/4700mg (30%)",note:"Kiwi, onion, kefta — avocado removed lowers this" },
+      { n:12, nutrient:"Folate B9",      impact:"Anemia, fatigue",                 status:"bad",  coverage:"~90µg/400µg (23%)", note:"Same structural gap — no leafy greens" },
+      { n:13, nutrient:"Vitamin C",      impact:"Weak immunity, slow healing",     status:"good", coverage:"~75mg/90mg (83%)",  note:"Kiwi and onion unchanged" },
+      { n:14, nutrient:"Vitamin A",      impact:"Poor vision, weak immunity",      status:"warn", coverage:"~250µg/900µg (28%)",note:"Egg yolks main source — unchanged" },
+      { n:15, nutrient:"Iodine",         impact:"Thyroid issues, fatigue",         status:"warn", coverage:"~55µg/150µg (37%)", note:"Raib adds slightly more iodine than jaouda" },
+      { n:16, nutrient:"Vitamin E",      impact:"Nerve issues, weak immunity",     status:"bad",  coverage:"~2.5mg/15mg (17%)",note:"Less oil removes some E — walnuts partially offset" },
+      { n:17, nutrient:"Vitamin K",      impact:"Poor blood clotting",             status:"bad",  coverage:"~10µg/120µg (8%)", note:"Same gap — no leafy greens in this plan" },
+      { n:18, nutrient:"Vitamin B6",     impact:"Mood issues, fatigue",            status:"good", coverage:"~1.3mg/1.7mg (76%)",note:"Kefta and eggs unchanged" },
+      { n:19, nutrient:"Selenium",       impact:"Weak immunity, thyroid issues",   status:"good", coverage:"~42µg/55µg (76%)", note:"Eggs excellent source, unchanged" },
+      { n:20, nutrient:"Thiamine B1",    impact:"Fatigue, nerve issues",           status:"warn", coverage:"~0.5mg/1.2mg (42%)",note:"Same sources, unchanged" },
+      { n:21, nutrient:"Riboflavin B2",  impact:"Skin issues, fatigue",            status:"good", coverage:"~1.1mg/1.3mg (85%)",note:"Raib adds extra riboflavin vs jaouda" },
+      { n:22, nutrient:"Niacin B3",      impact:"Skin issues, fatigue",            status:"good", coverage:"~13mg/16mg (81%)", note:"Kefta dominant, unchanged" },
+      { n:23, nutrient:"Copper",         impact:"Anemia, weak bones",              status:"warn", coverage:"~0.4mg/0.9mg (44%)",note:"Walnuts better than mixed nuts for copper" },
+      { n:24, nutrient:"Choline",        impact:"Liver issues, memory issues",     status:"good", coverage:"~580mg/550mg (105%)",note:"Eggs unchanged" },
+      { n:25, nutrient:"Probiotics",     impact:"Poor gut health",                 status:"good", coverage:"1 serving (raib)",  note:"Raib is on the approved fermented list — better gut value" },
+      { n:26, nutrient:"Sodium",         impact:"Cramps or bloating",              status:"good", coverage:"Moderate",          note:"Within normal range, unchanged" },
+      { n:27, nutrient:"Antioxidants",   impact:"Faster aging, inflammation",      status:"warn", coverage:"Low-moderate",      note:"Walnuts add polyphenols vs mixed nuts" },
+      { n:28, nutrient:"Phosphorus",     impact:"Bone/teeth weakness, fatigue",    status:"good", coverage:"~820mg/700mg (117%)",note:"Eggs, kefta, whey, rice unchanged" },
+      { n:29, nutrient:"Manganese",      impact:"Weak bones, poor metabolism",     status:"warn", coverage:"~0.8mg/2.3mg (35%)",note:"Rice and khobz unchanged" },
+      { n:30, nutrient:"Chromium",       impact:"Poor blood sugar control",        status:"warn", coverage:"~12µg/35µg (34%)", note:"Onion and rice unchanged" },
+      { n:31, nutrient:"Vitamin B5",     impact:"Fatigue, irritability",           status:"good", coverage:"~3mg/5mg (60%)",   note:"Eggs and kefta unchanged" },
+      { n:32, nutrient:"Biotin B7",      impact:"Hair/skin issues, fatigue",       status:"good", coverage:"~18µg/30µg (60%)", note:"Egg yolks unchanged" }
+    ]
+  }
 };
 
-function render(data){
-  const app = document.getElementById('app');
+let _v = 'original';
 
-  const macrosHtml = data.macros.map(m => `
+function render(v) {
+  if (v) _v = v;
+  const vd = DATA[_v];
+  const isOpt = _v === 'optimized';
+
+  const macrosHtml = vd.macros.map(m => `
     <div class="macro-card">
       <div class="macro-name">${m.name}</div>
       <div class="macro-value">${m.value}</div>
@@ -487,7 +618,7 @@ function render(data){
     </div>
   `).join('');
 
-  const coverageHtml = data.coverage.map(c => `
+  const coverageHtml = vd.coverage.map(c => `
     <div class="cov-row">
       <div class="cov-dot ${c.status}"></div>
       <div class="cov-main">
@@ -498,19 +629,23 @@ function render(data){
     </div>
   `).join('');
 
-  const goodHtml = data.good.map(g => `<li>${g}</li>`).join('');
-  const badHtml = data.bad.map(b => `<li>${b}</li>`).join('');
+  const goodHtml = vd.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
 
-  const loggedHtml = (data.loggedItems || []).map(i => `<li>${i}</li>`).join('');
+  const loggedHtml = vd.loggedItems.map(i => {
+    const text = typeof i === 'string' ? i : i.text;
+    const changed = isOpt && typeof i === 'object' && i.changed;
+    return `<li${changed ? ' class="log-changed"' : ''}>${text}</li>`;
+  }).join('');
 
-  const adjustmentsHtml = (data.adjustments || []).map(a => `
+  const adjustmentsHtml = DATA.adjustments.map(a => `
     <li class="adj-item">
       <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
       <span class="adj-reason">${a.reason}</span>
     </li>
   `).join('');
 
-  const fullTableRows = (data.fullTable || []).map(r => `
+  const fullTableRows = vd.fullTable.map(r => `
     <tr>
       <td class="ft-num">${r.n}</td>
       <td class="ft-nutrient">${r.nutrient}</td>
@@ -520,15 +655,20 @@ function render(data){
     </tr>
   `).join('');
 
-  app.innerHTML = `
+  document.getElementById('app').innerHTML = `
     <div class="header">
       <div class="label">Tracking · Health Protocol</div>
-      <div class="date">${data.date} · ${data.dayType}</div>
+      <div class="date">${DATA.date} · ${DATA.dayType}</div>
     </div>
 
-    <div class="verdict ${data.verdict.status}">
-      <div class="verdict-icon">${data.verdict.icon}</div>
-      <div class="verdict-text">${data.verdict.text_html}</div>
+    <div class="version-toggle">
+      <button class="version-btn ${!isOpt ? 'v-active' : ''}" onclick="render('original')">Original</button>
+      <button class="version-btn ${isOpt ? 'v-opt-active' : ''}" onclick="render('optimized')">⚡ Optimized</button>
+    </div>
+
+    <div class="verdict ${vd.verdict.status}">
+      <div class="verdict-icon">${vd.verdict.icon}</div>
+      <div class="verdict-text">${vd.verdict.text_html}</div>
     </div>
 
     <div class="macros">${macrosHtml}</div>
@@ -547,15 +687,15 @@ function render(data){
       </div>
     </div>
 
-    <div class="section-title">Today's log &amp; suggested adjustments</div>
+    <div class="section-title">${isOpt ? 'Optimized plan &amp; changes applied' : 'Today\'s log &amp; suggested adjustments'}</div>
     <div class="day-section">
       <div class="day-grid">
         <div class="day-card">
-          <div class="day-card-title">What you ate</div>
+          <div class="day-card-title">${isOpt ? '⚡ Optimized plan' : 'What you ate'}</div>
           <ul class="log-list">${loggedHtml}</ul>
         </div>
         <div class="day-card">
-          <div class="day-card-title">Suggested tweaks</div>
+          <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
           <ul class="adj-list">${adjustmentsHtml}</ul>
         </div>
       </div>
@@ -577,11 +717,11 @@ function render(data){
       </table>
     </div>
 
-    <div class="footer-note">Mehdi's Health & Body - Protocol</div>
+    <div class="footer-note">Mehdi's Health &amp; Body - Protocol</div>
   `;
 }
 
-render(DATA);
+render();
 </script>
 </body>
 </html>
