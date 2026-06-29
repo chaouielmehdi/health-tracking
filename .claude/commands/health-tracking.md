@@ -79,6 +79,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    const DATA = {
      date,        // "Month DD, YYYY"
      dayType,     // "Rest day" or "Training day"
+     routineText, // raw input text verbatim (the full routine Mehdi pasted)
 
      adjustments, // array of { from, to, reason } — the specific changes original → optimized
 

@@ -195,10 +195,10 @@
   }
   .cov-row{
     display:grid;
-    grid-template-columns:28px 1fr auto;
+    grid-template-columns:26px 1fr auto;
     align-items:center;
-    gap:10px;
-    padding:11px 14px;
+    gap:12px;
+    padding:14px 16px;
     border-bottom:1px solid var(--panel-border);
   }
   .cov-row:last-child{border-bottom:none;}
@@ -210,23 +210,18 @@
   .cov-dot.good{background:var(--good);}
   .cov-dot.warn{background:var(--warn);}
   .cov-dot.bad{background:var(--bad);}
-  .cov-main{min-width:0;}
   .cov-name{
     font-size:13.5px;
     font-weight:600;
-    margin-bottom:2px;
-  }
-  .cov-note{
-    font-size:12px;
-    color:var(--text-dim2);
-    line-height:1.35;
+    line-height:1.4;
   }
   .cov-coverage{
     font-family:var(--mono);
-    font-size:12.5px;
-    font-weight:700;
+    font-size:12px;
     text-align:right;
     white-space:nowrap;
+    line-height:1.5;
+    color:var(--text-dim2);
   }
   .cov-coverage.good{color:var(--good);}
   .cov-coverage.warn{color:var(--warn);}
@@ -281,13 +276,41 @@
 
   /* DAY LOG + ADJUSTMENTS */
   .day-section{
-    margin-top:24px;
+    margin-top:0;
   }
-  .day-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+  .routine-block-wrap{
+    position:relative;
+    margin-bottom:12px;
   }
+  .routine-pre{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+    line-height:1.9;
+    white-space:pre-wrap;
+    word-break:break-word;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:16px 20px;
+    padding-top:36px;
+  }
+  .routine-copy{
+    position:absolute;
+    top:10px; right:10px;
+    font-size:10.5px;
+    font-family:var(--mono);
+    color:var(--text-dim2);
+    background:none;
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    padding:3px 10px;
+    cursor:pointer;
+    transition:color 0.15s, border-color 0.15s;
+  }
+  .routine-copy:hover{color:var(--text);border-color:var(--text-dim2);}
+  .routine-copy.copied{color:var(--good);border-color:var(--good);}
+  .line-changed{color:var(--good);font-weight:600;}
   .day-card{
     background:var(--panel);
     border:1px solid var(--panel-border);
@@ -300,26 +323,7 @@
     text-transform:uppercase;
     font-weight:700;
     margin-bottom:10px;
-    display:flex;align-items:center;gap:6px;
     color:var(--text-dim2);
-  }
-  .log-list{
-    list-style:none;
-  }
-  .log-list li{
-    font-size:12.5px;
-    line-height:1.5;
-    padding:5px 0;
-    border-bottom:1px solid var(--panel-border);
-    color:var(--text);
-  }
-  .log-list li:last-child{border-bottom:none;}
-  .log-list li.log-changed{
-    color:var(--good);
-    font-weight:600;
-  }
-  .log-list li.log-changed::before{
-    content:"⚡ ";
   }
   .adj-list{
     list-style:none;
@@ -376,8 +380,8 @@
   }
   table.full-table th:first-child{width:28px;text-align:center;}
   table.full-table th:nth-child(2){width:22%;}
-  table.full-table th:nth-child(3){width:20%;}
-  table.full-table th:nth-child(4){width:18%;}
+  table.full-table th:nth-child(3){width:25%;}
+  table.full-table th:nth-child(4){width:22%;}
   table.full-table td{
     font-size:11.5px;
     line-height:1.4;
@@ -405,7 +409,6 @@
   .ft-coverage.good{color:var(--good);}
   .ft-coverage.warn{color:var(--warn);}
   .ft-coverage.bad{color:var(--bad);}
-  .ft-note{color:var(--text-dim2);font-size:11px;}
 
   @media (max-width:600px){
     table.full-table{table-layout:auto;}
@@ -417,7 +420,6 @@
     .macro-card{padding:10px 8px;}
     .macro-value{font-size:17px;}
     .feedback{grid-template-columns:1fr;}
-    .day-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -431,13 +433,43 @@
 
   Structure:
     DATA.date, DATA.dayType                — shared header
+    DATA.routineText                       — raw input text verbatim (shown in monospace block)
     DATA.adjustments                       — list of original → optimized changes (always shown)
     DATA.original { verdict, macros, coverage, good, bad, loggedItems, fullTable }
     DATA.optimized { verdict, macros, coverage, good, bad, loggedItems, fullTable }
+      coverage rows: always include Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
+      optimized.loggedItems: plain strings for unchanged, { text, changed:true } for changed items
 */
 const DATA = {
   date: "June 29, 2026",
   dayType: "Rest day",
+  routineText: `09:00 — Wake up
+09:00–13:00 — Work & Water (1L)
+13:00 — Black coffee + 1 tsp of sugar
+
+14:00 — 🌅 Breakfast
+  · whole wheat bread 70g
+  · olive oil box of 70g for the whole week
+  · mint tea + 1 tsp of sugar
+  · cumin & salt
+
+14:00–18:00 — Work & Water (1L)
+18:00 — Out from work
+
+18:00 — ☀️ Lunch
+  · rice boiled (70g raw)
+  · kefta cooked (250g raw) with 1/2 onion
+  · 200g legume sauté (carrot, courgette, onion)
+
+19:00 — Black coffee · Water 1L
+19:00–21:00 — Rest
+
+21:00 — 🌙 Dinner
+  · 1 fruit
+  · Protein + Jaouda sans lactose
+  · 85g mixed nuts (almonds, walnuts, pistachios)
+
+01:00 — Sleep`,
 
   adjustments: [
     { from:"Mixed nuts 85g", to:"40g (reduced by half)", reason:"Nuts alone contributed ~45g fat — halving brings fat into range without removing a food group" },
@@ -605,6 +637,15 @@ const DATA = {
   }
 };
 
+const _texts = {};
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function doCopy(btn, which){
+  navigator.clipboard.writeText(_texts[which]||'').then(()=>{
+    btn.textContent='copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='copy'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
 let _v = 'original';
 
 function render(v) {
@@ -625,10 +666,7 @@ function render(v) {
   const coverageHtml = vd.coverage.map(c => `
     <div class="cov-row">
       <div class="cov-dot ${c.status}"></div>
-      <div class="cov-main">
-        <div class="cov-name">${c.name}</div>
-        <div class="cov-note">${c.note}</div>
-      </div>
+      <div class="cov-name">${c.name}</div>
       <div class="cov-coverage ${c.status}">${c.coverage}</div>
     </div>
   `).join('');
@@ -636,11 +674,23 @@ function render(v) {
   const goodHtml = vd.good.map(g => `<li>${g}</li>`).join('');
   const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
 
-  const loggedHtml = vd.loggedItems.map(i => {
-    const text = typeof i === 'string' ? i : i.text;
-    const changed = isOpt && typeof i === 'object' && i.changed;
-    return `<li${changed ? ' class="log-changed"' : ''}>${text}</li>`;
-  }).join('');
+  _texts.orig = DATA.routineText || '';
+  _texts.opt = DATA.optimized.loggedItems.map(i => typeof i === 'string' ? i : i.text).join('\n');
+
+  const logBlockHtml = !isOpt
+    ? `<div class="routine-block-wrap">
+        <div class="routine-pre">${esc(DATA.routineText||'')}</div>
+        <button class="routine-copy" onclick="doCopy(this,'orig')">copy</button>
+      </div>`
+    : `<div class="routine-block-wrap">
+        <div class="routine-pre">${DATA.optimized.loggedItems.map(i => {
+          const t = typeof i === 'string' ? i : i.text;
+          return (typeof i === 'object' && i.changed)
+            ? `<span class="line-changed">⚡ ${esc(t)}</span>`
+            : esc(t);
+        }).join('\n')}</div>
+        <button class="routine-copy" onclick="doCopy(this,'opt')">copy</button>
+      </div>`;
 
   const adjustmentsHtml = DATA.adjustments.map(a => `
     <li class="adj-item">
@@ -655,7 +705,6 @@ function render(v) {
       <td class="ft-nutrient">${r.nutrient}</td>
       <td class="ft-impact">${r.impact}</td>
       <td class="ft-coverage ${r.status}">${r.coverage}</td>
-      <td class="ft-note">${r.note}</td>
     </tr>
   `).join('');
 
@@ -693,15 +742,10 @@ function render(v) {
 
     <div class="section-title">${isOpt ? 'Optimized plan &amp; changes applied' : 'Today\'s log &amp; suggested adjustments'}</div>
     <div class="day-section">
-      <div class="day-grid">
-        <div class="day-card">
-          <div class="day-card-title">${isOpt ? '⚡ Optimized plan' : 'What you ate'}</div>
-          <ul class="log-list">${loggedHtml}</ul>
-        </div>
-        <div class="day-card">
-          <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
-          <ul class="adj-list">${adjustmentsHtml}</ul>
-        </div>
+      ${logBlockHtml}
+      <div class="day-card">
+        <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
+        <ul class="adj-list">${adjustmentsHtml}</ul>
       </div>
     </div>
 
@@ -714,7 +758,6 @@ function render(v) {
             <th>Nutrient</th>
             <th>Impact if missing</th>
             <th>Coverage</th>
-            <th>Note</th>
           </tr>
         </thead>
         <tbody>${fullTableRows}</tbody>
