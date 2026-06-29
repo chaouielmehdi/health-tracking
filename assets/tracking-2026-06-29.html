@@ -448,141 +448,130 @@ const DATA = {
   routineText: `09:00 — Wake up
 09:00–13:00 — Work & Water (1L)
 13:00 — Black coffee + 1 tsp of sugar
-
 14:00 — 🌅 Breakfast
-  · whole wheat bread 70g
-  · olive oil box of 70g for the whole week
-  · mint tea + 1 tsp of sugar
-  · cumin & salt
-
+· whole wheat bread 70g
+· 3 eggs with olive oil 10g
+· mint tea + 1 tsp of sugar
+· cumin & salt
 14:00–18:00 — Work & Water (1L)
 18:00 — Out from work
-
 18:00 — ☀️ Lunch
-  · rice boiled (70g raw)
-  · kefta cooked (250g raw) with 1/2 onion
-  · 200g legume sauté (carrot, courgette, onion)
-
+· brown rice boiled (70g raw)
+· kefta cooked (250g raw) with 1/2 onion
+· 200g légume sauté (carrot, courgette, onion)
 19:00 — Black coffee · Water 1L
 19:00–21:00 — Rest
-
 21:00 — 🌙 Dinner
-  · 1 fruit
-  · Protein + Jaouda sans lactose
-  · 85g mixed nuts (almonds, walnuts, pistachios)
-
+· 1 scoop of protein powder
+· 2 perly nature
+· 20g mixed nuts (almonds, walnuts, pistachios)
 01:00 — Sleep`,
   optimizedText: `09:00 — Wake up
 09:00–13:00 — Work & Water (1L)
 13:00 — Black coffee + 1 tsp of sugar
-
 14:00 — 🌅 Breakfast
-  · whole wheat bread 70g
-  · olive oil 10g/day
-  · mint tea + 1 tsp of sugar
-  · cumin & salt
-
+· whole wheat bread 70g
+· 3 eggs with olive oil 5g
+· mint tea + 1 tsp of sugar
+· cumin & salt
 14:00–18:00 — Work & Water (1L)
 18:00 — Out from work
-
 18:00 — ☀️ Lunch
-  · rice boiled (70g raw)
-  · kefta cooked (250g raw) with 1/2 onion
-  · 200g legume sauté (carrot, courgette, onion)
-
+· brown rice boiled (70g raw)
+· kefta cooked (250g raw) with 1/2 onion
+· 200g légume sauté (carrot, courgette, onion)
 19:00 — Black coffee · Water 1L
 19:00–21:00 — Rest
-
 21:00 — 🌙 Dinner
-  · 1 banana ~120g
-  · 2 scoops whey protein + Jaouda sans lactose
-  · 40g mixed nuts (almonds, walnuts, pistachios)
-
+· 2 scoops of protein powder
+· 2 perly nature
+· 20g mixed nuts (almonds, walnuts, pistachios)
 01:00 — Sleep`,
 
   adjustments: [
-    { from:"Mixed nuts 85g", to:"40g (reduced by half)", reason:"Nuts alone contributed ~45g fat — halving brings fat into range without removing a food group" },
-    { from:"1 scoop whey protein", to:"2 scoops whey protein", reason:"Protein at 68% of target — adding a second scoop is the cleanest fix with near-zero fat impact" }
+    { from:"Olive oil 10g", to:"Olive oil 5g", reason:"Fat at 117% — halving the cooking oil saves 44 kcal and 5g fat, bringing fat into the good range" },
+    { from:"1 scoop protein powder", to:"2 scoops protein powder", reason:"Protein at 74% (bad) — a second scoop adds 25g clean protein with near-zero fat, lifting it to 89% (warn)" }
   ],
 
   original: {
     verdict: {
       status: "bad",
       icon: "⚠️",
-      text_html: 'Needs work — <span class="kcal">1,970 kcal</span> (+170 vs rest target). Protein critically low at 68%, fat at 146%.'
+      text_html: 'Needs work — <span class="kcal">1,687 kcal</span> (−113 vs rest target). Protein at 74% (bad), fiber at 48% (bad).'
     },
     macros: [
-      { name:"Protein", value:"113g", target:"/ 165g", pct:68,  status:"bad"  },
-      { name:"Carbs",   value:"160g", target:"/ 130g", pct:123, status:"warn" },
-      { name:"Fat",     value:"102g", target:"/ 70g",  pct:146, status:"bad"  }
+      { name:"Protein", value:"122g", target:"/ 165g", pct:74,  status:"bad"  },
+      { name:"Carbs",   value:"119g", target:"/ 130g", pct:91,  status:"good" },
+      { name:"Fat",     value:"82g",  target:"/ 70g",  pct:117, status:"warn" }
     ],
     coverage: [
-      { status:"warn", name:"Calories",           coverage:"1,970 / 1,800 (109%)", note:"+170 kcal over rest-day target" },
-      { status:"bad",  name:"Protein",             coverage:"113g / 165g (68%)",    note:"Kefta 50g, whey 25g — no eggs, structural gap" },
-      { status:"warn", name:"Carbs",               coverage:"160g / 130g (123%)",   note:"Rice 50g, bread 29g, nuts 18g, banana 27g stack" },
-      { status:"bad",  name:"Fat",                 coverage:"102g / 70g (146%)",    note:"Nuts 85g alone = 45g fat + kefta 37g fat" },
-      { status:"warn", name:"Fiber",               coverage:"~23g / 30g (76%)",     note:"Bread, nuts, veg — moderate" },
-      { status:"good", name:"Gas / bloat risk",    coverage:"Low",                  note:"Onion cooked, sauté not raw — no gas triggers fired" },
-      { status:"warn", name:"Protocol adherence",  coverage:"Fair",                 note:"Cumin present, dinner timing OK, but no eggs and nut portion oversized" }
+      { status:"warn", name:"Calories",           coverage:"1,687 / 1,800 (94%)",  note:"113 kcal under rest-day target" },
+      { status:"bad",  name:"Protein",             coverage:"122g / 165g (74%)",    note:"Kefta 50g, eggs 16.5g, whey 25g, bread 9g — still 43g short" },
+      { status:"good", name:"Carbs",               coverage:"119g / 130g (91%)",    note:"Rice, bread, veg — solid, right in range" },
+      { status:"warn", name:"Fat",                 coverage:"82g / 70g (117%)",     note:"Kefta 37.5g + eggs 14.4g + olive oil 10g stack up" },
+      { status:"bad",  name:"Fiber",               coverage:"~13g / 27g (48%)",     note:"Bread 4.2g, rice 2.5g, veg 3.6g, nuts 2g — well under target" },
+      { status:"warn", name:"Gas / bloat risk",    coverage:"Moderate",             note:"Onion cooked ✓ — perly nature (dairy) is a potential trigger per protocol" },
+      { status:"warn", name:"Protocol adherence",  coverage:"Fair",                 note:"Cumin ✓, dinner at 21h ✓, bread once ✓ — perly dairy is a don't (gas rule)" }
     ],
     good: [
-      "Calories only 170 kcal over rest target",
-      "Zinc close to target — kefta doing the work",
-      "Vitamin B12 covered well by kefta",
-      "Gas risk is low — all onion cooked"
+      "Carbs perfectly on target (91%) — rice + bread well-calibrated",
+      "Water target met: 3L across the day",
+      "Kefta + eggs cover B12, B6, selenium well",
+      "Cumin included, onion cooked — respects gut protocol"
     ],
     bad: [
-      "Protein at 68% — critically low without eggs",
-      "Fat at 146% — 85g nuts + kefta stack is too much",
-      "No eggs today — choline, biotin, vitamin D, B2 all collapse",
-      "Vitamin C very low — no citrus or raw veg"
+      "Protein at 74% — 43g short of the 165g daily target",
+      "Fiber at 48% — no fruits, no legumes, low-veg day",
+      "Perly nature is dairy (protocol don't for gas/bloat)",
+      "Vitamin C very low — no citrus or kiwi today"
     ],
     loggedItems: [
-      "Black coffee + 1 tsp sugar (×2)",
+      "Black coffee + 1 tsp sugar",
       "Whole wheat bread 70g",
-      "Olive oil 10g/day (70g box / week)",
+      "3 eggs with olive oil 10g",
       "Mint tea + 1 tsp sugar",
-      "Rice boiled 70g raw",
-      "Kefta 250g raw + ½ onion",
-      "Legume sauté 200g (carrot, courgette, onion)",
-      "1 banana ~120g",
-      "Whey protein 1 scoop (30g)",
-      "Jaouda sans lactose 110g",
-      "Mixed nuts 85g (almonds, walnuts, pistachios)"
+      "Cumin & salt",
+      "Brown rice boiled (70g raw)",
+      "Kefta cooked (250g raw) + ½ onion cooked",
+      "Végétable sauté 200g (carrot, courgette, onion)",
+      "Black coffee (no sugar)",
+      "1 scoop whey protein (30g)",
+      "2 perly nature (~120g)",
+      "Mixed nuts 20g (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"bad",  coverage:"113g / 165g (68%)",     note:"Kefta 50g, whey 25g, bread 9g, other 29g — no eggs today" },
-      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",         note:"1L morning + 1L afternoon + 1L evening — target met" },
-      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"warn", coverage:"~23g / 30g (76%)",       note:"Bread 4g, nuts 8g, veg 4g, banana 3g, rice 2.5g" },
-      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~2.6g ALA / no EPA/DHA", note:"Walnuts 28g are the main ALA source — no fatty fish" },
-      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1µg / 15µg (7%)",       note:"No eggs, no fish — structural gap on this plan" },
-      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~7.5mg / 11mg (68%)",    note:"Kefta 4.75mg, bread 1.9mg, veg 0.85mg" },
-      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~5.3µg / 2.4µg (220%)",  note:"Kefta 250g alone covers B12 more than 2×" },
-      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~180mg / 400mg (45%)",   note:"Almonds 76mg, banana 32mg, bread 28mg, nuts 74mg total" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~280mg / 1000mg (28%)",  note:"Jaouda 132mg, almonds 74mg, bread 70mg — still very low" },
-      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~10.5mg / 11mg (95%)",   note:"Kefta 250g × 4.2mg/100g = 10.5mg — nearly on target" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~1800mg / 4700mg (38%)", note:"Kefta 700mg, banana 430mg, pistachios 290mg, veg 300mg" },
-      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~80µg / 400µg (20%)",    note:"Bread 35µg, vegetables 30µg, banana 20µg — no leafy greens" },
-      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~28mg / 90mg (31%)",     note:"Courgette 11mg, banana 10mg, carrot 4mg — no citrus" },
-      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~580µg / 900µg (64%)",   note:"Carrot 67g delivers ~560µg RAE — the star of this plan" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"bad",  coverage:"~20µg / 150µg (13%)",    note:"Jaouda small amount, otherwise no iodine-rich foods" },
-      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"warn", coverage:"~9mg / 15mg (60%)",      note:"Almonds 7.2mg, olive oil 1.4mg — nuts are the main source" },
-      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~15µg / 120µg (13%)",    note:"Olive oil 6µg, vegetables small — no leafy greens" },
-      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"warn", coverage:"~1.4mg / 1.7mg (82%)",   note:"Kefta 0.75mg, banana 0.44mg — close to target" },
-      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~52µg / 55µg (95%)",     note:"Kefta 35µg, bread 17µg — nearly on target" },
-      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.4mg / 1.2mg (33%)",   note:"Bread 0.14mg, rice 0.05mg, kefta small — low" },
-      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"bad",  coverage:"~0.5mg / 1.3mg (38%)",   note:"Jaouda 0.2mg, whey 0.15mg — no eggs hurts here" },
-      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"warn", coverage:"~14mg / 16mg (88%)",     note:"Kefta 12.5mg, rice 1mg, bread 0.5mg" },
-      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"good", coverage:"~0.85mg / 0.9mg (94%)",  note:"Walnuts 0.45mg, almonds 0.29mg — nuts cover this well" },
-      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"bad",  coverage:"~200mg / 550mg (36%)",   note:"No eggs — massive gap. Kefta ~150mg, nuts small amount" },
-      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"bad",  coverage:"Low (Jaouda s/l)",        note:"Lactose-free milk has minimal live cultures vs raib/lben" },
-      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~800mg (moderate)",       note:"Bread 343mg, salt/cumin in kefta — within normal range" },
-      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate",               note:"Carrot beta-carotene, olive oil polyphenols, nuts" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~800mg / 700mg (114%)",   note:"Kefta 438mg, whey 120mg, bread 70mg, nuts 100mg" },
-      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~2.2mg / 2.3mg (96%)",   note:"Brown rice 1.4mg, almonds 0.62mg — nearly on target" },
-      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~5µg / 35µg (14%)",      note:"Whole wheat bread small amount — structural gap" },
-      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~2.8mg / 5mg (56%)",     note:"Kefta 1.9mg, bread 0.2mg, nuts small" },
-      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"bad",  coverage:"~5µg / 30µg (17%)",      note:"No eggs (main source) — nuts and bread contribute minimally" }
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"bad",  coverage:"122g / 165g (74%)",      note:"Kefta 50g, eggs 16.5g, whey 25g, bread 9g, perly 9.6g, rice 5.2g" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",          note:"1L morning + 1L afternoon + 1L evening — target met" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~13g / 27g (48%)",        note:"Bread 4.2g, rice 2.5g, veg sauté 3.6g, onion 1.7g, nuts 2g" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~0.6g ALA / no EPA/DHA",  note:"Walnuts 6.67g only ALA source — no fatty fish today" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~3µg / 15µg (20%)",       note:"Eggs 3 (~1µg each) — structural gap without fish" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~10.5mg / 11mg (95%)",    note:"Kefta 4.75mg, eggs 2.6mg, bread 1.8mg, nuts 1mg" },
+      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~6.9µg / 2.4µg (287%)",   note:"Kefta 5.25µg, eggs 1.32µg — well covered" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~191mg / 400mg (48%)",    note:"Kefta 62mg, bread 35mg, rice 31mg, nuts 36mg, eggs 16mg" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~425mg / 1000mg (43%)",   note:"Perly 150mg, whey 100mg, eggs 90mg, bread 35mg" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~14mg / 11mg (130%)",     note:"Kefta 10.5mg dominant — slightly over target" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~2160mg / 4700mg (46%)",  note:"Kefta 875mg, veg sauté 420mg, eggs 180mg, bread 160mg" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"bad",  coverage:"~167µg / 400µg (42%)",    note:"Eggs 75µg, veg sauté 55µg, bread 19µg — no leafy greens" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~26mg / 90mg (29%)",      note:"Courgette 14mg, onion 7mg, carrot 4mg — no citrus today" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~689µg / 900µg (77%)",    note:"Carrot 70g delivers ~584µg RAE — eggs add ~80µg" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~121µg / 150µg (81%)",    note:"Eggs 3 (~72µg), salt ~30µg, perly ~16µg" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~3.4mg / 15mg (23%)",     note:"Almonds 1.7mg, olive oil 1.4mg — not enough without more nuts" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~19µg / 120µg (16%)",     note:"Olive oil 6µg, carrot 9µg, courgette 3µg — no leafy greens" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~1.8mg / 1.7mg (106%)",   note:"Kefta 1.0mg, eggs 0.3mg, rice 0.15mg, veg 0.15mg" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~92µg / 55µg (167%)",     note:"Eggs 45µg, kefta 30µg, bread 10µg, rice 7µg" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.7mg / 1.2mg (58%)",    note:"Bread 0.18mg, rice 0.18mg, kefta 0.15mg, nuts 0.1mg" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~1.38mg / 1.3mg (106%)",  note:"Eggs 0.78mg, perly 0.2mg, whey 0.15mg, kefta 0.18mg" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~16.3mg / 16mg (102%)",   note:"Kefta 12.5mg, rice 2.5mg, bread 1mg — on target" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"warn", coverage:"~0.79mg / 0.9mg (88%)",   note:"Nuts 0.26mg, kefta 0.22mg, rice 0.16mg, bread 0.15mg" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"good", coverage:"~575mg / 550mg (105%)",   note:"Eggs 387mg (dominant), kefta 187mg — on target" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"warn", coverage:"Uncertain (perly)",        note:"Perly nature is fresh dairy — probiotic culture count unknown" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~990mg (moderate)",        note:"Bread 343mg, eggs 186mg, kefta 165mg, salt ~300mg" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Low–moderate",            note:"Olive oil polyphenols, mint tea, carrot beta-carotene — no fruits" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1565mg / 700mg (224%)",  note:"Kefta 500mg, eggs 480mg, whey 150mg, bread 130mg, rice 115mg" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"warn", coverage:"~2.9mg / 2.3mg (126%)",   note:"Rice 1.47mg, bread 0.77mg, nuts 0.46mg — slightly above target" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~11µg / 35µg (31%)",      note:"Onion 4µg, rice 3µg, bread 2µg, eggs 2µg — structural gap" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~4.2mg / 5mg (84%)",      note:"Eggs 2.1mg, kefta 1.25mg, rice 0.35mg, bread 0.3mg" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"good", coverage:"~30µg / 30µg (100%)",     note:"Eggs 3 (~10µg each) cover the daily target exactly" }
     ]
   },
 
@@ -590,78 +579,80 @@ const DATA = {
     verdict: {
       status: "warn",
       icon: "📈",
-      text_html: 'Better — <span class="kcal">1,811 kcal</span> (+11 vs rest target). Fat fixed, protein improved to 78%, calories on target.'
+      text_html: 'Improved — <span class="kcal">1,753 kcal</span> (−47 vs rest target). Protein bad→warn, fat warn→good, calories on target.'
     },
     macros: [
-      { name:"Protein", value:"129g", target:"/ 165g", pct:78,  status:"warn" },
-      { name:"Carbs",   value:"152g", target:"/ 130g", pct:117, status:"warn" },
-      { name:"Fat",     value:"79g",  target:"/ 70g",  pct:113, status:"good" }
+      { name:"Protein", value:"147g", target:"/ 165g", pct:89,  status:"warn" },
+      { name:"Carbs",   value:"121g", target:"/ 130g", pct:93,  status:"good" },
+      { name:"Fat",     value:"78g",  target:"/ 70g",  pct:111, status:"good" }
     ],
     coverage: [
-      { status:"good", name:"Calories",           coverage:"1,811 / 1,800 (101%)", note:"Almost exactly on rest-day target" },
-      { status:"warn", name:"Protein",             coverage:"129g / 165g (78%)",    note:"+16g from 2nd scoop — still below target, eggs would fix this structurally" },
-      { status:"warn", name:"Carbs",               coverage:"152g / 130g (117%)",   note:"Slightly over — unchanged from original, manageable" },
-      { status:"good", name:"Fat",                 coverage:"79g / 70g (113%)",     note:"In range — halving nuts brought fat down from 146% to 113%" },
-      { status:"bad",  name:"Fiber",               coverage:"~18g / 30g (61%)",     note:"Dropped 5g by reducing nuts — compensate with extra veg serving" },
-      { status:"good", name:"Gas / bloat risk",    coverage:"Low",                  note:"No changes — onion still cooked, no gas triggers" },
-      { status:"warn", name:"Protocol adherence",  coverage:"Better",               note:"Nut portion now reasonable, protein slightly improved, fat in range" }
+      { status:"good", name:"Calories",           coverage:"1,753 / 1,800 (97%)",  note:"Within 50 kcal of rest-day target — on protocol" },
+      { status:"warn", name:"Protein",             coverage:"147g / 165g (89%)",    note:"+25g from 2nd scoop — still 18g short, but no longer bad" },
+      { status:"good", name:"Carbs",               coverage:"121g / 130g (93%)",    note:"+2g from extra whey — right in the sweet spot" },
+      { status:"good", name:"Fat",                 coverage:"78g / 70g (111%)",     note:"Halving olive oil saves 5g fat — kefta + eggs now a clean stack" },
+      { status:"bad",  name:"Fiber",               coverage:"~13g / 27g (48%)",     note:"Unchanged — add a kiwi or apple daily to address this structurally" },
+      { status:"warn", name:"Gas / bloat risk",    coverage:"Moderate",             note:"Perly dairy still present — swap for raib next time if bloating occurs" },
+      { status:"warn", name:"Protocol adherence",  coverage:"Better",               note:"Fat and calories now in range — perly dairy remains the one concern" }
     ],
     good: [
-      "Calories land exactly on rest-day target",
-      "Fat in protocol range after halving nuts",
-      "Second whey scoop adds 25g clean protein with almost no fat",
-      "Gas risk unchanged — cooked onion is fine"
+      "Calories land within 50 kcal of rest-day target",
+      "Fat drops into good range — halving olive oil is an easy daily tweak",
+      "Second whey scoop lifts protein from bad (74%) to warn (89%)",
+      "Carbs and iron remain strong — no regression"
     ],
     bad: [
-      "Protein still at 78% — structural fix needed (add 2–3 eggs daily)",
-      "Fiber dropped to 61% — reduced nuts removed a fiber source",
-      "Carbs still 17% over — rice + bread stack adds up"
+      "Protein still 18g short — add eggs at breakfast daily to close structurally",
+      "Fiber at 48% — needs daily fruit (kiwi, apple) or more vegetables",
+      "Vitamin C, vitamin D, folate: structural gaps this food list can't fix"
     ],
     loggedItems: [
-      "Black coffee + 1 tsp sugar (×2)",
+      "Black coffee + 1 tsp sugar",
       "Whole wheat bread 70g",
-      "Olive oil 10g/day (70g box / week)",
+      { text:"3 eggs with olive oil 5g", changed:true },
       "Mint tea + 1 tsp sugar",
-      "Rice boiled 70g raw",
-      "Kefta 250g raw + ½ onion",
-      "Legume sauté 200g (carrot, courgette, onion)",
-      "1 banana ~120g",
-      { "text": "2 scoops whey protein + Jaouda sans lactose 110g", "changed": true },
-      { "text": "Mixed nuts 40g (almonds, walnuts, pistachios)", "changed": true }
+      "Cumin & salt",
+      "Brown rice boiled (70g raw)",
+      "Kefta cooked (250g raw) + ½ onion cooked",
+      "Végétable sauté 200g (carrot, courgette, onion)",
+      "Black coffee (no sugar)",
+      { text:"2 scoops whey protein (60g)", changed:true },
+      "2 perly nature (~120g)",
+      "Mixed nuts 20g (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"warn", coverage:"129g / 165g (78%)",     note:"Kefta 50g, whey 2×25g=50g, bread 9g, other 20g" },
-      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",         note:"Unchanged — 3L target met" },
-      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~18g / 30g (61%)",       note:"Nuts reduced from 85g to 40g — lost 4.5g fiber. Add extra veg" },
-      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~1.3g ALA / no EPA/DHA", note:"Fewer walnuts — ALA dropped from 2.6g. Still no EPA/DHA" },
-      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1µg / 15µg (7%)",       note:"Unchanged structural gap — no eggs or fish" },
-      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~7.5mg / 11mg (68%)",    note:"Unchanged — kefta is still the main source" },
-      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~5.5µg / 2.4µg (229%)",  note:"Kefta dominates, 2nd whey scoop adds a small amount" },
-      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~155mg / 400mg (39%)",   note:"Slightly lower — fewer almonds (less magnesium from nuts)" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~255mg / 1000mg (26%)",  note:"Fewer almonds reduces calcium slightly vs original" },
-      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~10.5mg / 11mg (95%)",   note:"Unchanged — kefta covers zinc" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~1600mg / 4700mg (34%)", note:"Fewer pistachios (major K source) — slightly lower" },
-      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~80µg / 400µg (20%)",    note:"Unchanged — no leafy greens added" },
-      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~28mg / 90mg (31%)",     note:"Unchanged — no citrus added" },
-      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~580µg / 900µg (64%)",   note:"Unchanged — carrot 67g still the star" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"bad",  coverage:"~20µg / 150µg (13%)",    note:"Unchanged structural gap" },
-      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"warn", coverage:"~6mg / 15mg (40%)",      note:"Fewer almonds — slightly lower than original 9mg" },
-      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~15µg / 120µg (13%)",    note:"Unchanged — no leafy greens" },
-      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"warn", coverage:"~1.4mg / 1.7mg (82%)",   note:"Unchanged — kefta + banana" },
-      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~55µg / 55µg (100%)",    note:"2nd whey scoop adds a small selenium boost" },
-      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.4mg / 1.2mg (33%)",   note:"Unchanged structural gap — bread + rice not enough" },
-      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"bad",  coverage:"~0.65mg / 1.3mg (50%)",  note:"2nd whey scoop adds ~0.15mg B2 — slight improvement" },
-      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"warn", coverage:"~14mg / 16mg (88%)",     note:"Unchanged — kefta dominates" },
-      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"warn", coverage:"~0.4mg / 0.9mg (44%)",   note:"Fewer nuts — copper drops from 0.85mg to 0.4mg" },
-      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"bad",  coverage:"~200mg / 550mg (36%)",   note:"Unchanged — no eggs means choline gap persists" },
-      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"bad",  coverage:"Low (Jaouda s/l)",        note:"Unchanged — Jaouda sans lactose has minimal live cultures" },
-      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~800mg (moderate)",       note:"Unchanged — within normal range" },
-      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate",               note:"Slightly lower — fewer nuts means less vitamin E/polyphenols" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~840mg / 700mg (120%)",   note:"2nd whey scoop adds ~120mg phosphorus — slightly above original" },
-      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~2.0mg / 2.3mg (87%)",   note:"Slightly lower — fewer almonds (rice still the main source)" },
-      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~5µg / 35µg (14%)",      note:"Unchanged structural gap" },
-      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~3.0mg / 5mg (60%)",     note:"2nd whey scoop adds ~0.2mg B5 — small improvement" },
-      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"bad",  coverage:"~5µg / 30µg (17%)",      note:"Unchanged — no eggs means biotin gap persists" }
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"warn", coverage:"147g / 165g (89%)",      note:"Original 122g + 25g from 2nd whey scoop — significantly improved" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",          note:"Unchanged — 3L target met" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~13g / 27g (48%)",        note:"Unchanged — no food swaps touched fiber sources" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~0.6g ALA / no EPA/DHA",  note:"Unchanged — walnuts still the only ALA source" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~3µg / 15µg (20%)",       note:"Unchanged structural gap — no fish or supplementation" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~10.5mg / 11mg (95%)",    note:"Unchanged — kefta + eggs cover iron well" },
+      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~7.1µg / 2.4µg (296%)",   note:"2nd whey adds ~0.1µg — still very well covered" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~191mg / 400mg (48%)",    note:"Unchanged — no food swap addresses magnesium" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~475mg / 1000mg (48%)",   note:"2nd whey scoop adds ~100mg calcium — slight improvement" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~14mg / 11mg (130%)",     note:"Unchanged — kefta still slightly over target" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~2160mg / 4700mg (46%)",  note:"Unchanged — structural gap on this food list" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"bad",  coverage:"~167µg / 400µg (42%)",    note:"Unchanged — no leafy greens in this plan" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~26mg / 90mg (29%)",      note:"Unchanged — add kiwi or orange to fix this" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~689µg / 900µg (77%)",    note:"Unchanged — carrot 70g still the main source" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~121µg / 150µg (81%)",    note:"Unchanged — eggs and salt are the main contributors" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~2.7mg / 15mg (18%)",     note:"Less olive oil (5g vs 10g) removes 0.72mg — slightly lower" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~16µg / 120µg (13%)",     note:"Unchanged — no leafy greens added" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~1.8mg / 1.7mg (106%)",   note:"Unchanged — kefta + eggs cover this well" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~99µg / 55µg (180%)",     note:"2nd whey adds ~7µg — already very well covered" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.7mg / 1.2mg (58%)",    note:"Unchanged structural gap — bread + rice insufficient" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~1.53mg / 1.3mg (118%)",  note:"2nd whey scoop adds 0.15mg B2 — pushed above target" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~16.3mg / 16mg (102%)",   note:"Unchanged — kefta dominates, on target" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"warn", coverage:"~0.79mg / 0.9mg (88%)",   note:"Unchanged — close to target" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"good", coverage:"~605mg / 550mg (110%)",   note:"2nd whey adds ~30mg choline — just above target" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"warn", coverage:"Uncertain (perly)",        note:"Unchanged — swap perly for raib to improve probiotic value" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~990mg (moderate)",        note:"Unchanged — within normal range" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Low–moderate",            note:"Slightly lower — less olive oil reduces polyphenol contribution" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1715mg / 700mg (245%)",  note:"2nd whey adds ~150mg phosphorus — still well above target" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"warn", coverage:"~2.9mg / 2.3mg (126%)",   note:"Unchanged — rice and bread remain the main sources" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~11µg / 35µg (31%)",      note:"Unchanged structural gap" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~4.4mg / 5mg (88%)",      note:"2nd whey adds ~0.2mg B5 — improved to top of warn range" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"good", coverage:"~30µg / 30µg (100%)",     note:"Unchanged — eggs 3 cover the daily biotin target" }
     ]
   }
 };
