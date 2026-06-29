@@ -376,8 +376,8 @@
   }
   table.full-table th:first-child{width:28px;text-align:center;}
   table.full-table th:nth-child(2){width:22%;}
-  table.full-table th:nth-child(3){width:20%;}
-  table.full-table th:nth-child(4){width:18%;}
+  table.full-table th:nth-child(3){width:25%;}
+  table.full-table th:nth-child(4){width:22%;}
   table.full-table td{
     font-size:11.5px;
     line-height:1.4;
@@ -405,7 +405,6 @@
   .ft-coverage.good{color:var(--good);}
   .ft-coverage.warn{color:var(--warn);}
   .ft-coverage.bad{color:var(--bad);}
-  .ft-note{color:var(--text-dim2);font-size:11px;}
 
   @media (max-width:600px){
     table.full-table{table-layout:auto;}
@@ -651,7 +650,6 @@ function render(v) {
       <td class="ft-nutrient">${r.nutrient}</td>
       <td class="ft-impact">${r.impact}</td>
       <td class="ft-coverage ${r.status}">${r.coverage}</td>
-      <td class="ft-note">${r.note}</td>
     </tr>
   `).join('');
 
@@ -710,7 +708,6 @@ function render(v) {
             <th>Nutrient</th>
             <th>Impact if missing</th>
             <th>Coverage</th>
-            <th>Note</th>
           </tr>
         </thead>
         <tbody>${fullTableRows}</tbody>
