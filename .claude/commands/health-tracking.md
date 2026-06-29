@@ -60,12 +60,26 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 6. **Render the tracking artifact.** Copy `.claude/commands/assets/tracking_template.html` verbatim, edit ONLY the `const DATA = {...}` object — never touch the CSS or the `render()` function or layout markup. Save to `assets/tracking-YYYY-MM-DD.html`.
 
-7. **Commit and push all changes.**
+7. **Commit, open a PR, and merge to main.**
+
+   The working branch is whatever branch the session started on (e.g. `claude/health-track-daily-routine-*`). Stage, commit, push that branch, then create a PR and immediately merge it so the deploy triggers from `main`.
+
    ```bash
+   # 1. commit on the current feature branch
    git add data/routine-YYYY-MM-DD.json data/routines-index.json assets/tracking-YYYY-MM-DD.html
    git commit -m "track: log routine and report for YYYY-MM-DD"
+   git push -u origin <current-branch>
+
+   # 2. make sure main is available locally
+   git fetch origin main
+   git checkout -b main origin/main   # or just: git checkout main
+
+   # 3. merge feature branch into main and push
+   git merge <current-branch> --no-edit
    git push origin main
    ```
+
+   If `git checkout main` fails because the branch doesn't exist locally yet, use `git checkout -b main origin/main` instead.
 
 8. **Status field logic** (used throughout DATA — `"good" | "warn" | "bad"`):
    - Protein/Carbs: good = 90–110% of target, warn = 75–90% or 110–125%, bad = <75% or >125%
