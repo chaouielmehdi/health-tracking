@@ -163,8 +163,8 @@ const DATA = {
 | — raw olive oil 5g
 | — mint tea + 1 tsp of sugar
 | — cumin & salt
-| — oat 35g
-| — milk jaouda sans lactose 35g
+| — oat 35g + water
+|
 | — 1 scoop of protein powder
 | — 1 banana
 | — 1 avocado (235g whole, ~157g flesh)
@@ -177,8 +177,8 @@ const DATA = {
 
 -----------------------
 | 18:00 — ☀️ Lunch
-| — brown rice boiled (35g raw)
-| — thon isabel 3 boxes (removing oil)
+| — kefta 80/20 250g
+| — khobz complet 70g
 | — 300g legume sauté (carrot, courgette, onion)
 -----------------------
 
@@ -209,8 +209,8 @@ const DATA = {
 |
 | — mint tea + 1 tsp of sugar
 | — cumin & salt
-| — oat 35g
-| — milk jaouda sans lactose 35g
+| — oat 35g + water
+|
 | — 1 scoop of protein powder
 | — 1 banana
 | — 1 avocado (235g whole, ~157g flesh)
@@ -223,8 +223,8 @@ const DATA = {
 
 -----------------------
 | 18:00 — ☀️ Lunch
-| — brown rice boiled (35g raw)
-| — thon isabel 3 boxes (removing oil)
+| — kefta 80/20 250g
+| — khobz complet 70g
 | — 300g legume sauté (carrot, courgette, onion)
 -----------------------
 
@@ -244,44 +244,44 @@ const DATA = {
 01:00 — Sleep`,
 
   adjustments: [
-    { from:"Raw olive oil 5g", to:"Removed — avocado covers healthy fat", reason:"Avocado adds 23g mono fat — keeping raw oil stacks fat to 135% warn; removing drops to 129%" },
+    { from:"Raw olive oil 5g", to:"Removed — kefta already loads fat heavily", reason:"Fat at 154% (bad) with kefta 80/20; removing oil drops to 148% — still bad but less severe" },
     { from:"No citrus / fruit at dinner", to:"Add 1 kiwi (~80g)", reason:"Vitamin C at 64% (bad) → 129% (good); bonus: Vit K +32µg, Folate +20µg → Folate hits 90% good" }
   ],
 
   original: {
     verdict: {
-      status: "warn",
-      icon: "⚖️",
-      text_html: 'Dense but solid — <span class="kcal">2,048 kcal</span> (+248 over rest target). Avocado unlocks fiber (108%) and micronutrients. Fat at 135% is the main flag.'
+      status: "bad",
+      icon: "⚠️",
+      text_html: 'Heavy day — <span class="kcal">2,136 kcal</span> (+336 over rest target). Kefta 80/20 pushes fat to 154% (bad). Zinc and iron excel; omega-3 and Vit D are structural gaps.'
     },
     macros: [
-      { name:"Protein", value:"168g", target:"/ 165g", pct:102, status:"good" },
-      { name:"Carbs",   value:"147g", target:"/ 130g", pct:113, status:"warn" },
-      { name:"Fat",     value:"94g",  target:"/ 70g",  pct:135, status:"warn" }
+      { name:"Protein", value:"159g", target:"/ 165g", pct:96,  status:"good" },
+      { name:"Carbs",   value:"149g", target:"/ 130g", pct:114, status:"warn" },
+      { name:"Fat",     value:"108g", target:"/ 70g",  pct:154, status:"bad"  }
     ],
     coverage: [
-      { status:"warn", name:"Calories",          coverage:"2,048 / 1,800 (114%)",  note:"248 kcal over rest target — avocado adds density" },
-      { status:"good", name:"Protein",            coverage:"168g / 165g (102%)",    note:"Tuna 64.8g, 2x whey 50g, eggs 22g" },
-      { status:"warn", name:"Carbs",              coverage:"147g / 130g (113%)",    note:"Rice, oat, banana, avocado, bread" },
-      { status:"warn", name:"Fat",                coverage:"94g / 70g (135%)",      note:"Avocado 23g + eggs 19g + 10g olive oil + nuts stacking" },
-      { status:"good", name:"Fiber",              coverage:"27g / 25g (108%)",      note:"Avocado adds 10.5g — fixed from bad" },
-      { status:"warn", name:"Gas / bloat risk",   coverage:"Low-moderate",          note:"Cooked onion OK; milk 35g small amount" },
-      { status:"warn", name:"Protocol adherence", coverage:"Moderate",              note:"Milk is dairy (gas rule); dinner at 22h is within 22h max" },
-      { status:"warn", name:"Folate B9",          coverage:"~343µg / 400µg (86%)", note:"Avocado adds 127µg — jumps from bad (54%) to warn" },
+      { status:"bad",  name:"Calories",          coverage:"2,136 / 1,800 (119%)",  note:"336 kcal over rest target — kefta 80/20 is very dense" },
+      { status:"good", name:"Protein",            coverage:"159g / 165g (96%)",     note:"Kefta 50g, 2x whey 50g, eggs 22g, avocado 3g, bread 9g" },
+      { status:"warn", name:"Carbs",              coverage:"149g / 130g (114%)",    note:"Bread total 105g, oat, banana, avocado, veggies" },
+      { status:"bad",  name:"Fat",                coverage:"108g / 70g (154%)",     note:"Kefta 37.5g + avocado 23g + eggs 19g + olive oil 5g + nuts 5g" },
+      { status:"warn", name:"Fiber",              coverage:"30g / 25g (120%)",      note:"Avocado 10.5g + bread 70g adds 4.2g + veg 5.5g + oat 3.7g + banana 3.1g" },
+      { status:"good", name:"Gas / bloat risk",   coverage:"Low",                   note:"Milk removed — dairy rule cleared; cooked onion OK" },
+      { status:"good", name:"Protocol adherence", coverage:"Good",                  note:"No dairy; dinner at 22h within 22h max; cumin in meals" },
+      { status:"warn", name:"Folate B9",          coverage:"~360µg / 400µg (90%)", note:"Avocado 127µg + kefta ~25µg + bread ~18µg — near good" },
       { status:"bad",  name:"Vitamin C",          coverage:"~58mg / 90mg (64%)",   note:"Avocado adds 16mg but still short — no citrus" },
       { status:"good", name:"Vitamin A",          coverage:"~1,134µg / 900µg",      note:"Carrot 835µg + eggs 282µg — strong" }
     ],
     good: [
-      "Protein at 102% — tuna + 2x whey + eggs locked in",
-      "Fiber fixed to 108% (good) — avocado's 10.5g does the work",
-      "Folate B9 jumps from bad (54%) to warn (86%) — avocado adds 127µg",
-      "Magnesium, copper, potassium all improved significantly"
+      "Zinc: kefta 10.5mg — jumps from warn (70%) to good (161%)",
+      "Iron: kefta 4.75mg — jumps from warn (90%) to good (127%)",
+      "No dairy — gas rule fully cleared (milk removed)",
+      "Protein at 96% — kefta + 2x whey + eggs solid"
     ],
     bad: [
-      "Calories 248 kcal over rest-day target — avocado adds density",
-      "Fat at 135% (warn) — raw olive oil + avocado + eggs stack up",
-      "Milk is dairy — small amount (35g) but still a gas-rule flag",
-      "Vitamin C at 64% still bad — no citrus today"
+      "Fat at 154% (bad) — kefta 80/20 adds 37.5g; main flag of the day",
+      "Calories 336 over rest target — kefta dense (540 kcal per 250g)",
+      "Omega-3: tuna removed, kefta has near-zero EPA/DHA — major gap",
+      "Vitamin D: tuna was primary source — now near zero (eggs only, 1.8µg)"
     ],
     loggedItems: [
       "Black coffee + 1 tsp sugar",
@@ -289,12 +289,12 @@ const DATA = {
       "4 eggs fried with 5g olive oil",
       "Raw olive oil 5g",
       "Mint tea + 1 tsp sugar",
-      "Oat 35g + milk Jaouda sans lactose 35g",
+      "Oat 35g + water",
       "1 scoop protein powder",
       "1 banana",
       "1 avocado (235g whole, ~157g flesh)",
-      "Brown rice boiled (35g raw)",
-      "Thon Isabel 3 boxes (oil removed)",
+      "Kefta 80/20 250g",
+      "Khobz complet 70g",
       "300g légume sauté (carrot, courgette, onion)",
       "Black coffee · Water 1L",
       "1 scoop protein powder",
@@ -302,35 +302,35 @@ const DATA = {
       "10g mixed nuts (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"168g/165g (102%)",       note:"Tuna 64.8g, 2x whey 50g, eggs 22g, avocado 3g" },
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"159g/165g (96%)",        note:"Kefta 50g, 2x whey 50g, eggs 22g, avocado 3g, bread 9g" },
       { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L/3L (100%)",            note:"1L morning, 1L midday, 1L evening — protocol met" },
-      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"good", coverage:"~27g/25g (108%)",        note:"Avocado 10.5g + veg 5.5g + oat 3.7g + banana 3.1g" },
-      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~1.3g/2g (65%)",         note:"Tuna EPA+DHA ~0.8g, avocado ALA 0.17g, walnuts 0.3g" },
-      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~8.5µg/15µg (57%)",     note:"Tuna 6.7µg, eggs 1.8µg — structural gap without fish daily" },
-      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~9.9mg/11mg (90%)",      note:"Eggs 3.1mg, tuna 2.4mg, oat 1.6mg, avocado 0.9mg" },
-      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",          status:"good", coverage:"~10µg/2.4µg (417%+)",   note:"Tuna 7.2µg + eggs 1.8µg — way over target" },
-      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"good", coverage:"~361mg/400mg (90%)",    note:"Avocado adds 45mg — total improved to good range" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~609mg/1000mg (61%)",   note:"Perly 204mg, whey ~220mg, eggs 99mg, milk 40mg" },
-      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~7.7mg/11mg (70%)",     note:"Avocado adds 1mg — improved from bad (61%) to warn" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"warn", coverage:"~3614mg/4700mg (77%)",  note:"Avocado 762mg is huge — total up from bad (61%) to warn" },
-      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"warn", coverage:"~343µg/400µg (86%)",    note:"Avocado adds 127µg — jumps from bad (54%) to strong warn" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"warn", coverage:"~30g/25g (120%)",        note:"Avocado 10.5g + bread 70g adds 4.2g + veg 5.5g + oat 3.7g + banana 3.1g" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"bad",  coverage:"~0.5g/2g (25%)",         note:"Tuna removed — kefta near-zero EPA/DHA; walnuts 0.3g, avocado 0.17g only" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1.9µg/15µg (13%)",     note:"Tuna removed — eggs 1.8µg only; critical structural gap" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~14mg/11mg (127%)",      note:"Kefta adds 4.75mg — jumps from warn (90%) to good; eggs 3.1mg, oat 1.6mg" },
+      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",          status:"good", coverage:"~8µg/2.4µg (333%+)",    note:"Kefta 5.25µg + eggs 1.8µg — reduced from tuna but still well over" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"good", coverage:"~361mg/400mg (90%)",    note:"Avocado adds 45mg — total in good range" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~570mg/1000mg (57%)",   note:"Perly 204mg, whey ~220mg, eggs 99mg — milk removed" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~17.7mg/11mg (161%)",   note:"Kefta 10.5mg — jumps from warn (70%) to good (161%); avocado 1mg" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"warn", coverage:"~3614mg/4700mg (77%)",  note:"Avocado 762mg dominant — structural gap from no fish" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"good", coverage:"~360µg/400µg (90%)",    note:"Avocado 127µg + kefta ~25µg + bread ~18µg — near target" },
       { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~58mg/90mg (64%)",      note:"Avocado adds 16mg but still short — no citrus" },
       { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"good", coverage:"~1134µg/900µg (126%)",  note:"Carrot 835µg + eggs 282µg — exceeds target" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~110µg/150µg (73%)",    note:"Eggs ~100µg, milk 5µg, perly 5µg" },
-      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~7.3mg/15mg (49%)",    note:"Avocado adds 3.25mg — improved from 27% to 49%" },
-      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~59µg/120µg (49%)",     note:"Avocado adds 33µg — improved from 22% to 49%" },
-      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~3.4mg/1.7mg (200%)",   note:"Tuna 2.2mg, avocado 0.4mg, banana 0.4mg — high" },
-      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~270µg/55µg (490%+)",   note:"Tuna 216µg + eggs 53µg — exceptional" },
-      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.87mg/1.2mg (73%)",  note:"Oat 0.27mg, bread 0.14mg, avocado 0.11mg, eggs 0.12mg" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~105µg/150µg (70%)",    note:"Eggs ~100µg, perly 5µg — milk removed (was minor)" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~7.3mg/15mg (49%)",    note:"Avocado adds 3.25mg — structural gap" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~59µg/120µg (49%)",     note:"Avocado adds 33µg — improved from 22% to 49%; kiwi will fix further" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~2.2mg/1.7mg (129%)",   note:"Kefta ~1mg + avocado 0.4mg + banana 0.4mg — tuna removed but still good" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~99µg/55µg (180%)",     note:"Tuna removed (was 216µg) — kefta 45µg + eggs 53µg — still well over" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"warn", coverage:"~1.0mg/1.2mg (83%)",   note:"Bread 70g adds 0.2mg — improved from bad (73%) to warn" },
       { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~2.1mg/1.3mg (162%)",  note:"Eggs 0.83mg, whey ~0.6mg, perly 0.17mg, avocado 0.2mg" },
-      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~35.7mg/16mg (223%)",  note:"Tuna 31mg + avocado 2.7mg dominant" },
-      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"good", coverage:"~0.85mg/0.9mg (94%)",  note:"Avocado adds 0.3mg — jumped from bad (61%) to good" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~17.2mg/16mg (108%)",  note:"Tuna 31mg removed — kefta 12.5mg takes over; avocado 2.7mg" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"good", coverage:"~0.85mg/0.9mg (94%)",  note:"Avocado adds 0.3mg — good range maintained" },
       { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"good", coverage:"~538mg/550mg (98%)",   note:"Eggs 516mg + avocado 22mg — near perfect" },
       { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"warn", coverage:"1 serving (Perly)",    note:"Perly Nature — limited live cultures vs raib/lben" },
-      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"Moderate",             note:"Bread, tuna, eggs within normal home-cooked range" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"warn", coverage:"Moderate-high",        note:"Bread 105g total + kefta + eggs — elevated but within range" },
       { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate",             note:"Avocado + olive oil polyphenols, banana, veggies" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1702mg/700mg (243%)", note:"Tuna, eggs, whey, oat, avocado — abundant" },
-      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~4.6mg/2.3mg (200%)", note:"Oat 1.72mg, bread 0.77mg, rice 0.63mg dominant" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1800mg/700mg (257%)", note:"Kefta + eggs + whey + oat + avocado — abundant" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~5.4mg/2.3mg (235%)", note:"Oat 1.72mg, bread total 2.1mg — rice removed, bread compensates" },
       { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"warn", coverage:"~25µg/35µg (71%)",    note:"Onion 20µg, oat 2.8µg — structural gap" },
       { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"good", coverage:"~6.9mg/5mg (138%)",   note:"Avocado 2.3mg + eggs 2.5mg — excellent" },
       { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"good", coverage:"~42µg/30µg (140%)",   note:"4 eggs primary source — well over target" }
@@ -339,50 +339,51 @@ const DATA = {
 
   optimized: {
     verdict: {
-      status: "warn",
+      status: "bad",
       icon: "🔧",
-      text_html: 'Refined — fat down to <span class="kcal">129%</span> (raw olive oil removed). Kiwi fixes Vitamin C (129%) and boosts Vit K.'
+      text_html: 'Refined — fat down to <span class="kcal">148%</span> (oil removed, still bad). Kiwi fixes Vitamin C (129%) and boosts Vit K. Fat structural from kefta 80/20.'
     },
     macros: [
-      { name:"Protein", value:"168g", target:"/ 165g", pct:102, status:"good" },
-      { name:"Carbs",   value:"159g", target:"/ 130g", pct:122, status:"warn" },
-      { name:"Fat",     value:"90g",  target:"/ 70g",  pct:129, status:"warn" }
+      { name:"Protein", value:"159g", target:"/ 165g", pct:97,  status:"good" },
+      { name:"Carbs",   value:"160g", target:"/ 130g", pct:123, status:"warn" },
+      { name:"Fat",     value:"103g", target:"/ 70g",  pct:148, status:"bad"  }
     ],
     coverage: [
-      { status:"warn", name:"Calories",          coverage:"2,053 / 1,800 (114%)",  note:"Kiwi adds 49 kcal vs oil saving 44 — near neutral" },
-      { status:"good", name:"Protein",           coverage:"168g / 165g (102%)",    note:"Unchanged from original" },
-      { status:"warn", name:"Carbs",             coverage:"159g / 130g (122%)",    note:"Kiwi adds 11.8g carbs — pushing further over" },
-      { status:"warn", name:"Fat",               coverage:"90g / 70g (129%)",      note:"Improved from 135% — oil removed, avocado stays" },
-      { status:"warn", name:"Fiber",             coverage:"30g / 25g (118%)",      note:"Kiwi adds 2.4g — at top of 25-30g protocol range" },
-      { status:"warn", name:"Gas / bloat risk",  coverage:"Low-moderate",          note:"Same — cooked onion OK, milk 35g small" },
-      { status:"good", name:"Protocol adherence",coverage:"Good",                  note:"Dinner at 21h (within 22h max), cumin in meals, no raw veg main" },
-      { status:"good", name:"Folate B9",         coverage:"~362µg / 400µg (91%)", note:"Kiwi adds 20µg — crosses from warn into good" },
-      { status:"good", name:"Vitamin C",         coverage:"~116mg / 90mg (129%)", note:"Kiwi adds 74mg — fixed from bad (64%) to good" },
-      { status:"warn", name:"Vitamin K",         coverage:"~88µg / 120µg (73%)",  note:"Kiwi adds 32µg — improved from bad (49%) to near-warn" }
+      { status:"bad",  name:"Calories",          coverage:"2,140 / 1,800 (119%)",  note:"340 kcal over — kiwi adds 49, oil saves 45, near neutral" },
+      { status:"good", name:"Protein",           coverage:"159g / 165g (97%)",     note:"Unchanged — kefta + whey + eggs" },
+      { status:"warn", name:"Carbs",             coverage:"160g / 130g (123%)",    note:"Kiwi adds 11.8g carbs — pushing further over" },
+      { status:"bad",  name:"Fat",               coverage:"103g / 70g (148%)",     note:"Oil removed helps (−5g) but kefta 37.5g is structural" },
+      { status:"warn", name:"Fiber",             coverage:"32g / 25g (130%)",      note:"Kiwi adds 2.4g — slightly over protocol 25-30g range" },
+      { status:"good", name:"Gas / bloat risk",  coverage:"Low",                   note:"Same — no dairy, cooked onion OK" },
+      { status:"good", name:"Protocol adherence",coverage:"Good",                  note:"Dinner at 21h (within 22h max), cumin in meals, no dairy" },
+      { status:"good", name:"Folate B9",         coverage:"~380µg / 400µg (95%)", note:"Kiwi adds 20µg — very close to target" },
+      { status:"good", name:"Vitamin C",         coverage:"~132mg / 90mg (147%)", note:"Kiwi adds 74mg — fixed from bad (64%) to good" },
+      { status:"warn", name:"Vitamin K",         coverage:"~91µg / 120µg (76%)",  note:"Kiwi adds 32µg — improved from bad (49%) to warn" }
     ],
     good: [
-      "Fat reduced from 135% to 129% — raw olive oil removed (avocado covers)",
-      "Vitamin C: bad (64%) → good (129%) — kiwi is the fix",
-      "Folate B9 crosses into good (91%) — kiwi pushes it over",
-      "Protocol compliant: dinner at 21h (within 22h max), cumin used"
+      "Fat drops from 154% to 148% — oil removed (structural limit from kefta)",
+      "Vitamin C: bad (64%) → good (147%) — kiwi is the fix",
+      "Folate B9 reaches 95% — kiwi pushes it close to target",
+      "Protocol compliant: dinner at 21h, no dairy, cumin used"
     ],
     bad: [
-      "Calories still 253 over rest-day target — avocado adds density",
-      "Carbs at 122% — avocado + kiwi push carbs further over",
-      "Fat at 129% (warn) — structural from avocado, can't avoid it"
+      "Fat still at 148% (bad) — kefta 80/20 is structural, oil removal not enough",
+      "Calories still 340 over rest-day target",
+      "Omega-3 remains near-zero — structural gap without fish",
+      "Vitamin D remains near-zero — structural gap without fish"
     ],
     loggedItems: [
       "Black coffee + 1 tsp sugar",
       "Whole wheat bread 35g",
       "4 eggs fried with 5g olive oil",
-      { text:"Raw olive oil removed — avocado covers healthy fat", changed:true },
+      { text:"Raw olive oil removed — kefta already loads fat", changed:true },
       "Mint tea + 1 tsp sugar",
-      "Oat 35g + milk Jaouda sans lactose 35g",
+      "Oat 35g + water",
       "1 scoop protein powder",
       "1 banana",
       "1 avocado (235g whole, ~157g flesh)",
-      "Brown rice boiled (35g raw)",
-      "Thon Isabel 3 boxes (oil removed)",
+      "Kefta 80/20 250g",
+      "Khobz complet 70g",
       "300g légume sauté (carrot, courgette, onion)",
       "Black coffee · Water 1L",
       "1 scoop protein powder",
@@ -391,35 +392,35 @@ const DATA = {
       { text:"1 kiwi", changed:true }
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"168g/165g (102%)",       note:"Unchanged — tuna, whey, eggs, avocado" },
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"159g/165g (97%)",        note:"Unchanged from original" },
       { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L/3L (100%)",            note:"Unchanged — protocol met" },
-      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"warn", coverage:"~30g/25g (118%)",        note:"Kiwi adds 2.4g — at top of 25-30g protocol range" },
-      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~1.3g/2g (65%)",         note:"Unchanged — tuna, avocado, walnuts" },
-      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~8.5µg/15µg (57%)",     note:"Structural gap — unchanged" },
-      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"warn", coverage:"~9.9mg/11mg (90%)",      note:"Unchanged — near good range" },
-      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",          status:"good", coverage:"~10µg/2.4µg (417%+)",   note:"Unchanged — tuna + eggs well over" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"warn", coverage:"~32g/25g (130%)",        note:"Kiwi adds 2.4g — slightly over 25-30g protocol range" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"bad",  coverage:"~0.5g/2g (25%)",         note:"Unchanged — structural gap without fish" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",        status:"bad",  coverage:"~1.9µg/15µg (13%)",     note:"Structural gap — unchanged" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~14mg/11mg (127%)",      note:"Unchanged — kefta contribution maintained" },
+      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",          status:"good", coverage:"~8µg/2.4µg (333%+)",    note:"Unchanged — kefta + eggs well over" },
       { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"good", coverage:"~361mg/400mg (90%)",    note:"Unchanged — avocado contribution maintained" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~609mg/1000mg (61%)",   note:"Structural gap — unchanged" },
-      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~7.7mg/11mg (70%)",     note:"Unchanged — avocado contribution maintained" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"warn", coverage:"~3863mg/4700mg (82%)",  note:"Kiwi adds 249mg — further improved to 82%" },
-      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"good", coverage:"~362µg/400µg (91%)",    note:"Kiwi adds 20µg — crosses into good (91%)" },
-      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"good", coverage:"~116mg/90mg (129%)",    note:"Kiwi adds 74mg — fixed from bad (64%) to good" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~570mg/1000mg (57%)",   note:"Structural gap — unchanged" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"good", coverage:"~17.7mg/11mg (161%)",   note:"Unchanged — kefta contribution maintained" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"warn", coverage:"~3863mg/4700mg (82%)",  note:"Kiwi adds 249mg — improved to 82%" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"good", coverage:"~380µg/400µg (95%)",    note:"Kiwi adds 20µg — very close to target" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"good", coverage:"~132mg/90mg (147%)",    note:"Kiwi adds 74mg — fixed from bad (64%) to good" },
       { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"good", coverage:"~1134µg/900µg (126%)",  note:"Unchanged — carrot dominant" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~110µg/150µg (73%)",    note:"Unchanged — eggs primary" },
-      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~7.7mg/15mg (51%)",    note:"Kiwi 1.2mg, minus olive oil 0.7mg — slight net gain" },
-      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"warn", coverage:"~88µg/120µg (73%)",     note:"Kiwi adds 32µg — improved from bad (49%) to warn (73%)" },
-      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~3.5mg/1.7mg (206%)",   note:"Kiwi adds 0.07mg — unchanged status" },
-      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~270µg/55µg (490%+)",   note:"Unchanged — tuna + eggs exceptional" },
-      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.87mg/1.2mg (73%)",  note:"Unchanged — structural gap without fortified foods" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~105µg/150µg (70%)",    note:"Unchanged — eggs primary" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~7.6mg/15mg (51%)",    note:"Kiwi 1.2mg, minus olive oil 0.7mg — slight net gain" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"warn", coverage:"~91µg/120µg (76%)",     note:"Kiwi adds 32µg — improved from bad (49%) to warn" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~2.3mg/1.7mg (135%)",   note:"Kiwi adds 0.07mg — unchanged status" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~99µg/55µg (180%)",     note:"Unchanged — kefta + eggs solid" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"warn", coverage:"~1.0mg/1.2mg (83%)",   note:"Unchanged — bread 70g maintained" },
       { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~2.1mg/1.3mg (162%)",  note:"Unchanged — eggs + whey strong" },
-      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~35.7mg/16mg (223%)",  note:"Unchanged — tuna dominant" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~17.2mg/16mg (108%)",  note:"Unchanged — kefta contribution" },
       { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"good", coverage:"~0.85mg/0.9mg (94%)",  note:"Unchanged — avocado contribution good" },
       { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"good", coverage:"~538mg/550mg (98%)",   note:"Unchanged — eggs + avocado near target" },
       { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"warn", coverage:"1 serving (Perly)",    note:"Unchanged — limited cultures" },
-      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"Moderate",             note:"Unchanged — within normal range" },
-      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate+",            note:"Kiwi polyphenols add to avocado + olive oil" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1702mg/700mg (243%)", note:"Unchanged — abundant" },
-      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~4.6mg/2.3mg (200%)", note:"Unchanged — oat dominant" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"warn", coverage:"Moderate-high",        note:"Unchanged — bread + kefta elevated" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Moderate+",            note:"Kiwi polyphenols add to avocado — oil removed" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1800mg/700mg (257%)", note:"Unchanged — abundant" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"good", coverage:"~5.4mg/2.3mg (235%)", note:"Unchanged — oat + bread dominant" },
       { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"warn", coverage:"~25µg/35µg (71%)",    note:"Unchanged — onion primary" },
       { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"good", coverage:"~6.9mg/5mg (138%)",   note:"Unchanged — avocado + eggs excellent" },
       { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"good", coverage:"~42µg/30µg (140%)",   note:"Unchanged — 4 eggs primary" }
