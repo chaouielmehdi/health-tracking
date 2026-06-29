@@ -378,10 +378,10 @@
     padding:10px 10px;
     border-bottom:1px solid var(--panel-border);
   }
-  table.full-table th:first-child{width:28px;text-align:center;}
-  table.full-table th:nth-child(2){width:22%;}
-  table.full-table th:nth-child(3){width:25%;}
-  table.full-table th:nth-child(4){width:22%;}
+  table.full-table th:first-child{width:5%;text-align:center;}
+  table.full-table th:nth-child(2){width:18%;}
+  table.full-table th:nth-child(3){width:32%;}
+  table.full-table th:nth-child(4){width:45%;}
   table.full-table td{
     font-size:11.5px;
     line-height:1.4;
@@ -434,11 +434,11 @@
   Structure:
     DATA.date, DATA.dayType                — shared header
     DATA.routineText                       — raw input text verbatim (shown in monospace block)
+    DATA.optimizedText                     — same format as routineText but with changes applied (same line count)
     DATA.adjustments                       — list of original → optimized changes (always shown)
     DATA.original { verdict, macros, coverage, good, bad, loggedItems, fullTable }
     DATA.optimized { verdict, macros, coverage, good, bad, loggedItems, fullTable }
       coverage rows: always include Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
-      optimized.loggedItems: plain strings for unchanged, { text, changed:true } for changed items
 */
 const DATA = {
   date: "June 23, 2026",
@@ -462,6 +462,27 @@ const DATA = {
   · Mixed nuts 20g
   · 1 small kiwi
   · Jaouda 110g with 1 scoop protein
+
+01:00 — Sleep`,
+  optimizedText: `09:00 — Wake up
+13:00 — Black coffee (½ tsp sugar)
+
+14:00 — Breakfast
+  · 4 eggs & 1 scoop whey
+  · Khobz 35g + oat 35g
+  · 1 tbsp olive oil
+  · Mint tea (1 tsp sugar)
+
+18:00 — Lunch
+  · Vegetables 300g cooked
+  · Kefta 250g raw with 1 onion & rice 40g raw
+
+19:00 — Black coffee
+
+21:00 — Dinner
+  · Walnuts 20g
+  · 1 small kiwi
+  · Raib 150g with 1 scoop protein
 
 01:00 — Sleep`,
   adjustments: [
@@ -665,7 +686,15 @@ function render(v) {
   const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
 
   _texts.orig = DATA.routineText || '';
-  _texts.opt = DATA.optimized.loggedItems.map(i => typeof i === 'string' ? i : i.text).join('\n');
+  _texts.opt = DATA.optimizedText || '';
+
+  const origLines = (DATA.routineText || '').split('\n');
+  const optLines = (DATA.optimizedText || '').split('\n');
+  const optRendered = optLines.map((line, i) => {
+    const escaped = esc(line);
+    const changed = line !== (origLines[i] || '');
+    return (changed && line.trim()) ? `<span class="line-changed">⚡ ${escaped}</span>` : escaped;
+  }).join('\n');
 
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap">
@@ -673,12 +702,7 @@ function render(v) {
         <button class="routine-copy" onclick="doCopy(this,'orig')">copy</button>
       </div>`
     : `<div class="routine-block-wrap">
-        <div class="routine-pre">${DATA.optimized.loggedItems.map(i => {
-          const t = typeof i === 'string' ? i : i.text;
-          return (typeof i === 'object' && i.changed)
-            ? `<span class="line-changed">⚡ ${esc(t)}</span>`
-            : esc(t);
-        }).join('\n')}</div>
+        <div class="routine-pre">${optRendered}</div>
         <button class="routine-copy" onclick="doCopy(this,'opt')">copy</button>
       </div>`;
 

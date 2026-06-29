@@ -46,7 +46,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
      "date": "YYYY-MM-DD",
      "dayType": "rest|training",
      "routineText": "<raw input text verbatim>",
-     "optimizedText": "<optimized food list, one item per line>",
+     "optimizedText": "<same format as routineText — full routine with schedule/timestamps preserved, only the changed food lines replaced with their optimized versions>",
      "savedAt": "<ISO timestamp>"
    }
    ```
@@ -77,9 +77,10 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
    ```js
    const DATA = {
-     date,        // "Month DD, YYYY"
-     dayType,     // "Rest day" or "Training day"
-     routineText, // raw input text verbatim (the full routine Mehdi pasted)
+     date,          // "Month DD, YYYY"
+     dayType,       // "Rest day" or "Training day"
+     routineText,   // raw input text verbatim (the full routine Mehdi pasted)
+     optimizedText, // same format as routineText — full schedule preserved, only changed food lines replaced
 
      adjustments, // array of { from, to, reason } — the specific changes original → optimized
 
