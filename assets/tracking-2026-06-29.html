@@ -489,39 +489,39 @@ const DATA = {
 01:00 — Sleep`,
 
   adjustments: [
-    { from:"Olive oil 10g", to:"Olive oil 5g", reason:"Fat at 129% — halving the cooking oil saves 44 kcal and 5g fat, pulling fat closer to the good range" },
-    { from:"1 scoop protein powder", to:"2 scoops protein powder", reason:"Protein at 77% (warn) — a second scoop adds 25g clean protein, lifting it to 92% (good)" }
+    { from:"Olive oil 10g", to:"Olive oil 5g", reason:"Fat at 126% — halving the cooking oil saves 44 kcal and 5g fat, pulling fat closer to the good range" },
+    { from:"1 scoop protein powder", to:"2 scoops protein powder", reason:"Protein at 76% (warn) — a second scoop adds 25g clean protein, lifting it to 92% (good)" }
   ],
 
   original: {
     verdict: {
       status: "warn",
       icon: "⚖️",
-      text_html: 'Almost there — <span class="kcal">1,799 kcal</span> (−1 vs rest target). Calories spot on, but protein at 77% and fat at 129%.'
+      text_html: 'Almost there — <span class="kcal">1,769 kcal</span> (−31 vs rest target). Calories on target, but protein at 76% and fat at 126%.'
     },
     macros: [
-      { name:"Protein", value:"128g", target:"/ 165g", pct:77,  status:"warn" },
-      { name:"Carbs",   value:"123g", target:"/ 130g", pct:94,  status:"good" },
-      { name:"Fat",     value:"90g",  target:"/ 70g",  pct:129, status:"warn" }
+      { name:"Protein", value:"126g", target:"/ 165g", pct:76,  status:"warn" },
+      { name:"Carbs",   value:"122g", target:"/ 130g", pct:94,  status:"good" },
+      { name:"Fat",     value:"88g",  target:"/ 70g",  pct:126, status:"warn" }
     ],
     coverage: [
-      { status:"good", name:"Calories",           coverage:"1,799 / 1,800 (100%)", note:"Almost exactly on rest-day target — great" },
-      { status:"warn", name:"Protein",             coverage:"128g / 165g (77%)",    note:"Kefta 50g, perly 15.2g, whey 25g, eggs 16.5g, bread 9g — 37g short" },
-      { status:"good", name:"Carbs",               coverage:"123g / 130g (94%)",    note:"Rice, bread, perly, veg — solid, right in range" },
-      { status:"warn", name:"Fat",                 coverage:"90g / 70g (129%)",     note:"Kefta 37.5g + perly 12g + eggs 14.4g + olive oil 10g stack up" },
+      { status:"good", name:"Calories",           coverage:"1,769 / 1,800 (98%)", note:"31 kcal under rest-day target — well within good range" },
+      { status:"warn", name:"Protein",             coverage:"126g / 165g (76%)",   note:"Kefta 50g, whey 25g, perly 12.9g, eggs 16.5g, bread 9g — 39g short" },
+      { status:"good", name:"Carbs",               coverage:"122g / 130g (94%)",   note:"Rice, bread, perly, veg — solid, right in range" },
+      { status:"warn", name:"Fat",                 coverage:"88g / 70g (126%)",    note:"Kefta 37.5g + perly 10.2g + eggs 14.4g + olive oil 10g stack up" },
       { status:"bad",  name:"Fiber",               coverage:"~13g / 27g (48%)",     note:"Bread 4.2g, rice 2.5g, veg 3.6g, nuts 2g — well under target" },
       { status:"warn", name:"Gas / bloat risk",    coverage:"Moderate",             note:"Onion cooked ✓ — perly (dairy) is a potential trigger per protocol" },
       { status:"warn", name:"Protocol adherence",  coverage:"Fair",                 note:"Cumin ✓, dinner at 21h ✓, bread once ✓ — perly dairy is a don't (gas rule)" }
     ],
     good: [
-      "Calories exactly on rest-day target (1,799 / 1,800)",
+      "Calories on rest-day target (1,769 / 1,800)",
       "Carbs perfectly calibrated at 94% — rice + bread well-portioned",
       "Kefta + eggs cover B12, B6, iron, selenium very well",
       "Cumin included, onion cooked — respects gut protocol"
     ],
     bad: [
-      "Protein at 77% — 37g short of the 165g daily target",
-      "Fat at 129% — kefta + perly + eggs + oil all stack; trim one source",
+      "Protein at 76% — 39g short of the 165g daily target",
+      "Fat at 126% — kefta + perly + eggs + oil all stack; trim one source",
       "Fiber at 48% — no fruits, low-veg day",
       "Vitamin C very low — no citrus or kiwi today"
     ],
@@ -536,11 +536,11 @@ const DATA = {
       "Végétable sauté 200g (carrot, courgette, onion)",
       "Black coffee (no sugar)",
       "1 scoop whey protein (30g)",
-      "2 Jaouda Perly Nature (2×100g = 200g)",
+      "2 Jaouda Perly Nature (2×85g = 170g)",
       "Mixed nuts 20g (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"warn", coverage:"128g / 165g (77%)",       note:"Kefta 50g, whey 25g, perly 15.2g, eggs 16.5g, bread 9g, rice 5.2g" },
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"warn", coverage:"126g / 165g (76%)",       note:"Kefta 50g, whey 25g, perly 12.9g, eggs 16.5g, bread 9g, rice 5.2g" },
       { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",          note:"1L morning + 1L afternoon + 1L evening — target met" },
       { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~13g / 27g (48%)",        note:"Bread 4.2g, rice 2.5g, veg sauté 3.6g, onion 1.7g, nuts 2g" },
       { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~0.6g ALA / no EPA/DHA",  note:"Walnuts 6.67g only ALA source — no fatty fish today" },
@@ -548,29 +548,29 @@ const DATA = {
       { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~10.5mg / 11mg (95%)",    note:"Kefta 4.75mg, eggs 2.6mg, bread 1.8mg, nuts 1mg" },
       { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~7.1µg / 2.4µg (296%)",   note:"Kefta 5.25µg, eggs 1.32µg, perly minor contribution" },
       { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~191mg / 400mg (48%)",    note:"Kefta 62mg, bread 35mg, rice 31mg, nuts 36mg, eggs 16mg" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"warn", coverage:"~745mg / 1000mg (75%)",   note:"Perly 2×100g = 480mg (label), whey 100mg, eggs 90mg, bread 35mg" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"bad",  coverage:"~673mg / 1000mg (67%)",   note:"Perly 2×85g = 408mg (label), whey 100mg, eggs 90mg, bread 35mg" },
       { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~14mg / 11mg (130%)",     note:"Kefta 10.5mg dominant — slightly over target" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~2300mg / 4700mg (49%)",  note:"Kefta 875mg, perly 200mg, veg sauté 420mg, eggs 180mg" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~2300mg / 4700mg (49%)",  note:"Kefta 875mg, perly 170mg, veg sauté 420mg, eggs 180mg" },
       { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"bad",  coverage:"~167µg / 400µg (42%)",    note:"Eggs 75µg, veg sauté 55µg, bread 19µg — no leafy greens" },
       { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~26mg / 90mg (29%)",      note:"Courgette 14mg, onion 7mg, carrot 4mg — no citrus today" },
       { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~689µg / 900µg (77%)",    note:"Carrot 70g delivers ~584µg RAE — eggs add ~80µg" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~137µg / 150µg (91%)",    note:"Eggs 3 (~72µg), perly 200g (~32µg), salt ~30µg" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~132µg / 150µg (88%)",    note:"Eggs 3 (~72µg), perly 170g (~27µg), salt ~30µg" },
       { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~3.4mg / 15mg (23%)",     note:"Almonds 1.7mg, olive oil 1.4mg — not enough without more nuts" },
       { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~19µg / 120µg (16%)",     note:"Olive oil 6µg, carrot 9µg, courgette 3µg — no leafy greens" },
       { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~1.8mg / 1.7mg (106%)",   note:"Kefta 1.0mg, eggs 0.3mg, rice 0.15mg, veg 0.15mg" },
       { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues",  status:"good", coverage:"~92µg / 55µg (167%)",     note:"Eggs 45µg, kefta 30µg, bread 10µg, rice 7µg" },
       { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",          status:"bad",  coverage:"~0.7mg / 1.2mg (58%)",    note:"Bread 0.18mg, rice 0.18mg, kefta 0.15mg, nuts 0.1mg" },
-      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~1.6mg / 1.3mg (123%)",   note:"Eggs 0.78mg, perly 200g (0.3mg), whey 0.15mg, kefta 0.18mg" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",           status:"good", coverage:"~1.57mg / 1.3mg (121%)",  note:"Eggs 0.78mg, perly 170g (0.26mg), whey 0.15mg, kefta 0.18mg" },
       { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",           status:"good", coverage:"~16.3mg / 16mg (102%)",   note:"Kefta 12.5mg, rice 2.5mg, bread 1mg — on target" },
       { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",             status:"warn", coverage:"~0.79mg / 0.9mg (88%)",   note:"Nuts 0.26mg, kefta 0.22mg, rice 0.16mg, bread 0.15mg" },
       { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",    status:"good", coverage:"~575mg / 550mg (105%)",   note:"Eggs 387mg (dominant), kefta 187mg — on target" },
       { n:25, nutrient:"Probiotics",    impact:"Poor gut health",                status:"warn", coverage:"Uncertain (perly)",        note:"Perly nature is fresh dairy — probiotic culture count unknown" },
       { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",             status:"good", coverage:"~990mg (moderate)",        note:"Bread 343mg, eggs 186mg, kefta 165mg, salt ~300mg" },
       { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",     status:"warn", coverage:"Low–moderate",            note:"Olive oil polyphenols, mint tea, carrot beta-carotene — no fruits" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1660mg / 700mg (237%)",  note:"Kefta 500mg, eggs 480mg, perly 200mg, whey 150mg, bread 130mg" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",   status:"good", coverage:"~1630mg / 700mg (233%)",  note:"Kefta 500mg, eggs 480mg, perly 170mg, whey 150mg, bread 130mg" },
       { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",    status:"warn", coverage:"~2.9mg / 2.3mg (126%)",   note:"Rice 1.47mg, bread 0.77mg, nuts 0.46mg — slightly above target" },
       { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",       status:"bad",  coverage:"~11µg / 35µg (31%)",      note:"Onion 4µg, rice 3µg, bread 2µg, eggs 2µg — structural gap" },
-      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~4.4mg / 5mg (88%)",      note:"Eggs 2.1mg, kefta 1.25mg, perly 0.4mg, rice 0.35mg, bread 0.3mg" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",          status:"warn", coverage:"~4.34mg / 5mg (87%)",     note:"Eggs 2.1mg, kefta 1.25mg, perly 0.34mg, rice 0.35mg, bread 0.3mg" },
       { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",      status:"good", coverage:"~30µg / 30µg (100%)",     note:"Eggs 3 (~10µg each) cover the daily target exactly" }
     ]
   },
@@ -579,18 +579,18 @@ const DATA = {
     verdict: {
       status: "warn",
       icon: "📈",
-      text_html: 'Improved — <span class="kcal">1,865 kcal</span> (+65 vs rest target). Protein hits good (92%), calories on target, fat still needs watch.'
+      text_html: 'Improved — <span class="kcal">1,835 kcal</span> (+35 vs rest target). Protein hits good (92%), calories on target, fat still needs watch.'
     },
     macros: [
-      { name:"Protein", value:"153g", target:"/ 165g", pct:92,  status:"good" },
-      { name:"Carbs",   value:"125g", target:"/ 130g", pct:96,  status:"good" },
-      { name:"Fat",     value:"86g",  target:"/ 70g",  pct:122, status:"warn" }
+      { name:"Protein", value:"151g", target:"/ 165g", pct:92,  status:"good" },
+      { name:"Carbs",   value:"124g", target:"/ 130g", pct:95,  status:"good" },
+      { name:"Fat",     value:"84g",  target:"/ 70g",  pct:120, status:"warn" }
     ],
     coverage: [
-      { status:"good", name:"Calories",           coverage:"1,865 / 1,800 (104%)", note:"65 kcal over — within good range (< 100 kcal off target)" },
-      { status:"good", name:"Protein",             coverage:"153g / 165g (92%)",    note:"+25g from 2nd scoop — enters the good range for the first time" },
-      { status:"good", name:"Carbs",               coverage:"125g / 130g (96%)",    note:"+2g from extra whey — exactly on target" },
-      { status:"warn", name:"Fat",                 coverage:"86g / 70g (122%)",     note:"Saved 5g with less oil — still elevated from kefta + perly + eggs stack" },
+      { status:"good", name:"Calories",           coverage:"1,835 / 1,800 (102%)", note:"35 kcal over — well within good range (< 100 kcal off target)" },
+      { status:"good", name:"Protein",             coverage:"151g / 165g (92%)",    note:"+25g from 2nd scoop — enters the good range for the first time" },
+      { status:"good", name:"Carbs",               coverage:"124g / 130g (95%)",    note:"+2g from extra whey — right on target" },
+      { status:"warn", name:"Fat",                 coverage:"84g / 70g (120%)",     note:"Saved 5g with less oil — still elevated from kefta + perly + eggs stack" },
       { status:"bad",  name:"Fiber",               coverage:"~13g / 27g (48%)",     note:"Unchanged — add a kiwi or apple daily to address this structurally" },
       { status:"warn", name:"Gas / bloat risk",    coverage:"Moderate",             note:"Perly dairy still present — swap for raib next time if bloating occurs" },
       { status:"warn", name:"Protocol adherence",  coverage:"Better",               note:"Protein now in good range, calories on target — perly dairy remains one concern" }
@@ -599,10 +599,10 @@ const DATA = {
       "Protein enters the good range (92%) — a second scoop is the easiest lever",
       "Calories stay within 100 kcal of rest-day target",
       "Carbs virtually on target at 96%",
-      "Calcium strong at 845mg thanks to perly + 2 scoops whey"
+      "Calcium at 773mg (77%) — perly 408mg + 2×whey 100mg each"
     ],
     bad: [
-      "Fat at 122% — kefta + perly + eggs is a dense fat stack; no quick fix without major food swap",
+      "Fat at 120% — kefta + perly + eggs is a dense fat stack; no quick fix without major food swap",
       "Fiber still at 48% — needs a daily fruit (kiwi, apple) to improve",
       "Vitamin C, vitamin D, folate: structural gaps this food list can't address"
     ],
@@ -617,11 +617,11 @@ const DATA = {
       "Végétable sauté 200g (carrot, courgette, onion)",
       "Black coffee (no sugar)",
       { text:"2 scoops whey protein (60g)", changed:true },
-      "2 Jaouda Perly Nature (2×100g = 200g)",
+      "2 Jaouda Perly Nature (2×85g = 170g)",
       "Mixed nuts 20g (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"153g / 165g (92%)",       note:"Original 128g + 25g from 2nd whey scoop — in the good range" },
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",          status:"good", coverage:"151g / 165g (92%)",       note:"Original 126g + 25g from 2nd whey scoop — in the good range" },
       { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",           status:"good", coverage:"3L / 3L (100%)",          note:"Unchanged — 3L target met" },
       { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",       status:"bad",  coverage:"~13g / 27g (48%)",        note:"Unchanged — no food swaps touched fiber sources" },
       { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",    status:"warn", coverage:"~0.6g ALA / no EPA/DHA",  note:"Unchanged — walnuts still the only ALA source" },
@@ -629,13 +629,13 @@ const DATA = {
       { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",                status:"good", coverage:"~10.5mg / 11mg (95%)",    note:"Unchanged — kefta + eggs cover iron well" },
       { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",          status:"good", coverage:"~7.2µg / 2.4µg (300%)",   note:"2nd whey adds ~0.1µg — still very well covered" },
       { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",             status:"bad",  coverage:"~191mg / 400mg (48%)",    note:"Unchanged — no food swap addresses magnesium" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"warn", coverage:"~845mg / 1000mg (85%)",   note:"2nd whey scoop adds ~100mg — approaching target with perly base" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",           status:"warn", coverage:"~773mg / 1000mg (77%)",   note:"Perly 408mg + 2×whey 200mg + eggs 90mg + bread 35mg — lower than expected" },
       { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",    status:"warn", coverage:"~14mg / 11mg (130%)",     note:"Unchanged — kefta still slightly over target" },
       { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",    status:"bad",  coverage:"~2300mg / 4700mg (49%)",  note:"Unchanged — structural gap on this food list" },
       { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",                status:"bad",  coverage:"~167µg / 400µg (42%)",    note:"Unchanged — no leafy greens in this plan" },
       { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",    status:"bad",  coverage:"~26mg / 90mg (29%)",      note:"Unchanged — add kiwi or orange to fix this" },
       { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",     status:"warn", coverage:"~689µg / 900µg (77%)",    note:"Unchanged — carrot 70g still the main source" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"good", coverage:"~144µg / 150µg (96%)",    note:"Unchanged — eggs + perly + salt cover iodine well" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",        status:"warn", coverage:"~132µg / 150µg (88%)",    note:"Eggs 72µg, perly 170g ~27µg, salt ~30µg — same as original" },
       { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",    status:"bad",  coverage:"~2.7mg / 15mg (18%)",     note:"Less olive oil (5g vs 10g) removes 0.72mg — slightly lower" },
       { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",            status:"bad",  coverage:"~16µg / 120µg (13%)",     note:"Unchanged — no leafy greens added" },
       { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",           status:"good", coverage:"~1.8mg / 1.7mg (106%)",   note:"Unchanged — kefta + eggs cover this well" },
