@@ -245,8 +245,7 @@ const DATA = {
 
   adjustments: [
     { from:"Raw olive oil 5g", to:"Removed — avocado covers healthy fat", reason:"Avocado adds 23g mono fat — keeping raw oil stacks fat to 135% warn; removing drops to 129%" },
-    { from:"No citrus / fruit at dinner", to:"Add 1 kiwi (~80g)", reason:"Vitamin C at 64% (bad) → 129% (good); bonus: Vit K +32µg, Folate +20µg → Folate hits 90% good" },
-    { from:"Dinner at 22:00", to:"Target 21:00 or earlier", reason:"Protocol rule: 'Dinner by 21h max' — gut rest & circadian rhythm" }
+    { from:"No citrus / fruit at dinner", to:"Add 1 kiwi (~80g)", reason:"Vitamin C at 64% (bad) → 129% (good); bonus: Vit K +32µg, Folate +20µg → Folate hits 90% good" }
   ],
 
   original: {
@@ -267,7 +266,7 @@ const DATA = {
       { status:"warn", name:"Fat",                coverage:"94g / 70g (135%)",      note:"Avocado 23g + eggs 19g + 10g olive oil + nuts stacking" },
       { status:"good", name:"Fiber",              coverage:"27g / 25g (108%)",      note:"Avocado adds 10.5g — fixed from bad" },
       { status:"warn", name:"Gas / bloat risk",   coverage:"Low-moderate",          note:"Cooked onion OK; milk 35g small amount" },
-      { status:"warn", name:"Protocol adherence", coverage:"Moderate",              note:"Dinner at 22h (rule: 21h max); milk is dairy (gas rule)" },
+      { status:"warn", name:"Protocol adherence", coverage:"Moderate",              note:"Milk is dairy (gas rule); dinner at 22h is within 22h max" },
       { status:"warn", name:"Folate B9",          coverage:"~343µg / 400µg (86%)", note:"Avocado adds 127µg — jumps from bad (54%) to warn" },
       { status:"bad",  name:"Vitamin C",          coverage:"~58mg / 90mg (64%)",   note:"Avocado adds 16mg but still short — no citrus" },
       { status:"good", name:"Vitamin A",          coverage:"~1,134µg / 900µg",      note:"Carrot 835µg + eggs 282µg — strong" }
@@ -281,7 +280,7 @@ const DATA = {
     bad: [
       "Calories 248 kcal over rest-day target — avocado adds density",
       "Fat at 135% (warn) — raw olive oil + avocado + eggs stack up",
-      "Dinner at 22:00 violates protocol (21h max)",
+      "Milk is dairy — small amount (35g) but still a gas-rule flag",
       "Vitamin C at 64% still bad — no citrus today"
     ],
     loggedItems: [
@@ -342,7 +341,7 @@ const DATA = {
     verdict: {
       status: "warn",
       icon: "🔧",
-      text_html: 'Refined — fat down to <span class="kcal">129%</span> (raw olive oil removed). Kiwi fixes Vitamin C (129%) and boosts Vit K. Dinner moved to 21h.'
+      text_html: 'Refined — fat down to <span class="kcal">129%</span> (raw olive oil removed). Kiwi fixes Vitamin C (129%) and boosts Vit K.'
     },
     macros: [
       { name:"Protein", value:"168g", target:"/ 165g", pct:102, status:"good" },
@@ -356,7 +355,7 @@ const DATA = {
       { status:"warn", name:"Fat",               coverage:"90g / 70g (129%)",      note:"Improved from 135% — oil removed, avocado stays" },
       { status:"warn", name:"Fiber",             coverage:"30g / 25g (118%)",      note:"Kiwi adds 2.4g — at top of 25-30g protocol range" },
       { status:"warn", name:"Gas / bloat risk",  coverage:"Low-moderate",          note:"Same — cooked onion OK, milk 35g small" },
-      { status:"good", name:"Protocol adherence",coverage:"Good",                  note:"Dinner at 21h, cumin in meals, no raw veg main" },
+      { status:"good", name:"Protocol adherence",coverage:"Good",                  note:"Dinner at 21h (within 22h max), cumin in meals, no raw veg main" },
       { status:"good", name:"Folate B9",         coverage:"~362µg / 400µg (91%)", note:"Kiwi adds 20µg — crosses from warn into good" },
       { status:"good", name:"Vitamin C",         coverage:"~116mg / 90mg (129%)", note:"Kiwi adds 74mg — fixed from bad (64%) to good" },
       { status:"warn", name:"Vitamin K",         coverage:"~88µg / 120µg (73%)",  note:"Kiwi adds 32µg — improved from bad (49%) to near-warn" }
@@ -365,7 +364,7 @@ const DATA = {
       "Fat reduced from 135% to 129% — raw olive oil removed (avocado covers)",
       "Vitamin C: bad (64%) → good (129%) — kiwi is the fix",
       "Folate B9 crosses into good (91%) — kiwi pushes it over",
-      "Protocol compliant: dinner at 21h, cumin used"
+      "Protocol compliant: dinner at 21h (within 22h max), cumin used"
     ],
     bad: [
       "Calories still 253 over rest-day target — avocado adds density",
