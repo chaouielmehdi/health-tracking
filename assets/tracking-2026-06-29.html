@@ -174,7 +174,7 @@ const DATA = {
 -----------------------
 | 14:00 — 🌅 Breakfast
 | — whole wheat bread 70g
-| — 4 eggs with olive oil 5g
+| — 3 eggs with olive oil 5g
 | — mint tea + 1 tsp of sugar
 | — cumin & salt
 -----------------------
@@ -199,14 +199,14 @@ const DATA = {
 -----------------------
 | 22:00 — 🌙 Dinner
 | — 2 scoops of protein powder
-| — 1 perly nature
+| — 2 perly nature
 | — 20g mixed nuts (almonds, walnuts, pistachios)
 -----------------------
 
 01:00 — Sleep`,
   adjustments: [
-    { from: "3 eggs", to: "4 eggs", reason: "Protein at 73% (bad) — 1 extra egg adds 5.5g protein and 63 kcal for minimal cost" },
-    { from: "1 scoop of protein powder", to: "2 scoops", reason: "Core fix — 2 scoops together with the extra egg push protein from bad (73%) to good (91%)" }
+    { from: "1 scoop of protein powder", to: "2 scoops", reason: "Protein at 73% (bad) — the quickest lever at dinner without changing breakfast" },
+    { from: "1 perly nature", to: "2 perly nature", reason: "+6.5g protein + calcium boost — pairs well with the extra whey scoop to reach 92% protein" }
   ],
   original: {
     verdict: { status: "warn", icon: "⚠️", text_html: 'Needs attention — <span class="kcal">1,674 kcal</span> (−126 vs rest target). Protein critically low at 73%.' },
@@ -284,78 +284,78 @@ const DATA = {
     ]
   },
   optimized: {
-    verdict: { status: "warn", icon: "⚡", text_html: 'Improved — <span class="kcal">1,847 kcal</span> (+47 vs rest target). Protein rescued to 91% — fiber still needs work.' },
+    verdict: { status: "warn", icon: "⚡", text_html: 'Improved — <span class="kcal">1,870 kcal</span> (+70 vs rest target). Protein rescued to 92% — fiber still needs work.' },
     macros: [
-      { name: "Protein", value: "151g", target: "/ 165g", pct: 91,  status: "good" },
-      { name: "Carbs",   value: "128g", target: "/ 130g", pct: 98,  status: "good" },
+      { name: "Protein", value: "152g", target: "/ 165g", pct: 92,  status: "good" },
+      { name: "Carbs",   value: "131g", target: "/ 130g", pct: 101, status: "good" },
       { name: "Fat",     value: "84g",  target: "/ 70g",  pct: 120, status: "warn" }
     ],
     coverage: [
-      { status: "good", name: "Calories",          coverage: "1,847 / 1,800 (103%)",  note: "Right on rest-day target (+47 kcal)" },
-      { status: "good", name: "Protein",            coverage: "151g / 165g (91%)",     note: "4 eggs + 2 scoops whey bring protein into good zone" },
-      { status: "good", name: "Carbs",              coverage: "128g / 130g (98%)",     note: "Rice, bread, veg — right on target" },
-      { status: "warn", name: "Fat",                coverage: "84g / 70g (120%)",      note: "4th egg + extra scoop push fat slightly over — acceptable" },
-      { status: "bad",  name: "Fiber",              coverage: "~15g / 25g (60%)",      note: "Structural gap — add 100g spinach to sauté for a real fix" },
+      { status: "good", name: "Calories",          coverage: "1,870 / 1,800 (104%)",  note: "Right on rest-day target (+70 kcal)" },
+      { status: "good", name: "Protein",            coverage: "152g / 165g (92%)",     note: "2 scoops whey + 2 perly bring protein into good zone" },
+      { status: "good", name: "Carbs",              coverage: "131g / 130g (101%)",    note: "Rice, bread, veg — right on target" },
+      { status: "warn", name: "Fat",                coverage: "84g / 70g (120%)",      note: "Kefta drives most of the fat — extra perly adds 5g more" },
+      { status: "bad",  name: "Fiber",              coverage: "~15g / 25g (60%)",      note: "Structural gap — add 100g spinach to sauté next time" },
       { status: "good", name: "Gas / bloat risk",   coverage: "Low",                   note: "No change to gas risk — all veg still cooked" },
       { status: "warn", name: "Protocol adherence", coverage: "Warn",                  note: "Dinner still at 22:00 — timing issue remains" }
     ],
     good: [
-      "Protein recovered to 91% — good zone",
-      "Calories land within 50 kcal of rest-day target",
-      "Carbs unchanged and on point (98%)",
-      "No new gas triggers introduced"
+      "Protein recovered to 92% — good zone, no breakfast change needed",
+      "Calories land within 70 kcal of rest-day target",
+      "Carbs right on point (101%)",
+      "Calcium boost — 2 perly natures add ~480mg"
     ],
     bad: [
       "Fiber still at 60% — add 100g spinach to sauté next time",
-      "Fat at 120% (warn) — kefta is high-fat, 4th egg adds more",
+      "Fat at 120% (warn) — kefta is the main driver, structural for this meal plan",
       "Dinner timing (22:00) remains a protocol breach"
     ],
     loggedItems: [
       "Black coffee + 1 tsp sugar",
       "Whole wheat bread 70g",
-      { text: "4 eggs with olive oil 5g", changed: true },
+      "3 eggs with olive oil 5g",
       "Mint tea + 1 tsp sugar",
       "Brown rice 70g raw",
       "Kefta 250g raw with 1/2 onion (~50g)",
       "300g legume sauté (carrot 100g, courgette 100g, onion 100g)",
       "Black coffee (no sugar)",
       { text: "2 scoops whey protein (60g)", changed: true },
-      "Perly nature 1 cup (85g)",
+      { text: "2 perly nature (170g)", changed: true },
       "20g mixed nuts (almonds, walnuts, pistachios)"
     ],
     fullTable: [
-      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",         status:"good", coverage:"151g / 165g (91%)",       note:"4 eggs 22g, whey x2 50g, kefta 50g, bread/rice/perly ~29g" },
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",         status:"good", coverage:"152g / 165g (92%)",       note:"3 eggs 16.5g, whey x2 50g, kefta 50g, perly x2 13g, bread/rice ~22g" },
       { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",          status:"good", coverage:"3L / 3L (100%)",          note:"Unchanged — 3L distributed through the day" },
       { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",      status:"bad",  coverage:"~15g / 25g (60%)",        note:"Same gap — consider adding 100g spinach to lunch sauté" },
       { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",   status:"warn", coverage:"~0.6g ALA / ~1.6g",       note:"Unchanged — walnuts 0.6g ALA, still no EPA/DHA" },
-      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",       status:"bad",  coverage:"~4µg / 15µg (27%)",       note:"4 eggs = ~4µg — slightly better, still a structural gap" },
-      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",               status:"warn", coverage:"~7mg / 11mg (64%)",        note:"Unchanged from original — kefta main source" },
-      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",         status:"good", coverage:"~7µg / 2.4µg (292%)",     note:"Kefta 5.25µg, 4 eggs 1.76µg, whey trace" },
-      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",            status:"warn", coverage:"~109mg / 400mg (27%)",     note:"4th egg adds ~9mg — marginal improvement" },
-      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",          status:"bad",  coverage:"~325mg / 1000mg (33%)",    note:"4th egg adds ~25mg — still well below target" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",       status:"bad",  coverage:"~3µg / 15µg (20%)",       note:"Same as original — 3 eggs only, structural gap without fish" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",               status:"warn", coverage:"~7mg / 11mg (64%)",        note:"Unchanged — kefta main source" },
+      { n:7,  nutrient:"Vitamin B12",   impact:"Nerve damage, fatigue",         status:"good", coverage:"~6.8µg / 2.4µg (283%)",   note:"Kefta 5.25µg, eggs 1.32µg, 2nd perly adds trace" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",            status:"warn", coverage:"~100mg / 400mg (25%)",     note:"Unchanged from original — structural gap" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",          status:"warn", coverage:"~504mg / 1000mg (50%)",    note:"2 perly natures 408mg + eggs 75mg + bread 20mg — big improvement" },
       { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",   status:"good", coverage:"~10.5mg / 11mg (95%)",     note:"Unchanged — kefta 10.5mg" },
-      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",   status:"bad",  coverage:"~1560mg / 4700mg (33%)",   note:"Unchanged — structural gap, no high-potassium add" },
-      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~188µg / 400µg (47%)",     note:"4th egg adds ~24µg — still no leafy greens" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",   status:"bad",  coverage:"~1560mg / 4700mg (33%)",   note:"Unchanged — structural gap" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"bad",  coverage:"~164µg / 400µg (41%)",     note:"Unchanged — no leafy greens added" },
       { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",   status:"warn", coverage:"~38mg / 90mg (42%)",       note:"Unchanged — veg sauté is the main source" },
-      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",    status:"good", coverage:"~955µg / 900µg (106%)",    note:"4th egg adds ~30µg — still well covered by carrot" },
-      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",       status:"warn", coverage:"~70µg / 150µg (47%)",      note:"4th egg adds ~15µg — marginal improvement" },
-      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",   status:"bad",  coverage:"~3.2mg / 15mg (21%)",      note:"4th egg adds trace — structural gap remains" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",    status:"good", coverage:"~935µg / 900µg (104%)",    note:"Unchanged — carrot covers the day" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",       status:"warn", coverage:"~65µg / 150µg (43%)",      note:"2nd perly adds ~10µg more iodine — marginal improvement" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",   status:"bad",  coverage:"~3mg / 15mg (20%)",        note:"Unchanged — structural gap" },
       { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",           status:"bad",  coverage:"~18µg / 120µg (15%)",      note:"Unchanged — no greens added" },
-      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",          status:"warn", coverage:"~1.2mg / 1.7mg (71%)",     note:"4th egg adds ~0.09mg — minor improvement" },
-      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues", status:"good", coverage:"~81µg / 55µg (147%)",      note:"4th egg adds 15µg, 2nd scoop adds ~5µg" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",          status:"warn", coverage:"~1.1mg / 1.7mg (65%)",     note:"Unchanged — kefta and eggs main sources" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues", status:"good", coverage:"~71µg / 55µg (129%)",      note:"Eggs 46µg, kefta 20µg, 2nd scoop adds ~5µg" },
       { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",         status:"warn", coverage:"~0.5mg / 1.2mg (42%)",     note:"Unchanged — bread and rice are the main sources" },
-      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",          status:"good", coverage:"~1.3mg / 1.3mg (100%)",    note:"4th egg + 2nd scoop push this to on-target" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",          status:"good", coverage:"~1.3mg / 1.3mg (100%)",    note:"2nd perly adds ~0.21mg — hits on-target alongside eggs and whey" },
       { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",          status:"warn", coverage:"~12.8mg / 16mg (80%)",     note:"Unchanged — kefta dominant source" },
       { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",            status:"bad",  coverage:"~0.35mg / 0.9mg (39%)",    note:"Unchanged — structural gap" },
-      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",   status:"good", coverage:"~516mg / 550mg (94%)",     note:"4th egg adds 129mg — 4 eggs nearly cover daily target" },
-      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",               status:"warn", coverage:"Low (perly nature)",       note:"Unchanged — fromage frais limited live cultures" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",   status:"warn", coverage:"~402mg / 550mg (73%)",     note:"Unchanged — 3 eggs give 387mg, perly adds minimal" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",               status:"warn", coverage:"Low (2× perly nature)",    note:"2 perly natures still fromage frais — limited live cultures" },
       { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",            status:"good", coverage:"Moderate",                 note:"Unchanged — within normal range" },
       { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",    status:"warn", coverage:"Moderate",                 note:"Unchanged — carrot, olive oil, mint tea" },
-      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",  status:"good", coverage:"~1480mg / 700mg (211%)",   note:"4th egg 180mg + 2nd scoop ~130mg push this higher" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",  status:"good", coverage:"~1430mg / 700mg (204%)",   note:"2nd perly adds ~130mg + 2nd scoop ~130mg — still well over" },
       { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",   status:"good", coverage:"~2.1mg / 2.3mg (91%)",     note:"Unchanged — rice and bread cover this well" },
       { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",      status:"bad",  coverage:"~9µg / 35µg (26%)",        note:"Unchanged — structural gap" },
-      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",         status:"warn", coverage:"~3.4mg / 5mg (68%)",       note:"4th egg + 2nd scoop add ~0.6mg combined" },
-      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",     status:"good", coverage:"~80µg / 30µg (267%)",      note:"4th egg yolk adds ~20µg — further above target" }
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",         status:"warn", coverage:"~3.1mg / 5mg (62%)",       note:"2nd scoop adds ~0.3mg — marginal improvement" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",     status:"good", coverage:"~60µg / 30µg (200%)",      note:"Unchanged — 3 egg yolks well above target" }
     ]
   }
 };
