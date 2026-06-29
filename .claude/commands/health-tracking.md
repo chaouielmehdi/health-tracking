@@ -25,6 +25,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    - **Unspecified food type** — e.g. "1 fruit", "some vegetables": don't assume the type, ask
    - **Ambiguous unit without a clear gram equivalent** — e.g. "½ onion", "2 eggs", "1 tsp sugar": ask for grams unless the food-reference entry's serving already covers it (e.g. "per egg (~44g)")
    - **Missing quantity** — a food listed with no amount at all: ask; Mehdi may reply with a serving size, brand portion, or count rather than grams/ml
+   - **Multiple variants in food-reference.json** — if a food name matches more than one entry (e.g. "kefta" matches both kefta 80/20 and kefta 90/10), always ask which variant before calculating; never default to one silently
 
    **Special quantity rules:**
    - **Weekly portions** (e.g. "olive oil 70g for the whole week"): divide by 7 to get the daily amount, and note it in loggedItems (e.g. "olive oil 10g/day (70g ÷ 7)")
