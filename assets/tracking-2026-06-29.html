@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tracking · Mehdi</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script src="../header.js"></script>
 <style>
   :root{
     --bg:#1A1D1F;
@@ -26,8 +27,10 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:28px;-webkit-font-smoothing:antialiased;}
+  #page-header{max-width:680px;margin:0 auto;}
+  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0;color:var(--text);}
+  #page-header h1 em{font-style:normal;color:var(--accent);}
   .app{max-width:680px;margin:0 auto;}
-  .header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--panel-border);}
   .header .label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim2);font-weight:600;}
   .header .date{font-family:var(--mono);font-size:13px;color:var(--text-dim2);}
   .version-toggle{display:flex;gap:5px;padding:4px;background:var(--panel);border:1px solid var(--panel-border);border-radius:12px;margin-bottom:20px;}
@@ -121,6 +124,12 @@
 </style>
 </head>
 <body>
+  <div id="page-header"
+    data-badge="Daily Report"
+    data-back-href="../routines.html"
+    data-back-label="Daily Routines"
+    data-deploy-path="../data/deploy.json">
+  </div>
   <div class="app" id="app"></div>
 <script>
 const DATA = {
@@ -418,10 +427,6 @@ function render(v) {
     </tr>
   `).join('');
   document.getElementById('app').innerHTML = `
-    <div class="header">
-      <div class="label">Tracking · Health Protocol</div>
-      <div class="date">${DATA.date} · ${DATA.dayType}</div>
-    </div>
     <div class="version-toggle">
       <button class="version-btn ${!isOpt ? 'v-active' : ''}" onclick="render('original')">Original</button>
       <button class="version-btn ${isOpt ? 'v-opt-active' : ''}" onclick="render('optimized')">⚡ Optimized</button>
@@ -455,6 +460,12 @@ function render(v) {
     <div class="footer-note">Mehdi's Health &amp; Body - Protocol</div>
   `;
 }
+// Set shared header title from DATA
+(function(){
+  var el=document.getElementById('page-header');
+  if(el)el.dataset.title=DATA.date+' &middot; '+DATA.dayType;
+})();
+
 render();
 </script>
 </body>
