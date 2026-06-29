@@ -3,7 +3,7 @@
     "title": "Health & Body Food Reference",
     "updated": "2026-06-29"
   },
-  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment"],
+  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
     {
       "id": "whey-iso100-100g",
@@ -855,6 +855,22 @@
       "fiber": 3.5,
       "extra": [
         {"name": "Sodium", "value": "5mg"}
+      ]
+    },
+    {
+      "id": "jaouda-perly-nature",
+      "emoji": "🧀",
+      "name": "Jaouda Perly Nature (fromage frais)",
+      "note": "Plain fresh cheese — Jaouda brand, 1 cup = 100g",
+      "category": "Dairy",
+      "serving": "per 100g (1 cup)",
+      "kcal": 101,
+      "protein": 7.6,
+      "carbs": 4.2,
+      "fat": 6.0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "240mg"}
       ]
     }
   ]
