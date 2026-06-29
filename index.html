@@ -211,6 +211,7 @@
       <button class="notes-copy" id="notes-copy">copy</button>
     </div>
     <textarea class="notes-editor loading" id="notes-editor" rows="40" spellcheck="false" placeholder="Loading last routine..."></textarea>
+    <span class="notes-save" id="notes-save">saved</span>
   </div>
 
   <div class="section" id="s-history"></div>
@@ -356,6 +357,17 @@
       .then(r=>r.json())
       .then(d=>{if(d&&d.routineText)el.value=d.routineText;el.classList.remove('loading');el.placeholder='Write your daily routine here...';})
       .catch(()=>{el.classList.remove('loading');el.placeholder='Write your daily routine here...';});
+    const ind=document.getElementById('notes-save');
+    let t;
+    el.addEventListener('input',()=>{
+      clearTimeout(t);
+      ind.classList.remove('visible');
+      t=setTimeout(()=>{
+        localStorage.setItem('health-routine-draft',el.value);
+        ind.classList.add('visible');
+        setTimeout(()=>ind.classList.remove('visible'),1500);
+      },600);
+    });
     copyBtn.addEventListener('click',()=>{
       navigator.clipboard.writeText(el.value).then(()=>{
         copyBtn.textContent='copied!';
