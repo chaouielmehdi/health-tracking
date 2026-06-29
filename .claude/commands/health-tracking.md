@@ -21,10 +21,19 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 3. **Calculate macros precisely.** Use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Read `data/food-reference.json` for nutritional values — use the `kcal`, `protein`, `carbs`, `fat`, `fiber` fields per food entry, scaled to the consumed quantity relative to the entry's `serving` field. For foods not found in `data/food-reference.json`, fall back to standard USDA values.
 
+   **Before calculating, stop and ask Mehdi if any of the following apply:**
+   - **Unspecified food type** — e.g. "1 fruit", "some vegetables": don't assume the type, ask
+   - **Ambiguous unit without a clear gram equivalent** — e.g. "½ onion", "2 eggs", "1 tsp sugar": ask for grams unless the food-reference entry's serving already covers it (e.g. "per egg (~44g)")
+   - **Missing quantity** — a food listed with no amount at all: ask; Mehdi may reply with a serving size, brand portion, or count rather than grams/ml
+
+   **Special quantity rules:**
+   - **Weekly portions** (e.g. "olive oil 70g for the whole week"): divide by 7 to get the daily amount, and note it in loggedItems (e.g. "olive oil 10g/day (70g ÷ 7)")
+   - **Weight state**: always match the weight to the food-reference entry's state — if the entry is per 100g raw, use the raw weight. Example: "kefta 250g raw" → use 250g against the raw reference values, never the cooked weight
+
    **Missing foods notification:** After calculating, if any food was not found in `data/food-reference.json`, list them at the end of your reply with their estimated USDA values (kcal, protein, carbs, fat, fiber per serving), and ask Mehdi if he wants to add them to `data/food-reference.json`.
 
 4. **Generate the optimized version.** After scoring the original day, produce a lightly-tweaked version that brings all macros as close to protocol targets as possible:
-   - Keep changes small and realistic — quantity adjustments, one swap, one addition or removal at most
+   - Keep changes small and realistic — 1–3 targeted changes max; when multiple macros are significantly off, it's fine to address each with its own tweak; prioritize the worst-status macro first
    - Ground every tweak in `data/protocol.json` rules, issues, or goals
    - Recalculate macros for the optimized version
    - Build the optimized food list: items that differ from the original get `{ "text": "...", "changed": true }`, unchanged items stay plain strings
