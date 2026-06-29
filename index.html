@@ -370,7 +370,17 @@
   · 3 dates — training days only
 
 01:00 — Sleep`;
-    el.value=localStorage.getItem(KEY)||DEFAULT;
+    const _saved=localStorage.getItem(KEY);
+    if(_saved){el.value=_saved;}
+    else{
+      el.value=DEFAULT;
+      fetch('data/routines-index.json')
+        .then(r=>r.json())
+        .then(idx=>{if(!idx||!idx.length)throw new Error();return fetch(`data/routine-${idx[0].date}.json`);})
+        .then(r=>r.json())
+        .then(d=>{if(d&&d.routineText)el.value=d.routineText;})
+        .catch(()=>{});
+    }
     copyBtn.addEventListener('click',()=>{
       navigator.clipboard.writeText(el.value).then(()=>{
         copyBtn.textContent='copied!';
