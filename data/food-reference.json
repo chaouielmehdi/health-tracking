@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-06-26"
+    "updated": "2026-06-29"
   },
-  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit"],
+  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment"],
   "foods": [
     {
       "id": "whey-iso100-100g",
@@ -777,6 +777,84 @@
       "fiber": 2,
       "extra": [
         {"name": "Sugar", "value": "4.9g"}
+      ]
+    },
+    {
+      "id": "sugar-white",
+      "emoji": "🍬",
+      "name": "Sugar (white, granulated)",
+      "note": "1 tsp ≈ 4g",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 387,
+      "protein": 0,
+      "carbs": 100,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sugar", "value": "100g"}
+      ]
+    },
+    {
+      "id": "black-coffee",
+      "emoji": "☕",
+      "name": "Black coffee",
+      "note": "Brewed, no sugar. 1 cup ≈ 240ml",
+      "category": "Drink",
+      "serving": "per 100ml",
+      "kcal": 1,
+      "protein": 0.1,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Caffeine", "value": "~40mg/100ml"}
+      ]
+    },
+    {
+      "id": "mint-tea",
+      "emoji": "🍵",
+      "name": "Mint tea (herbal, no sugar)",
+      "note": "Brewed fresh mint in water. 1 glass ≈ 200ml",
+      "category": "Drink",
+      "serving": "per 100ml",
+      "kcal": 1,
+      "protein": 0,
+      "carbs": 0.2,
+      "fat": 0,
+      "fiber": 0,
+      "extra": []
+    },
+    {
+      "id": "cigala-white-rice",
+      "emoji": "🍚",
+      "name": "White rice — Cigala (dry, raw)",
+      "note": "Long grain white rice, Cigala brand — values from USDA long grain white rice",
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 360,
+      "protein": 6.7,
+      "carbs": 79.3,
+      "fat": 0.6,
+      "fiber": 1.3,
+      "extra": [
+        {"name": "Sodium", "value": "1mg"}
+      ]
+    },
+    {
+      "id": "cigala-brown-rice",
+      "emoji": "🍚",
+      "name": "Brown rice — Cigala (dry, raw)",
+      "note": "Whole grain brown rice, Cigala brand — values from USDA brown rice",
+      "category": "Grain/Carb",
+      "serving": "per 100g",
+      "kcal": 367,
+      "protein": 7.5,
+      "carbs": 72.6,
+      "fat": 2.7,
+      "fiber": 3.5,
+      "extra": [
+        {"name": "Sodium", "value": "5mg"}
       ]
     }
   ]
