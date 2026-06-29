@@ -60,7 +60,11 @@
   </div>
   <p class="hero-sub">Every tracked day — routine log and nutrition report.</p>
 
-  <div id="days-list"></div>
+  <div id="days-list">
+    <div class="skel loading" style="height:80px;margin-bottom:16px"></div>
+    <div class="skel loading" style="height:80px;margin-bottom:16px"></div>
+    <div class="skel loading" style="height:80px"></div>
+  </div>
 </div>
 <script>
   fetch('data/routines-index.json?v='+Date.now())
@@ -83,7 +87,7 @@
         </div>`).join('');
     })
     .catch(()=>{
-      document.getElementById('days-list').innerHTML='<div class="empty-state">No days tracked yet.</div>';
+      document.getElementById('days-list').innerHTML='<div class="empty-state">Could not load routines.</div>';
     });
 </script>
 </body>
