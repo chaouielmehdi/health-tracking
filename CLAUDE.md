@@ -42,31 +42,9 @@ Two Claude skills handle the recurring workflows. Both live in `.claude/commands
 
 **Trigger:** Mehdi says "track my day", pastes his Today's Routine text, or gives a food list asking for feedback/analysis.
 
-**What it does:**
-1. Reads `data/protocol.json` for targets/rules
-2. Reads `data/food-reference.json` for nutritional values; falls back to USDA for unlisted foods
-3. Asks for clarification before calculating if quantities are ambiguous (missing amounts, variant choices, unspecified food types)
-4. Calculates macros precisely via a Python script — never eyeballed
-5. Produces an "original" analysis and an "optimized" version (1–3 targeted tweaks max)
-6. Saves `data/routine-YYYY-MM-DD.json`, updates `data/routines-index.json`
-7. Renders `assets/tracking-YYYY-MM-DD.html` from the template
-8. Commits on current branch → pushes → creates PR → merges to `main`
-
-**Status thresholds:** Protein/Carbs good = 90–110% of target; Fat good = 85–115%; Calories good = within 100 kcal.
-
 ### `/health-food-reference` — Add Food to Database
 
 **Trigger:** Mehdi sends a nutrition label photo or describes a product asking to add it to the reference.
-
-**What it does:**
-1. Extracts all values from the label/text
-2. Web-searches the exact brand + product to fill gaps and cross-check
-3. Stops and asks Mehdi if any value conflicts meaningfully between label and web source
-4. Appends to `data/food-reference.json` via `mcp__github__push_files` on a branch `food/add-{slug}` → PR → immediate squash merge to `main`
-5. One food per call; never modifies existing entries unless explicitly asked
-
-**Food entry schema:** `id`, `emoji`, `name`, `note`, `category`, `serving`, `kcal`, `protein`, `carbs`, `fat`, `fiber`, optional `extra: [{name, value}]`.  
-Valid categories: `Supplement`, `Poultry`, `Meat`, `Fish`, `Egg`, `Grain/Carb`, `Fat/Nut`, `Vegetable`, `Fruit`.
 
 ## Key Conventions
 
