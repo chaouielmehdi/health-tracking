@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal health & nutrition tracking system for Mehdi (Casablanca, 32 yo, 185 cm, ~75 kg). A fully static site deployed on GitHub Pages — no build step, no framework, no package manager. All pages are plain HTML/CSS/JS; all data lives in JSON files under `data/`.
+Personal health & nutrition tracking system. A fully static site deployed on GitHub Pages — no build step, no framework, no package manager. All pages are plain HTML/CSS/JS; all data lives in JSON files under `data/`.
 
 The site has three pages:
 - `index.html` — dashboard: profile, goals, protocol, today's routine editor, history
