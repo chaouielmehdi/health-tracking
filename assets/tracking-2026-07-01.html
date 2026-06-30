@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking · Mehdi</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script src="../header.js"></script>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --warn-soft:rgba(217,160,91,0.14);
+    --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.14);
+    --good:#7FAE8E;
+    --good-soft:rgba(127,174,142,0.14);
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding:28px;
+    -webkit-font-smoothing:antialiased;
+  }
+  #page-header{max-width:680px;margin:0 auto;}
+  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0;color:var(--text);}
+  #page-header h1 em{font-style:normal;color:var(--accent);}
+  .app{
+    max-width:680px;
+    margin:0 auto;
+  }
+
+
+  /* VERSION TOGGLE */
+  .version-toggle{
+    display:flex;
+    gap:5px;
+    padding:4px;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:12px;
+    margin-bottom:20px;
+  }
+  .version-btn{
+    flex:1;
+    padding:8px 16px;
+    border-radius:9px;
+    border:none;
+    background:transparent;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background 0.15s,color 0.15s;
+    letter-spacing:0.04em;
+    text-align:center;
+  }
+  .version-btn.v-active{
+    background:var(--bg);
+    color:var(--text);
+  }
+  .version-btn.v-opt-active{
+    background:var(--bg);
+    color:var(--good);
+  }
+
+  /* VERDICT BANNER */
+  .verdict{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid var(--panel-border);
+  }
+  .verdict.good{background:var(--good-soft);border-color:rgba(127,174,142,0.3);}
+  .verdict.warn{background:var(--warn-soft);border-color:rgba(217,160,91,0.3);}
+  .verdict.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.3);}
+  .verdict-icon{
+    font-size:22px;
+    width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .verdict.good .verdict-icon{background:rgba(127,174,142,0.25);}
+  .verdict.warn .verdict-icon{background:rgba(217,160,91,0.25);}
+  .verdict.bad .verdict-icon{background:rgba(194,96,79,0.25);}
+  .verdict-text{font-size:14.5px;line-height:1.4;font-weight:500;}
+  .verdict-text .kcal{font-family:var(--mono);font-weight:700;}
+
+  /* MACRO GAUGES */
+  .macros{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .macro-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 12px;
+  }
+  .macro-name{
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .macro-value{
+    font-family:var(--mono);
+    font-size:21px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .macro-target{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim2);
+    margin-bottom:10px;
+  }
+  .gauge-track{
+    height:6px;
+    background:#171A1C;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gauge-fill{
+    height:100%;
+    border-radius:6px;
+    transition:width 0.3s ease;
+  }
+  .gauge-fill.good{background:var(--good);}
+  .gauge-fill.warn{background:var(--warn);}
+  .gauge-fill.bad{background:var(--bad);}
+  .macro-pct{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    margin-top:6px;
+    text-align:right;
+  }
+  .macro-pct.good{color:var(--good);}
+  .macro-pct.warn{color:var(--warn);}
+  .macro-pct.bad{color:var(--bad);}
+
+  /* SECTION TITLE */
+  .section-title{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin:24px 0 10px;
+  }
+
+  /* COVERAGE TABLE */
+  .coverage{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .cov-row{
+    display:grid;
+    grid-template-columns:26px 1fr auto;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .cov-row:last-child{border-bottom:none;}
+  .cov-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    justify-self:center;
+  }
+  .cov-dot.good{background:var(--good);}
+  .cov-dot.warn{background:var(--warn);}
+  .cov-dot.bad{background:var(--bad);}
+  .cov-name{
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.4;
+  }
+  .cov-coverage{
+    font-family:var(--mono);
+    font-size:12px;
+    text-align:right;
+    white-space:nowrap;
+    line-height:1.5;
+    color:var(--text-dim2);
+  }
+  .cov-coverage.good{color:var(--good);}
+  .cov-coverage.warn{color:var(--warn);}
+  .cov-coverage.bad{color:var(--bad);}
+
+  /* FEEDBACK */
+  .feedback{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:22px;
+  }
+  .fb-card{
+    border-radius:14px;
+    padding:14px 16px;
+    border:1px solid var(--panel-border);
+  }
+  .fb-card.good{background:var(--good-soft);border-color:rgba(127,174,142,0.25);}
+  .fb-card.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.25);}
+  .fb-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .fb-card.good .fb-title{color:var(--good);}
+  .fb-card.bad .fb-title{color:var(--bad);}
+  .fb-list{list-style:none;}
+  .fb-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding-left:14px;
+    position:relative;
+    margin-bottom:6px;
+    color:var(--text);
+  }
+  .fb-list li:last-child{margin-bottom:0;}
+  .fb-list li::before{
+    content:"–";
+    position:absolute;left:0;
+    color:var(--text-dim2);
+  }
+
+  .footer-note{
+    margin-top:18px;
+    font-size:11px;
+    color:var(--text-dim2);
+    text-align:center;
+  }
+
+  /* DAY LOG + ADJUSTMENTS */
+  .day-section{
+    margin-top:0;
+  }
+  .routine-block-wrap{
+    position:relative;
+    margin-bottom:12px;
+  }
+  .routine-pre{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+    line-height:1.9;
+    white-space:pre-wrap;
+    word-break:break-word;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:16px 20px;
+    padding-top:36px;
+  }
+  .routine-copy{
+    position:absolute;
+    top:10px; right:10px;
+    font-size:10.5px;
+    font-family:var(--mono);
+    color:var(--text-dim2);
+    background:none;
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    padding:3px 10px;
+    cursor:pointer;
+    transition:color 0.15s, border-color 0.15s;
+  }
+  .routine-copy:hover{color:var(--text);border-color:var(--text-dim2);}
+  .routine-copy.copied{color:var(--good);border-color:var(--good);}
+  .line-changed{color:var(--good);font-weight:600;}
+  .day-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .day-card-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:10px;
+    color:var(--text-dim2);
+  }
+  .adj-list{
+    list-style:none;
+  }
+  .adj-item{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:7px 0;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .adj-item:last-child{border-bottom:none;}
+  .adj-from{
+    color:var(--bad);
+    text-decoration:line-through;
+    opacity:0.75;
+  }
+  .adj-to{
+    color:var(--good);
+    font-weight:600;
+  }
+  .adj-arrow{
+    color:var(--text-dim2);
+    margin:0 4px;
+  }
+  .adj-reason{
+    display:block;
+    color:var(--text-dim2);
+    font-size:11.5px;
+    margin-top:2px;
+  }
+
+  /* FULL NUTRIENT TABLE */
+  .full-table-wrap{
+    margin-top:24px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  table.full-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  table.full-table th{
+    background:var(--panel);
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    text-align:left;
+    padding:10px 10px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  table.full-table th:first-child{width:5%;text-align:center;}
+  table.full-table th:nth-child(2){width:18%;}
+  table.full-table th:nth-child(3){width:32%;}
+  table.full-table th:nth-child(4){width:45%;}
+  table.full-table td{
+    font-size:11.5px;
+    line-height:1.4;
+    padding:9px 10px;
+    border-bottom:1px solid var(--panel-border);
+    vertical-align:top;
+    color:var(--text);
+  }
+  table.full-table tr:last-child td{border-bottom:none;}
+  table.full-table tr:nth-child(even){background:rgba(255,255,255,0.015);}
+  .ft-num{
+    text-align:center;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11px;
+  }
+  .ft-nutrient{font-weight:600;}
+  .ft-impact{color:var(--text-dim2);font-size:11px;}
+  .ft-coverage{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  .ft-coverage.good{color:var(--good);}
+  .ft-coverage.warn{color:var(--warn);}
+  .ft-coverage.bad{color:var(--bad);}
+
+  @media (max-width:600px){
+    table.full-table{table-layout:auto;}
+    table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+  }
+
+  @media (max-width:480px){
+    .macros{grid-template-columns:1fr 1fr 1fr;gap:7px;}
+    .macro-card{padding:10px 8px;}
+    .macro-value{font-size:17px;}
+    .feedback{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+  <div id="page-header"
+    data-badge="Daily Report"
+    data-back-href="../routines.html"
+    data-back-label="Daily Routines"
+    data-deploy-path="../data/deploy.json">
+  </div>
+  <div class="app" id="app"></div>
+
+<script>
+const DATA = {
+  date: "July 1, 2026",
+  dayType: "Rest day",
+  routineText: `09:00 — Wake up & go to Work
+09:00
+      — (4h) Work & Water 1L
+13:00
+13:00 — Black coffee + 1 tsp of sugar
+
+-----------------------
+| 14:00 — 🌅 Breakfast
+| — whole wheat bread 35g
+| — 4 eggs fried with 5g of olive oil
+| — mint tea + 1 tsp of sugar
+| — cumin & salt
+| — oat 35g + water
+| — 1 scoop of protein powder
+| — 1 avocado (235g whole, ~157g flesh)
+-----------------------
+
+14:00 — return to Work
+14:00
+      — (4h) Work & Water 1L
+18:00
+18:00 — Out from work
+
+-----------------------
+| 18:00 — ☀️ Lunch
+| — kefta 90/10 250g
+| — khobz complet 35g
+| — 300g legume sauté (carrot 130g, courgette 130g, onion 40g)
+-----------------------
+
+18:00 — Black coffee
+18:00
+      — (4h) Rest & Water 1L
+21:00
+
+-----------------------
+| 21:00 — 🌙 Dinner
+| — 1 scoop of protein powder
+| — 1 perly nature
+| — 2g Almonds
+| — 2g Walnuts
+| — 2g Cashews
+| — 2g Pistachios
+| — 1 kiwi
+-----------------------
+
+01:00 — Sleep`,
+  optimizedText: `09:00 — Wake up & go to Work
+09:00
+      — (4h) Work & Water 1L
+13:00
+13:00 — Black coffee + 1 tsp of sugar
+
+-----------------------
+| 14:00 — 🌅 Breakfast
+| — whole wheat bread 35g
+| — 4 eggs dry-fried (no oil)
+| — mint tea + 1 tsp of sugar
+| — cumin & salt
+| — oat 35g + water
+| — 1 scoop of protein powder
+| — 1 avocado (235g whole, ~157g flesh)
+-----------------------
+
+14:00 — return to Work
+14:00
+      — (4h) Work & Water 1L
+18:00
+18:00 — Out from work
+
+-----------------------
+| 18:00 — ☀️ Lunch
+| — kefta 90/10 250g
+| — brown rice 50g dry
+| — 300g legume sauté (carrot 130g, courgette 130g, onion 40g)
+-----------------------
+
+18:00 — Black coffee
+18:00
+      — (4h) Rest & Water 1L
+21:00
+
+-----------------------
+| 21:00 — 🌙 Dinner
+| — 1 scoop of protein powder
+| — 1 perly nature
+| — 2g Almonds
+| — 2g Walnuts
+| — 2g Cashews
+| — 2g Pistachios
+| — 1 kiwi
+-----------------------
+
+01:00 — Sleep`,
+
+  adjustments: [
+    {
+      from: "Khobz complet 35g (lunch)",
+      to: "Brown rice 50g dry",
+      reason: "Bread twice in one day breaks the gas protocol — brown rice is a low-FODMAP swap that also brings carbs back to target (89% → 106%)"
+    },
+    {
+      from: "4 eggs fried with 5g olive oil",
+      to: "4 eggs dry-fried (no oil)",
+      reason: "Fat running at 119% — removing 44 kcal / 5g fat from frying oil pulls fat into the good zone (119% → 112%)"
+    }
+  ],
+
+  original: {
+    verdict: {
+      status: "warn",
+      icon: "⚠️",
+      text_html: 'Mostly good — <span class="kcal">1,764 kcal</span> (−36 vs rest target). Fat slightly over (119%), carbs slightly under (89%), and bread appears twice — gas risk.'
+    },
+    macros: [
+      { name: "Protein", value: "153g", target: "/ 165g", pct: 93, status: "good" },
+      { name: "Carbs",   value: "116g", target: "/ 130g", pct: 89, status: "warn" },
+      { name: "Fat",     value: "84g",  target: "/ 70g",  pct: 119, status: "warn" }
+    ],
+    coverage: [
+      { status: "good", name: "Calories",           coverage: "1,764 / 1,800 kcal (98%)",  note: "36 kcal under rest-day target — nearly perfect" },
+      { status: "good", name: "Protein",            coverage: "153g / 165g (93%)",          note: "Kefta 50g, eggs 22g, 2×whey 50g, perly 6g" },
+      { status: "warn", name: "Carbs",              coverage: "116g / 130g (89%)",          note: "Oats + bread×2 + veg — slightly under target" },
+      { status: "warn", name: "Fat",                coverage: "84g / 70g (119%)",           note: "Avocado + eggs + kefta + olive oil stack high" },
+      { status: "good", name: "Fiber",              coverage: "27g / 27.5g (98%)",          note: "Avocado 10.5g + oats 3.7g + veg 5.6g" },
+      { status: "warn", name: "Gas / bloat risk",   coverage: "Medium",                     note: "Bread twice in one day — protocol violation (gas rule)" },
+      { status: "warn", name: "Protocol adherence", coverage: "Partial",                    note: "Bread twice rule broken; cumin used ✓, dinner 21h ✓" },
+      { status: "good", name: "Vitamin A",          coverage: "~1,380µg / 900µg (153%)",   note: "Carrot (130g cooked) covers this completely" },
+      { status: "good", name: "Potassium",          coverage: "~3,400mg / 3,500mg (97%)",  note: "Avocado + kefta + carrot + eggs strong combo" }
+    ],
+    good: [
+      "Calories nearly on target — only 36 kcal under rest goal",
+      "Protein solid at 93% — kefta + eggs + 2× whey",
+      "Fiber on target — avocado carries 39% alone",
+      "Vitamin A excellent — carrot drives 153% of daily target"
+    ],
+    bad: [
+      "Bread twice in one day — violates gas protocol",
+      "Fat at 119% — avocado stacks on top of eggs + kefta + oil",
+      "Carbs 11% under target — slightly low for a full work day"
+    ],
+    loggedItems: [
+      "Black coffee + 1 tsp sugar",
+      "Whole wheat bread 35g",
+      "4 eggs fried with 5g olive oil",
+      "Mint tea + 1 tsp sugar",
+      "Cumin & salt",
+      "Oats 35g + water",
+      "1 scoop protein powder",
+      "1 avocado (~157g flesh)",
+      "Kefta 90/10 250g",
+      "Khobz complet 35g",
+      "Légume sauté 300g (carrot 130g, courgette 130g, onion 40g)",
+      "Black coffee",
+      "1 scoop protein powder",
+      "Perly Nature 1 cup (85g)",
+      "Almonds 2g · Walnuts 2g · Cashews 2g · Pistachios 2g",
+      "1 kiwi (75g)"
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",         status:"good", coverage:"153g / 165g (93%)",       note:"Kefta 50g · eggs 22g · 2×whey 50g · perly 6g" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",          status:"good", coverage:"3L / 3L (100%)",           note:"3×1L tracked: work AM, work PM, evening rest" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",      status:"good", coverage:"27g / 27.5g (98%)",        note:"Avocado 10.5g · oats 3.7g · veg 5.6g · bread×2 4.2g" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",   status:"warn", coverage:"~0.7g ALA / 1.6g (44%)",  note:"Walnuts 2g + avocado + eggs — no fatty fish today" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",       status:"bad",  coverage:"~4µg / 15µg (27%)",       note:"Egg yolks only — structural gap without fish" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",               status:"good", coverage:"~14mg / 8mg (175%)",       note:"Kefta 5.25mg · eggs 3.5mg · oats 1.65mg · bread 0.9mg" },
+      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",         status:"good", coverage:"~7.8µg / 2.4µg (325%)",   note:"Kefta 5.5µg · eggs 1.76µg · perly ~0.5µg" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",            status:"warn", coverage:"~130mg / 400mg (33%)",     note:"Avocado 45mg · kefta 50mg · oats 52mg — under target" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",          status:"warn", coverage:"~450mg / 1,000mg (45%)",   note:"Perly 204mg · eggs 112mg · oats 19mg" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",   status:"good", coverage:"~15mg / 11mg (136%)",      note:"Kefta dominant (11mg) · eggs 2.6mg · oats 1.4mg" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",   status:"good", coverage:"~3,400mg / 3,500mg (97%)", note:"Avocado 762mg · kefta 795mg · carrot 416mg · eggs 504mg" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"warn", coverage:"~290µg / 400µg (73%)",    note:"Avocado 127µg · eggs 88µg · carrot 25µg · kiwi 19µg" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",   status:"good", coverage:"~104mg / 90mg (116%)",    note:"Kiwi 70mg · zucchini 23mg · onion 3mg" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",    status:"good", coverage:"~1,380µg / 900µg (153%)", note:"Carrot 1,086µg dominant · eggs 280µg · avocado 11µg" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",       status:"warn", coverage:"~121µg / 150µg (81%)",    note:"Eggs main (108µg) · perly adds ~13µg" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",   status:"bad",  coverage:"~6.7mg / 15mg (45%)",     note:"Avocado 3.3mg · eggs 2mg · olive oil 0.7mg · almonds 0.5mg" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",           status:"warn", coverage:"~84µg / 120µg (70%)",     note:"Avocado 33µg · kiwi 30µg · carrot 17µg · olive oil 3µg" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",          status:"good", coverage:"~2.2mg / 1.7mg (129%)",   note:"Kefta 1.0mg · eggs 0.68mg · avocado 0.41mg" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues", status:"good", coverage:"~127µg / 55µg (231%)",    note:"Eggs 60µg · kefta 55µg — both excellent sources" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",         status:"warn", coverage:"~0.92mg / 1.2mg (77%)",   note:"Oats 0.27mg · bread×2 0.23mg · kefta 0.15mg · avocado 0.11mg" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",          status:"good", coverage:"~1.8mg / 1.3mg (138%)",   note:"Eggs 1.0mg · kefta 0.58mg dominant" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",          status:"good", coverage:"~18.8mg / 16mg (117%)",   note:"Kefta 15.75mg dominant · avocado 2.7mg" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",            status:"warn", coverage:"~0.63mg / 0.9mg (70%)",   note:"Avocado 0.3mg · oats 0.14mg · kiwi 0.1mg" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",   status:"good", coverage:"~730mg / 550mg (133%)",   note:"4 eggs (516mg) dominate — one of the best sources" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",               status:"warn", coverage:"1 serving (perly)",       note:"Perly has some live cultures — less potent than raib/lben" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",            status:"good", coverage:"Moderate",                note:"Bread + eggs + salt — normal range for home cooking" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",    status:"warn", coverage:"Moderate",                note:"Kiwi Vit C · avocado carotenoids · mint tea polyphenols" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",  status:"good", coverage:"~1,370mg / 700mg (196%)", note:"Eggs · kefta · oats · 2×whey — all strong contributors" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",   status:"good", coverage:"~3.8mg / 2.3mg (167%)",   note:"Oats 1.72mg · bread×2 1.82mg drive this well" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",      status:"warn", coverage:"~28µg / 35µg (80%)",      note:"Eggs 23µg main source · oats 4.9µg" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",         status:"good", coverage:"~9.8mg / 5mg (196%)",     note:"Eggs 6.1mg · avocado 2.2mg · kefta 1.5mg" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",     status:"good", coverage:"~47µg / 30µg (157%)",     note:"Egg yolks 40µg dominant · oats 7µg" }
+    ]
+  },
+
+  optimized: {
+    verdict: {
+      status: "good",
+      icon: "✅",
+      text_html: 'On protocol — <span class="kcal">1,817 kcal</span> (+17 vs rest target). All macros in good range, bread rule respected, fat back in zone.'
+    },
+    macros: [
+      { name: "Protein", value: "152g", target: "/ 165g", pct: 92, status: "good" },
+      { name: "Carbs",   value: "138g", target: "/ 130g", pct: 106, status: "good" },
+      { name: "Fat",     value: "79g",  target: "/ 70g",  pct: 112, status: "good" }
+    ],
+    coverage: [
+      { status: "good", name: "Calories",           coverage: "1,817 / 1,800 kcal (101%)", note: "Right on rest-day target — +17 kcal" },
+      { status: "good", name: "Protein",            coverage: "152g / 165g (92%)",          note: "Kefta, eggs, 2×whey, perly — unchanged" },
+      { status: "good", name: "Carbs",              coverage: "138g / 130g (106%)",         note: "Brown rice at lunch brings carbs to target" },
+      { status: "good", name: "Fat",                coverage: "79g / 70g (112%)",           note: "Oil removed — fat back in good zone" },
+      { status: "good", name: "Fiber",              coverage: "26.6g / 27.5g (97%)",        note: "Minimal impact — avocado still carries fiber load" },
+      { status: "good", name: "Gas / bloat risk",   coverage: "Low",                        note: "Only one bread serving — protocol rule honored" },
+      { status: "good", name: "Protocol adherence", coverage: "Full",                       note: "Bread once ✓ · cumin used ✓ · dinner 21h ✓ · water away from meals ✓" },
+      { status: "good", name: "Vitamin A",          coverage: "~1,380µg / 900µg (153%)",   note: "Unchanged — carrot still excellent" },
+      { status: "good", name: "Potassium",          coverage: "~3,400mg / 3,500mg (97%)",  note: "Unchanged — avocado + kefta + carrot combo holds" }
+    ],
+    good: [
+      "All 3 macros land in the good zone — clean optimized day",
+      "Bread rule respected — one serve at breakfast only",
+      "Brown rice is low-FODMAP and adds B vitamins + Mn",
+      "Fat back in range without touching protein or fiber"
+    ],
+    bad: [
+      "Protein stays at 92% — structural gap, needs a 4th protein source long-term",
+      "Magnesium still at ~33% — daily structural gap across all plans"
+    ],
+    loggedItems: [
+      "Black coffee + 1 tsp sugar",
+      "Whole wheat bread 35g",
+      { text: "4 eggs dry-fried (no oil)", changed: true },
+      "Mint tea + 1 tsp sugar",
+      "Cumin & salt",
+      "Oats 35g + water",
+      "1 scoop protein powder",
+      "1 avocado (~157g flesh)",
+      "Kefta 90/10 250g",
+      { text: "Brown rice 50g dry", changed: true },
+      "Légume sauté 300g (carrot 130g, courgette 130g, onion 40g)",
+      "Black coffee",
+      "1 scoop protein powder",
+      "Perly Nature 1 cup (85g)",
+      "Almonds 2g · Walnuts 2g · Cashews 2g · Pistachios 2g",
+      "1 kiwi (75g)"
+    ],
+    fullTable: [
+      { n:1,  nutrient:"Protein",       impact:"Muscle loss, weakness",         status:"good", coverage:"152g / 165g (92%)",        note:"Same sources — rice adds 3.75g vs bread 4.55g (slight drop)" },
+      { n:2,  nutrient:"Water",         impact:"Dehydration, fatigue",          status:"good", coverage:"3L / 3L (100%)",            note:"Unchanged — 3×1L throughout day" },
+      { n:3,  nutrient:"Fiber",         impact:"Constipation, gut issues",      status:"good", coverage:"26.6g / 27.5g (97%)",       note:"Rice 1.75g vs bread 2.1g — avocado still carries the load" },
+      { n:4,  nutrient:"Omega-3",       impact:"Inflammation, poor recovery",   status:"warn", coverage:"~0.7g ALA / 1.6g (44%)",   note:"Unchanged — no oil had negligible ALA anyway" },
+      { n:5,  nutrient:"Vitamin D",     impact:"Bone weakness, low mood",       status:"bad",  coverage:"~4µg / 15µg (27%)",        note:"Structural gap — unchanged" },
+      { n:6,  nutrient:"Iron",          impact:"Fatigue, anemia",               status:"good", coverage:"~14mg / 8mg (175%)",        note:"Brown rice adds 0.9mg vs bread ~0.5mg — slight improvement" },
+      { n:7,  nutrient:"B12",           impact:"Nerve damage, fatigue",         status:"good", coverage:"~7.8µg / 2.4µg (325%)",    note:"Unchanged — kefta + eggs dominant" },
+      { n:8,  nutrient:"Magnesium",     impact:"Cramps, poor sleep",            status:"warn", coverage:"~135mg / 400mg (34%)",      note:"Brown rice 21.5mg vs bread 14.7mg — slight improvement" },
+      { n:9,  nutrient:"Calcium",       impact:"Bone loss, fractures",          status:"warn", coverage:"~450mg / 1,000mg (45%)",    note:"Unchanged — perly + eggs main sources" },
+      { n:10, nutrient:"Zinc",          impact:"Poor immunity, slow healing",   status:"good", coverage:"~15mg / 11mg (136%)",       note:"Kefta dominant — unchanged" },
+      { n:11, nutrient:"Potassium",     impact:"Cramps, irregular heartbeat",   status:"good", coverage:"~3,400mg / 3,500mg (97%)",  note:"Unchanged — avocado + kefta + carrot combo" },
+      { n:12, nutrient:"Folate B9",     impact:"Anemia, fatigue",               status:"warn", coverage:"~290µg / 400µg (73%)",     note:"Avocado 127µg + eggs 88µg unchanged — still structural gap" },
+      { n:13, nutrient:"Vitamin C",     impact:"Weak immunity, slow healing",   status:"good", coverage:"~104mg / 90mg (116%)",     note:"Unchanged — kiwi + zucchini cover well" },
+      { n:14, nutrient:"Vitamin A",     impact:"Poor vision, weak immunity",    status:"good", coverage:"~1,380µg / 900µg (153%)",  note:"Unchanged — carrot dominant" },
+      { n:15, nutrient:"Iodine",        impact:"Thyroid issues, fatigue",       status:"warn", coverage:"~121µg / 150µg (81%)",     note:"Unchanged — eggs 108µg main" },
+      { n:16, nutrient:"Vitamin E",     impact:"Nerve issues, weak immunity",   status:"bad",  coverage:"~6.0mg / 15mg (40%)",      note:"Minus olive oil 0.7mg — avocado + eggs still main sources" },
+      { n:17, nutrient:"Vitamin K",     impact:"Poor blood clotting",           status:"warn", coverage:"~81µg / 120µg (68%)",      note:"Minus olive oil 3µg — avocado + kiwi still main sources" },
+      { n:18, nutrient:"Vitamin B6",    impact:"Mood issues, fatigue",          status:"good", coverage:"~2.4mg / 1.7mg (141%)",    note:"Brown rice adds 0.26mg vs bread ~0.1mg — slightly better" },
+      { n:19, nutrient:"Selenium",      impact:"Weak immunity, thyroid issues", status:"good", coverage:"~127µg / 55µg (231%)",     note:"Unchanged — eggs + kefta excellent" },
+      { n:20, nutrient:"Thiamine B1",   impact:"Fatigue, nerve issues",         status:"warn", coverage:"~1.0mg / 1.2mg (83%)",     note:"Brown rice adds 0.21mg vs bread 0.1mg — noticeable improvement" },
+      { n:21, nutrient:"Riboflavin B2", impact:"Skin issues, fatigue",          status:"good", coverage:"~1.8mg / 1.3mg (138%)",    note:"Unchanged — eggs + kefta dominant" },
+      { n:22, nutrient:"Niacin B3",     impact:"Skin issues, fatigue",          status:"good", coverage:"~18.8mg / 16mg (117%)",    note:"Unchanged — kefta dominant" },
+      { n:23, nutrient:"Copper",        impact:"Anemia, weak bones",            status:"warn", coverage:"~0.63mg / 0.9mg (70%)",    note:"Unchanged — avocado + oats main sources" },
+      { n:24, nutrient:"Choline",       impact:"Liver issues, memory issues",   status:"good", coverage:"~730mg / 550mg (133%)",    note:"Unchanged — 4 eggs carry this" },
+      { n:25, nutrient:"Probiotics",    impact:"Poor gut health",               status:"warn", coverage:"1 serving (perly)",        note:"Unchanged — perly has moderate probiotic value" },
+      { n:26, nutrient:"Sodium",        impact:"Cramps or bloating",            status:"good", coverage:"Moderate",                 note:"Reduced — no oil, less bread sodium; still within normal range" },
+      { n:27, nutrient:"Antioxidants",  impact:"Faster aging, inflammation",    status:"warn", coverage:"Moderate",                 note:"Slight reduction without olive oil polyphenols; kiwi unchanged" },
+      { n:28, nutrient:"Phosphorus",    impact:"Bone/teeth weakness, fatigue",  status:"good", coverage:"~1,350mg / 700mg (193%)",  note:"Brown rice 75mg vs bread ~92mg — negligible difference" },
+      { n:29, nutrient:"Manganese",     impact:"Weak bones, poor metabolism",   status:"good", coverage:"~4.2mg / 2.3mg (183%)",    note:"Brown rice 0.89mg vs bread 0.53mg — improvement" },
+      { n:30, nutrient:"Chromium",      impact:"Poor blood sugar control",      status:"warn", coverage:"~28µg / 35µg (80%)",       note:"Unchanged — eggs + oats main sources" },
+      { n:31, nutrient:"Vitamin B5",    impact:"Fatigue, irritability",         status:"good", coverage:"~9.8mg / 5mg (196%)",      note:"Unchanged — eggs + avocado dominant" },
+      { n:32, nutrient:"Biotin B7",     impact:"Hair/skin issues, fatigue",     status:"good", coverage:"~47µg / 30µg (157%)",      note:"Unchanged — egg yolks dominant" }
+    ]
+  }
+};
+
+const _texts = {};
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function doCopy(btn, which){
+  navigator.clipboard.writeText(_texts[which]||'').then(()=>{
+    btn.textContent='copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='copy'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+let _v = 'original';
+
+function render(v) {
+  if (v) _v = v;
+  const vd = DATA[_v];
+  const isOpt = _v === 'optimized';
+
+  const macrosHtml = vd.macros.map(m => `
+    <div class="macro-card">
+      <div class="macro-name">${m.name}</div>
+      <div class="macro-value">${m.value}</div>
+      <div class="macro-target">${m.target}</div>
+      <div class="gauge-track"><div class="gauge-fill ${m.status}" style="width:${Math.min(m.pct,100)}%"></div></div>
+      <div class="macro-pct ${m.status}">${m.pct}%</div>
+    </div>
+  `).join('');
+
+  const coverageHtml = vd.coverage.map(c => `
+    <div class="cov-row">
+      <div class="cov-dot ${c.status}"></div>
+      <div class="cov-name">${c.name}</div>
+      <div class="cov-coverage ${c.status}">${c.coverage}</div>
+    </div>
+  `).join('');
+
+  const goodHtml = vd.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
+
+  _texts.orig = DATA.routineText || '';
+  _texts.opt = DATA.optimizedText || '';
+
+  const origLines = (DATA.routineText || '').split('\n');
+  const optLines = (DATA.optimizedText || '').split('\n');
+  const optRendered = optLines.map((line, i) => {
+    const escaped = esc(line);
+    const changed = line !== (origLines[i] || '');
+    return (changed && line.trim()) ? `<span class="line-changed">⚡ ${escaped}</span>` : escaped;
+  }).join('\n');
+
+  const logBlockHtml = !isOpt
+    ? `<div class="routine-block-wrap">
+        <div class="routine-pre">${esc(DATA.routineText||'')}</div>
+        <button class="routine-copy" onclick="doCopy(this,'orig')">copy</button>
+      </div>`
+    : `<div class="routine-block-wrap">
+        <div class="routine-pre">${optRendered}</div>
+        <button class="routine-copy" onclick="doCopy(this,'opt')">copy</button>
+      </div>`;
+
+  const adjustmentsHtml = DATA.adjustments.map(a => `
+    <li class="adj-item">
+      <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
+      <span class="adj-reason">${a.reason}</span>
+    </li>
+  `).join('');
+
+  const fullTableRows = vd.fullTable.map(r => `
+    <tr>
+      <td class="ft-num">${r.n}</td>
+      <td class="ft-nutrient">${r.nutrient}</td>
+      <td class="ft-impact">${r.impact}</td>
+      <td class="ft-coverage ${r.status}">${r.coverage}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="version-toggle">
+      <button class="version-btn ${!isOpt ? 'v-active' : ''}" onclick="render('original')">Original</button>
+      <button class="version-btn ${isOpt ? 'v-opt-active' : ''}" onclick="render('optimized')">⚡ Optimized</button>
+    </div>
+
+    <div class="verdict ${vd.verdict.status}">
+      <div class="verdict-icon">${vd.verdict.icon}</div>
+      <div class="verdict-text">${vd.verdict.text_html}</div>
+    </div>
+
+    <div class="macros">${macrosHtml}</div>
+
+    <div class="section-title">Nutrient Coverage</div>
+    <div class="coverage">${coverageHtml}</div>
+
+    <div class="feedback">
+      <div class="fb-card good">
+        <div class="fb-title">✓ Good</div>
+        <ul class="fb-list">${goodHtml}</ul>
+      </div>
+      <div class="fb-card bad">
+        <div class="fb-title">! Watch</div>
+        <ul class="fb-list">${badHtml}</ul>
+      </div>
+    </div>
+
+    <div class="section-title">${isOpt ? 'Optimized plan &amp; changes applied' : 'Today\'s log &amp; suggested adjustments'}</div>
+    <div class="day-section">
+      ${logBlockHtml}
+      <div class="day-card">
+        <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
+        <ul class="adj-list">${adjustmentsHtml}</ul>
+      </div>
+    </div>
+
+    <div class="section-title">Nutrient Coverage Tracker</div>
+    <div class="full-table-wrap">
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nutrient</th>
+            <th>Impact if missing</th>
+            <th>Coverage</th>
+          </tr>
+        </thead>
+        <tbody>${fullTableRows}</tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">Mehdi's Health &amp; Body - Protocol</div>
+  `;
+}
+
+(function(){
+  var el=document.getElementById('page-header');
+  if(el)el.dataset.title=DATA.date+' · '+DATA.dayType;
+})();
+
+render();
+</script>
+</body>
+</html>
