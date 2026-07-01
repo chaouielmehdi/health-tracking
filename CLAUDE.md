@@ -28,7 +28,11 @@ All HTML pages fetch these JSON files at runtime (`fetch('data/xxx.json?v='+Date
 
 ## Nutrition Report Artifacts
 
-Each tracked day generates `assets/tracking-YYYY-MM-DD.html` — a self-contained nutrition dashboard. These are produced by copying `.claude/commands/assets/tracking_template.html` verbatim and filling only the `const DATA = {...}` object. **Never touch the CSS, `render()` function, or layout markup.** If the design needs to change, edit the template — all future reports inherit it automatically.
+Each tracked day generates two files:
+- `data/tracking-YYYY-MM-DD.json` — the structured nutrition data (macros, scores, fullTable, etc.)
+- `assets/tracking-YYYY-MM-DD.html` — a verbatim copy of `.claude/commands/assets/tracking_template.html` that fetches its data from the JSON file at runtime
+
+**Never touch the CSS, `render()` function, or layout markup in the template.** If the design needs to change, edit the template — all future reports inherit it automatically.
 
 ## Deployment
 
@@ -55,5 +59,5 @@ Two Claude skills handle the recurring workflows. Both live in `.claude/commands
 - **No build step.** Open any `.html` directly in a browser or serve with `python3 -m http.server` from the repo root.
 - **Data-driven UI.** Pages render from JSON at load time; skeleton loaders show during fetch. Never hardcode data into HTML.
 - **CSS variables only.** All colours are defined as `--bg`, `--accent`, `--good`, `--warn`, `--bad`, etc. in each page's `:root`. No external CSS files.
-- **Git flow for tracking.** The health-tracking skill commits on a feature branch, opens a PR, and merges immediately — so every tracked day is a clean commit on `main`.
+- **Git flow.** All changes — tracking, food reference, refactors, fixes — go on a feature branch, then a PR is opened and merged immediately to `main`. This keeps the deploy history clean and ensures changes go live via GitHub Pages.
 - **`?v=Date.now()` cache-busting** is appended to all JSON fetches to ensure the latest data after a deploy.
