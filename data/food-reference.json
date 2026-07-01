@@ -799,6 +799,25 @@
       ]
     },
     {
+      "id": "blueberries-fresh",
+      "emoji": "🫐",
+      "name": "Blueberries (Fresh)",
+      "note": "Raw fresh blueberries — USDA standard values",
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 57,
+      "protein": 0.7,
+      "carbs": 14.5,
+      "fat": 0.3,
+      "fiber": 2.4,
+      "extra": [
+        {"name": "Sugar", "value": "10g"},
+        {"name": "Vitamin C", "value": "10mg"},
+        {"name": "Vitamin K", "value": "19µg"},
+        {"name": "Manganese", "value": "0.3mg"}
+      ]
+    },
+    {
       "id": "sugar-white",
       "emoji": "🍬",
       "name": "Sugar (white, granulated)",
