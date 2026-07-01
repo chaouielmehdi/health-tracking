@@ -799,25 +799,6 @@
       ]
     },
     {
-      "id": "blueberries-fresh",
-      "emoji": "🫐",
-      "name": "Blueberries (Fresh)",
-      "note": "Raw fresh blueberries — USDA standard values",
-      "category": "Fruit",
-      "serving": "per 100g",
-      "kcal": 57,
-      "protein": 0.7,
-      "carbs": 14.5,
-      "fat": 0.3,
-      "fiber": 2.4,
-      "extra": [
-        {"name": "Sugar", "value": "10g"},
-        {"name": "Vitamin C", "value": "10mg"},
-        {"name": "Vitamin K", "value": "19µg"},
-        {"name": "Manganese", "value": "0.3mg"}
-      ]
-    },
-    {
       "id": "sugar-white",
       "emoji": "🍬",
       "name": "Sugar (white, granulated)",
@@ -909,6 +890,29 @@
       "fiber": 0,
       "extra": [
         {"name": "Calcium", "value": "240mg"}
+      ]
+    },
+    {
+      "id": "water-sidi-ali",
+      "emoji": "💧",
+      "name": "Eau Sidi Ali (natural mineral water)",
+      "note": "#1 best Moroccan water — only natural spring source of the 4; balanced minerals, pH 7.5, very low chlorides",
+      "category": "Drink",
+      "serving": "per 1L",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "12mg"},
+        {"name": "Magnesium", "value": "9mg"},
+        {"name": "Sodium", "value": "26mg"},
+        {"name": "Bicarbonates", "value": "104mg"},
+        {"name": "Chlorides", "value": "14mg"},
+        {"name": "Sulfates", "value": "42mg"},
+        {"name": "TDS", "value": "186mg"},
+        {"name": "pH", "value": "7.5"}
       ]
     }
   ]
