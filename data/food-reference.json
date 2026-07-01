@@ -914,6 +914,28 @@
         {"name": "TDS", "value": "186mg"},
         {"name": "pH", "value": "7.5"}
       ]
+    },
+    {
+      "id": "water-ciel",
+      "emoji": "💧",
+      "name": "Eau Ciel (table water, Coca-Cola)",
+      "note": "#2 — richest in Ca & Mg of the 4, high bicarbonates; table water with notably high chlorides (130mg/L)",
+      "category": "Drink",
+      "serving": "per 1L",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "25.7mg"},
+        {"name": "Magnesium", "value": "23.8mg"},
+        {"name": "Sodium", "value": "19.2mg"},
+        {"name": "Bicarbonates", "value": "275mg"},
+        {"name": "Chlorides", "value": "130mg"},
+        {"name": "Nitrates", "value": "1.3mg"},
+        {"name": "TDS", "value": "317mg"}
+      ]
     }
   ]
 }
