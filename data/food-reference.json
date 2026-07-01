@@ -950,6 +950,22 @@
       "fat": 0,
       "fiber": 0,
       "extra": []
+    },
+    {
+      "id": "water-aquafina",
+      "emoji": "💧",
+      "name": "Aquafina (purified water, PepsiCo)",
+      "note": "#4 worst — reverse osmosis strips all minerals (TDS ~4mg/L); safe but avoid as your primary daily water",
+      "category": "Drink",
+      "serving": "per 1L",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "TDS", "value": "~4mg"}
+      ]
     }
   ]
 }
