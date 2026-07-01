@@ -7,7 +7,7 @@
     '.skel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;}',
     '.skel-line{height:11px;background:rgba(255,255,255,0.07);border-radius:6px;margin-bottom:9px;}',
     /* header */
-    '#page-header{margin-bottom:32px;}',
+    '#page-header{margin-bottom:32px!important;}',
     '.sh-back{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-dim2);text-decoration:none;font-family:var(--mono);margin-bottom:28px;transition:color 0.15s;}',
     '.sh-back:hover{color:var(--text);}',
     '.sh-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border:1px solid rgba(139,148,116,0.3);color:var(--accent);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;padding:5px 13px;border-radius:100px;margin-bottom:8px;}',
