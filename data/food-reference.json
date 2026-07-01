@@ -475,6 +475,23 @@
       ]
     },
     {
+      "id": "olives-black-oil-cured",
+      "emoji": "🫒",
+      "name": "Black olives (oil-cured / dry-cured)",
+      "note": "Moroccan zeitoun beldi style, sold loose by weight at market — no label, generic estimate; very high sodium",
+      "category": "Fat/Nut",
+      "serving": "per 100g",
+      "kcal": 360,
+      "protein": 2.6,
+      "carbs": 8,
+      "fat": 33,
+      "fiber": 5,
+      "extra": [
+        {"name": "Sodium", "value": "~2200mg"},
+        {"name": "Saturated fat", "value": "~4.4g"}
+      ]
+    },
+    {
       "id": "carrot",
       "emoji": "🥕",
       "name": "Carrot",
