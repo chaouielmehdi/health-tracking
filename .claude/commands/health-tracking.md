@@ -59,7 +59,11 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    ]
    ```
 
-6. **Render the tracking artifact.** Copy `.claude/commands/assets/tracking_template.html` verbatim, edit ONLY the `const DATA = {...}` object — never touch the CSS or the `render()` function or layout markup. Save to `assets/tracking-YYYY-MM-DD.html`.
+6. **Save the tracking data and render the artifact.**
+
+   a. Save the full DATA object to `data/tracking-YYYY-MM-DD.json` — this is the structured nutrition data for later analysis.
+
+   b. Copy `.claude/commands/assets/tracking_template.html` verbatim to `assets/tracking-YYYY-MM-DD.html` — **no edits**. The template fetches its data from the JSON file at runtime.
 
 7. **Commit, open a PR, and merge to main.**
 
@@ -67,7 +71,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
    ```bash
    # 1. commit on the current feature branch
-   git add data/routine-YYYY-MM-DD.json data/routines-index.json assets/tracking-YYYY-MM-DD.html
+   git add data/routine-YYYY-MM-DD.json data/routines-index.json data/tracking-YYYY-MM-DD.json assets/tracking-YYYY-MM-DD.html
    git commit -m "track: log routine and report for YYYY-MM-DD"
    git push -u origin <current-branch>
 
@@ -88,7 +92,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    - Calories: good = within 100 kcal of target, warn = 100–300 kcal off, bad = >300 kcal off
    - Gas/bloat risk and Protocol adherence: judge qualitatively from the `rules` array in `data/protocol.json` (dont entries with reason "gas" are the trigger list)
 
-9. **DATA object structure to fill:**
+9. **DATA object structure** (saved to `data/tracking-YYYY-MM-DD.json`):
 
    ```js
    const DATA = {
