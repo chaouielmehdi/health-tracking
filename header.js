@@ -60,9 +60,23 @@
       });
   }
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',render);
-  }else{
+  function init(){
     render();
+    var el=document.getElementById('page-header');
+    if(!el)return;
+    // Some pages (e.g. daily reports) set data-title only after an async
+    // fetch resolves, well after DOMContentLoaded — re-render when that happens.
+    var mo=new MutationObserver(function(muts){
+      for(var i=0;i<muts.length;i++){
+        if(muts[i].attributeName==='data-title'){render();break;}
+      }
+    });
+    mo.observe(el,{attributes:true});
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  }else{
+    init();
   }
 })();
