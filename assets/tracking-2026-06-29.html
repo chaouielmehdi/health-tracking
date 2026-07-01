@@ -93,6 +93,7 @@
   .routine-copy:hover{color:var(--text);border-color:var(--text-dim2);}
   .routine-copy.copied{color:var(--good);border-color:var(--good);}
   .line-changed{color:var(--good);font-weight:600;}
+  .line-removed{color:var(--bad);text-decoration:line-through;opacity:0.75;}
   .day-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:14px 16px;}
   .day-card-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:10px;color:var(--text-dim2);}
   .adj-list{list-style:none;}
@@ -405,9 +406,11 @@ function render(v) {
   const origLines = (DATA.routineText || '').split('\n');
   const optLines = (DATA.optimizedText || '').split('\n');
   const optRendered = optLines.map((line, i) => {
-    const escaped = esc(line);
-    const changed = line !== (origLines[i] || '');
-    return (changed && line.trim()) ? `<span class="line-changed">⚡ ${escaped}</span>` : escaped;
+    const origLine = origLines[i] || '';
+    const changed = line !== origLine;
+    if (changed && line.trim()) return `<span class="line-changed">⚡ ${esc(line)}</span>`;
+    if (changed && !line.trim() && origLine.trim()) return `<span class="line-removed">${esc(origLine)}</span>`;
+    return esc(line);
   }).join('\n');
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap"><div class="routine-pre">${esc(DATA.routineText||'')}</div><button class="routine-copy" onclick="doCopy(this,'orig')">copy</button></div>`
