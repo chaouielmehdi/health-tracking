@@ -467,10 +467,8 @@ function render(v) {
   _texts.orig = DATA.routineText || '';
   _texts.opt = DATA.optimizedText || '';
 
-  const origLines = (DATA.routineText || '').split('
-');
-  const optLines = (DATA.optimizedText || '').split('
-');
+  const origLines = (DATA.routineText || '').split('\n');
+  const optLines = (DATA.optimizedText || '').split('\n');
 
   // Greedy line diff: detects removed lines even when line counts differ
   const diff = [];
@@ -494,8 +492,7 @@ function render(v) {
     if (d.t === 'del')  return d.line.trim() ? `<span class="line-removed">${esc(d.line)}</span>` : '';
     if (d.t === 'chg')  return d.to.trim()   ? `<span class="line-changed">⚡ ${esc(d.to)}</span>` : (d.from.trim() ? `<span class="line-removed">${esc(d.from)}</span>` : '');
     return esc(d.line); // add
-  }).join('
-');
+  }).join('\n');
 
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap">
