@@ -763,29 +763,43 @@ function render(v) {
   const origLines = (DATA.routineText || '').split('\n');
   const optLines = (DATA.optimizedText || '').split('\n');
 
-  // Greedy line diff: detects removed lines even when line counts differ
-  const diff = [];
-  let oi = 0, pi = 0;
-  while (oi < origLines.length || pi < optLines.length) {
-    if (oi >= origLines.length) { diff.push({t:'add', line:optLines[pi++]}); }
-    else if (pi >= optLines.length) { diff.push({t:'del', line:origLines[oi++]}); }
-    else if (origLines[oi] === optLines[pi]) { diff.push({t:'same', line:origLines[oi]}); oi++; pi++; }
-    else {
-      const nextInOrig = origLines.indexOf(optLines[pi], oi + 1);
-      const nextInOpt  = optLines.indexOf(origLines[oi], pi + 1);
-      if (nextInOrig !== -1 && (nextInOpt === -1 || nextInOrig - oi <= nextInOpt - pi)) {
-        diff.push({t:'del', line:origLines[oi++]});
-      } else {
-        diff.push({t:'chg', from:origLines[oi++], to:optLines[pi++]});
+  // Use adjustments as ground truth — only annotate lines explicitly listed there.
+  // Everything else renders cleanly from optimizedText (no false positives).
+  function findAdj(line) {
+    const ll = line.trim().toLowerCase();
+    if (!ll || ll.length < 4) return null;
+    for (const a of (DATA.adjustments || [])) {
+      const words = a.from.trim().toLowerCase().split(/\s+/);
+      for (let n = Math.min(words.length, 5); n >= 2; n--) {
+        const frag = words.slice(0, n).join(' ');
+        if (frag.length >= 4 && ll.includes(frag)) return a;
       }
     }
+    return null;
   }
-  const optRendered = diff.map(d => {
-    if (d.t === 'same') return esc(d.line);
-    if (d.t === 'del')  return d.line.trim() ? `<span class="line-removed">${esc(d.line)}</span>` : '';
-    if (d.t === 'chg')  return d.to.trim()   ? `<span class="line-changed">⚡ ${esc(d.to)}</span>` : (d.from.trim() ? `<span class="line-removed">${esc(d.from)}</span>` : '');
-    return esc(d.line); // add
+
+  let optIdx = 0;
+  const optRendered = origLines.map(line => {
+    const adj = findAdj(line);
+    if (adj) {
+      const toText = (adj.to || '').trim();
+      const nextOpt = optIdx < optLines.length ? optLines[optIdx] : '';
+      const toWords = toText.toLowerCase().split(/\s+/).slice(0, 3).join(' ');
+      const nextOptMatches = toWords.length >= 2 && nextOpt.toLowerCase().includes(toWords);
+      if (!nextOptMatches || /^remov/i.test(toText)) {
+        // Removed: show original line as red strikethrough, don't advance optIdx
+        return line.trim() ? `<span class="line-removed">${esc(line)}</span>` : '';
+      } else {
+        // Changed: show the new optLine in green, advance optIdx
+        optIdx++;
+        return nextOpt.trim() ? `<span class="line-changed">⚡ ${esc(nextOpt)}</span>` : '';
+      }
+    }
+    // No adjustment — show from optimizedText sequentially
+    const optLine = optIdx < optLines.length ? optLines[optIdx++] : line;
+    return esc(optLine);
   }).join('\n');
+
 
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap">
