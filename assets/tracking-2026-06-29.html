@@ -403,15 +403,35 @@ function render(v) {
   const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
   _texts.orig = DATA.routineText || '';
   _texts.opt = DATA.optimizedText || '';
-  const origLines = (DATA.routineText || '').split('\n');
-  const optLines = (DATA.optimizedText || '').split('\n');
-  const optRendered = optLines.map((line, i) => {
-    const origLine = origLines[i] || '';
-    const changed = line !== origLine;
-    if (changed && line.trim()) return `<span class="line-changed">⚡ ${esc(line)}</span>`;
-    if (changed && !line.trim() && origLine.trim()) return `<span class="line-removed">${esc(origLine)}</span>`;
-    return esc(line);
-  }).join('\n');
+  const origLines = (DATA.routineText || '').split('
+');
+  const optLines = (DATA.optimizedText || '').split('
+');
+
+  // Greedy line diff: detects removed lines even when line counts differ
+  const diff = [];
+  let oi = 0, pi = 0;
+  while (oi < origLines.length || pi < optLines.length) {
+    if (oi >= origLines.length) { diff.push({t:'add', line:optLines[pi++]}); }
+    else if (pi >= optLines.length) { diff.push({t:'del', line:origLines[oi++]}); }
+    else if (origLines[oi] === optLines[pi]) { diff.push({t:'same', line:origLines[oi]}); oi++; pi++; }
+    else {
+      const nextInOrig = origLines.indexOf(optLines[pi], oi + 1);
+      const nextInOpt  = optLines.indexOf(origLines[oi], pi + 1);
+      if (nextInOrig !== -1 && (nextInOpt === -1 || nextInOrig - oi <= nextInOpt - pi)) {
+        diff.push({t:'del', line:origLines[oi++]});
+      } else {
+        diff.push({t:'chg', from:origLines[oi++], to:optLines[pi++]});
+      }
+    }
+  }
+  const optRendered = diff.map(d => {
+    if (d.t === 'same') return esc(d.line);
+    if (d.t === 'del')  return d.line.trim() ? `<span class="line-removed">${esc(d.line)}</span>` : '';
+    if (d.t === 'chg')  return d.to.trim()   ? `<span class="line-changed">⚡ ${esc(d.to)}</span>` : (d.from.trim() ? `<span class="line-removed">${esc(d.from)}</span>` : '');
+    return esc(d.line); // add
+  }).join('
+');
   const logBlockHtml = !isOpt
     ? `<div class="routine-block-wrap"><div class="routine-pre">${esc(DATA.routineText||'')}</div><button class="routine-copy" onclick="doCopy(this,'orig')">copy</button></div>`
     : `<div class="routine-block-wrap"><div class="routine-pre">${optRendered}</div><button class="routine-copy" onclick="doCopy(this,'opt')">copy</button></div>`;
