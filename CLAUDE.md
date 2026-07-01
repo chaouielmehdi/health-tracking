@@ -46,6 +46,10 @@ Two Claude skills handle the recurring workflows. Both live in `.claude/commands
 
 **Trigger:** Mehdi sends a nutrition label photo or describes a product asking to add it to the reference.
 
+## Git & Deployment Rule
+
+**Every change must ship via a PR merged to `main`** — no direct commits to main. Always: commit on a feature branch → open a PR → merge immediately. The only exception is if Mehdi explicitly says not to merge.
+
 ## Key Conventions
 
 - **No build step.** Open any `.html` directly in a browser or serve with `python3 -m http.server` from the repo root.
