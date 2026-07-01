@@ -936,6 +936,20 @@
         {"name": "Nitrates", "value": "1.3mg"},
         {"name": "TDS", "value": "317mg"}
       ]
+    },
+    {
+      "id": "water-ghayt",
+      "emoji": "💧",
+      "name": "Eau Ghayt (table water)",
+      "note": "#3 — table water with modest mineralization; exact label values not publicly available online",
+      "category": "Drink",
+      "serving": "per 1L",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": []
     }
   ]
 }
