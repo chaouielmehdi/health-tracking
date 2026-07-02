@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-01"
+    "updated": "2026-07-02"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -217,6 +217,26 @@
         {"name": "Sodium", "value": "62mg"},
         {"name": "Vitamin B12", "value": "0.44µg"},
         {"name": "Choline", "value": "129mg"}
+      ]
+    },
+    {
+      "id": "egg-beldi",
+      "emoji": "🥚",
+      "name": "Egg (Beldi, free-range)",
+      "note": "Smaller white-shelled free-range egg, deeper orange yolk than industrial (rumi) eggs; typical weight 40-55g. Slightly richer in fat and omega-3/vitamin A from varied free-range diet — estimated from general free-range vs conventional egg comparisons, not lab-analyzed for a specific source",
+      "category": "Egg",
+      "serving": "per egg (~44g)",
+      "kcal": 67,
+      "protein": 5.6,
+      "carbs": 0.3,
+      "fat": 5.0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "58mg"},
+        {"name": "Vitamin B12", "value": "0.46µg"},
+        {"name": "Choline", "value": "132mg"},
+        {"name": "Omega-3", "value": "~90mg"},
+        {"name": "Vitamin A", "value": "~85µg RAE"}
       ]
     },
     {
