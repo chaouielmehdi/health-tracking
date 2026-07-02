@@ -1,7 +1,7 @@
 {
   "date": "July 2, 2026",
-  "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g\n| — khobz complet 35g\n| — 300g legume sauté (carrot, courgette, onion)\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "dayType": "Training day",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 20:30 — ☀️ Lunch (light, pre-football)\n| — kefta 90/10 110g\n| — khobz complet 35g\n-----------------------\n\n22:00 — ⚽ Football training (1h30)\n\n-----------------------\n| 23:30 — 🌙 Post-match Dinner\n| — kefta 90/10 140g (remainder, deferred from lunch)\n| — 300g legume sauté (carrot, courgette, onion)\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Whole wheat bread 35g (breakfast)",
@@ -12,12 +12,17 @@
       "from": "Oat 35g",
       "to": "Oat 55g",
       "reason": "Adds back the missing 77 kcal / 13g carbs from removing the bread — keeps macros balanced."
+    },
+    {
+      "from": "Kefta 250g + 300g légumes sautés all at 20:30 lunch, 1h30 before football",
+      "to": "Kefta split 110g (pre-match lunch) / 140g (post-match dinner) — légumes 300g moved entirely to post-match",
+      "reason": "A full fatty (kefta) + fibrous (légumes) meal 1h30 before an intense football session risks cramping and gas mid-match. Lighter, faster-digesting lunch now; the rest becomes the post-match recovery meal."
     }
   ],
   "verdict": {
-    "status": "good",
-    "icon": "✅",
-    "text_html": "Protocol clean — <span class=\"kcal\">1,730 kcal</span> (−70 vs rest target). Single bread, macros balanced."
+    "status": "warn",
+    "icon": "⚠️",
+    "text_html": "Light for a training day — <span class=\"kcal\">1,730 kcal</span> (−570 vs training target). Protein and fat on point, but carbs are short for a football session."
   },
   "macros": [
     {
@@ -30,9 +35,9 @@
     {
       "name": "Carbs",
       "value": "117g",
-      "target": "/ 130g",
-      "pct": 90,
-      "status": "good"
+      "target": "/ 250g",
+      "pct": 47,
+      "status": "bad"
     },
     {
       "name": "Fat",
@@ -44,10 +49,10 @@
   ],
   "coverage": [
     {
-      "status": "good",
+      "status": "bad",
       "name": "Calories",
-      "coverage": "1,730 / 1,800 (96%)",
-      "note": "Slightly below — within 100 kcal acceptable range"
+      "coverage": "1,730 / 2,300 (75%)",
+      "note": "Same food as a rest day, but training target is 570 kcal higher"
     },
     {
       "status": "good",
@@ -56,10 +61,10 @@
       "note": "Unchanged — kefta, whey ×2, eggs still the backbone"
     },
     {
-      "status": "good",
+      "status": "bad",
       "name": "Carbs",
-      "coverage": "117g / 130g (90%)",
-      "note": "Oat 55g now single grain base — avocado, legumes, kiwi fill rest"
+      "coverage": "117g / 250g (47%)",
+      "note": "Well under the training target — no extra carb source added around the match"
     },
     {
       "status": "good",
@@ -77,13 +82,13 @@
       "status": "good",
       "name": "Gas / bloat risk",
       "coverage": "Low",
-      "note": "Single bread only — gas violation resolved"
+      "note": "Lunch lightened before the match (fat + fiber deferred to post-match) — lower risk during play than eating it all at 20:30"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Protocol adherence",
-      "coverage": "Good",
-      "note": "Bread-twice fixed — cumin ✓, dinner at 21h ✓, no raw veg main ✓"
+      "coverage": "Partial",
+      "note": "Dinner pushed to 23:30 by the 22h match — breaks the dinner-by-22h rule, unavoidable with a night session; cumin ✓, single bread ✓"
     },
     {
       "status": "good",
@@ -105,15 +110,16 @@
     }
   ],
   "good": [
-    "All macros in the 'good' zone and protocol fully clean",
-    "Bread violation resolved — gas risk dropped to low",
-    "Oat 55g now sole breakfast grain — better micronutrient density than bread",
+    "Lunch lightened before the match — kefta + légumes deferred to post-match, lower gas/cramp risk during play",
+    "Protein (94%) and fat (107%) still on target despite the day-type flip",
+    "Bread-twice violation resolved — cumin ✓, single bread ✓",
     "Carrot Vit A, egg+kefta Selenium, yolk Choline standouts unchanged"
   ],
   "bad": [
+    "570 kcal / 133g carbs short of the training target — no extra fuel added around the match, only re-timed",
+    "Dinner lands at 23:30 (post-match) — breaks the dinner-by-22h rule, though the 22h game leaves no earlier option",
     "Omega-3 still minimal — no fatty fish day (structural gap)",
-    "Magnesium at 46% — supplement or add pumpkin seeds daily",
-    "Iodine and Thiamine B1 remain structural gaps"
+    "Magnesium at 46% — supplement or add pumpkin seeds daily"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
@@ -126,11 +132,12 @@
     "Oat 55g + water (↑ from 35g)",
     "1 scoop protein powder",
     "1 avocado 200g whole (136g flesh used)",
-    "Kefta 90/10 250g",
+    "Kefta 90/10 110g (pre-match lunch, 20:30)",
     "Khobz complet 35g (single bread — lunch only)",
-    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g)",
-    "Black coffee (18:00, no sugar)",
-    "1 scoop protein powder (dinner)",
+    "⚽ Football training, 22:00 (1h30)",
+    "Kefta 90/10 140g (post-match dinner, 23:30 — remainder of the 250g)",
+    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g) — moved to post-match",
+    "1 scoop protein powder (post-match)",
     "1 Perly nature (85g)",
     "2g Almonds + 2g Walnuts + 2g Cashews + 2g Pistachios",
     "1 kiwi (~80g)"

@@ -1,6 +1,6 @@
 [
   { "date": "2026-07-03", "dayType": "rest" },
-  { "date": "2026-07-02", "dayType": "rest" },
+  { "date": "2026-07-02", "dayType": "training" },
   { "date": "2026-07-01", "dayType": "rest" },
   { "date": "2026-06-30", "dayType": "rest" },
   { "date": "2026-06-29", "dayType": "rest" }
