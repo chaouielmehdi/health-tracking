@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Health &amp; Body · Mehdi</title>
+<title>Health &amp; Body Tracking</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="header.js"></script>
 <style>
@@ -39,7 +39,6 @@
   .section-label::before{content:'';width:3px;height:16px;background:var(--accent);border-radius:2px;flex-shrink:0;}
   .section-name{font-size:13px;font-weight:700;color:var(--text-dim);letter-spacing:0.01em;flex-shrink:0;}
   .section-line{flex:1;height:1px;background:var(--panel-border);}
-  .sub-label{font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;margin-bottom:10px;}
 
   /* PROFILE */
   .profile-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:16px;overflow:hidden;}
@@ -103,17 +102,6 @@
   .rule-text strong{color:var(--text);font-weight:600;}
   .rule-reason{font-size:10px;font-family:var(--mono);color:var(--text-dim2);}
 
-  /* NOTES EDITOR */
-  .notes-editor{width:100%;min-height:0;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:18px 20px;color:var(--text-dim);font-family:var(--mono);font-size:12.5px;line-height:1.9;resize:vertical;outline:none;transition:border-color 0.15s,opacity 0.2s;caret-color:var(--accent);}
-  .notes-editor:focus{border-color:rgba(139,148,116,0.4);color:var(--text);}
-  .notes-editor.loading{opacity:0.4;}
-  .notes-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;min-height:18px;}
-  .notes-save{font-size:10.5px;color:var(--accent);font-family:var(--mono);opacity:0;transition:opacity 0.3s;}
-  .notes-save.visible{opacity:1;}
-  .notes-copy{font-size:10.5px;font-family:var(--mono);color:var(--text-dim2);background:none;border:1px solid var(--panel-border);border-radius:6px;padding:3px 10px;cursor:pointer;transition:color 0.15s,border-color 0.15s;}
-  .notes-copy:hover{color:var(--text);border-color:rgba(139,148,116,0.4);}
-  .notes-copy.copied{color:var(--good);border-color:var(--good);}
-
   /* HISTORY */
   .history-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:12px;}
   .history-card:last-child{margin-bottom:0;}
@@ -175,6 +163,17 @@
   </div>
   <p class="hero-sub">A personal record of who I am, what I'm fixing, and the exact protocol I follow every day to get there — analysed and reported by Claude from a simple food log.</p>
 
+  <div class="section">
+    <a href="food-reference.html" class="ref-card">
+      <div class="ref-card-left"><span class="ref-icon">🍽️</span><div><div class="ref-title">Food Reference</div><div class="ref-desc" id="food-ref-count" class="loading">— macros, micronutrients &amp; serving data</div></div></div>
+      <span class="ref-arrow">&rarr;</span>
+    </a>
+    <a href="routines.html" class="ref-card">
+      <div class="ref-card-left"><span class="ref-icon">📅</span><div><div class="ref-title">Daily Routines</div><div class="ref-desc">Tracked days — routine log &amp; nutrition reports</div></div></div>
+      <span class="ref-arrow">&rarr;</span>
+    </a>
+  </div>
+
   <div class="section" id="s-profile">
     <div class="section-label"><span class="section-name">Who I Am</span><span class="section-line"></span></div>
     <div class="skel loading" style="height:158px"></div>
@@ -198,32 +197,13 @@
       <span class="section-name">The App</span>
       <span class="section-line"></span>
     </div>
-    <a href="food-reference.html" class="ref-card">
-      <div class="ref-card-left"><span class="ref-icon">🍽️</span><div><div class="ref-title">Food Reference</div><div class="ref-desc" id="food-ref-count" class="loading">— macros, micronutrients &amp; serving data</div></div></div>
-      <span class="ref-arrow">&rarr;</span>
-    </a>
-    <a href="routines.html" class="ref-card">
-      <div class="ref-card-left"><span class="ref-icon">📅</span><div><div class="ref-title">Daily Routines</div><div class="ref-desc">Tracked days — routine log &amp; nutrition reports</div></div></div>
-      <span class="ref-arrow">&rarr;</span>
-    </a>
-    <div class="sub-label">32 Nutrients Monitored</div>
+    <div class="section-label" style="margin-top:8px"><span class="section-name">32 Nutrients Monitored</span><span class="section-line"></span></div>
     <div class="nutrient-grid" id="nutrients">
       <div class="skel loading" style="height:40px"></div><div class="skel loading" style="height:40px"></div>
       <div class="skel loading" style="height:40px"></div><div class="skel loading" style="height:40px"></div>
       <div class="skel loading" style="height:40px"></div><div class="skel loading" style="height:40px"></div>
       <div class="skel loading" style="height:40px"></div><div class="skel loading" style="height:40px"></div>
     </div>
-  </div>
-
-  <!-- TODAY'S ROUTINE — localStorage editor -->
-  <div class="section">
-    <div class="section-label">
-      <span class="section-name">Today's Routine</span>
-      <span class="section-line"></span>
-      <button class="notes-copy" id="notes-copy">copy</button>
-    </div>
-    <textarea class="notes-editor loading" id="notes-editor" rows="40" spellcheck="false" placeholder="Loading last routine..."></textarea>
-    <span class="notes-save" id="notes-save">saved</span>
   </div>
 
   <div class="section" id="s-history">
@@ -352,35 +332,6 @@
       if(el&&d.foods){el.textContent=`${d.foods.length} foods — macros, micronutrients & serving data`;el.classList.remove('loading');}
     }).catch(()=>{const el=document.getElementById('food-ref-count');if(el)el.classList.remove('loading');});
 
-  /* Today's Routine — always loads last tracked day */
-  (function(){
-    const el=document.getElementById('notes-editor');
-    const copyBtn=document.getElementById('notes-copy');
-    fetch('data/routines-index.json')
-      .then(r=>r.json())
-      .then(idx=>{if(!idx||!idx.length)throw new Error();return fetch(`data/routine-${idx[0].date}.json`);})
-      .then(r=>r.json())
-      .then(d=>{if(d&&d.routineText)el.value=d.routineText;el.classList.remove('loading');el.placeholder='Write your daily routine here...';})
-      .catch(()=>{el.classList.remove('loading');el.placeholder='Write your daily routine here...';});
-    const ind=document.getElementById('notes-save');
-    let t;
-    el.addEventListener('input',()=>{
-      clearTimeout(t);
-      ind.classList.remove('visible');
-      t=setTimeout(()=>{
-        localStorage.setItem('health-routine-draft',el.value);
-        ind.classList.add('visible');
-        setTimeout(()=>ind.classList.remove('visible'),1500);
-      },600);
-    });
-    copyBtn.addEventListener('click',()=>{
-      navigator.clipboard.writeText(el.value).then(()=>{
-        copyBtn.textContent='copied!';
-        copyBtn.classList.add('copied');
-        setTimeout(()=>{copyBtn.textContent='copy';copyBtn.classList.remove('copied');},1500);
-      });
-    });
-  })();
 </script>
 </body>
 </html>
