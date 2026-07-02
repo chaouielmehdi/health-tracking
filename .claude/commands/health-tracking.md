@@ -33,21 +33,20 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
    **Missing foods notification:** After calculating, if any food was not found in `data/food-reference.json`, list them at the end of your reply with their estimated USDA values (kcal, protein, carbs, fat, fiber per serving), and ask Mehdi if he wants to add them to `data/food-reference.json`.
 
-4. **Generate the optimized version.** After scoring the original day, produce a lightly-tweaked version that brings all macros as close to protocol targets as possible:
+4. **Score the day, then fold in adjustments — the report only ever shows one final version.** Score the raw input against protocol targets internally to decide what (if anything) needs tweaking, then produce the final day:
    - Keep changes small and realistic — 1–3 targeted changes max; when multiple macros are significantly off, it's fine to address each with its own tweak; prioritize the worst-status macro first
    - Ground every tweak in `data/protocol.json` rules, issues, or goals
-   - Recalculate macros for the optimized version
-   - Build the optimized food list: items that differ from the original get `{ "text": "...", "changed": true }`, unchanged items stay plain strings
+   - Record each tweak as `{ from, to, reason }` in `adjustments` — this is the only place the "before" ever shows up (rendered as the "Changes Applied" list). If the day already meets the targets with no tweaks needed, `adjustments` is just an empty array — never invent a change to fill it.
+   - Calculate every score (verdict, macros, coverage, good, bad, fullTable) from the **final** food list (raw input + adjustments applied) — there is no separate "original" scoring kept around
 
 5. **Save the routine to the repo.**
 
-   Save input text as `data/routine-YYYY-MM-DD.json`:
+   Save input text as `data/routine-YYYY-MM-DD.json` — this keeps the raw input on record; it is not shown in the report UI:
    ```json
    {
      "date": "YYYY-MM-DD",
      "dayType": "rest|training",
      "routineText": "<raw input text verbatim>",
-     "optimizedText": "<same format as routineText — full routine with schedule/timestamps preserved, only the changed food lines replaced with their optimized versions>",
      "savedAt": "<ISO timestamp>"
    }
    ```
@@ -92,36 +91,25 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    - Calories: good = within 100 kcal of target, warn = 100–300 kcal off, bad = >300 kcal off
    - Gas/bloat risk and Protocol adherence: judge qualitatively from the `rules` array in `data/protocol.json` (dont entries with reason "gas" are the trigger list)
 
-9. **DATA object structure** (saved to `data/tracking-YYYY-MM-DD.json`):
+9. **DATA object structure** (saved to `data/tracking-YYYY-MM-DD.json`) — flat, single final version, no original/optimized split:
 
    ```js
    const DATA = {
      date,          // "Month DD, YYYY"
      dayType,       // "Rest day" or "Training day"
-     routineText,   // raw input text verbatim (the full routine Mehdi pasted)
-     optimizedText, // same format as routineText — full schedule preserved, only changed food lines replaced
+     routineText,   // FINAL log — same format as the raw input (schedule/timestamps preserved), with
+                     // adjustments already folded in; this is the only version shown in the report, plain text (no diff markup)
 
-     adjustments, // array of { from, to, reason } — the specific changes original → optimized
+     adjustments,   // array of { from, to, reason } — the specific tweaks applied to get from the raw input to routineText;
+                     // empty array if the day already met targets as-is — this is the only place "before" values ever appear, rendered as "Changes Applied"
 
-     original: {
-       verdict,      // { status, icon, text_html } — one-line headline + kcal delta
-       macros,       // array of exactly 3: Protein, Carbs, Fat — each { name, value, target, pct, status }
-       coverage,     // array of rows: always Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
-       good,         // 2–4 short bullet strings
-       bad,          // 2–4 short bullet strings (key is `bad` even though UI labels it "Watch")
-       loggedItems,  // array of strings — exact food list from the input, lightly cleaned
-       fullTable     // all 32 nutrient rows (see nutrient order below)
-     },
-
-     optimized: {
-       verdict,      // updated verdict for the optimized version
-       macros,       // recalculated macros for optimized version
-       coverage,     // recalculated coverage for optimized version
-       good,         // updated strengths
-       bad,          // remaining gaps after optimization
-       loggedItems,  // mixed array: unchanged items = plain strings, changed items = { text, changed: true }
-       fullTable     // all 32 nutrient rows recalculated for optimized version
-     }
+     verdict,       // { status, icon, text_html } — one-line headline + kcal delta, scored from the final day
+     macros,        // array of exactly 3: Protein, Carbs, Fat — each { name, value, target, pct, status }
+     coverage,      // array of rows: always Calories, Protein, Carbs, Fat, Fiber, Gas/bloat risk, Protocol adherence + 1–3 standouts
+     good,          // 2–4 short bullet strings
+     bad,           // 2–4 short bullet strings (key is `bad` even though UI labels it "Watch")
+     loggedItems,   // array of plain strings — exact final food list, lightly cleaned
+     fullTable      // all 32 nutrient rows (see nutrient order below), scored from the final day
    };
    ```
 
