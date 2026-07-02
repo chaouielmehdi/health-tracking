@@ -53,7 +53,7 @@
         if(!d.deployedAt)return;
         var dt=new Date(new Date(d.deployedAt).getTime()+3600000);
         var pad=function(n){return String(n).padStart(2,'0');};
-        node.textContent=dt.getUTCFullYear()+'-'+pad(dt.getUTCMonth()+1)+'-'+pad(dt.getUTCDate())+' '+pad(dt.getUTCHours())+':'+pad(dt.getUTCMinutes())+' GMT+1';
+        node.textContent='Last deployed at '+dt.getUTCFullYear()+'-'+pad(dt.getUTCMonth()+1)+'-'+pad(dt.getUTCDate())+' '+pad(dt.getUTCHours())+':'+pad(dt.getUTCMinutes())+' GMT+1';
       }).catch(function(){
         var node=document.getElementById(uid);
         if(node)node.classList.remove('loading');
