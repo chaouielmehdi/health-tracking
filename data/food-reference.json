@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-01"
+    "updated": "2026-07-02"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -377,7 +377,13 @@
       "carbs": 0,
       "fat": 100,
       "fiber": 0,
-      "extra": []
+      "extra": [
+        {"name": "Vitamin E", "value": "14mg"},
+        {"name": "Vitamin K", "value": "60µg"},
+        {"name": "Saturated fat", "value": "14g"},
+        {"name": "Monounsaturated fat", "value": "73g"},
+        {"name": "Polyunsaturated fat", "value": "11g"}
+      ]
     },
     {
       "id": "avocado",
