@@ -42,40 +42,6 @@
   }
 
 
-  /* VERSION TOGGLE */
-  .version-toggle{
-    display:flex;
-    gap:5px;
-    padding:4px;
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:12px;
-    margin-bottom:20px;
-  }
-  .version-btn{
-    flex:1;
-    padding:8px 16px;
-    border-radius:9px;
-    border:none;
-    background:transparent;
-    color:var(--text-dim2);
-    font-family:var(--mono);
-    font-size:11.5px;
-    font-weight:700;
-    cursor:pointer;
-    transition:background 0.15s,color 0.15s;
-    letter-spacing:0.04em;
-    text-align:center;
-  }
-  .version-btn.v-active{
-    background:var(--bg);
-    color:var(--text);
-  }
-  .version-btn.v-opt-active{
-    background:var(--bg);
-    color:var(--good);
-  }
-
   /* VERDICT BANNER */
   .verdict{
     display:flex;
@@ -296,8 +262,6 @@
   }
   .routine-copy:hover{color:var(--text);border-color:var(--text-dim2);}
   .routine-copy.copied{color:var(--good);border-color:var(--good);}
-  .line-changed{color:var(--good);font-weight:600;}
-  .line-removed{color:var(--bad);text-decoration:line-through;opacity:0.75;}
   .day-card{
     background:var(--panel);
     border:1px solid var(--panel-border);
@@ -431,14 +395,8 @@ function doCopy(btn, which){
   });
 }
 
-let _v = 'original';
-
-function render(v) {
-  if (v) _v = v;
-  const vd = DATA[_v];
-  const isOpt = _v === 'optimized';
-
-  const macrosHtml = vd.macros.map(m => `
+function render() {
+  const macrosHtml = DATA.macros.map(m => `
     <div class="macro-card">
       <div class="macro-name">${m.name}</div>
       <div class="macro-value">${m.value}</div>
@@ -448,7 +406,7 @@ function render(v) {
     </div>
   `).join('');
 
-  const coverageHtml = vd.coverage.map(c => `
+  const coverageHtml = DATA.coverage.map(c => `
     <div class="cov-row">
       <div class="cov-dot ${c.status}"></div>
       <div class="cov-name">${c.name}</div>
@@ -456,71 +414,26 @@ function render(v) {
     </div>
   `).join('');
 
-  const goodHtml = vd.good.map(g => `<li>${g}</li>`).join('');
-  const badHtml = vd.bad.map(b => `<li>${b}</li>`).join('');
+  const goodHtml = DATA.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = DATA.bad.map(b => `<li>${b}</li>`).join('');
 
-  _texts.orig = DATA.routineText || '';
-  _texts.opt = DATA.optimizedText || '';
+  _texts.final = DATA.routineText || '';
 
-  const origLines = (DATA.routineText || '').split('\n');
-  const optLines = (DATA.optimizedText || '').split('\n');
+  const logBlockHtml = `<div class="routine-block-wrap">
+      <div class="routine-pre">${esc(DATA.routineText||'')}</div>
+      <button class="routine-copy" onclick="doCopy(this,'final')">copy</button>
+    </div>`;
 
-  // Use adjustments as ground truth — only annotate lines explicitly listed there.
-  // Everything else renders cleanly from optimizedText (no false positives).
-  function findAdj(line) {
-    const ll = line.trim().toLowerCase();
-    if (!ll || ll.length < 4) return null;
-    for (const a of (DATA.adjustments || [])) {
-      const words = a.from.trim().toLowerCase().split(/\s+/);
-      for (let n = Math.min(words.length, 5); n >= 2; n--) {
-        const frag = words.slice(0, n).join(' ');
-        if (frag.length >= 4 && ll.includes(frag)) return a;
-      }
-    }
-    return null;
-  }
+  const adjustmentsHtml = (DATA.adjustments||[]).length
+    ? DATA.adjustments.map(a => `
+      <li class="adj-item">
+        <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
+        <span class="adj-reason">${a.reason}</span>
+      </li>
+    `).join('')
+    : `<li class="adj-item">No changes — this day already met the targets.</li>`;
 
-  let optIdx = 0;
-  const optRendered = origLines.map(line => {
-    const adj = findAdj(line);
-    if (adj) {
-      const toText = (adj.to || '').trim();
-      const nextOpt = optIdx < optLines.length ? optLines[optIdx] : '';
-      const toWords = toText.toLowerCase().split(/\s+/).slice(0, 3).join(' ');
-      const nextOptMatches = toWords.length >= 2 && nextOpt.toLowerCase().includes(toWords);
-      if (!nextOptMatches || /^remov/i.test(toText)) {
-        // Removed: show original line as red strikethrough, don't advance optIdx
-        return line.trim() ? `<span class="line-removed">${esc(line)}</span>` : '';
-      } else {
-        // Changed: show the new optLine in green, advance optIdx
-        optIdx++;
-        return nextOpt.trim() ? `<span class="line-changed">⚡ ${esc(nextOpt)}</span>` : '';
-      }
-    }
-    // No adjustment — show from optimizedText sequentially
-    const optLine = optIdx < optLines.length ? optLines[optIdx++] : line;
-    return esc(optLine);
-  }).join('\n');
-
-
-  const logBlockHtml = !isOpt
-    ? `<div class="routine-block-wrap">
-        <div class="routine-pre">${esc(DATA.routineText||'')}</div>
-        <button class="routine-copy" onclick="doCopy(this,'orig')">copy</button>
-      </div>`
-    : `<div class="routine-block-wrap">
-        <div class="routine-pre">${optRendered}</div>
-        <button class="routine-copy" onclick="doCopy(this,'opt')">copy</button>
-      </div>`;
-
-  const adjustmentsHtml = DATA.adjustments.map(a => `
-    <li class="adj-item">
-      <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
-      <span class="adj-reason">${a.reason}</span>
-    </li>
-  `).join('');
-
-  const fullTableRows = vd.fullTable.map(r => `
+  const fullTableRows = DATA.fullTable.map(r => `
     <tr>
       <td class="ft-num">${r.n}</td>
       <td class="ft-nutrient">${r.nutrient}</td>
@@ -530,14 +443,9 @@ function render(v) {
   `).join('');
 
   document.getElementById('app').innerHTML = `
-    <div class="version-toggle">
-      <button class="version-btn ${!isOpt ? 'v-active' : ''}" onclick="render('original')">Original</button>
-      <button class="version-btn ${isOpt ? 'v-opt-active' : ''}" onclick="render('optimized')">⚡ Optimized</button>
-    </div>
-
-    <div class="verdict ${vd.verdict.status}">
-      <div class="verdict-icon">${vd.verdict.icon}</div>
-      <div class="verdict-text">${vd.verdict.text_html}</div>
+    <div class="verdict ${DATA.verdict.status}">
+      <div class="verdict-icon">${DATA.verdict.icon}</div>
+      <div class="verdict-text">${DATA.verdict.text_html}</div>
     </div>
 
     <div class="macros">${macrosHtml}</div>
@@ -556,11 +464,11 @@ function render(v) {
       </div>
     </div>
 
-    <div class="section-title">${isOpt ? 'Optimized plan &amp; changes applied' : 'Today\'s log &amp; suggested adjustments'}</div>
+    <div class="section-title">Today's Log</div>
     <div class="day-section">
       ${logBlockHtml}
       <div class="day-card">
-        <div class="day-card-title">${isOpt ? 'Changes applied' : 'Suggested tweaks'}</div>
+        <div class="day-card-title">Changes Applied</div>
         <ul class="adj-list">${adjustmentsHtml}</ul>
       </div>
     </div>
