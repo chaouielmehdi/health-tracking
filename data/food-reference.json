@@ -950,6 +950,22 @@
       ]
     },
     {
+      "id": "mustard",
+      "emoji": "🟡",
+      "name": "Mustard (prepared, yellow)",
+      "note": "Standard USDA prepared mustard values. 1 tsp ≈ 5g",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 66,
+      "protein": 4.4,
+      "carbs": 5.4,
+      "fat": 4.0,
+      "fiber": 3.3,
+      "extra": [
+        {"name": "Sodium", "value": "1100mg"}
+      ]
+    },
+    {
       "id": "black-coffee",
       "emoji": "☕",
       "name": "Black coffee",
