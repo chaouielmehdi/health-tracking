@@ -1,7 +1,7 @@
 {
   "date": "July 4, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 10g Almonds & Walnuts & Cashews & Pistachios (2.5g each)\n| — 10g pumpkin seeds\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 1 perly nature\n| — 10g Almonds & Walnuts & Cashews & Pistachios (2.5g each)\n| — 10g pumpkin seeds\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Oat 35g + warm water",
@@ -12,33 +12,38 @@
       "from": "Cumin only logged at breakfast and lunch",
       "to": "Added cumin & salt to dinner",
       "reason": "Protocol's anti-gas 'do' rule calls for cumin in every meal — dinner (whey, perly, nuts, pumpkin seeds, kiwi) had none. Costs nothing nutritionally."
+    },
+    {
+      "from": "1 scoop of protein powder (dinner)",
+      "to": "1.5 scoops of protein powder",
+      "reason": "Requested: push protein to exactly target or slightly above. Protein was sitting at 95% (157g/165g) — a half scoop extra (+15g powder, +12.5g protein) lands it at 169g (103%), just above target, without pushing any other macro out of the good range (kcal 99%, carbs 108%, fat 90%)."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "All four numbers land in the good range — <span class=\"kcal\">1,729 kcal</span> (96%), protein 95%, carbs 107%, fat 89% — the cleanest raw input logged yet, needing only a small oat bump to close the calorie gap."
+    "text_html": "Protein pushed just past 100% — <span class=\"kcal\">1,784 kcal</span> (99%), protein 103%, carbs 108%, fat 90% — a half extra scoop at dinner tops protein off perfectly without disturbing anything else."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "157g",
+      "value": "169g",
       "target": "/ 165g",
-      "pct": 95,
+      "pct": 103,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "139g",
+      "value": "140g",
       "target": "/ 130g",
-      "pct": 107,
+      "pct": 108,
       "status": "good"
     },
     {
       "name": "Fat",
       "value": "63g",
       "target": "/ 70g",
-      "pct": 89,
+      "pct": 90,
       "status": "good"
     }
   ],
@@ -46,25 +51,25 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,729 / 1,800 (96%)",
-      "note": "71 kcal under — comfortably within the good-calorie tolerance after the oat bump"
+      "coverage": "1,784 / 1,800 (99%)",
+      "note": "The extra half scoop of whey brings this almost exactly to target too"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "157g / 165g (95%)",
-      "note": "Chicken breast 200g + 2 whey scoops + eggs — solid without any kefta today"
+      "coverage": "169g / 165g (103%)",
+      "note": "Chicken breast 200g + 1.5 whey scoops + eggs — pushed just past 100% as requested"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "139g / 130g (107%)",
+      "coverage": "140g / 130g (108%)",
       "note": "Bread, oat, rice, and a whole apple land comfortably in range"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "63g / 70g (89%)",
+      "coverage": "63g / 70g (90%)",
       "note": "Three modest 5g olive oil portions plus egg yolks — well controlled"
     },
     {
@@ -105,7 +110,7 @@
     }
   ],
   "good": [
-    "All three macros land in the good range straight from the raw input — protein 95%, carbs 107%, fat 89% — the cleanest day logged before any adjustments",
+    "Protein now sits at 103% — pushed just past target with a half extra whey scoop, while carbs (108%) and fat (90%) stay comfortably in range",
     "Protocol adherence is the best of any day so far — bread once, cumin in all three meals, dinner well before 22:00",
     "Vitamin A (140%), Selenium (205%), Vitamin C (129%), Niacin (146%), and Biotin (250%) are all comfortably covered",
     "Chicken breast + whole apple + garlic make for a lighter, cleaner lunch than kefta-based days"
@@ -132,7 +137,7 @@
     "Brown rice 25g raw",
     "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
     "Cumin & salt (lunch)",
-    "1 scoop protein powder (dinner)",
+    "1.5 scoops protein powder (dinner, ↑ from 1)",
     "1 Perly nature (85g)",
     "10g mixed nuts — almonds, walnuts, cashews, pistachios (2.5g each)",
     "10g pumpkin seeds",
@@ -145,8 +150,8 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "157g / 165g (95%)",
-      "note": "Chicken breast 200g + 2 whey scoops + eggs — solid without kefta today"
+      "coverage": "169g / 165g (103%)",
+      "note": "Chicken breast 200g + 2.5 whey scoops + eggs — pushed just past target"
     },
     {
       "n": 2,
