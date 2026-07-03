@@ -1,18 +1,8 @@
 {
   "date": "July 2, 2026",
   "dayType": "Training day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 20:30 — ☀️ Lunch (light, pre-football)\n| — kefta 90/10 110g\n| — khobz complet 35g\n-----------------------\n\n22:00 — ⚽ Football training (1h30)\n\n23:30 — 4 dates + water (post-training)\n\n-----------------------\n| 23:45 — 🌙 Post-match Dinner\n| — kefta 90/10 140g (remainder, deferred from lunch)\n| — 300g legume sauté (carrot, courgette, onion)\n| — 400g potatoes (boiled)\n| — 1 small chicken leg 150g (skin removed)\n| — khobz complet 35g\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — 1 banana\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — khobz complet 35g\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 20:30 — ☀️ Lunch (light, pre-football)\n| — kefta 90/10 110g\n| — khobz complet 35g\n-----------------------\n\n22:00 — ⚽ Football training (1h30)\n\n23:30 — 4 dates + water (post-training)\n\n-----------------------\n| 23:45 — 🌙 Post-match Dinner\n| — kefta 90/10 140g (remainder, deferred from lunch)\n| — 300g legume sauté (carrot, courgette, onion)\n| — 400g potatoes (boiled)\n| — 1 small chicken leg 150g (skin removed)\n| — khobz complet 35g\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — 1 banana\n-----------------------\n\n23:55 — 1 apple 100g (snack)\n\n01:00 — Sleep",
   "adjustments": [
-    {
-      "from": "Whole wheat bread 35g (breakfast)",
-      "to": "Removed",
-      "reason": "Bread used twice in a day — protocol rule for gas. Khobz at lunch stays; breakfast bread goes."
-    },
-    {
-      "from": "Oat 35g",
-      "to": "Oat 55g",
-      "reason": "Adds back the missing 77 kcal / 13g carbs from removing the bread — keeps macros balanced."
-    },
     {
       "from": "Kefta 250g + 300g légumes sautés all at 20:30 lunch, 1h30 before football",
       "to": "Kefta split 110g (pre-match lunch) / 140g (post-match dinner) — légumes 300g moved entirely to post-match",
@@ -26,27 +16,37 @@
     {
       "from": "Still ~270 kcal / 61g carbs short after dates + potatoes",
       "to": "Added 1 small chicken leg 150g, +100g more potatoes (400g total), khobz complet 35g, and 1 banana",
-      "reason": "Requested as an extra addition. Chicken + extra potato + banana close the carb gap almost exactly (99% of target). Trade-off: khobz complet is now used twice today (lunch + dinner) — the same gas rule flagged earlier, reintroduced knowingly — and the chicken leg's fat pushes total fat to 140% of target on a day that was already fat-sufficient."
+      "reason": "Requested as an extra addition. Chicken + extra potato + banana close the carb gap almost exactly (99% of target). Trade-off: khobz complet is now also at dinner — the chicken leg's fat pushes total fat to 140% of target on a day that was already fat-sufficient."
+    },
+    {
+      "from": "Breakfast logged as bread-free with oat bumped to 55g",
+      "to": "Corrected — khobz complet 35g was actually eaten at breakfast, oat stayed at the original 35g",
+      "reason": "Mehdi confirmed the raw breakfast was eaten as originally logged, not the bread-free version. Net macro effect is nearly neutral (+9 kcal / +1g carbs), but bread is now used three times today (breakfast, lunch, dinner) instead of two — a bigger gas-rule violation than previously flagged."
+    },
+    {
+      "from": "Day logged as complete at 2,552 kcal",
+      "to": "Added 100g apple as a post-dinner snack (23:55)",
+      "reason": "Requested as an extra addition after the day was already logged. Clean, fat-free carb (13.8g) with no gas-list ingredients — but it pushes total calories to 2,613 (313 over target), tipping calories from warn into bad status."
     }
   ],
   "verdict": {
     "status": "warn",
     "icon": "⚠️",
-    "text_html": "Training day fully refueled — <span class=\"kcal\">2,552 kcal</span>, carbs at 99% of target — but fat overshot to 140% and bread was used twice tonight."
+    "text_html": "Training day fully refueled — <span class=\"kcal\">2,613 kcal</span>, carbs at 105% of target — but fat overshot to 140%, calories ran 313 over, and bread was used three times today."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "197g",
+      "value": "198g",
       "target": "/ 165g",
-      "pct": 119,
+      "pct": 120,
       "status": "warn"
     },
     {
       "name": "Carbs",
-      "value": "248g",
+      "value": "263g",
       "target": "/ 250g",
-      "pct": 99,
+      "pct": 105,
       "status": "good"
     },
     {
@@ -59,22 +59,22 @@
   ],
   "coverage": [
     {
-      "status": "warn",
+      "status": "bad",
       "name": "Calories",
-      "coverage": "2,552 / 2,300 (111%)",
-      "note": "Now over target — chicken + banana + extra potato pushed it past 2,300"
+      "coverage": "2,613 / 2,300 (113%)",
+      "note": "313 over target — the post-dinner apple tipped calories from warn into bad"
     },
     {
       "status": "warn",
       "name": "Protein",
-      "coverage": "197g / 165g (119%)",
+      "coverage": "198g / 165g (120%)",
       "note": "Well past the minimum — not a problem on a training day, just generous"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "248g / 250g (99%)",
-      "note": "Banana + potato + khobz landed almost exactly on the training target"
+      "coverage": "263g / 250g (105%)",
+      "note": "Breakfast bread + apple nudged carbs from 99% to 105% — still a clean landing"
     },
     {
       "status": "bad",
@@ -85,20 +85,20 @@
     {
       "status": "good",
       "name": "Fiber",
-      "coverage": "~41g / 30g (137%)",
-      "note": "Potatoes, khobz, and banana add up — comfortably covered"
+      "coverage": "~43g / 30g (145%)",
+      "note": "Potatoes, khobz, banana, and the post-dinner apple add up — comfortably covered"
     },
     {
-      "status": "warn",
+      "status": "bad",
       "name": "Gas / bloat risk",
-      "coverage": "Moderate",
-      "note": "Bread used twice today (reintroduced knowingly) + a very large late second dinner — higher risk than the rest of the day"
+      "coverage": "High",
+      "note": "Bread used three times today (breakfast, lunch, dinner) + a very large late second dinner — the worst gas-risk day logged so far"
     },
     {
-      "status": "warn",
+      "status": "bad",
       "name": "Protocol adherence",
       "coverage": "Partial",
-      "note": "Bread twice (lunch + dinner) and dinner at 23:45 — both known deviations, accepted for tonight; cumin ✓"
+      "note": "Bread three times (breakfast, lunch, dinner) and dinner at 23:45 — both known deviations; cumin ✓"
     },
     {
       "status": "good",
@@ -109,8 +109,8 @@
     {
       "status": "good",
       "name": "Potassium",
-      "coverage": "~4,450mg / 4,700mg (95%)",
-      "note": "Chicken + banana + extra potato nearly closed this out — up from 36% at the start of the day"
+      "coverage": "~4,510mg / 4,700mg (96%)",
+      "note": "Chicken + banana + extra potato + apple nearly closed this out — up from 36% at the start of the day"
     },
     {
       "status": "good",
@@ -120,26 +120,26 @@
     }
   ],
   "good": [
-    "Carbs landed at 99% of the training target — banana + potato + khobz closed the gap almost exactly",
-    "Most micronutrient gaps closed by the late additions — potassium 36%→95%, magnesium ~49%→~99%, thiamine ~54%→~103%",
-    "Protein comfortably past the 165g floor (197g) — no concern despite the warn color",
-    "Carrot Vit A, kefta+egg+chicken Selenium/B12, yolk Choline standouts all still strong"
+    "Carbs landed at 105% of the training target — banana, potato, khobz, and the post-dinner apple closed the gap cleanly",
+    "The apple added fiber and vitamin C with zero fat — the right kind of extra if calories were going to run over anyway",
+    "Most micronutrient gaps closed by the late additions — potassium 36%→96%, magnesium ~49%→~99%, thiamine ~54%→~103%",
+    "Protein comfortably past the 165g floor (198g) — no concern despite the warn color"
   ],
   "bad": [
     "Fat now 140% of target — the chicken leg pushed an already-fat-sufficient day well over",
-    "Bread used twice today (lunch + dinner) — the exact gas rule flagged earlier, reintroduced knowingly",
-    "Very large, very late second dinner (23:45) — total day now ~2,550 kcal, most of it in the last hour",
-    "Omega-3 still minimal — no fatty fish day (structural gap)"
+    "Bread used three times today (breakfast, lunch, dinner) — a bigger gas-rule violation than earlier flagged, now confirmed at all three meals",
+    "Calories now 313 over target (2,613 kcal) — the post-dinner apple tipped this from warn into bad",
+    "Very large, very late second dinner (23:45) — most of the day's intake landed in the last hour"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
-    "Whole wheat bread — removed (bread used twice, gas risk)",
+    "Khobz complet 35g (breakfast — bread used 3× today: breakfast, lunch, dinner)",
     "5 egg whites (boiled)",
     "3 egg yolks (boiled)",
     "5g olive oil",
     "Mint tea + 1 tsp sugar",
     "Cumin & salt",
-    "Oat 55g + water (↑ from 35g)",
+    "Oat 35g + water",
     "1 scoop protein powder",
     "1 avocado 200g whole (136g flesh used)",
     "Kefta 90/10 110g (pre-match lunch, 20:30)",
@@ -150,12 +150,13 @@
     "300g légumes sautés (carrot 100g, courgette 100g, onion 100g)",
     "400g potatoes, boiled (300g + 100g extra)",
     "1 small chicken leg 150g, skin removed",
-    "Khobz complet 35g (dinner — bread used twice today, accepted)",
+    "Khobz complet 35g (dinner — bread used 3× today, accepted)",
     "1 scoop protein powder (post-match)",
     "1 Perly nature (85g)",
     "2g Almonds + 2g Walnuts + 2g Cashews + 2g Pistachios",
     "1 kiwi (~80g)",
-    "1 banana (~120g)"
+    "1 banana (~120g)",
+    "1 apple 100g (post-dinner snack, 23:55)"
   ],
   "fullTable": [
     {
@@ -163,7 +164,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "197g / 165g (119%)",
+      "coverage": "198g / 165g (120%)",
       "note": "Chicken leg adds ~27g on top of an already-solid protein day"
     },
     {
@@ -179,8 +180,8 @@
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
       "status": "good",
-      "coverage": "~41g / 30g (137%)",
-      "note": "Extra potato, khobz, and banana push this comfortably over"
+      "coverage": "~43g / 30g (145%)",
+      "note": "Extra potato, khobz (now 3 portions), banana, and the apple push this comfortably over"
     },
     {
       "n": 4,
@@ -243,8 +244,8 @@
       "nutrient": "Potassium",
       "impact": "Cramps, irregular heartbeat",
       "status": "good",
-      "coverage": "~4,450mg / 4,700mg (95%)",
-      "note": "Chicken + banana + extra potato — from 36% at breakfast to 95% by bedtime"
+      "coverage": "~4,510mg / 4,700mg (96%)",
+      "note": "Chicken + banana + extra potato + apple — from 36% at breakfast to 96% by bedtime"
     },
     {
       "n": 12,
@@ -259,8 +260,8 @@
       "nutrient": "Vitamin C",
       "impact": "Weak immunity, slow healing",
       "status": "good",
-      "coverage": "~194mg / 90mg (215%)",
-      "note": "Banana + extra potato add on top of an already-strong day"
+      "coverage": "~199mg / 90mg (221%)",
+      "note": "Banana + extra potato + apple add on top of an already-strong day"
     },
     {
       "n": 14,
@@ -363,8 +364,8 @@
       "nutrient": "Sodium",
       "impact": "Cramps or bloating",
       "status": "good",
-      "coverage": "~1,170mg (moderate)",
-      "note": "Khobz (twice today) and chicken push this up — still within normal daily range"
+      "coverage": "~1,340mg (moderate-high)",
+      "note": "Khobz (now 3 portions today) and chicken push this up — still within normal daily range, but climbing"
     },
     {
       "n": 27,
@@ -372,7 +373,7 @@
       "impact": "Faster aging, inflammation",
       "status": "good",
       "coverage": "Good variety",
-      "note": "Carrot, kiwi, avocado, oat, potato skin, banana"
+      "note": "Carrot, kiwi, avocado, oat, potato skin, banana, apple"
     },
     {
       "n": 28,
