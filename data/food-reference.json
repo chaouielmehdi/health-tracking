@@ -58,6 +58,24 @@
       ]
     },
     {
+      "id": "chicken-breast-cooked",
+      "emoji": "🍗",
+      "name": "Chicken breast (cooked, roasted, skinless)",
+      "note": "Standard USDA roasted skinless breast — weigh after cooking, not before",
+      "category": "Poultry",
+      "serving": "per 100g",
+      "kcal": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "74mg"},
+        {"name": "Potassium", "value": "256mg"},
+        {"name": "Vitamin B12", "value": "0.3µg"}
+      ]
+    },
+    {
       "id": "chicken-wings",
       "emoji": "🍗",
       "name": "Chicken wings (raw, bone-in, skin removed)",
@@ -131,6 +149,25 @@
       ]
     },
     {
+      "id": "kefta-8020-cooked",
+      "emoji": "🥩",
+      "name": "Kefta 80/20 (beef/veal mix, cooked/grilled)",
+      "note": "~20% fat, weighed after grilling — moisture loss concentrates protein/minerals, some fat renders out in drippings",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 260,
+      "protein": 28,
+      "carbs": 0,
+      "fat": 17,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "88mg"},
+        {"name": "Iron", "value": "2.5mg"},
+        {"name": "Zinc", "value": "5.6mg"},
+        {"name": "Vitamin B12", "value": "2.8µg"}
+      ]
+    },
+    {
       "id": "kefta-9010",
       "emoji": "🥩",
       "name": "Kefta 90/10 (beef/veal mix, raw)",
@@ -147,6 +184,25 @@
         {"name": "Iron", "value": "2.1mg"},
         {"name": "Zinc", "value": "4.4mg"},
         {"name": "Vitamin B12", "value": "2.2µg"}
+      ]
+    },
+    {
+      "id": "kefta-9010-cooked",
+      "emoji": "🥩",
+      "name": "Kefta 90/10 (beef/veal mix, cooked/grilled)",
+      "note": "~10% fat, weighed after grilling — moisture loss concentrates protein/minerals more than the fat, which partly renders out",
+      "category": "Meat",
+      "serving": "per 100g",
+      "kcal": 169,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 7,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "88mg"},
+        {"name": "Iron", "value": "2.8mg"},
+        {"name": "Zinc", "value": "5.9mg"},
+        {"name": "Vitamin B12", "value": "2.9µg"}
       ]
     },
     {
