@@ -1,39 +1,44 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 25g\n| — 5 white of eggs boiled\n| — 2 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g\n| — khobz complet 25g\n| — 300g legume sauté (carrot, courgette, onion)\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
-      "from": "Oat 35g + water",
-      "to": "Oat 55g + water",
-      "reason": "Bread portions are smaller today (25g each) — oat increase fills back 78 kcal and 13g carbs to keep macros balanced."
+      "from": "Brown rice 70g raw (lunch)",
+      "to": "Brown rice 45g raw",
+      "reason": "Rest-day carb target is ~130g. Bread (breakfast) + oat 55g + rice 70g would land carbs at 124% (161g), on the edge of the warn zone. Trimming rice by 25g — the lowest-fiber-density carb source in the meal — brings carbs to 110% (right at the good-range ceiling) and calories to almost exactly 1,800, without touching protein or fat."
+    },
+    {
+      "from": "Cumin only logged at breakfast",
+      "to": "Added cumin & salt to lunch and dinner",
+      "reason": "Protocol's anti-gas 'do' rule calls for cumin in every meal — gas/bloating is the #1 flagged issue — but today it was only present at breakfast. Costs nothing nutritionally."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "All macros green — <span class=\"kcal\">1,712 kcal</span> (−88 vs rest target). Fat 102%, carbs and protein both 94%."
+    "text_html": "Best-balanced day logged yet — <span class=\"kcal\">1,801 kcal</span>, landing almost exactly on the 1,800 rest target with all three macros in the good range."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "154g",
+      "value": "160g",
       "target": "/ 165g",
-      "pct": 94,
+      "pct": 97,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "122g",
+      "value": "143g",
       "target": "/ 130g",
-      "pct": 94,
+      "pct": 110,
       "status": "good"
     },
     {
       "name": "Fat",
-      "value": "71g",
+      "value": "66g",
       "target": "/ 70g",
-      "pct": 102,
+      "pct": 95,
       "status": "good"
     }
   ],
@@ -41,94 +46,95 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,712 / 1,800 (95%)",
-      "note": "Within 88 kcal — right on rest target"
+      "coverage": "1,801 / 1,800 (100%)",
+      "note": "Landed almost exactly on target after trimming rice by 25g"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "154g / 165g (94%)",
-      "note": "Oat 55g adds 3.4g protein — kefta + whey ×2 carry the bulk"
+      "coverage": "160g / 165g (97%)",
+      "note": "Kefta + 2 whey scoops + eggs comfortably carry the day"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "122g / 130g (94%)",
-      "note": "Oat 55g brings carbs back into good zone"
+      "coverage": "143g / 130g (110%)",
+      "note": "Rice trim (70g→45g) brought this down from 124% to right at the good-range ceiling"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "71g / 70g (102%)",
-      "note": "Essentially perfect — 2 yolks + avocado + kefta + olive oil"
+      "coverage": "66g / 70g (95%)",
+      "note": "Well controlled — three separate 5g olive oil portions plus egg yolks, no excess"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Fiber",
-      "coverage": "~27g / 30g (89%)",
-      "note": "Oat 55g adds 2.1g more fiber — avocado + legumes cover the rest"
+      "coverage": "~19g / 30g (63%)",
+      "note": "No potato, banana, or extra vegetables today — lowest fiber day logged so far"
     },
     {
       "status": "warn",
       "name": "Gas / bloat risk",
-      "coverage": "Low–moderate",
-      "note": "Bread twice at 25g each — intentional minimum, lower risk"
+      "coverage": "Low-moderate",
+      "note": "Cumin was only at breakfast, now added to lunch and dinner too; onion is cooked (not raw) in both dishes, which is fine per protocol"
     },
     {
       "status": "warn",
       "name": "Protocol adherence",
-      "coverage": "Partial",
-      "note": "Bread-twice intentional — cumin ✓, dinner 21h ✓, hydration ✓"
+      "coverage": "Mostly compliant",
+      "note": "Bread once ✓, dinner well before 22:00 ✓ — cumin gap at lunch/dinner is the only fix needed"
     },
     {
       "status": "good",
-      "name": "Vitamin A",
-      "coverage": "~965µg / 900µg (107%)",
-      "note": "Unchanged — carrot + 2 yolks still above target"
+      "name": "Vitamin C",
+      "coverage": "~109mg / 90mg (121%)",
+      "note": "Kiwi + courgette + carrot + onion add up nicely"
+    },
+    {
+      "status": "bad",
+      "name": "Calcium",
+      "coverage": "~156mg / 1,000mg (16%)",
+      "note": "No milk (protocol dont) and only one perly today — weakest spot of the day"
     },
     {
       "status": "good",
       "name": "Selenium",
-      "coverage": "~100µg / 55µg (182%)",
-      "note": "Unchanged — egg whites + kefta excellent"
-    },
-    {
-      "status": "good",
-      "name": "Vitamin B12",
-      "coverage": "~6.1µg / 2.4µg (254%)",
-      "note": "Unchanged — kefta dominant"
+      "coverage": "~109µg / 55µg (199%)",
+      "note": "Kefta + eggs comfortably cover this"
     }
   ],
   "good": [
-    "All 3 macros in the 'good' zone — fat at 102%, protein 94%, carbs 94%",
-    "Oat 55g single grain base delivers better B1, Mn, fiber vs split bread/oat",
-    "Fat precision: 2 yolks + avocado + kefta + olive oil = perfect 71g",
-    "Vitamin A still above target — carrot is the hero ingredient today"
+    "All three macros landed in the good range — protein 97%, carbs 110%, fat 95% — the most balanced day logged so far",
+    "Calories almost exactly on target: 1,801 / 1,800 (100%)",
+    "Zinc, B12, Selenium, Choline, and B6 all comfortably covered by kefta + eggs",
+    "Dinner finished by 21:00 — well within the 22:00 cutoff"
   ],
   "bad": [
-    "Choline at 87% — 2 yolks instead of 3 is the main driver",
-    "Omega-3 minimal — structural gap on fish-free days",
-    "Bread twice kept intentionally — gas risk remains moderate"
+    "Fiber low at ~19g / 30g (63%) — no potato, banana, or extra vegetables today to pad it out",
+    "Cumin missing from lunch and dinner — the anti-gas rule was only followed at breakfast (added back above)",
+    "Calcium (16%), Iodine (13%), Chromium (14%), Vitamin E (28%) — structural gaps on a day with no dairy, fatty fish, or avocado",
+    "Potassium (~44%) and Magnesium (~56%) both well under half of target — no potato/banana today unlike recent training days"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
-    "Whole wheat bread 25g (minimum)",
-    "5 egg whites (boiled)",
-    "2 egg yolks (boiled)",
-    "5g olive oil",
+    "Whole wheat bread 35g (breakfast)",
+    "6 egg whites + 3 egg yolks (beldi), fried with 5g olive oil",
+    "5g olive oil (raw)",
     "Mint tea + 1 tsp sugar",
-    "Cumin & salt",
-    "Oat 55g + water (↑ from 35g)",
-    "1 scoop protein powder",
-    "1 avocado 200g whole (136g flesh used)",
-    "Kefta 90/10 250g",
-    "Khobz complet 25g (minimum)",
-    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g)",
+    "Cumin & salt (breakfast)",
+    "Oat 55g + warm water",
+    "1 scoop protein powder (breakfast)",
     "Black coffee (18:00, no sugar)",
+    "Kefta 90/10 250g raw, cooked with 1 small onion (~50g)",
+    "Brown rice 45g raw (↓ from 70g)",
+    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g) with 5g olive oil",
+    "Cumin & salt (lunch — added)",
     "1 scoop protein powder (dinner)",
     "1 Perly nature (85g)",
     "2g Almonds + 2g Walnuts + 2g Cashews + 2g Pistachios",
-    "1 kiwi (~80g)"
+    "1 kiwi (~80g)",
+    "Cumin & salt (dinner — added)"
   ],
   "fullTable": [
     {
@@ -136,8 +142,8 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "154g / 165g (94%)",
-      "note": "Oat 55g adds 3.4g — kefta + whey ×2 + eggs unchanged"
+      "coverage": "160g / 165g (97%)",
+      "note": "Kefta 250g + 2 whey scoops + eggs — well balanced across the day"
     },
     {
       "n": 2,
@@ -145,183 +151,183 @@
       "impact": "Dehydration, fatigue",
       "status": "good",
       "coverage": "3L / 3L (100%)",
-      "note": "Unchanged — 3 × 1L blocks"
+      "note": "3 × 1L blocks from the schedule"
     },
     {
       "n": 3,
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
-      "status": "good",
-      "coverage": "~27g / 30g (89%)",
-      "note": "Oat 55g adds 2.1g more vs 35g — avocado + legumes fill rest"
+      "status": "warn",
+      "coverage": "~19g / 30g (63%)",
+      "note": "Oat, legumes, and kiwi contribute, but no potato/banana today to close the gap"
     },
     {
       "n": 4,
       "nutrient": "Omega-3",
       "impact": "Inflammation, poor recovery",
       "status": "bad",
-      "coverage": "~0.2g / 1.6g (13%)",
-      "note": "Unchanged — structural gap on fish-free days"
+      "coverage": "~0.4g / 1.6g (25%)",
+      "note": "Beldi eggs' richer yolks + walnuts 2g — better than plain eggs but still low, no fatty fish"
     },
     {
       "n": 5,
       "nutrient": "Vitamin D",
       "impact": "Bone weakness, low mood",
       "status": "bad",
-      "coverage": "~1.0µg / 15µg (7%)",
-      "note": "Unchanged — 2 yolks only, no fish"
+      "coverage": "~1.5µg / 15µg (10%)",
+      "note": "3 egg yolks only — structural gap without fatty fish"
     },
     {
       "n": 6,
       "nutrient": "Iron",
       "impact": "Fatigue, anemia",
-      "status": "warn",
-      "coverage": "~7.2mg / 11mg (65%)",
-      "note": "Oat 55g adds slightly more iron than 35g — kefta still dominant"
+      "status": "good",
+      "coverage": "~10.8mg / 11mg (98%)",
+      "note": "Kefta + oat + yolks + rice add up almost exactly to target"
     },
     {
       "n": 7,
       "nutrient": "Vitamin B12",
       "impact": "Nerve damage, fatigue",
       "status": "good",
-      "coverage": "~6.1µg / 2.4µg (254%)",
-      "note": "Unchanged — kefta + 2 yolks"
+      "coverage": "~5.1µg / 2.4µg (214%)",
+      "note": "Kefta + eggs comfortably clear the target"
     },
     {
       "n": 8,
       "nutrient": "Magnesium",
       "impact": "Cramps, poor sleep",
       "status": "warn",
-      "coverage": "~195mg / 400mg (49%)",
-      "note": "Oat 55g adds 8mg more Mg — slight improvement"
+      "coverage": "~223mg / 400mg (56%)",
+      "note": "Oat + rice + kefta + nuts + kiwi — still under half covered"
     },
     {
       "n": 9,
       "nutrient": "Calcium",
       "impact": "Bone loss, fractures",
-      "status": "warn",
-      "coverage": "~390mg / 1000mg (39%)",
-      "note": "Unchanged — perly + whey ×2 main sources"
+      "status": "bad",
+      "coverage": "~156mg / 1,000mg (16%)",
+      "note": "No milk (protocol dont) — only one perly nature today, weakest spot of the day"
     },
     {
       "n": 10,
       "nutrient": "Zinc",
       "impact": "Poor immunity, slow healing",
       "status": "good",
-      "coverage": "~11mg / 11mg (100%)",
-      "note": "Unchanged — kefta covers the target"
+      "coverage": "~16.7mg / 11mg (152%)",
+      "note": "Kefta dominant, eggs and oat add a bit more"
     },
     {
       "n": 11,
       "nutrient": "Potassium",
       "impact": "Cramps, irregular heartbeat",
       "status": "warn",
-      "coverage": "~1700mg / 4700mg (36%)",
-      "note": "Unchanged — avocado + kiwi + vegetables"
+      "coverage": "~2,070mg / 4,700mg (44%)",
+      "note": "Kefta + vegetables + kiwi + perly, but no potato/banana today"
     },
     {
       "n": 12,
       "nutrient": "Folate B9",
       "impact": "Anemia, fatigue",
       "status": "warn",
-      "coverage": "~195µg / 400µg (49%)",
-      "note": "Oat 55g adds ~5µg more folate — avocado + yolks + carrot unchanged"
+      "coverage": "~208µg / 400µg (52%)",
+      "note": "Oat, rice, vegetables, kiwi, and yolks each contribute a little"
     },
     {
       "n": 13,
       "nutrient": "Vitamin C",
       "impact": "Weak immunity, slow healing",
       "status": "good",
-      "coverage": "~105mg / 90mg (117%)",
-      "note": "Unchanged — kiwi + vegetables"
+      "coverage": "~109mg / 90mg (121%)",
+      "note": "Kiwi + courgette + carrot + onion add up nicely"
     },
     {
       "n": 14,
       "nutrient": "Vitamin A",
       "impact": "Poor vision, weak immunity",
       "status": "good",
-      "coverage": "~965µg / 900µg (107%)",
-      "note": "Unchanged — carrot + 2 yolks"
+      "coverage": "~1,090µg / 900µg (121%)",
+      "note": "Carrot + beldi egg yolks (richer in Vit A than standard eggs)"
     },
     {
       "n": 15,
       "nutrient": "Iodine",
       "impact": "Thyroid issues, fatigue",
-      "status": "warn",
-      "coverage": "~40µg / 150µg (27%)",
-      "note": "Unchanged — structural gap"
+      "status": "bad",
+      "coverage": "~20µg / 150µg (13%)",
+      "note": "Structural gap — no dairy, seafood, or iodized salt today"
     },
     {
       "n": 16,
       "nutrient": "Vitamin E",
       "impact": "Nerve issues, weak immunity",
-      "status": "warn",
-      "coverage": "~5.5mg / 15mg (37%)",
-      "note": "Unchanged — avocado + olive oil + 2 yolks"
+      "status": "bad",
+      "coverage": "~4.2mg / 15mg (28%)",
+      "note": "3 olive oil portions + almonds, but no avocado today — lower than usual"
     },
     {
       "n": 17,
       "nutrient": "Vitamin K",
       "impact": "Poor blood clotting",
       "status": "warn",
-      "coverage": "~63µg / 120µg (53%)",
-      "note": "Unchanged — kiwi + avocado"
+      "coverage": "~50µg / 120µg (41%)",
+      "note": "Kiwi + carrot + courgette — no avocado today to help"
     },
     {
       "n": 18,
       "nutrient": "Vitamin B6",
       "impact": "Mood issues, fatigue",
       "status": "good",
-      "coverage": "~1.6mg / 1.7mg (94%)",
-      "note": "Unchanged — kefta + avocado"
+      "coverage": "~2.5mg / 1.7mg (146%)",
+      "note": "Kefta + eggs + onion + kiwi push this well past target"
     },
     {
       "n": 19,
       "nutrient": "Selenium",
       "impact": "Weak immunity, thyroid issues",
       "status": "good",
-      "coverage": "~100µg / 55µg (182%)",
-      "note": "Unchanged — egg whites + 2 yolks + kefta"
+      "coverage": "~109µg / 55µg (199%)",
+      "note": "Kefta + eggs comfortably cover this"
     },
     {
       "n": 20,
       "nutrient": "Thiamine B1",
       "impact": "Fatigue, nerve issues",
       "status": "warn",
-      "coverage": "~0.65mg / 1.2mg (54%)",
-      "note": "Oat 55g adds 0.15mg more B1 — modest improvement"
+      "coverage": "~0.96mg / 1.2mg (80%)",
+      "note": "Oat, rice, bread, and kefta all contribute a little"
     },
     {
       "n": 21,
       "nutrient": "Riboflavin B2",
       "impact": "Skin issues, fatigue",
       "status": "good",
-      "coverage": "~1.6mg / 1.3mg (123%)",
-      "note": "Unchanged — egg whites + kefta dominant"
+      "coverage": "~1.5mg / 1.3mg (119%)",
+      "note": "Eggs (whites + yolks) and kefta cover this well"
     },
     {
       "n": 22,
       "nutrient": "Niacin B3",
       "impact": "Skin issues, fatigue",
-      "status": "warn",
-      "coverage": "~12mg / 16mg (75%)",
-      "note": "Unchanged — kefta dominant"
+      "status": "good",
+      "coverage": "~14.7mg / 16mg (92%)",
+      "note": "Kefta dominant, rice and bread add a little more"
     },
     {
       "n": 23,
       "nutrient": "Copper",
       "impact": "Anemia, weak bones",
       "status": "warn",
-      "coverage": "~0.5mg / 0.9mg (56%)",
-      "note": "Oat 55g adds 0.07mg more copper"
+      "coverage": "~0.37mg / 0.9mg (41%)",
+      "note": "Nuts (2g each) and kefta — modest contributions only"
     },
     {
       "n": 24,
       "nutrient": "Choline",
       "impact": "Liver issues, memory issues",
-      "status": "warn",
-      "coverage": "~480mg / 550mg (87%)",
-      "note": "2 yolks 294mg — unchanged; oat adds ~14mg but doesn't close gap"
+      "status": "good",
+      "coverage": "~566mg / 550mg (103%)",
+      "note": "3 egg yolks + kefta land almost exactly on target"
     },
     {
       "n": 25,
@@ -329,63 +335,63 @@
       "impact": "Poor gut health",
       "status": "warn",
       "coverage": "1 serving (perly)",
-      "note": "Consider raib swap for better fermented culture"
+      "note": "Fromage frais mild — consider swapping for raib for better gut value"
     },
     {
       "n": 26,
       "nutrient": "Sodium",
       "impact": "Cramps or bloating",
       "status": "good",
-      "coverage": "~850mg (moderate)",
-      "note": "Unchanged — within normal range"
+      "coverage": "~370mg (low-moderate)",
+      "note": "Bread + kefta only sources today — comfortably within normal range"
     },
     {
       "n": 27,
       "nutrient": "Antioxidants",
       "impact": "Faster aging, inflammation",
-      "status": "good",
-      "coverage": "Good variety",
-      "note": "Unchanged — carrot, kiwi, avocado, oat"
+      "status": "warn",
+      "coverage": "Moderate variety",
+      "note": "Carrot, courgette, kiwi, olive oil, nuts — fewer sources than usual, no avocado or banana today"
     },
     {
       "n": 28,
       "nutrient": "Phosphorus",
       "impact": "Bone/teeth weakness, fatigue",
       "status": "good",
-      "coverage": "~1470mg / 700mg (210%)",
-      "note": "Oat 55g adds slightly more — well above target"
+      "coverage": "~781mg / 700mg (112%)",
+      "note": "Eggs + kefta + rice + perly comfortably clear the target"
     },
     {
       "n": 29,
       "nutrient": "Manganese",
       "impact": "Weak bones, poor metabolism",
-      "status": "warn",
-      "coverage": "~1.4mg / 2.3mg (61%)",
-      "note": "Oat 55g delivers 1.08mg Mn — meaningful step up"
+      "status": "good",
+      "coverage": "~3.7mg / 2.3mg (161%)",
+      "note": "Oat + rice + nuts push this well past target"
     },
     {
       "n": 30,
       "nutrient": "Chromium",
       "impact": "Poor blood sugar control",
-      "status": "warn",
-      "coverage": "~19µg / 35µg (54%)",
-      "note": "Oat 55g main grain source — modest improvement"
+      "status": "bad",
+      "coverage": "~5µg / 35µg (14%)",
+      "note": "Oat and rice are the only grain sources — lower than days with potato/banana"
     },
     {
       "n": 31,
       "nutrient": "Vitamin B5",
       "impact": "Fatigue, irritability",
       "status": "good",
-      "coverage": "~6.3mg / 5mg (126%)",
-      "note": "Oat 55g adds ~0.2mg more B5 — unchanged backbone"
+      "coverage": "~6.65mg / 5mg (133%)",
+      "note": "Egg yolks + kefta cover this comfortably"
     },
     {
       "n": 32,
       "nutrient": "Biotin B7",
       "impact": "Hair/skin issues, fatigue",
       "status": "good",
-      "coverage": "~55µg / 30µg (183%)",
-      "note": "Unchanged — 2 yolks 50µg well above target"
+      "coverage": "~75µg / 30µg (250%)",
+      "note": "3 egg yolks provide the bulk of this"
     }
   ]
 }
