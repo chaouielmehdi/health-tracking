@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n| — 2 garlic cloves\n| — 15g pumpkin seeds\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 233g raw, skinless, cooked with 1 small onion\n| — brown rice 10g raw\n| — 300g legume sauté with 17g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 284g raw cooked with 1 small onion\n| — brown rice 12g raw\n| — 300g legume sauté with 8g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -22,12 +22,22 @@
       "from": "Kefta 90/10 250g (lunch) + brown rice 25g",
       "to": "Chicken breast 233g raw, skinless + brown rice 10g; legume sauté oil increased 5g→17g",
       "reason": "Requested: rebuild lunch + dinner (breakfast untouched) so the full day lands at exactly 100% of every target. With breakfast fixed, the remaining protein/carb/fat budget for lunch+dinner was too tight for kefta's fat:protein ratio — hitting 90.7g protein without blowing the 32.8g fat budget only works with a much leaner protein. Chicken breast (2.6g fat/100g vs. kefta's 8g/100g) closes the exact gap; rice drops to 10g since the carb budget left after breakfast's bread/oat/fruit is only ~53g. Trade-off: B12 drops from 214% to 12.5% and iron/copper both fall out of the good range — kefta was carrying those, chicken doesn't replace them."
+    },
+    {
+      "from": "Breakfast logged with 15g pumpkin seeds",
+      "to": "Corrected — pumpkin seeds were not actually eaten at breakfast, removed",
+      "reason": "Mehdi confirmed the pumpkin seeds were never eaten. Removing them moves the day off the exact 100% fit computed with them included, but all three macros stay comfortably in the good range (95-99%)."
+    },
+    {
+      "from": "Lunch rebuilt around chicken breast 233g (to force an exact macro fit)",
+      "to": "Reverted to kefta 90/10 — kefta stays, quantity re-solved instead",
+      "reason": "Mehdi can't actually swap in chicken breast today. Kefta is restored and the remaining protein/carb/fat budget (given the corrected, pumpkin-seed-free breakfast) is re-solved around it: kefta 284g, rice 12g, legume sauté oil 8g. This lands kcal at 99.9%, protein 100%, carbs 100%, fat 102% — nearly as tight as the chicken version — while keeping B12, iron, and copper at kefta's normal (strong) levels instead of the chicken-driven collapse."
     }
   ],
   "verdict": {
-    "status": "warn",
-    "icon": "⚠️",
-    "text_html": "All four numbers essentially exact — <span class=\"kcal\">1,803 kcal</span> (100%), protein 100%, carbs 100%, fat 102% — but swapping lunch's kefta for chicken breast to make the fat budget work cost real ground on B12, iron, and copper."
+    "status": "good",
+    "icon": "✅",
+    "text_html": "Kefta restored, still an almost exact fit — <span class=\"kcal\">1,799 kcal</span> (99.9%), protein 100%, carbs 100%, fat 102% — and this time B12/iron/copper stay at kefta's normal strong levels instead of collapsing."
   },
   "macros": [
     {
@@ -46,7 +56,7 @@
     },
     {
       "name": "Fat",
-      "value": "71g",
+      "value": "72g",
       "target": "/ 70g",
       "pct": 102,
       "status": "good"
@@ -56,32 +66,32 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,803 / 1,800 (100%)",
-      "note": "Rebuilding lunch/dinner around the exact remaining budget lands this almost dead-on"
+      "coverage": "1,799 / 1,800 (99.9%)",
+      "note": "Kefta re-solved at 284g against the corrected breakfast — essentially exact"
     },
     {
       "status": "good",
       "name": "Protein",
       "coverage": "165g / 165g (100%)",
-      "note": "Chicken breast 233g solves for exactly the protein still needed after breakfast"
+      "note": "Kefta 284g solves for exactly the protein still needed after the corrected breakfast"
     },
     {
       "status": "good",
       "name": "Carbs",
       "coverage": "130g / 130g (100%)",
-      "note": "Rice cut to 10g — the carb budget left after bread, oat, and breakfast fruit was very tight"
+      "note": "Rice re-solved to 12g — the carb budget after bread, oat, and breakfast fruit is still tight"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "71g / 70g (102%)",
-      "note": "Only hits exactly because kefta (8g fat/100g) was replaced with lean chicken breast (2.6g fat/100g)"
+      "coverage": "72g / 70g (102%)",
+      "note": "Kefta's richer fat content means a smaller legume-sauté oil portion (8g) closes the gap exactly"
     },
     {
       "status": "warn",
       "name": "Fiber",
-      "coverage": "~22g / 30g (73%)",
-      "note": "Legume sauté + oat + fruit carry this — rice cut to 10g cost a little fiber too"
+      "coverage": "~21g / 30g (70%)",
+      "note": "Legume sauté + oat + fruit carry this — rice at just 12g keeps this short"
     },
     {
       "status": "warn",
@@ -98,7 +108,7 @@
     {
       "status": "good",
       "name": "Vitamin C",
-      "coverage": "~144mg / 90mg (160%)",
+      "coverage": "~146mg / 90mg (162%)",
       "note": "Apple + peach + kiwi at breakfast pushed this well past the dinner kiwi + vegetables alone"
     },
     {
@@ -115,16 +125,16 @@
     }
   ],
   "good": [
-    "All three macros land at exactly 100% (protein, carbs) or 102% (fat) — the tightest fit of any day logged so far",
-    "Calories essentially exact: 1,803 / 1,800 (100%)",
-    "Vitamin C still strong at 160% — apple, peach, and kiwi at breakfast on top of the dinner kiwi",
+    "Kefta restored and the day still lands almost exactly on target — kcal 99.9%, protein 100%, carbs 100%, fat 102%",
+    "B12 (323%), Selenium (199%), and Choline (108%) all back to kefta's normal strong levels — the chicken-breast version's collapse is avoided entirely",
+    "Vitamin C strong at 162% — apple, peach, and kiwi at breakfast on top of the dinner kiwi",
     "Cumin now added to both lunch and dinner, closing the gap flagged on every prior day"
   ],
   "bad": [
-    "Vitamin B12 collapses from 214% to ~12.5% — chicken breast doesn't carry anywhere near the B12 that kefta did; the exact macro fit cost a nutrient that was previously one of the day's strongest",
-    "Iron drops from 98% (good) to ~57% (warn), and Copper drops from 41% to ~23% (bad) — same root cause, kefta was quietly doing a lot of micronutrient work",
-    "Rice cut to just 10g to make the carbs fit exactly — a token portion, not a real side",
-    "Calcium (16%), Iodine (13%), Chromium (14%) — structural gaps on a day with no dairy, fatty fish, or avocado"
+    "Rice still very small at 12g to make the carbs fit exactly — a token portion, not a real side",
+    "Magnesium down to ~38% and Potassium ~46% — kefta at 284g plus a small rice/legume portion doesn't carry as much of either as a bigger rice/potato side would",
+    "Fiber still short at ~21g / 30g (70%) — no potato/banana today, and rice stays minimal",
+    "Calcium (16%), Iodine (13%), Chromium — structural gaps on a day with no dairy, fatty fish, or avocado"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
@@ -139,11 +149,10 @@
     "1/4 small peach (~25g, breakfast)",
     "1/2 small kiwi (~32g, breakfast)",
     "2 garlic cloves (~6g, breakfast)",
-    "15g pumpkin seeds (breakfast)",
     "Black coffee (18:00, no sugar)",
-    "Chicken breast 233g raw, skinless, cooked with 1 small onion (~50g)",
-    "Brown rice 10g raw (rebuilt from 70g to hit the exact carb budget)",
-    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g) with 17g olive oil",
+    "Kefta 90/10 284g raw, cooked with 1 small onion (~50g)",
+    "Brown rice 12g raw (re-solved from 70g to hit the exact carb budget with kefta restored)",
+    "300g légumes sautés (carrot 100g, courgette 100g, onion 100g) with 8g olive oil",
     "Cumin & salt (lunch — added)",
     "1 scoop protein powder (dinner)",
     "1 Perly nature (85g)",
@@ -158,7 +167,7 @@
       "impact": "Muscle loss, weakness",
       "status": "good",
       "coverage": "165g / 165g (100%)",
-      "note": "Chicken breast 233g + 2 whey scoops + eggs + pumpkin seeds — exactly on target"
+      "note": "Kefta 284g + 2 whey scoops + eggs — exactly on target"
     },
     {
       "n": 2,
@@ -196,25 +205,25 @@
       "n": 6,
       "nutrient": "Iron",
       "impact": "Fatigue, anemia",
-      "status": "warn",
-      "coverage": "~6.3mg / 11mg (57%)",
-      "note": "Chicken breast carries far less iron than kefta did — dropped from 98% (good) after the protein swap"
+      "status": "good",
+      "coverage": "~9.5mg / 11mg (86%)",
+      "note": "Kefta 284g + oat + rice — back to a healthy iron day now that kefta is restored"
     },
     {
       "n": 7,
       "nutrient": "Vitamin B12",
       "impact": "Nerve damage, fatigue",
-      "status": "bad",
-      "coverage": "~0.3µg / 2.4µg (12.5%)",
-      "note": "Chicken breast carries only a fraction of kefta's B12 — this was 214% (very strong) before the swap, now the day's biggest single loss"
+      "status": "good",
+      "coverage": "~7.8µg / 2.4µg (323%)",
+      "note": "Kefta restored — comfortably the best-covered nutrient of the day again"
     },
     {
       "n": 8,
       "nutrient": "Magnesium",
       "impact": "Cramps, poor sleep",
-      "status": "warn",
-      "coverage": "~246mg / 400mg (62%)",
-      "note": "Pumpkin seeds still the biggest single source, but chicken + 10g rice carry less magnesium than kefta + 25g rice did"
+      "status": "bad",
+      "coverage": "~153mg / 400mg (38%)",
+      "note": "No pumpkin seeds today and rice down to 12g — oat + kefta carry what's left, weakest magnesium day so far"
     },
     {
       "n": 9,
@@ -228,24 +237,24 @@
       "n": 10,
       "nutrient": "Zinc",
       "impact": "Poor immunity, slow healing",
-      "status": "warn",
-      "coverage": "~8.3mg / 11mg (75%)",
-      "note": "Chicken breast carries much less zinc than kefta — dropped from 162% (good) after the protein swap"
+      "status": "good",
+      "coverage": "~14.1mg / 11mg (129%)",
+      "note": "Kefta 284g restores this comfortably back into the good range"
     },
     {
       "n": 11,
       "nutrient": "Potassium",
       "impact": "Cramps, irregular heartbeat",
       "status": "warn",
-      "coverage": "~2,220mg / 4,700mg (47%)",
-      "note": "Chicken + vegetables + kiwi + perly + the breakfast fruit, but no potato/banana today"
+      "coverage": "~2,160mg / 4,700mg (46%)",
+      "note": "Kefta + vegetables + kiwi + perly + the breakfast fruit, but no potato/banana today"
     },
     {
       "n": 12,
       "nutrient": "Folate B9",
       "impact": "Anemia, fatigue",
       "status": "warn",
-      "coverage": "~219µg / 400µg (55%)",
+      "coverage": "~211µg / 400µg (53%)",
       "note": "Oat, rice, vegetables, kiwi, yolks, and the breakfast fruit each contribute a little"
     },
     {
@@ -253,7 +262,7 @@
       "nutrient": "Vitamin C",
       "impact": "Weak immunity, slow healing",
       "status": "good",
-      "coverage": "~144mg / 90mg (160%)",
+      "coverage": "~146mg / 90mg (162%)",
       "note": "Apple + peach + kiwi at breakfast on top of the dinner kiwi + vegetables push this well past target"
     },
     {
@@ -285,7 +294,7 @@
       "nutrient": "Vitamin K",
       "impact": "Poor blood clotting",
       "status": "warn",
-      "coverage": "~66µg / 120µg (55%)",
+      "coverage": "~63µg / 120µg (52%)",
       "note": "Kiwi (breakfast + dinner) + carrot + courgette — no avocado today to help"
     },
     {
@@ -293,56 +302,56 @@
       "nutrient": "Vitamin B6",
       "impact": "Mood issues, fatigue",
       "status": "good",
-      "coverage": "~2.85mg / 1.7mg (168%)",
-      "note": "Chicken breast is actually a strong B6 source — pushes this even higher than kefta did"
+      "coverage": "~2.53mg / 1.7mg (149%)",
+      "note": "Kefta + garlic + breakfast fruit push this comfortably past target"
     },
     {
       "n": 19,
       "nutrient": "Selenium",
       "impact": "Weak immunity, thyroid issues",
       "status": "good",
-      "coverage": "~135µg / 55µg (246%)",
-      "note": "Chicken breast is an even stronger selenium source than kefta — comfortably the best-covered nutrient today"
+      "coverage": "~109µg / 55µg (199%)",
+      "note": "Kefta + eggs + garlic comfortably cover this"
     },
     {
       "n": 20,
       "nutrient": "Thiamine B1",
       "impact": "Fatigue, nerve issues",
       "status": "warn",
-      "coverage": "~0.81mg / 1.2mg (68%)",
-      "note": "Oat and bread carry most of this now — rice down to 10g and chicken contributes less than kefta did"
+      "coverage": "~0.85mg / 1.2mg (71%)",
+      "note": "Oat and bread carry most of this — rice at just 12g adds only a little"
     },
     {
       "n": 21,
       "nutrient": "Riboflavin B2",
       "impact": "Skin issues, fatigue",
       "status": "good",
-      "coverage": "~1.36mg / 1.3mg (105%)",
-      "note": "Eggs (whites + yolks) carry most of this — chicken contributes a bit less than kefta did"
+      "coverage": "~1.6mg / 1.3mg (123%)",
+      "note": "Eggs (whites + yolks) and kefta cover this well"
     },
     {
       "n": 22,
       "nutrient": "Niacin B3",
       "impact": "Skin issues, fatigue",
       "status": "good",
-      "coverage": "~27.6mg / 16mg (172%)",
-      "note": "Chicken breast is a much stronger niacin source than kefta — one of the clear wins of the swap"
+      "coverage": "~15.7mg / 16mg (98%)",
+      "note": "Kefta 284g dominant, bread adds a little more"
     },
     {
       "n": 23,
       "nutrient": "Copper",
       "impact": "Anemia, weak bones",
-      "status": "bad",
-      "coverage": "~0.21mg / 0.9mg (23%)",
-      "note": "Chicken carries far less copper than kefta — dropped out of the warn range after the protein swap"
+      "status": "warn",
+      "coverage": "~0.44mg / 0.9mg (49%)",
+      "note": "Kefta 284g + nuts — back to the normal warn-range level now that kefta is restored"
     },
     {
       "n": 24,
       "nutrient": "Choline",
       "impact": "Liver issues, memory issues",
       "status": "good",
-      "coverage": "~517mg / 550mg (94%)",
-      "note": "3 egg yolks carry most of this — chicken adds less than kefta did, dropping from 103% to 94%"
+      "coverage": "~593mg / 550mg (108%)",
+      "note": "3 egg yolks + kefta 284g land comfortably past target again"
     },
     {
       "n": 25,
@@ -357,8 +366,8 @@
       "nutrient": "Sodium",
       "impact": "Cramps or bloating",
       "status": "good",
-      "coverage": "~352mg (low-moderate)",
-      "note": "Bread + chicken — comfortably within normal range, slightly lower than kefta gave"
+      "coverage": "~359mg (low-moderate)",
+      "note": "Bread + kefta — comfortably within normal range"
     },
     {
       "n": 27,
@@ -373,16 +382,16 @@
       "nutrient": "Phosphorus",
       "impact": "Bone/teeth weakness, fatigue",
       "status": "good",
-      "coverage": "~782mg / 700mg (112%)",
-      "note": "Eggs + chicken + perly comfortably clear the target — chicken's phosphorus is on par with kefta's"
+      "coverage": "~724mg / 700mg (103%)",
+      "note": "Eggs + kefta + perly comfortably clear the target"
     },
     {
       "n": 29,
       "nutrient": "Manganese",
       "impact": "Weak bones, poor metabolism",
       "status": "good",
-      "coverage": "~3.5mg / 2.3mg (154%)",
-      "note": "Oat + nuts carry most of this — rice down to 10g contributes only a little now"
+      "coverage": "~2.5mg / 2.3mg (109%)",
+      "note": "Oat + garlic carry most of this — rice at just 12g contributes only a little"
     },
     {
       "n": 30,
@@ -397,8 +406,8 @@
       "nutrient": "Vitamin B5",
       "impact": "Fatigue, irritability",
       "status": "good",
-      "coverage": "~7.73mg / 5mg (155%)",
-      "note": "Egg yolks + chicken breast cover this comfortably — chicken is actually a slightly better B5 source than kefta"
+      "coverage": "~6.82mg / 5mg (136%)",
+      "note": "Egg yolks + kefta cover this comfortably"
     },
     {
       "n": 32,
