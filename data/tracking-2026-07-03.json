@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -15,24 +15,24 @@
     }
   ],
   "verdict": {
-    "status": "good",
-    "icon": "✅",
-    "text_html": "Best-balanced day logged yet — <span class=\"kcal\">1,801 kcal</span>, landing almost exactly on the 1,800 rest target with all three macros in the good range."
+    "status": "warn",
+    "icon": "⚠️",
+    "text_html": "Still a solid day — <span class=\"kcal\">1,869 kcal</span>, only 69 over the 1,800 rest target — but the post-breakfast fruit (apple, peach, kiwi) pushed carbs from 110% to 123%, moving that macro from good to warn."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "160g",
+      "value": "161g",
       "target": "/ 165g",
-      "pct": 97,
+      "pct": 98,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "143g",
+      "value": "160g",
       "target": "/ 130g",
-      "pct": 110,
-      "status": "good"
+      "pct": 123,
+      "status": "warn"
     },
     {
       "name": "Fat",
@@ -46,20 +46,20 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,801 / 1,800 (100%)",
-      "note": "Landed almost exactly on target after trimming rice by 25g"
+      "coverage": "1,869 / 1,800 (104%)",
+      "note": "69 kcal over — still comfortably within range even after the extra fruit"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "160g / 165g (97%)",
+      "coverage": "161g / 165g (98%)",
       "note": "Kefta + 2 whey scoops + eggs comfortably carry the day"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Carbs",
-      "coverage": "143g / 130g (110%)",
-      "note": "Rice trim (70g→45g) brought this down from 124% to right at the good-range ceiling"
+      "coverage": "160g / 130g (123%)",
+      "note": "Apple + peach + kiwi at breakfast pushed this from 110% to 123% — still under the 125% bad line, but no longer 'good'"
     },
     {
       "status": "good",
@@ -70,8 +70,8 @@
     {
       "status": "warn",
       "name": "Fiber",
-      "coverage": "~19g / 30g (63%)",
-      "note": "No potato, banana, or extra vegetables today — lowest fiber day logged so far"
+      "coverage": "~22g / 30g (74%)",
+      "note": "The extra fruit added ~3g fiber — better than the 63% earlier, still short of target"
     },
     {
       "status": "warn",
@@ -88,8 +88,8 @@
     {
       "status": "good",
       "name": "Vitamin C",
-      "coverage": "~109mg / 90mg (121%)",
-      "note": "Kiwi + courgette + carrot + onion add up nicely"
+      "coverage": "~144mg / 90mg (160%)",
+      "note": "Apple + peach + kiwi at breakfast pushed this well past the dinner kiwi + vegetables alone"
     },
     {
       "status": "bad",
@@ -105,16 +105,16 @@
     }
   ],
   "good": [
-    "All three macros landed in the good range — protein 97%, carbs 110%, fat 95% — the most balanced day logged so far",
-    "Calories almost exactly on target: 1,801 / 1,800 (100%)",
+    "Protein (98%) and fat (95%) still comfortably in the good range despite the extra fruit",
+    "Vitamin C jumped to 160% of target — apple, peach, and kiwi at breakfast on top of the dinner kiwi",
     "Zinc, B12, Selenium, Choline, and B6 all comfortably covered by kefta + eggs",
     "Dinner finished by 21:00 — well within the 22:00 cutoff"
   ],
   "bad": [
-    "Fiber low at ~19g / 30g (63%) — no potato, banana, or extra vegetables today to pad it out",
+    "Carbs nudged from good (110%) to warn (123%) — the post-breakfast apple, peach, and kiwi added 17g on top of an already-covered target",
+    "Fiber still short at ~22g / 30g (74%) — better than the 63% earlier, but no potato/banana today to fully close it",
     "Cumin still missing from dinner — added back at lunch, but dinner (whey + perly + nuts + kiwi) has none",
-    "Calcium (16%), Iodine (13%), Chromium (14%), Vitamin E (28%) — structural gaps on a day with no dairy, fatty fish, or avocado",
-    "Potassium (~44%) and Magnesium (~56%) both well under half of target — no potato/banana today unlike recent training days"
+    "Calcium (16%), Iodine (13%), Chromium (14%) — structural gaps on a day with no dairy, fatty fish, or avocado"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
@@ -125,6 +125,9 @@
     "Cumin & salt (breakfast)",
     "Oat 55g + warm water",
     "1 scoop protein powder (breakfast)",
+    "1/2 small apple (~75g, breakfast)",
+    "1/4 small peach (~25g, breakfast)",
+    "1/2 small kiwi (~32g, breakfast)",
     "Black coffee (18:00, no sugar)",
     "Kefta 90/10 250g raw, cooked with 1 small onion (~50g)",
     "Brown rice 45g raw (↓ from 70g)",
@@ -141,7 +144,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "160g / 165g (97%)",
+      "coverage": "161g / 165g (98%)",
       "note": "Kefta 250g + 2 whey scoops + eggs — well balanced across the day"
     },
     {
@@ -157,8 +160,8 @@
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
       "status": "warn",
-      "coverage": "~19g / 30g (63%)",
-      "note": "Oat, legumes, and kiwi contribute, but no potato/banana today to close the gap"
+      "coverage": "~22g / 30g (74%)",
+      "note": "Oat, legumes, and the breakfast apple/peach/kiwi contribute, but no potato/banana today to fully close the gap"
     },
     {
       "n": 4,
@@ -221,24 +224,24 @@
       "nutrient": "Potassium",
       "impact": "Cramps, irregular heartbeat",
       "status": "warn",
-      "coverage": "~2,070mg / 4,700mg (44%)",
-      "note": "Kefta + vegetables + kiwi + perly, but no potato/banana today"
+      "coverage": "~2,300mg / 4,700mg (49%)",
+      "note": "Kefta + vegetables + kiwi + perly + the breakfast fruit, but no potato/banana today"
     },
     {
       "n": 12,
       "nutrient": "Folate B9",
       "impact": "Anemia, fatigue",
       "status": "warn",
-      "coverage": "~208µg / 400µg (52%)",
-      "note": "Oat, rice, vegetables, kiwi, and yolks each contribute a little"
+      "coverage": "~219µg / 400µg (55%)",
+      "note": "Oat, rice, vegetables, kiwi, yolks, and the breakfast fruit each contribute a little"
     },
     {
       "n": 13,
       "nutrient": "Vitamin C",
       "impact": "Weak immunity, slow healing",
       "status": "good",
-      "coverage": "~109mg / 90mg (121%)",
-      "note": "Kiwi + courgette + carrot + onion add up nicely"
+      "coverage": "~144mg / 90mg (160%)",
+      "note": "Apple + peach + kiwi at breakfast on top of the dinner kiwi + vegetables push this well past target"
     },
     {
       "n": 14,
@@ -269,8 +272,8 @@
       "nutrient": "Vitamin K",
       "impact": "Poor blood clotting",
       "status": "warn",
-      "coverage": "~50µg / 120µg (41%)",
-      "note": "Kiwi + carrot + courgette — no avocado today to help"
+      "coverage": "~66µg / 120µg (55%)",
+      "note": "Kiwi (breakfast + dinner) + carrot + courgette — no avocado today to help"
     },
     {
       "n": 18,
@@ -348,9 +351,9 @@
       "n": 27,
       "nutrient": "Antioxidants",
       "impact": "Faster aging, inflammation",
-      "status": "warn",
-      "coverage": "Moderate variety",
-      "note": "Carrot, courgette, kiwi, olive oil, nuts — fewer sources than usual, no avocado or banana today"
+      "status": "good",
+      "coverage": "Good variety",
+      "note": "Carrot, courgette, kiwi, apple, peach, olive oil, nuts — the breakfast fruit broadened this from earlier"
     },
     {
       "n": 28,
