@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 25g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 25g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -22,21 +22,21 @@
   "verdict": {
     "status": "warn",
     "icon": "⚠️",
-    "text_html": "Back close to target — <span class=\"kcal\">1,796 kcal</span>, almost exactly on the 1,800 rest goal — trimming lunch rice to 25g pulled carbs from 123% down to 112%, though still just outside the good range."
+    "text_html": "Right on target — <span class=\"kcal\">1,805 kcal</span>, essentially exact vs. the 1,800 rest goal — carbs sit at 114% after 2 garlic cloves at breakfast, a negligible nudge on top of the rice trim."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "159g",
+      "value": "160g",
       "target": "/ 165g",
       "pct": 97,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "146g",
+      "value": "148g",
       "target": "/ 130g",
-      "pct": 112,
+      "pct": 114,
       "status": "warn"
     },
     {
@@ -51,20 +51,20 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,796 / 1,800 (100%)",
-      "note": "The rice trim landed calories almost exactly back on target"
+      "coverage": "1,805 / 1,800 (100%)",
+      "note": "Garlic added ~9 kcal on top of the rice-trimmed total — still essentially exact"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "159g / 165g (97%)",
+      "coverage": "160g / 165g (97%)",
       "note": "Kefta + 2 whey scoops + eggs comfortably carry the day"
     },
     {
       "status": "warn",
       "name": "Carbs",
-      "coverage": "146g / 130g (112%)",
-      "note": "Rice trim (45g→25g) brought this down from 123% to 112% — closer to good, not quite there"
+      "coverage": "148g / 130g (114%)",
+      "note": "Rice trim brought this to 112%; 2 garlic cloves nudged it to 114% — negligible on its own"
     },
     {
       "status": "good",
@@ -133,6 +133,7 @@
     "1/2 small apple (~75g, breakfast)",
     "1/4 small peach (~25g, breakfast)",
     "1/2 small kiwi (~32g, breakfast)",
+    "2 garlic cloves (~6g, breakfast)",
     "Black coffee (18:00, no sugar)",
     "Kefta 90/10 250g raw, cooked with 1 small onion (~50g)",
     "Brown rice 25g raw (↓ from 70g, further trimmed from 45g)",
