@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 25g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n| — 2 garlic cloves\n| — 15g pumpkin seeds\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 25g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -22,28 +22,28 @@
   "verdict": {
     "status": "warn",
     "icon": "⚠️",
-    "text_html": "Right on target — <span class=\"kcal\">1,805 kcal</span>, essentially exact vs. the 1,800 rest goal — carbs sit at 114% after 2 garlic cloves at breakfast, a negligible nudge on top of the rice trim."
+    "text_html": "Protein finally hits 100% — <span class=\"kcal\">1,889 kcal</span> (105%, still close) — 15g pumpkin seeds closed the protein gap and added a real magnesium boost, at the cost of nudging carbs to 115%."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "160g",
+      "value": "164g",
       "target": "/ 165g",
-      "pct": 97,
+      "pct": 100,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "148g",
+      "value": "150g",
       "target": "/ 130g",
-      "pct": 114,
+      "pct": 115,
       "status": "warn"
     },
     {
       "name": "Fat",
-      "value": "66g",
+      "value": "73g",
       "target": "/ 70g",
-      "pct": 94,
+      "pct": 105,
       "status": "good"
     }
   ],
@@ -51,32 +51,32 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,805 / 1,800 (100%)",
-      "note": "Garlic added ~9 kcal on top of the rice-trimmed total — still essentially exact"
+      "coverage": "1,889 / 1,800 (105%)",
+      "note": "89 kcal over — still within the good-calorie tolerance after adding pumpkin seeds"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "160g / 165g (97%)",
-      "note": "Kefta + 2 whey scoops + eggs comfortably carry the day"
+      "coverage": "164g / 165g (100%)",
+      "note": "Pumpkin seeds' 4.5g pushed this from 97% to almost exactly 100%"
     },
     {
       "status": "warn",
       "name": "Carbs",
-      "coverage": "148g / 130g (114%)",
-      "note": "Rice trim brought this to 112%; 2 garlic cloves nudged it to 114% — negligible on its own"
+      "coverage": "150g / 130g (115%)",
+      "note": "Pumpkin seeds add 1.6g carbs on top of the garlic/rice-trimmed total — still well under the 125% bad line"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "66g / 70g (94%)",
-      "note": "Well controlled — three separate 5g olive oil portions plus egg yolks, no excess"
+      "coverage": "73g / 70g (105%)",
+      "note": "Pumpkin seeds' 7.4g fat pushed this from 94% to 105% — still comfortably inside the good range"
     },
     {
       "status": "warn",
       "name": "Fiber",
-      "coverage": "~21g / 30g (71%)",
-      "note": "The rice trim cost a bit of fiber too — still better than the original 63%"
+      "coverage": "~22g / 30g (75%)",
+      "note": "Pumpkin seeds add another 0.9g — best fiber coverage of the day so far, still short of target"
     },
     {
       "status": "warn",
@@ -110,14 +110,14 @@
     }
   ],
   "good": [
-    "Protein (98%) and fat (95%) still comfortably in the good range despite the extra fruit",
-    "Vitamin C jumped to 160% of target — apple, peach, and kiwi at breakfast on top of the dinner kiwi",
-    "Zinc, B12, Selenium, Choline, and B6 all comfortably covered by kefta + eggs",
+    "Protein hits 100% of target for the first time this stretch — pumpkin seeds closed the last of the gap",
+    "Magnesium jumped from 56% to 66% — pumpkin seeds are the single best magnesium source logged so far",
+    "Vitamin C at 160% of target — apple, peach, and kiwi at breakfast on top of the dinner kiwi",
     "Dinner finished by 21:00 — well within the 22:00 cutoff"
   ],
   "bad": [
-    "Carbs still at 112% after the rice trim — closer to good than the 123% peak, but the breakfast fruit means it won't fully return to 110%",
-    "Fiber down slightly to ~21g / 30g (71%) — trimming rice cost a bit of fiber along with the carbs",
+    "Carbs at 115% after pumpkin seeds' small carb contribution — still well under the 125% bad line",
+    "Fat back up to 105% (still good) after being at 94% — worth watching if more additions come later today",
     "Cumin still missing from dinner — added back at lunch, but dinner (whey + perly + nuts + kiwi) has none",
     "Calcium (16%), Iodine (13%), Chromium (14%) — structural gaps on a day with no dairy, fatty fish, or avocado"
   ],
@@ -134,6 +134,7 @@
     "1/4 small peach (~25g, breakfast)",
     "1/2 small kiwi (~32g, breakfast)",
     "2 garlic cloves (~6g, breakfast)",
+    "15g pumpkin seeds (breakfast)",
     "Black coffee (18:00, no sugar)",
     "Kefta 90/10 250g raw, cooked with 1 small onion (~50g)",
     "Brown rice 25g raw (↓ from 70g, further trimmed from 45g)",
@@ -150,8 +151,8 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "161g / 165g (98%)",
-      "note": "Kefta 250g + 2 whey scoops + eggs — well balanced across the day"
+      "coverage": "164g / 165g (100%)",
+      "note": "Kefta 250g + 2 whey scoops + eggs + pumpkin seeds — lands almost exactly on target"
     },
     {
       "n": 2,
@@ -206,8 +207,8 @@
       "nutrient": "Magnesium",
       "impact": "Cramps, poor sleep",
       "status": "warn",
-      "coverage": "~223mg / 400mg (56%)",
-      "note": "Oat + rice + kefta + nuts + kiwi — still under half covered"
+      "coverage": "~262mg / 400mg (66%)",
+      "note": "15g pumpkin seeds add ~39mg — the single biggest magnesium boost of the day"
     },
     {
       "n": 9,
@@ -222,8 +223,8 @@
       "nutrient": "Zinc",
       "impact": "Poor immunity, slow healing",
       "status": "good",
-      "coverage": "~16.7mg / 11mg (152%)",
-      "note": "Kefta dominant, eggs and oat add a bit more"
+      "coverage": "~17.8mg / 11mg (162%)",
+      "note": "Kefta dominant, pumpkin seeds add another ~1.1mg on top of eggs and oat"
     },
     {
       "n": 11,
