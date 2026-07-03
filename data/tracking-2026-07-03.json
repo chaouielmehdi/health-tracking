@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n| — 1/2 small apple\n| — 1/4 small peach\n| — 1/2 small kiwi\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 25g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -12,33 +12,38 @@
       "from": "Cumin only logged at breakfast",
       "to": "Added cumin & salt to lunch",
       "reason": "Protocol's anti-gas 'do' rule calls for cumin in every meal — gas/bloating is the #1 flagged issue. Mehdi confirmed cumin was added at lunch; dinner still has none."
+    },
+    {
+      "from": "Brown rice 45g raw (lunch)",
+      "to": "Brown rice 25g raw",
+      "reason": "The post-breakfast apple, peach, and kiwi pushed carbs to 123% (warn). A further rice trim (45g→25g) removes ~14.5g carbs, bringing carbs down to 112% — not quite back to 'good' but much closer — while calories land almost exactly on the 1,800 target."
     }
   ],
   "verdict": {
     "status": "warn",
     "icon": "⚠️",
-    "text_html": "Still a solid day — <span class=\"kcal\">1,869 kcal</span>, only 69 over the 1,800 rest target — but the post-breakfast fruit (apple, peach, kiwi) pushed carbs from 110% to 123%, moving that macro from good to warn."
+    "text_html": "Back close to target — <span class=\"kcal\">1,796 kcal</span>, almost exactly on the 1,800 rest goal — trimming lunch rice to 25g pulled carbs from 123% down to 112%, though still just outside the good range."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "161g",
+      "value": "159g",
       "target": "/ 165g",
-      "pct": 98,
+      "pct": 97,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "160g",
+      "value": "146g",
       "target": "/ 130g",
-      "pct": 123,
+      "pct": 112,
       "status": "warn"
     },
     {
       "name": "Fat",
       "value": "66g",
       "target": "/ 70g",
-      "pct": 95,
+      "pct": 94,
       "status": "good"
     }
   ],
@@ -46,32 +51,32 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,869 / 1,800 (104%)",
-      "note": "69 kcal over — still comfortably within range even after the extra fruit"
+      "coverage": "1,796 / 1,800 (100%)",
+      "note": "The rice trim landed calories almost exactly back on target"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "161g / 165g (98%)",
+      "coverage": "159g / 165g (97%)",
       "note": "Kefta + 2 whey scoops + eggs comfortably carry the day"
     },
     {
       "status": "warn",
       "name": "Carbs",
-      "coverage": "160g / 130g (123%)",
-      "note": "Apple + peach + kiwi at breakfast pushed this from 110% to 123% — still under the 125% bad line, but no longer 'good'"
+      "coverage": "146g / 130g (112%)",
+      "note": "Rice trim (45g→25g) brought this down from 123% to 112% — closer to good, not quite there"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "66g / 70g (95%)",
+      "coverage": "66g / 70g (94%)",
       "note": "Well controlled — three separate 5g olive oil portions plus egg yolks, no excess"
     },
     {
       "status": "warn",
       "name": "Fiber",
-      "coverage": "~22g / 30g (74%)",
-      "note": "The extra fruit added ~3g fiber — better than the 63% earlier, still short of target"
+      "coverage": "~21g / 30g (71%)",
+      "note": "The rice trim cost a bit of fiber too — still better than the original 63%"
     },
     {
       "status": "warn",
@@ -111,8 +116,8 @@
     "Dinner finished by 21:00 — well within the 22:00 cutoff"
   ],
   "bad": [
-    "Carbs nudged from good (110%) to warn (123%) — the post-breakfast apple, peach, and kiwi added 17g on top of an already-covered target",
-    "Fiber still short at ~22g / 30g (74%) — better than the 63% earlier, but no potato/banana today to fully close it",
+    "Carbs still at 112% after the rice trim — closer to good than the 123% peak, but the breakfast fruit means it won't fully return to 110%",
+    "Fiber down slightly to ~21g / 30g (71%) — trimming rice cost a bit of fiber along with the carbs",
     "Cumin still missing from dinner — added back at lunch, but dinner (whey + perly + nuts + kiwi) has none",
     "Calcium (16%), Iodine (13%), Chromium (14%) — structural gaps on a day with no dairy, fatty fish, or avocado"
   ],
@@ -130,7 +135,7 @@
     "1/2 small kiwi (~32g, breakfast)",
     "Black coffee (18:00, no sugar)",
     "Kefta 90/10 250g raw, cooked with 1 small onion (~50g)",
-    "Brown rice 45g raw (↓ from 70g)",
+    "Brown rice 25g raw (↓ from 70g, further trimmed from 45g)",
     "300g légumes sautés (carrot 100g, courgette 100g, onion 100g) with 5g olive oil",
     "Cumin & salt (lunch — added)",
     "1 scoop protein powder (dinner)",
@@ -160,8 +165,8 @@
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
       "status": "warn",
-      "coverage": "~22g / 30g (74%)",
-      "note": "Oat, legumes, and the breakfast apple/peach/kiwi contribute, but no potato/banana today to fully close the gap"
+      "coverage": "~21g / 30g (71%)",
+      "note": "Oat, legumes, and the breakfast apple/peach/kiwi contribute, but the rice trim and no potato/banana keep this short"
     },
     {
       "n": 4,
