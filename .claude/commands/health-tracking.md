@@ -19,19 +19,30 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    - Date: today (`YYYY-MM-DD` from current date) unless the input specifies another date explicitly
    - Day type: rest vs training — infer from routine text (look for "Training", "Football", "Running", "Workout", "max effort") or ask once if ambiguous
 
-3. **Calculate macros precisely.** Use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Read `data/food-reference.json` for nutritional values — use the `kcal`, `protein`, `carbs`, `fat`, `fiber` fields per food entry, scaled to the consumed quantity relative to the entry's `serving` field. For foods not found in `data/food-reference.json`, fall back to standard USDA values.
+3. **Verify completeness, then calculate macros precisely.** This skill is exigent about inputs — a report that looks precise but was built on guesses is worse than no report. Ask rather than assume; never let convenience win over accuracy.
 
-   **Before calculating, stop and ask Mehdi if any of the following apply:**
+   **Every item needs a real weight/quantity — no exceptions:**
+   - **Missing quantity entirely** — a food listed with no amount: always ask; Mehdi may reply with grams, a serving size, a brand portion, or a count
+   - **Ambiguous unit without a clear gram equivalent** — e.g. "½ onion", "2 eggs", "1 tsp sugar": ask for grams, unless the matched food-reference entry's `serving` already resolves it unambiguously (e.g. "per egg (~44g)" makes "2 eggs" resolvable without asking)
    - **Unspecified food type** — e.g. "1 fruit", "some vegetables": don't assume the type, ask
-   - **Ambiguous unit without a clear gram equivalent** — e.g. "½ onion", "2 eggs", "1 tsp sugar": ask for grams unless the food-reference entry's serving already covers it (e.g. "per egg (~44g)")
-   - **Missing quantity** — a food listed with no amount at all: ask; Mehdi may reply with a serving size, brand portion, or count rather than grams/ml
-   - **Multiple variants in food-reference.json** — if a food name matches more than one entry (e.g. "kefta" matches both kefta 80/20 and kefta 90/10), always ask which variant before calculating; never default to one silently
+   - **Multiple variants in food-reference.json** — if a name matches more than one entry (e.g. "kefta" matches both 80/20 and 90/10; "milk" matches both regular and sans-lactose), always ask which variant; never default to one silently
+
+   **Brand and type matter wherever more than one real-world variant exists:**
+   - **Water** — if water intake is logged without naming a brand, ask which one (Sidi Ali, Ciel, Ghayt, Aquafina, tap, or other). Mineral content differs enough between them (see `food-reference.json`) that "1L water" is not a complete entry
+   - **Milk or dairy added to anything** — coffee, tea, cereal, cooking, etc.: ask which product and fat content (e.g. Jaouda Sans Lactose vs. regular whole milk vs. skimmed) rather than assuming — calcium, fat, and lactose content all shift meaningfully between them
+
+   **Sleep and wake times.** If the pasted routine doesn't include clear wake-up and sleep timestamps, ask for them before finalizing the report — even though today's `DATA` schema doesn't score sleep yet, the record on file should stay accurate for when it does.
+
+   **Unknown foods are a hard stop, not a soft fallback.** If a food isn't in `data/food-reference.json`, never silently estimate a plausible-sounding number and move on:
+   - **Branded/packaged item** — research it properly (the product's own label, manufacturer site, Open Food Facts, or similar) before using it. Once a confident, sourced value is found, add a real entry to `data/food-reference.json` — noting where the numbers came from — then calculate from that entry, same as any other food.
+   - **Generic or homemade item with no findable source** — stop and ask Mehdi for the nutrition facts (a label photo, or values he already knows) rather than guessing.
+   - Every number that ends up in the day's scored macros must trace back to either a `food-reference.json` entry or something Mehdi explicitly gave you — never an unverified guess presented as fact.
+
+   Once every input above is resolved: use bash_tool + a python script to sum kcal/protein/carbs/fat/fiber per item — don't eyeball it. Read `data/food-reference.json` for nutritional values — use the `kcal`, `protein`, `carbs`, `fat`, `fiber` fields per food entry, scaled to the consumed quantity relative to the entry's `serving` field.
 
    **Special quantity rules:**
    - **Weekly portions** (e.g. "olive oil 70g for the whole week"): divide by 7 to get the daily amount, and note it in loggedItems (e.g. "olive oil 10g/day (70g ÷ 7)")
    - **Weight state**: always match the weight to the food-reference entry's state — if the entry is per 100g raw, use the raw weight. Example: "kefta 250g raw" → use 250g against the raw reference values, never the cooked weight
-
-   **Missing foods notification:** After calculating, if any food was not found in `data/food-reference.json`, list them at the end of your reply with their estimated USDA values (kcal, protein, carbs, fat, fiber per serving), and ask Mehdi if he wants to add them to `data/food-reference.json`.
 
 4. **Score the day, then fold in adjustments — the report only ever shows one final version.** Score the raw input against protocol targets internally to decide what (if anything) needs tweaking, then produce the final day:
    - Keep changes small and realistic — 1–3 targeted changes max; when multiple macros are significantly off, it's fine to address each with its own tweak; prioritize the worst-status macro first
@@ -123,4 +134,4 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 - Give Mehdi a direct clickable link to the report: `[View report →](https://chaouielmehdi.github.io/health-tracking/assets/tracking-YYYY-MM-DD.html)`
 - Accompany with at most 1–2 sentences of plain text. Do not repeat the full breakdown in chat — the artifact already contains it.
-- If any foods were missing from `data/food-reference.json`, list them with estimated values and ask if he wants to add them.
+- If any food wasn't already in `data/food-reference.json`, say how it was resolved — a sourced entry was researched and added, or it's still waiting on info from Mehdi — never present an unverified number as fact.
