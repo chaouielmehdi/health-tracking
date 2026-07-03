@@ -882,6 +882,23 @@
       "extra": []
     },
     {
+      "id": "peach",
+      "emoji": "🍑",
+      "name": "Peach",
+      "note": "Standard USDA raw peach values",
+      "category": "Fruit",
+      "serving": "per 100g",
+      "kcal": 39,
+      "protein": 0.91,
+      "carbs": 9.54,
+      "fat": 0.25,
+      "fiber": 1.5,
+      "extra": [
+        {"name": "Sugar", "value": "8.4g"},
+        {"name": "Vitamin C", "value": "6.6mg"}
+      ]
+    },
+    {
       "id": "strawberry",
       "emoji": "🍓",
       "name": "Berries (strawberry)",
