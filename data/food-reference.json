@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-02"
+    "updated": "2026-07-03"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -43,18 +43,18 @@
       "id": "chicken-breast",
       "emoji": "🍗",
       "name": "Chicken breast (raw, skinless)",
-      "note": null,
+      "note": "Corrected 2026-07 — was previously listed with cooked (roasted) values; raw skinless breast is ~120 kcal/100g, not 165",
       "category": "Poultry",
       "serving": "per 100g",
-      "kcal": 165,
-      "protein": 31,
+      "kcal": 120,
+      "protein": 22.5,
       "carbs": 0,
-      "fat": 3.6,
+      "fat": 2.6,
       "fiber": 0,
       "extra": [
-        {"name": "Sodium", "value": "116mg"},
-        {"name": "Potassium", "value": "370mg"},
-        {"name": "Vitamin B12", "value": "0.2µg"}
+        {"name": "Sodium", "value": "63mg"},
+        {"name": "Potassium", "value": "256mg"},
+        {"name": "Vitamin B12", "value": "0.3µg"}
       ]
     },
     {
@@ -115,13 +115,13 @@
       "id": "kefta-8020",
       "emoji": "🥩",
       "name": "Kefta 80/20 (beef/veal mix, raw)",
-      "note": "~20% fat raw mince, standard Moroccan kefta",
+      "note": "~20% fat raw mince, standard Moroccan kefta — corrected 2026-07, fat grams now match the 20% label (was inconsistently listed at 15g/100g)",
       "category": "Meat",
       "serving": "per 100g",
-      "kcal": 216,
+      "kcal": 260,
       "protein": 20,
       "carbs": 0,
-      "fat": 15,
+      "fat": 20,
       "fiber": 0,
       "extra": [
         {"name": "Sodium", "value": "66mg"},
@@ -323,14 +323,14 @@
       "id": "barley",
       "emoji": "🌿",
       "name": "Barley — ch3ir (pearled, dry, raw)",
-      "note": null,
+      "note": "Corrected 2026-07 — fiber was the hulled-barley figure; pearled barley (bran removed) is lower",
       "category": "Grain/Carb",
       "serving": "per 100g",
       "kcal": 352,
       "protein": 9.9,
       "carbs": 77.7,
       "fat": 1.2,
-      "fiber": 17.3,
+      "fiber": 15.6,
       "extra": [
         {"name": "Sodium", "value": "9mg"}
       ]
@@ -486,15 +486,15 @@
     {
       "id": "pumpkin-seeds",
       "emoji": "🌱",
-      "name": "Pumpkin seeds",
-      "note": null,
+      "name": "Pumpkin seeds (hulled kernels, raw)",
+      "note": "Corrected 2026-07 — macros previously didn't match the Zinc/Magnesium values (those were already sourced from hulled kernel data); now consistent throughout",
       "category": "Fat/Nut",
       "serving": "per 100g",
-      "kcal": 446,
-      "protein": 18.5,
-      "carbs": 35.4,
-      "fat": 19,
-      "fiber": 18,
+      "kcal": 559,
+      "protein": 30.2,
+      "carbs": 10.7,
+      "fat": 49,
+      "fiber": 6,
       "extra": [
         {"name": "Zinc", "value": "7.6mg"},
         {"name": "Magnesium", "value": "262mg"}
@@ -549,12 +549,12 @@
       "id": "pumpkin-veg",
       "emoji": "🎃",
       "name": "Pumpkin",
-      "note": null,
+      "note": "Corrected 2026-07 — kcal/protein/carbs were under USDA raw pumpkin values",
       "category": "Vegetable",
       "serving": "per 100g",
-      "kcal": 20,
-      "protein": 0.7,
-      "carbs": 4.6,
+      "kcal": 26,
+      "protein": 1,
+      "carbs": 6.5,
       "fat": 0.1,
       "fiber": 0.5,
       "extra": []
@@ -605,14 +605,14 @@
       "id": "garlic",
       "emoji": "🧄",
       "name": "Garlic",
-      "note": null,
+      "note": "Corrected 2026-07 — carbs/kcal were under the standard USDA raw garlic value",
       "category": "Vegetable",
       "serving": "per 100g",
-      "kcal": 143,
-      "protein": 6.6,
-      "carbs": 28.2,
-      "fat": 0.4,
-      "fiber": 2.7,
+      "kcal": 149,
+      "protein": 6.4,
+      "carbs": 33.1,
+      "fat": 0.5,
+      "fiber": 2.1,
       "extra": []
     },
     {
