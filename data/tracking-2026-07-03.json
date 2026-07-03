@@ -1,7 +1,7 @@
 {
   "date": "July 3, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water\n| — 1 scoop of protein powder with water\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 250g raw cooked with 1 small onion\n| — brown rice 45g raw (↓ from 70g)\n| — 300g legume sauté with 5g of olive oil (carrot, courgette, onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Brown rice 70g raw (lunch)",
@@ -10,8 +10,8 @@
     },
     {
       "from": "Cumin only logged at breakfast",
-      "to": "Added cumin & salt to lunch and dinner",
-      "reason": "Protocol's anti-gas 'do' rule calls for cumin in every meal — gas/bloating is the #1 flagged issue — but today it was only present at breakfast. Costs nothing nutritionally."
+      "to": "Added cumin & salt to lunch",
+      "reason": "Protocol's anti-gas 'do' rule calls for cumin in every meal — gas/bloating is the #1 flagged issue. Mehdi confirmed cumin was added at lunch; dinner still has none."
     }
   ],
   "verdict": {
@@ -77,13 +77,13 @@
       "status": "warn",
       "name": "Gas / bloat risk",
       "coverage": "Low-moderate",
-      "note": "Cumin was only at breakfast, now added to lunch and dinner too; onion is cooked (not raw) in both dishes, which is fine per protocol"
+      "note": "Cumin was only at breakfast, now added to lunch too — dinner still has none; onion is cooked (not raw) in both dishes, which is fine per protocol"
     },
     {
       "status": "warn",
       "name": "Protocol adherence",
       "coverage": "Mostly compliant",
-      "note": "Bread once ✓, dinner well before 22:00 ✓ — cumin gap at lunch/dinner is the only fix needed"
+      "note": "Bread once ✓, dinner well before 22:00 ✓ — cumin now covered at breakfast + lunch, dinner still missing it"
     },
     {
       "status": "good",
@@ -112,7 +112,7 @@
   ],
   "bad": [
     "Fiber low at ~19g / 30g (63%) — no potato, banana, or extra vegetables today to pad it out",
-    "Cumin missing from lunch and dinner — the anti-gas rule was only followed at breakfast (added back above)",
+    "Cumin still missing from dinner — added back at lunch, but dinner (whey + perly + nuts + kiwi) has none",
     "Calcium (16%), Iodine (13%), Chromium (14%), Vitamin E (28%) — structural gaps on a day with no dairy, fatty fish, or avocado",
     "Potassium (~44%) and Magnesium (~56%) both well under half of target — no potato/banana today unlike recent training days"
   ],
@@ -133,8 +133,7 @@
     "1 scoop protein powder (dinner)",
     "1 Perly nature (85g)",
     "2g Almonds + 2g Walnuts + 2g Cashews + 2g Pistachios",
-    "1 kiwi (~80g)",
-    "Cumin & salt (dinner — added)"
+    "1 kiwi (~80g)"
   ],
   "fullTable": [
     {
