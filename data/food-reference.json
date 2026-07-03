@@ -1029,6 +1029,42 @@
       ]
     },
     {
+      "id": "raib",
+      "emoji": "🥣",
+      "name": "Raib (homemade, from Jaouda Sans Lactose)",
+      "note": "Fermented whole milk, cultured from Jaouda Lait Sans Lactose — fermentation barely changes the base milk's macros (comparable to plain whole-milk yogurt), and consumes what little lactose remained",
+      "category": "Dairy",
+      "serving": "per 100g",
+      "kcal": 61,
+      "protein": 3.5,
+      "carbs": 4.7,
+      "fat": 3.3,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "124mg"},
+        {"name": "Live cultures", "value": "Lactobacillus, Streptococcus (from starter)"},
+        {"name": "Lactose", "value": "~0g"}
+      ]
+    },
+    {
+      "id": "lben",
+      "emoji": "🥛",
+      "name": "Lben (homemade, churned from Raib)",
+      "note": "Buttermilk left after churning raib to separate the butterfat (smen) — thinner and much lower fat than raib, protein/calcium mostly stay in the liquid",
+      "category": "Dairy",
+      "serving": "per 100g",
+      "kcal": 40,
+      "protein": 3.3,
+      "carbs": 4.8,
+      "fat": 1.0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "116mg"},
+        {"name": "Live cultures", "value": "Lactobacillus, Streptococcus (from starter)"},
+        {"name": "Lactose", "value": "~0g"}
+      ]
+    },
+    {
       "id": "water-sidi-ali",
       "emoji": "💧",
       "name": "Eau Sidi Ali (natural mineral water)",
