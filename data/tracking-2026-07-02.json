@@ -1,7 +1,7 @@
 {
   "date": "July 2, 2026",
   "dayType": "Training day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 20:30 — ☀️ Lunch (light, pre-football)\n| — kefta 90/10 110g\n| — khobz complet 35g\n-----------------------\n\n22:00 — ⚽ Football training (1h30)\n\n23:30 — 4 dates + water (post-training)\n\n-----------------------\n| 23:45 — 🌙 Post-match Dinner\n| — kefta 90/10 140g (remainder, deferred from lunch)\n| — 300g legume sauté (carrot, courgette, onion)\n| — 300g potatoes (boiled)\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n|\n| — 5 white of eggs boiled\n| — 3 yolk of eggs boiled\n| — 5g of olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + water\n| — 1 scoop of protein powder\n| — 1 avocado 200g whole\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 20:30 — ☀️ Lunch (light, pre-football)\n| — kefta 90/10 110g\n| — khobz complet 35g\n-----------------------\n\n22:00 — ⚽ Football training (1h30)\n\n23:30 — 4 dates + water (post-training)\n\n-----------------------\n| 23:45 — 🌙 Post-match Dinner\n| — kefta 90/10 140g (remainder, deferred from lunch)\n| — 300g legume sauté (carrot, courgette, onion)\n| — 400g potatoes (boiled)\n| — 1 small chicken leg 150g (skin removed)\n| — khobz complet 35g\n| — 1 scoop of protein powder\n| — 1 perly nature\n| — 2g Almonds\n| — 2g Walnuts\n| — 2g Cashews\n| — 2g Pistachios\n| — 1 kiwi\n| — 1 banana\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Whole wheat bread 35g (breakfast)",
@@ -22,78 +22,83 @@
       "from": "Post-match dinner short by ~570 kcal / 133g carbs of the training target",
       "to": "Added 300g potatoes to dinner; 4 dates + water already logged post-training",
       "reason": "Dates right after the match were a good fast-carb move for glycogen refill. Potatoes at dinner (clean carb, low fat, no gas-list ingredient) close most of the remaining training-day carb/calorie gap without overloading fat or fiber further."
+    },
+    {
+      "from": "Still ~270 kcal / 61g carbs short after dates + potatoes",
+      "to": "Added 1 small chicken leg 150g, +100g more potatoes (400g total), khobz complet 35g, and 1 banana",
+      "reason": "Requested as an extra addition. Chicken + extra potato + banana close the carb gap almost exactly (99% of target). Trade-off: khobz complet is now used twice today (lunch + dinner) — the same gas rule flagged earlier, reintroduced knowingly — and the chicken leg's fat pushes total fat to 140% of target on a day that was already fat-sufficient."
     }
   ],
   "verdict": {
     "status": "warn",
     "icon": "⚠️",
-    "text_html": "Solid training-day recovery — <span class=\"kcal\">2,030 kcal</span> (−270 vs training target). Dates + potatoes closed most of the carb gap; protein and fat right on point."
+    "text_html": "Training day fully refueled — <span class=\"kcal\">2,552 kcal</span>, carbs at 99% of target — but fat overshot to 140% and bread was used twice tonight."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "162g",
+      "value": "197g",
       "target": "/ 165g",
-      "pct": 98,
-      "status": "good"
-    },
-    {
-      "name": "Carbs",
-      "value": "189g",
-      "target": "/ 250g",
-      "pct": 76,
+      "pct": 119,
       "status": "warn"
     },
     {
-      "name": "Fat",
-      "value": "76g",
-      "target": "/ 70g",
-      "pct": 109,
+      "name": "Carbs",
+      "value": "248g",
+      "target": "/ 250g",
+      "pct": 99,
       "status": "good"
+    },
+    {
+      "name": "Fat",
+      "value": "98g",
+      "target": "/ 70g",
+      "pct": 140,
+      "status": "bad"
     }
   ],
   "coverage": [
     {
       "status": "warn",
       "name": "Calories",
-      "coverage": "2,030 / 2,300 (88%)",
-      "note": "270 kcal short — dates + potatoes closed most of the rest-day-sized gap"
-    },
-    {
-      "status": "good",
-      "name": "Protein",
-      "coverage": "162g / 165g (98%)",
-      "note": "Kefta, whey ×2, eggs, perly — right at target"
+      "coverage": "2,552 / 2,300 (111%)",
+      "note": "Now over target — chicken + banana + extra potato pushed it past 2,300"
     },
     {
       "status": "warn",
-      "name": "Carbs",
-      "coverage": "189g / 250g (76%)",
-      "note": "Up from 117g pre-dinner-redesign — dates (24g) + potatoes 300g (52.5g) did the work"
+      "name": "Protein",
+      "coverage": "197g / 165g (119%)",
+      "note": "Well past the minimum — not a problem on a training day, just generous"
     },
     {
       "status": "good",
+      "name": "Carbs",
+      "coverage": "248g / 250g (99%)",
+      "note": "Banana + potato + khobz landed almost exactly on the training target"
+    },
+    {
+      "status": "bad",
       "name": "Fat",
-      "coverage": "76g / 70g (109%)",
-      "note": "Unchanged — avocado, kefta, yolks, olive oil, perly stack"
+      "coverage": "98g / 70g (140%)",
+      "note": "Chicken leg's 20.6g fat pushed an already-sufficient fat day well over"
     },
     {
       "status": "good",
       "name": "Fiber",
-      "coverage": "~34g / 30g (113%)",
-      "note": "Potatoes + légumes + oat push slightly over — fine for a training day"
+      "coverage": "~41g / 30g (137%)",
+      "note": "Potatoes, khobz, and banana add up — comfortably covered"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Gas / bloat risk",
-      "coverage": "Low-moderate",
-      "note": "Lunch stayed light pre-match; dinner is a big post-training plate but potatoes/kefta/veg aren't gas-list items"
+      "coverage": "Moderate",
+      "note": "Bread used twice today (reintroduced knowingly) + a very large late second dinner — higher risk than the rest of the day"
     },
     {
       "status": "warn",
       "name": "Protocol adherence",
       "coverage": "Partial",
-      "note": "Dinner at 23:45 (post-match) breaks the dinner-by-22h rule — unavoidable with a 22h game; cumin ✓, single bread ✓"
+      "note": "Bread twice (lunch + dinner) and dinner at 23:45 — both known deviations, accepted for tonight; cumin ✓"
     },
     {
       "status": "good",
@@ -104,27 +109,27 @@
     {
       "status": "good",
       "name": "Potassium",
-      "coverage": "~3,185mg / 4,700mg (68%)",
-      "note": "Big jump from 36% — potatoes (~1275mg) + dates (~210mg) on top of avocado/kiwi/veg"
+      "coverage": "~4,450mg / 4,700mg (95%)",
+      "note": "Chicken + banana + extra potato nearly closed this out — up from 36% at the start of the day"
     },
     {
       "status": "good",
       "name": "Vitamin B12",
-      "coverage": "~6.4µg / 2.4µg (267%)",
-      "note": "Unchanged — kefta + egg yolks"
+      "coverage": "~6.8µg / 2.4µg (283%)",
+      "note": "Kefta + egg yolks + chicken"
     }
   ],
   "good": [
-    "Dates + water right after the match — smart fast-carb refuel before the bigger meal",
-    "Potatoes at dinner closed most of the carb/calorie gap without adding fat or gas-list ingredients",
-    "Protein (98%) and fat (109%) both right on target",
-    "Potassium jumped from 36% to 68% of target — potatoes + dates did real work there"
+    "Carbs landed at 99% of the training target — banana + potato + khobz closed the gap almost exactly",
+    "Most micronutrient gaps closed by the late additions — potassium 36%→95%, magnesium ~49%→~99%, thiamine ~54%→~103%",
+    "Protein comfortably past the 165g floor (197g) — no concern despite the warn color",
+    "Carrot Vit A, kefta+egg+chicken Selenium/B12, yolk Choline standouts all still strong"
   ],
   "bad": [
-    "Still ~270 kcal / 61g carbs short of a fully-fueled training day",
-    "Dinner lands at 23:45 (post-match) — breaks the dinner-by-22h rule, though the 22h game leaves no earlier option",
-    "Omega-3 still minimal — no fatty fish day (structural gap)",
-    "Magnesium at ~70% — better than before (49%) but still under target"
+    "Fat now 140% of target — the chicken leg pushed an already-fat-sufficient day well over",
+    "Bread used twice today (lunch + dinner) — the exact gas rule flagged earlier, reintroduced knowingly",
+    "Very large, very late second dinner (23:45) — total day now ~2,550 kcal, most of it in the last hour",
+    "Omega-3 still minimal — no fatty fish day (structural gap)"
   ],
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
@@ -138,16 +143,19 @@
     "1 scoop protein powder",
     "1 avocado 200g whole (136g flesh used)",
     "Kefta 90/10 110g (pre-match lunch, 20:30)",
-    "Khobz complet 35g (single bread — lunch only)",
+    "Khobz complet 35g (lunch)",
     "⚽ Football training, 22:00 (1h30)",
     "4 dates + water (~32g, post-training, 23:30)",
     "Kefta 90/10 140g (post-match dinner, 23:45 — remainder of the 250g)",
     "300g légumes sautés (carrot 100g, courgette 100g, onion 100g)",
-    "300g potatoes, boiled (added to close the training-day carb gap)",
+    "400g potatoes, boiled (300g + 100g extra)",
+    "1 small chicken leg 150g, skin removed",
+    "Khobz complet 35g (dinner — bread used twice today, accepted)",
     "1 scoop protein powder (post-match)",
     "1 Perly nature (85g)",
     "2g Almonds + 2g Walnuts + 2g Cashews + 2g Pistachios",
-    "1 kiwi (~80g)"
+    "1 kiwi (~80g)",
+    "1 banana (~120g)"
   ],
   "fullTable": [
     {
@@ -155,8 +163,8 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "162g / 165g (98%)",
-      "note": "Kefta, whey ×2, eggs, perly — right at target"
+      "coverage": "197g / 165g (119%)",
+      "note": "Chicken leg adds ~27g on top of an already-solid protein day"
     },
     {
       "n": 2,
@@ -171,8 +179,8 @@
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
       "status": "good",
-      "coverage": "~34g / 30g (113%)",
-      "note": "Potatoes (+6.3g) and dates (+2.6g) push it slightly over — fine"
+      "coverage": "~41g / 30g (137%)",
+      "note": "Extra potato, khobz, and banana push this comfortably over"
     },
     {
       "n": 4,
@@ -194,25 +202,25 @@
       "n": 6,
       "nutrient": "Iron",
       "impact": "Fatigue, anemia",
-      "status": "warn",
-      "coverage": "~9.7mg / 11mg (88%)",
-      "note": "Potatoes + dates add ~2.7mg — close to target now"
+      "status": "good",
+      "coverage": "~13.6mg / 11mg (124%)",
+      "note": "Chicken + khobz + extra potato push this over target for the first time"
     },
     {
       "n": 7,
       "nutrient": "Vitamin B12",
       "impact": "Nerve damage, fatigue",
       "status": "good",
-      "coverage": "~6.4µg / 2.4µg (267%)",
-      "note": "Unchanged — kefta + egg yolks"
+      "coverage": "~6.8µg / 2.4µg (283%)",
+      "note": "Kefta + egg yolks + chicken"
     },
     {
       "n": 8,
       "nutrient": "Magnesium",
       "impact": "Cramps, poor sleep",
-      "status": "warn",
-      "coverage": "~281mg / 400mg (70%)",
-      "note": "Potatoes (+69mg) and dates (+17mg) close a lot of this gap"
+      "status": "good",
+      "coverage": "~394mg / 400mg (99%)",
+      "note": "Chicken + banana + khobz + potato close nearly all of this gap"
     },
     {
       "n": 9,
@@ -220,39 +228,39 @@
       "impact": "Bone loss, fractures",
       "status": "warn",
       "coverage": "~400mg / 1000mg (40%)",
-      "note": "Unchanged — perly + whey are the main sources"
+      "note": "Unchanged — perly + whey are the main sources, still the weakest spot"
     },
     {
       "n": 10,
       "nutrient": "Zinc",
       "impact": "Poor immunity, slow healing",
       "status": "good",
-      "coverage": "~11mg / 11mg (100%)",
-      "note": "Unchanged — kefta covers the target"
+      "coverage": "~16mg / 11mg (147%)",
+      "note": "Chicken adds ~4mg on top of kefta's full coverage"
     },
     {
       "n": 11,
       "nutrient": "Potassium",
       "impact": "Cramps, irregular heartbeat",
-      "status": "warn",
-      "coverage": "~3,185mg / 4,700mg (68%)",
-      "note": "Potatoes (~1,275mg) + dates (~210mg) nearly double the previous coverage"
+      "status": "good",
+      "coverage": "~4,450mg / 4,700mg (95%)",
+      "note": "Chicken + banana + extra potato — from 36% at breakfast to 95% by bedtime"
     },
     {
       "n": 12,
       "nutrient": "Folate B9",
       "impact": "Anemia, fatigue",
       "status": "warn",
-      "coverage": "~264µg / 400µg (66%)",
-      "note": "Potatoes add ~54µg on top of avocado + yolks + carrot"
+      "coverage": "~320µg / 400µg (80%)",
+      "note": "Banana + khobz + potato add ~56µg — closer but not quite there"
     },
     {
       "n": 13,
       "nutrient": "Vitamin C",
       "impact": "Weak immunity, slow healing",
       "status": "good",
-      "coverage": "~164mg / 90mg (182%)",
-      "note": "Potatoes add ~59mg on top of kiwi + vegetables"
+      "coverage": "~194mg / 90mg (215%)",
+      "note": "Banana + extra potato add on top of an already-strong day"
     },
     {
       "n": 14,
@@ -268,7 +276,7 @@
       "impact": "Thyroid issues, fatigue",
       "status": "warn",
       "coverage": "~45µg / 150µg (30%)",
-      "note": "Unchanged — structural gap"
+      "note": "Unchanged — structural gap, none of tonight's additions carry iodine"
     },
     {
       "n": 16,
@@ -291,24 +299,24 @@
       "nutrient": "Vitamin B6",
       "impact": "Mood issues, fatigue",
       "status": "good",
-      "coverage": "~2.6mg / 1.7mg (151%)",
-      "note": "Potatoes + dates add ~1mg on top of kefta + avocado"
+      "coverage": "~3.9mg / 1.7mg (229%)",
+      "note": "Chicken + banana + potato push this well past target"
     },
     {
       "n": 19,
       "nutrient": "Selenium",
       "impact": "Weak immunity, thyroid issues",
       "status": "good",
-      "coverage": "~110µg / 55µg (200%)",
-      "note": "Unchanged — eggs + kefta exceptional"
+      "coverage": "~149µg / 55µg (271%)",
+      "note": "Chicken + khobz add on top of eggs + kefta"
     },
     {
       "n": 20,
       "nutrient": "Thiamine B1",
       "impact": "Fatigue, nerve issues",
-      "status": "warn",
-      "coverage": "~0.89mg / 1.2mg (74%)",
-      "note": "Potatoes add ~0.24mg — closer to target now"
+      "status": "good",
+      "coverage": "~1.2mg / 1.2mg (103%)",
+      "note": "Khobz + chicken + potato + banana finally close this gap"
     },
     {
       "n": 21,
@@ -323,24 +331,24 @@
       "nutrient": "Niacin B3",
       "impact": "Skin issues, fatigue",
       "status": "good",
-      "coverage": "~15.7mg / 16mg (98%)",
-      "note": "Potatoes + dates add ~3.7mg — right at target now"
+      "coverage": "~28.7mg / 16mg (179%)",
+      "note": "Chicken + khobz + potato + banana push this well past target"
     },
     {
       "n": 23,
       "nutrient": "Copper",
       "impact": "Anemia, weak bones",
       "status": "good",
-      "coverage": "~0.95mg / 0.9mg (105%)",
-      "note": "Potatoes + dates push this over target for the first time"
+      "coverage": "~1.2mg / 0.9mg (134%)",
+      "note": "Khobz + potato + chicken add a bit more on top of an already-covered day"
     },
     {
       "n": 24,
       "nutrient": "Choline",
       "impact": "Liver issues, memory issues",
       "status": "good",
-      "coverage": "~666mg / 550mg (121%)",
-      "note": "Potatoes add ~36mg on top of egg yolks (dominant)"
+      "coverage": "~783mg / 550mg (142%)",
+      "note": "Chicken + potato + khobz add ~117mg on top of egg yolks (dominant)"
     },
     {
       "n": 25,
@@ -355,8 +363,8 @@
       "nutrient": "Sodium",
       "impact": "Cramps or bloating",
       "status": "good",
-      "coverage": "~870mg (moderate)",
-      "note": "Potatoes add a little — still within normal range"
+      "coverage": "~1,170mg (moderate)",
+      "note": "Khobz (twice today) and chicken push this up — still within normal daily range"
     },
     {
       "n": 27,
@@ -364,23 +372,23 @@
       "impact": "Faster aging, inflammation",
       "status": "good",
       "coverage": "Good variety",
-      "note": "Unchanged — carrot, kiwi, avocado, oat, potato skin"
+      "note": "Carrot, kiwi, avocado, oat, potato skin, banana"
     },
     {
       "n": 28,
       "nutrient": "Phosphorus",
       "impact": "Bone/teeth weakness, fatigue",
       "status": "good",
-      "coverage": "~1670mg / 700mg (239%)",
-      "note": "Potatoes add ~171mg on top of whey + kefta + yolks — already well above"
+      "coverage": "~2,070mg / 700mg (295%)",
+      "note": "Chicken + khobz + potato add on top of whey + kefta + yolks — already well above"
     },
     {
       "n": 29,
       "nutrient": "Manganese",
       "impact": "Weak bones, poor metabolism",
       "status": "good",
-      "coverage": "~1.95mg / 2.3mg (85%)",
-      "note": "Potatoes + dates close most of this gap — close to target now"
+      "coverage": "~3mg / 2.3mg (132%)",
+      "note": "Banana + khobz + potato push this over target"
     },
     {
       "n": 30,
