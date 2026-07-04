@@ -966,6 +966,22 @@
       ]
     },
     {
+      "id": "mayonnaise-homemade",
+      "emoji": "🥄",
+      "name": "Mayonnaise (homemade, boiled egg base)",
+      "note": "1 whole boiled beldi egg + 1 tsp mustard + 1 tsp lemon juice + pinch salt + 40g olive oil — chosen over a raw-egg/100g-oil version for less fat per 100g against the protocol's fat target",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 447,
+      "protein": 6.2,
+      "carbs": 1.0,
+      "fat": 47.6,
+      "fiber": 0.2,
+      "extra": [
+        {"name": "Sodium", "value": "~216mg"}
+      ]
+    },
+    {
       "id": "black-coffee",
       "emoji": "☕",
       "name": "Black coffee",
