@@ -1,0 +1,393 @@
+{
+  "date": "July 10, 2026",
+  "dayType": "Rest day",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 4 beldi eggs (only 2 of them with yolk)\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1.5 scoops of protein powder with water (↑ from 1)\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — 2 boxes of Isabel thon, without its oil (~104g drained)\n| — 5g of olive oil\n| — 2 whole beldi eggs\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "adjustments": [
+    {
+      "from": "1 scoop of protein powder (breakfast)",
+      "to": "1.5 scoops of protein powder",
+      "reason": "With only 2 egg yolks at breakfast and tuna (leaner than kefta/chicken) at lunch, protein would sit at just 90% (149g). The extra half scoop (+12.5g protein) brings it to 98% (162g), safely in the good range."
+    }
+  ],
+  "verdict": {
+    "status": "good",
+    "icon": "✅",
+    "text_html": "<span class=\"kcal\">1,824 kcal</span> (101%), protein 98%, carbs 104%, fat 104% — the extra half scoop of breakfast whey keeps protein safe despite fewer yolks and a leaner lunch."
+  },
+  "macros": [
+    {
+      "name": "Protein",
+      "value": "162g",
+      "target": "/ 165g",
+      "pct": 98,
+      "status": "good"
+    },
+    {
+      "name": "Carbs",
+      "value": "136g",
+      "target": "/ 130g",
+      "pct": 104,
+      "status": "good"
+    },
+    {
+      "name": "Fat",
+      "value": "73g",
+      "target": "/ 70g",
+      "pct": 104,
+      "status": "good"
+    }
+  ],
+  "coverage": [
+    {
+      "status": "good",
+      "name": "Calories",
+      "coverage": "1,824 / 1,800 (101%)",
+      "note": "Part of the 10-day kefta/chicken/thon rotation plan"
+    },
+    {
+      "status": "good",
+      "name": "Protein",
+      "coverage": "162g / 165g (98%)",
+      "note": "See fullTable for the protein-source breakdown"
+    },
+    {
+      "status": "good",
+      "name": "Carbs",
+      "coverage": "136g / 130g (104%)",
+      "note": "Bread, oat, rice, and a whole apple land comfortably in range"
+    },
+    {
+      "status": "good",
+      "name": "Fat",
+      "coverage": "73g / 70g (104%)",
+      "note": "Driven mainly by the lunch protein source's own fat content"
+    },
+    {
+      "status": "warn",
+      "name": "Fiber",
+      "coverage": "~21g / 30g (70%)",
+      "note": "Oat, legume sauté, apple, and kiwi contribute, but no potato/banana in the rotation"
+    },
+    {
+      "status": "good",
+      "name": "Gas / bloat risk",
+      "coverage": "Low",
+      "note": "Bread once, cumin at breakfast and lunch, onion only cooked"
+    },
+    {
+      "status": "good",
+      "name": "Protocol adherence",
+      "coverage": "Good",
+      "note": "Bread once ✓, dinner well before 22:00 ✓, cumin at breakfast/lunch ✓"
+    },
+    {
+      "status": "good",
+      "name": "Vitamin A",
+      "coverage": "~1172µg / 900µg (130.2%)",
+      "note": "Carrot (120g) + beldi egg yolks"
+    },
+    {
+      "status": "warn",
+      "name": "Iron",
+      "coverage": "~4.0mg / 11mg (36.1%)",
+      "note": "See fullTable"
+    },
+    {
+      "status": "good",
+      "name": "Selenium",
+      "coverage": "~103µg / 55µg (188.1%)",
+      "note": "Strong across all three rotation versions"
+    }
+  ],
+  "good": [
+    "Protein safely at 98% thanks to the extra half scoop of breakfast whey — without it this version would sit at just 90%",
+    "Vitamin B12 at 147% — much better than a plain-chicken day, tuna is a real B12 source",
+    "Vitamin A (130%) and Vitamin C (129%) both comfortably covered",
+    "Lowest fat of any version tried so far relative to how lean the protein source is"
+  ],
+  "bad": [
+    "Zinc (20%) and Riboflavin (38%) are the weakest of any rotation version — leaner egg yolks + tuna carry less of both",
+    "Choline (55%) and Phosphorus (63%) both notably lower than the kefta/chicken versions",
+    "Calcium (20%), Vitamin D (21%), Chromium (9%), Vitamin E (23%) — the usual structural gaps persist",
+    "Sodium runs highest of the three (~588mg) — canned tuna's natural sodium content"
+  ],
+  "loggedItems": [
+    "Black coffee + 1 tsp sugar (13:00)",
+    "Whole wheat bread 35g (breakfast)",
+    "4 egg whites + 2 egg yolks (beldi), fried with 5g olive oil",
+    "5g olive oil (raw)",
+    "2 garlic cloves (~6g, cooked)",
+    "Mint tea + 1 tsp sugar",
+    "Cumin & salt (breakfast)",
+    "Oat 35g + warm water",
+    "1.5 scoops protein powder (breakfast, ↑ from 1)",
+    "1 small apple (~150g, whole)",
+    "Black coffee (18:00, no sugar)",
+    "2 boxes Isabel tuna, drained (~104g), + 5g olive oil + 2 whole beldi eggs",
+    "Brown rice 35g raw",
+    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
+    "Cumin & salt (lunch)",
+    "1.5 scoops protein powder (dinner)",
+    "1 Perly nature (85g)",
+    "1 kiwi (~80g)",
+    "5g Almonds + 5g Walnuts + 5g Cashews + 5g Pistachios + 5g Pumpkin Seeds"
+  ],
+  "fullTable": [
+    {
+      "n": 1,
+      "nutrient": "Protein",
+      "impact": "Muscle loss, weakness",
+      "status": "good",
+      "coverage": "~162g / 165g (98.0%)",
+      "note": "Tuna 104g drained + 1.5 whey scoops + 2 whole eggs + fewer yolks at breakfast — still clears target"
+    },
+    {
+      "n": 2,
+      "nutrient": "Water",
+      "impact": "Dehydration, fatigue",
+      "status": "good",
+      "coverage": "3L / 3L (100%)",
+      "note": "3 × 1L blocks from the schedule"
+    },
+    {
+      "n": 3,
+      "nutrient": "Fiber",
+      "impact": "Constipation, gut issues",
+      "status": "warn",
+      "coverage": "~21g / 30g (69.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 4,
+      "nutrient": "Omega-3",
+      "impact": "Inflammation, poor recovery",
+      "status": "warn",
+      "coverage": "~0.6g / 1.6g (40.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 5,
+      "nutrient": "Vitamin D",
+      "impact": "Bone weakness, low mood",
+      "status": "bad",
+      "coverage": "~3.1µg / 15µg (20.5%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 6,
+      "nutrient": "Iron",
+      "impact": "Fatigue, anemia",
+      "status": "warn",
+      "coverage": "~4.0mg / 11mg (36.1%)",
+      "note": "Tuna + 2 yolks + oat — the weakest iron day of the three"
+    },
+    {
+      "n": 7,
+      "nutrient": "Vitamin B12",
+      "impact": "Nerve damage, fatigue",
+      "status": "good",
+      "coverage": "~3.5µg / 2.4µg (146.7%)",
+      "note": "Tuna is a genuine B12 source — much better than a plain chicken day"
+    },
+    {
+      "n": 8,
+      "nutrient": "Magnesium",
+      "impact": "Cramps, poor sleep",
+      "status": "warn",
+      "coverage": "~141mg / 400mg (35.2%)",
+      "note": "Oat + pumpkin seeds — tuna and fewer yolks add little magnesium"
+    },
+    {
+      "n": 9,
+      "nutrient": "Calcium",
+      "impact": "Bone loss, fractures",
+      "status": "bad",
+      "coverage": "~204mg / 1000mg (20.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 10,
+      "nutrient": "Zinc",
+      "impact": "Poor immunity, slow healing",
+      "status": "bad",
+      "coverage": "~2.2mg / 11mg (20.2%)",
+      "note": "Tuna carries very little zinc — the weakest point of any rotation day"
+    },
+    {
+      "n": 11,
+      "nutrient": "Potassium",
+      "impact": "Cramps, irregular heartbeat",
+      "status": "warn",
+      "coverage": "~1593mg / 4700mg (33.9%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 12,
+      "nutrient": "Folate B9",
+      "impact": "Anemia, fatigue",
+      "status": "warn",
+      "coverage": "~164µg / 400µg (40.9%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 13,
+      "nutrient": "Vitamin C",
+      "impact": "Weak immunity, slow healing",
+      "status": "good",
+      "coverage": "~116mg / 90mg (128.8%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 14,
+      "nutrient": "Vitamin A",
+      "impact": "Poor vision, weak immunity",
+      "status": "good",
+      "coverage": "~1172µg / 900µg (130.2%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 15,
+      "nutrient": "Iodine",
+      "impact": "Thyroid issues, fatigue",
+      "status": "warn",
+      "coverage": "~45µg / 150µg (30.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 16,
+      "nutrient": "Vitamin E",
+      "impact": "Nerve issues, weak immunity",
+      "status": "bad",
+      "coverage": "~3.5mg / 15mg (23.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 17,
+      "nutrient": "Vitamin K",
+      "impact": "Poor blood clotting",
+      "status": "warn",
+      "coverage": "~53µg / 120µg (44.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 18,
+      "nutrient": "Vitamin B6",
+      "impact": "Mood issues, fatigue",
+      "status": "warn",
+      "coverage": "~0.9mg / 1.7mg (55.9%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 19,
+      "nutrient": "Selenium",
+      "impact": "Weak immunity, thyroid issues",
+      "status": "good",
+      "coverage": "~103µg / 55µg (188.1%)",
+      "note": "Tuna + eggs + garlic — strong selenium day"
+    },
+    {
+      "n": 20,
+      "nutrient": "Thiamine B1",
+      "impact": "Fatigue, nerve issues",
+      "status": "warn",
+      "coverage": "~0.6mg / 1.2mg (46.7%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 21,
+      "nutrient": "Riboflavin B2",
+      "impact": "Skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~0.5mg / 1.3mg (37.7%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 22,
+      "nutrient": "Niacin B3",
+      "impact": "Skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~12mg / 16mg (74.6%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 23,
+      "nutrient": "Copper",
+      "impact": "Anemia, weak bones",
+      "status": "warn",
+      "coverage": "~0.5mg / 0.9mg (50.0%)",
+      "note": "Nuts + tuna — modest contributions only"
+    },
+    {
+      "n": 24,
+      "nutrient": "Choline",
+      "impact": "Liver issues, memory issues",
+      "status": "warn",
+      "coverage": "~301mg / 550mg (54.8%)",
+      "note": "Only 2 yolks at breakfast plus 2 whole eggs at lunch — lower than the 3-yolk versions"
+    },
+    {
+      "n": 25,
+      "nutrient": "Probiotics",
+      "impact": "Poor gut health",
+      "status": "warn",
+      "coverage": "1 serving (perly)",
+      "note": "Fromage frais mild — consider swapping for raib for better gut value"
+    },
+    {
+      "n": 26,
+      "nutrient": "Sodium",
+      "impact": "Cramps or bloating",
+      "status": "good",
+      "coverage": "~588mg (low-moderate)",
+      "note": "Bread + protein source — comfortably within normal range"
+    },
+    {
+      "n": 27,
+      "nutrient": "Antioxidants",
+      "impact": "Faster aging, inflammation",
+      "status": "good",
+      "coverage": "Good variety",
+      "note": "Carrot, courgette, kiwi, apple, garlic, nuts, olive oil — a broad spread"
+    },
+    {
+      "n": 28,
+      "nutrient": "Phosphorus",
+      "impact": "Bone/teeth weakness, fatigue",
+      "status": "warn",
+      "coverage": "~444mg / 700mg (63.4%)",
+      "note": "Tuna + rice + eggs + perly — falls short of target, the weakest of the three"
+    },
+    {
+      "n": 29,
+      "nutrient": "Manganese",
+      "impact": "Weak bones, poor metabolism",
+      "status": "warn",
+      "coverage": "~2.0mg / 2.3mg (89.1%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 30,
+      "nutrient": "Chromium",
+      "impact": "Poor blood sugar control",
+      "status": "bad",
+      "coverage": "~3.1µg / 35µg (9.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 31,
+      "nutrient": "Vitamin B5",
+      "impact": "Fatigue, irritability",
+      "status": "warn",
+      "coverage": "~3.9mg / 5mg (78.2%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 32,
+      "nutrient": "Biotin B7",
+      "impact": "Hair/skin issues, fatigue",
+      "status": "good",
+      "coverage": "~50µg / 30µg (166.7%)",
+      "note": "Contributes from the day's usual sources"
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking · Mehdi</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script src="../header.js"></script>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --warn-soft:rgba(217,160,91,0.14);
+    --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.14);
+    --good:#7FAE8E;
+    --good-soft:rgba(127,174,142,0.14);
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding:28px;
+    -webkit-font-smoothing:antialiased;
+  }
+  #page-header{max-width:680px;margin:0 auto 28px;}
+  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0;color:var(--text);}
+  #page-header h1 em{font-style:normal;color:var(--accent);}
+  .app{
+    max-width:680px;
+    margin:0 auto;
+  }
+
+
+  /* VERDICT BANNER */
+  .verdict{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid var(--panel-border);
+  }
+  .verdict.good{background:var(--good-soft);border-color:rgba(127,174,142,0.3);}
+  .verdict.warn{background:var(--warn-soft);border-color:rgba(217,160,91,0.3);}
+  .verdict.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.3);}
+  .verdict-icon{
+    font-size:22px;
+    width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .verdict.good .verdict-icon{background:rgba(127,174,142,0.25);}
+  .verdict.warn .verdict-icon{background:rgba(217,160,91,0.25);}
+  .verdict.bad .verdict-icon{background:rgba(194,96,79,0.25);}
+  .verdict-text{font-size:14.5px;line-height:1.4;font-weight:500;}
+  .verdict-text .kcal{font-family:var(--mono);font-weight:700;}
+
+  /* MACRO GAUGES */
+  .macros{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .macro-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 12px;
+  }
+  .macro-name{
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .macro-value{
+    font-family:var(--mono);
+    font-size:21px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .macro-target{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim2);
+    margin-bottom:10px;
+  }
+  .gauge-track{
+    height:6px;
+    background:#171A1C;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gauge-fill{
+    height:100%;
+    border-radius:6px;
+    transition:width 0.3s ease;
+  }
+  .gauge-fill.good{background:var(--good);}
+  .gauge-fill.warn{background:var(--warn);}
+  .gauge-fill.bad{background:var(--bad);}
+  .macro-pct{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    margin-top:6px;
+    text-align:right;
+  }
+  .macro-pct.good{color:var(--good);}
+  .macro-pct.warn{color:var(--warn);}
+  .macro-pct.bad{color:var(--bad);}
+
+  /* SECTION TITLE */
+  .section-title{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    margin:24px 0 10px;
+  }
+
+  /* COVERAGE TABLE */
+  .coverage{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .cov-row{
+    display:grid;
+    grid-template-columns:26px 1fr auto;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .cov-row:last-child{border-bottom:none;}
+  .cov-dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    justify-self:center;
+  }
+  .cov-dot.good{background:var(--good);}
+  .cov-dot.warn{background:var(--warn);}
+  .cov-dot.bad{background:var(--bad);}
+  .cov-name{
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.4;
+  }
+  .cov-coverage{
+    font-family:var(--mono);
+    font-size:12px;
+    text-align:right;
+    white-space:nowrap;
+    line-height:1.5;
+    color:var(--text-dim2);
+  }
+  .cov-coverage.good{color:var(--good);}
+  .cov-coverage.warn{color:var(--warn);}
+  .cov-coverage.bad{color:var(--bad);}
+
+  /* FEEDBACK */
+  .feedback{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:22px;
+  }
+  .fb-card{
+    border-radius:14px;
+    padding:14px 16px;
+    border:1px solid var(--panel-border);
+  }
+  .fb-card.good{background:var(--good-soft);border-color:rgba(127,174,142,0.25);}
+  .fb-card.bad{background:var(--bad-soft);border-color:rgba(194,96,79,0.25);}
+  .fb-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .fb-card.good .fb-title{color:var(--good);}
+  .fb-card.bad .fb-title{color:var(--bad);}
+  .fb-list{list-style:none;}
+  .fb-list li{
+    font-size:12.5px;
+    line-height:1.5;
+    padding-left:14px;
+    position:relative;
+    margin-bottom:6px;
+    color:var(--text);
+  }
+  .fb-list li:last-child{margin-bottom:0;}
+  .fb-list li::before{
+    content:"–";
+    position:absolute;left:0;
+    color:var(--text-dim2);
+  }
+
+  .footer-note{
+    margin-top:18px;
+    font-size:11px;
+    color:var(--text-dim2);
+    text-align:center;
+  }
+
+  /* DAY LOG + ADJUSTMENTS */
+  .day-section{
+    margin-top:0;
+  }
+  .routine-block-wrap{
+    position:relative;
+    margin-bottom:12px;
+  }
+  .routine-pre{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+    line-height:1.9;
+    white-space:pre-wrap;
+    word-break:break-word;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:16px 20px;
+    padding-top:36px;
+  }
+  .routine-copy{
+    position:absolute;
+    top:10px; right:10px;
+    font-size:10.5px;
+    font-family:var(--mono);
+    color:var(--text-dim2);
+    background:none;
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    padding:3px 10px;
+    cursor:pointer;
+    transition:color 0.15s, border-color 0.15s;
+  }
+  .routine-copy:hover{color:var(--text);border-color:var(--text-dim2);}
+  .routine-copy.copied{color:var(--good);border-color:var(--good);}
+  .day-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .day-card-title{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:10px;
+    color:var(--text-dim2);
+  }
+  .adj-list{
+    list-style:none;
+  }
+  .adj-item{
+    font-size:12.5px;
+    line-height:1.5;
+    padding:7px 0;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .adj-item:last-child{border-bottom:none;}
+  .adj-from{
+    color:var(--bad);
+    text-decoration:line-through;
+    opacity:0.75;
+  }
+  .adj-to{
+    color:var(--good);
+    font-weight:600;
+  }
+  .adj-arrow{
+    color:var(--text-dim2);
+    margin:0 4px;
+  }
+  .adj-reason{
+    display:block;
+    color:var(--text-dim2);
+    font-size:11.5px;
+    margin-top:2px;
+  }
+
+  /* FULL NUTRIENT TABLE */
+  .full-table-wrap{
+    margin-top:24px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  table.full-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+  }
+  table.full-table th{
+    background:var(--panel);
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-dim2);
+    font-weight:700;
+    text-align:left;
+    padding:10px 10px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  table.full-table th:first-child{width:5%;text-align:center;}
+  table.full-table th:nth-child(2){width:18%;}
+  table.full-table th:nth-child(3){width:32%;}
+  table.full-table th:nth-child(4){width:45%;}
+  table.full-table td{
+    font-size:11.5px;
+    line-height:1.4;
+    padding:9px 10px;
+    border-bottom:1px solid var(--panel-border);
+    vertical-align:top;
+    color:var(--text);
+  }
+  table.full-table tr:last-child td{border-bottom:none;}
+  table.full-table tr:nth-child(even){background:rgba(255,255,255,0.015);}
+  .ft-num{
+    text-align:center;
+    color:var(--text-dim2);
+    font-family:var(--mono);
+    font-size:11px;
+  }
+  .ft-nutrient{font-weight:600;}
+  .ft-impact{color:var(--text-dim2);font-size:11px;}
+  .ft-coverage{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:11px;
+    white-space:nowrap;
+  }
+  .ft-coverage.good{color:var(--good);}
+  .ft-coverage.warn{color:var(--warn);}
+  .ft-coverage.bad{color:var(--bad);}
+
+  @media (max-width:600px){
+    table.full-table{table-layout:auto;}
+    table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+  }
+
+  @media (max-width:480px){
+    .macros{grid-template-columns:1fr 1fr 1fr;gap:7px;}
+    .macro-card{padding:10px 8px;}
+    .macro-value{font-size:17px;}
+    .feedback{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+  <div id="page-header"
+    data-badge="Daily Report"
+    data-back-href="../routines.html"
+    data-back-label="Daily Routines"
+    data-deploy-path="../data/deploy.json">
+  </div>
+  <div class="app" id="app"></div>
+
+<script>
+let DATA = null;
+
+const _texts = {};
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function doCopy(btn, which){
+  navigator.clipboard.writeText(_texts[which]||'').then(()=>{
+    btn.textContent='copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='copy'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+function render() {
+  const macrosHtml = DATA.macros.map(m => `
+    <div class="macro-card">
+      <div class="macro-name">${m.name}</div>
+      <div class="macro-value">${m.value}</div>
+      <div class="macro-target">${m.target}</div>
+      <div class="gauge-track"><div class="gauge-fill ${m.status}" style="width:${Math.min(m.pct,100)}%"></div></div>
+      <div class="macro-pct ${m.status}">${m.pct}%</div>
+    </div>
+  `).join('');
+
+  const coverageHtml = DATA.coverage.map(c => `
+    <div class="cov-row">
+      <div class="cov-dot ${c.status}"></div>
+      <div class="cov-name">${c.name}</div>
+      <div class="cov-coverage ${c.status}">${c.coverage}</div>
+    </div>
+  `).join('');
+
+  const goodHtml = DATA.good.map(g => `<li>${g}</li>`).join('');
+  const badHtml = DATA.bad.map(b => `<li>${b}</li>`).join('');
+
+  _texts.final = DATA.routineText || '';
+
+  const logBlockHtml = `<div class="routine-block-wrap">
+      <div class="routine-pre">${esc(DATA.routineText||'')}</div>
+      <button class="routine-copy" onclick="doCopy(this,'final')">copy</button>
+    </div>`;
+
+  const adjustmentsHtml = (DATA.adjustments||[]).length
+    ? DATA.adjustments.map(a => `
+      <li class="adj-item">
+        <span class="adj-from">${a.from}</span><span class="adj-arrow">→</span><span class="adj-to">${a.to}</span>
+        <span class="adj-reason">${a.reason}</span>
+      </li>
+    `).join('')
+    : `<li class="adj-item">No changes — this day already met the targets.</li>`;
+
+  const fullTableRows = DATA.fullTable.map(r => `
+    <tr>
+      <td class="ft-num">${r.n}</td>
+      <td class="ft-nutrient">${r.nutrient}</td>
+      <td class="ft-impact">${r.impact}</td>
+      <td class="ft-coverage ${r.status}">${r.coverage}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="verdict ${DATA.verdict.status}">
+      <div class="verdict-icon">${DATA.verdict.icon}</div>
+      <div class="verdict-text">${DATA.verdict.text_html}</div>
+    </div>
+
+    <div class="macros">${macrosHtml}</div>
+
+    <div class="section-title">Nutrient Coverage</div>
+    <div class="coverage">${coverageHtml}</div>
+
+    <div class="feedback">
+      <div class="fb-card good">
+        <div class="fb-title">✓ Good</div>
+        <ul class="fb-list">${goodHtml}</ul>
+      </div>
+      <div class="fb-card bad">
+        <div class="fb-title">! Watch</div>
+        <ul class="fb-list">${badHtml}</ul>
+      </div>
+    </div>
+
+    <div class="section-title">Changes Applied</div>
+    <div class="day-card">
+      <ul class="adj-list">${adjustmentsHtml}</ul>
+    </div>
+
+    <div class="section-title">Today's Log</div>
+    <div class="day-section">
+      ${logBlockHtml}
+    </div>
+
+    <div class="section-title">Nutrient Coverage Tracker</div>
+    <div class="full-table-wrap">
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nutrient</th>
+            <th>Impact if missing</th>
+            <th>Coverage</th>
+          </tr>
+        </thead>
+        <tbody>${fullTableRows}</tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">Mehdi's Health &amp; Body - Protocol</div>
+  `;
+}
+
+(async function(){
+  const m = window.location.pathname.match(/tracking-(\d{4}-\d{2}-\d{2})\.html/);
+  if(!m){ document.getElementById('app').innerHTML='<p style="padding:20px;color:var(--bad)">Could not determine date from URL.</p>'; return; }
+  const date = m[1];
+  try {
+    const resp = await fetch('../data/tracking-'+date+'.json?v='+Date.now());
+    if(!resp.ok) throw new Error(resp.status);
+    DATA = await resp.json();
+  } catch(e) {
+    document.getElementById('app').innerHTML='<p style="padding:20px;color:var(--bad)">Failed to load tracking data for '+date+'.</p>';
+    return;
+  }
+  var el=document.getElementById('page-header');
+  if(el) el.dataset.title=DATA.date+' · '+DATA.dayType;
+  render();
+})();
+</script>
+</body>
+</html>

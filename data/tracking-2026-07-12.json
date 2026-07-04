@@ -1,0 +1,387 @@
+{
+  "date": "July 12, 2026",
+  "dayType": "Rest day",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw\n| — chicken cooked with 1 tsp of mustard\n| — chicken cooked with 5g of olive oil\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "adjustments": [],
+  "verdict": {
+    "status": "good",
+    "icon": "✅",
+    "text_html": "The leanest of the rotation — <span class=\"kcal\">1,774 kcal</span> (99%), protein 101%, carbs 104%, fat 92% — the best-centered version of the three."
+  },
+  "macros": [
+    {
+      "name": "Protein",
+      "value": "167g",
+      "target": "/ 165g",
+      "pct": 101,
+      "status": "good"
+    },
+    {
+      "name": "Carbs",
+      "value": "135g",
+      "target": "/ 130g",
+      "pct": 104,
+      "status": "good"
+    },
+    {
+      "name": "Fat",
+      "value": "64g",
+      "target": "/ 70g",
+      "pct": 92,
+      "status": "good"
+    }
+  ],
+  "coverage": [
+    {
+      "status": "good",
+      "name": "Calories",
+      "coverage": "1,774 / 1,800 (99%)",
+      "note": "Part of the 10-day kefta/chicken/thon rotation plan"
+    },
+    {
+      "status": "good",
+      "name": "Protein",
+      "coverage": "167g / 165g (101%)",
+      "note": "See fullTable for the protein-source breakdown"
+    },
+    {
+      "status": "good",
+      "name": "Carbs",
+      "coverage": "135g / 130g (104%)",
+      "note": "Bread, oat, rice, and a whole apple land comfortably in range"
+    },
+    {
+      "status": "good",
+      "name": "Fat",
+      "coverage": "64g / 70g (92%)",
+      "note": "Driven mainly by the lunch protein source's own fat content"
+    },
+    {
+      "status": "warn",
+      "name": "Fiber",
+      "coverage": "~21g / 30g (70%)",
+      "note": "Oat, legume sauté, apple, and kiwi contribute, but no potato/banana in the rotation"
+    },
+    {
+      "status": "good",
+      "name": "Gas / bloat risk",
+      "coverage": "Low",
+      "note": "Bread once, cumin at breakfast and lunch, onion only cooked"
+    },
+    {
+      "status": "good",
+      "name": "Protocol adherence",
+      "coverage": "Good",
+      "note": "Bread once ✓, dinner well before 22:00 ✓, cumin at breakfast/lunch ✓"
+    },
+    {
+      "status": "good",
+      "name": "Vitamin A",
+      "coverage": "~1257µg / 900µg (139.7%)",
+      "note": "Carrot (120g) + beldi egg yolks"
+    },
+    {
+      "status": "warn",
+      "name": "Zinc",
+      "coverage": "~3.4mg / 11mg (30.9%)",
+      "note": "See fullTable"
+    },
+    {
+      "status": "good",
+      "name": "Selenium",
+      "coverage": "~113µg / 55µg (205.4%)",
+      "note": "Strong across all three rotation versions"
+    }
+  ],
+  "good": [
+    "The best-centered macros of the three rotation days — fat sits at a comfortable 92%, furthest from the ceiling",
+    "Selenium (205%) and Niacin (146%) are chicken's standout strengths",
+    "Vitamin A (140%) and Vitamin C (129%) both comfortably covered",
+    "Protein clears 165g even before counting the dinner whey bump"
+  ],
+  "bad": [
+    "Zinc (31%) and Iron (38%) are both weak — chicken carries much less of either than kefta would",
+    "Calcium (20%), Vitamin D (10%), Chromium (9%), Vitamin E (23%) — the usual structural gaps",
+    "Choline just barely good at 90% — closest to slipping under of the three versions",
+    "Fiber still short at ~70% — no potato/banana in the rotation"
+  ],
+  "loggedItems": [
+    "Black coffee + 1 tsp sugar (13:00)",
+    "Whole wheat bread 35g (breakfast)",
+    "6 egg whites + 3 egg yolks (beldi), fried with 5g olive oil",
+    "5g olive oil (raw)",
+    "2 garlic cloves (~6g, cooked)",
+    "Mint tea + 1 tsp sugar",
+    "Cumin & salt (breakfast)",
+    "Oat 35g + warm water",
+    "1 scoop protein powder (breakfast)",
+    "1 small apple (~150g, whole)",
+    "Black coffee (18:00, no sugar)",
+    "Chicken breast 200g raw, cooked with 1 tsp mustard and 5g olive oil",
+    "Brown rice 35g raw",
+    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
+    "Cumin & salt (lunch)",
+    "1.5 scoops protein powder (dinner)",
+    "1 Perly nature (85g)",
+    "1 kiwi (~80g)",
+    "5g Almonds + 5g Walnuts + 5g Cashews + 5g Pistachios + 5g Pumpkin Seeds"
+  ],
+  "fullTable": [
+    {
+      "n": 1,
+      "nutrient": "Protein",
+      "impact": "Muscle loss, weakness",
+      "status": "good",
+      "coverage": "~167g / 165g (101.3%)",
+      "note": "Chicken breast 200g + 1.5 whey scoops + eggs — clears target"
+    },
+    {
+      "n": 2,
+      "nutrient": "Water",
+      "impact": "Dehydration, fatigue",
+      "status": "good",
+      "coverage": "3L / 3L (100%)",
+      "note": "3 × 1L blocks from the schedule"
+    },
+    {
+      "n": 3,
+      "nutrient": "Fiber",
+      "impact": "Constipation, gut issues",
+      "status": "warn",
+      "coverage": "~21g / 30g (69.5%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 4,
+      "nutrient": "Omega-3",
+      "impact": "Inflammation, poor recovery",
+      "status": "warn",
+      "coverage": "~0.7g / 1.6g (45.6%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 5,
+      "nutrient": "Vitamin D",
+      "impact": "Bone weakness, low mood",
+      "status": "bad",
+      "coverage": "~1.5µg / 15µg (10.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 6,
+      "nutrient": "Iron",
+      "impact": "Fatigue, anemia",
+      "status": "warn",
+      "coverage": "~4.2mg / 11mg (38.1%)",
+      "note": "Chicken carries far less iron than kefta would"
+    },
+    {
+      "n": 7,
+      "nutrient": "Vitamin B12",
+      "impact": "Nerve damage, fatigue",
+      "status": "warn",
+      "coverage": "~2.0µg / 2.4µg (82.5%)",
+      "note": "Chicken + eggs — solid but well under a kefta day"
+    },
+    {
+      "n": 8,
+      "nutrient": "Magnesium",
+      "impact": "Cramps, poor sleep",
+      "status": "warn",
+      "coverage": "~165mg / 400mg (41.2%)",
+      "note": "Oat + pumpkin seeds are the main sources — chicken adds little"
+    },
+    {
+      "n": 9,
+      "nutrient": "Calcium",
+      "impact": "Bone loss, fractures",
+      "status": "bad",
+      "coverage": "~204mg / 1000mg (20.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 10,
+      "nutrient": "Zinc",
+      "impact": "Poor immunity, slow healing",
+      "status": "warn",
+      "coverage": "~3.4mg / 11mg (30.9%)",
+      "note": "Chicken's zinc is much lower than kefta's — the weakest point today"
+    },
+    {
+      "n": 11,
+      "nutrient": "Potassium",
+      "impact": "Cramps, irregular heartbeat",
+      "status": "warn",
+      "coverage": "~1845mg / 4700mg (39.2%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 12,
+      "nutrient": "Folate B9",
+      "impact": "Anemia, fatigue",
+      "status": "warn",
+      "coverage": "~188µg / 400µg (46.9%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 13,
+      "nutrient": "Vitamin C",
+      "impact": "Weak immunity, slow healing",
+      "status": "good",
+      "coverage": "~116mg / 90mg (128.8%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 14,
+      "nutrient": "Vitamin A",
+      "impact": "Poor vision, weak immunity",
+      "status": "good",
+      "coverage": "~1257µg / 900µg (139.7%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 15,
+      "nutrient": "Iodine",
+      "impact": "Thyroid issues, fatigue",
+      "status": "bad",
+      "coverage": "~22µg / 150µg (14.7%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 16,
+      "nutrient": "Vitamin E",
+      "impact": "Nerve issues, weak immunity",
+      "status": "bad",
+      "coverage": "~3.5mg / 15mg (23.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 17,
+      "nutrient": "Vitamin K",
+      "impact": "Poor blood clotting",
+      "status": "warn",
+      "coverage": "~53µg / 120µg (44.4%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 18,
+      "nutrient": "Vitamin B6",
+      "impact": "Mood issues, fatigue",
+      "status": "good",
+      "coverage": "~1.9mg / 1.7mg (111.8%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 19,
+      "nutrient": "Selenium",
+      "impact": "Weak immunity, thyroid issues",
+      "status": "good",
+      "coverage": "~113µg / 55µg (205.4%)",
+      "note": "Chicken breast + eggs + garlic — the strongest selenium day of the three"
+    },
+    {
+      "n": 20,
+      "nutrient": "Thiamine B1",
+      "impact": "Fatigue, nerve issues",
+      "status": "warn",
+      "coverage": "~0.7mg / 1.2mg (58.3%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 21,
+      "nutrient": "Riboflavin B2",
+      "impact": "Skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~0.8mg / 1.3mg (63.8%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 22,
+      "nutrient": "Niacin B3",
+      "impact": "Skin issues, fatigue",
+      "status": "good",
+      "coverage": "~23mg / 16mg (145.8%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 23,
+      "nutrient": "Copper",
+      "impact": "Anemia, weak bones",
+      "status": "warn",
+      "coverage": "~0.5mg / 0.9mg (53.3%)",
+      "note": "Nuts + chicken — modest contributions only"
+    },
+    {
+      "n": 24,
+      "nutrient": "Choline",
+      "impact": "Liver issues, memory issues",
+      "status": "good",
+      "coverage": "~496mg / 550mg (90.2%)",
+      "note": "3 egg yolks carry most of this — chicken adds a little more"
+    },
+    {
+      "n": 25,
+      "nutrient": "Probiotics",
+      "impact": "Poor gut health",
+      "status": "warn",
+      "coverage": "1 serving (perly)",
+      "note": "Fromage frais mild — consider swapping for raib for better gut value"
+    },
+    {
+      "n": 26,
+      "nutrient": "Sodium",
+      "impact": "Cramps or bloating",
+      "status": "good",
+      "coverage": "~298mg (low-moderate)",
+      "note": "Bread + protein source — comfortably within normal range"
+    },
+    {
+      "n": 27,
+      "nutrient": "Antioxidants",
+      "impact": "Faster aging, inflammation",
+      "status": "good",
+      "coverage": "Good variety",
+      "note": "Carrot, courgette, kiwi, apple, garlic, nuts, olive oil — a broad spread"
+    },
+    {
+      "n": 28,
+      "nutrient": "Phosphorus",
+      "impact": "Bone/teeth weakness, fatigue",
+      "status": "good",
+      "coverage": "~636mg / 700mg (90.9%)",
+      "note": "Chicken + rice + eggs + perly — comfortably past target"
+    },
+    {
+      "n": 29,
+      "nutrient": "Manganese",
+      "impact": "Weak bones, poor metabolism",
+      "status": "warn",
+      "coverage": "~2.0mg / 2.3mg (89.1%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 30,
+      "nutrient": "Chromium",
+      "impact": "Poor blood sugar control",
+      "status": "bad",
+      "coverage": "~3.1µg / 35µg (9.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 31,
+      "nutrient": "Vitamin B5",
+      "impact": "Fatigue, irritability",
+      "status": "good",
+      "coverage": "~7.4mg / 5mg (148.0%)",
+      "note": "Contributes from the day's usual sources"
+    },
+    {
+      "n": 32,
+      "nutrient": "Biotin B7",
+      "impact": "Hair/skin issues, fatigue",
+      "status": "good",
+      "coverage": "~75µg / 30µg (250.0%)",
+      "note": "Contributes from the day's usual sources"
+    }
+  ]
+}
