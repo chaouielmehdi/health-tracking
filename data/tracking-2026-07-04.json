@@ -1,7 +1,7 @@
 {
   "date": "July 4, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 1 perly nature\n| — 10g Almonds & Walnuts & Cashews & Pistachios (2.5g each)\n| — 10g pumpkin seeds\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 1 perly nature\n| — 25g Almonds & Walnuts & Cashews & Pistachios & pumpkin seeds (5g each)\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Oat 35g + warm water",
@@ -17,33 +17,38 @@
       "from": "1 scoop of protein powder (dinner)",
       "to": "1.5 scoops of protein powder",
       "reason": "Requested: push protein to exactly target or slightly above. Protein was sitting at 95% (157g/165g) — a half scoop extra (+15g powder, +12.5g protein) lands it at 169g (103%), just above target, without pushing any other macro out of the good range (kcal 99%, carbs 108%, fat 90%)."
+    },
+    {
+      "from": "10g Almonds/Walnuts/Cashews/Pistachios (2.5g each) + 10g pumpkin seeds separately",
+      "to": "25g Almonds/Walnuts/Cashews/Pistachios/pumpkin seeds (5g each)",
+      "reason": "Requested: evaluate and apply an even 5g-each split across all 5 instead of pumpkin seeds standing alone at 10g. Slight improvement across the board — calories 99%→101%, fat 90%→93%, fiber 74%→75% — all still comfortably in the good range."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "Protein pushed just past 100% — <span class=\"kcal\">1,784 kcal</span> (99%), protein 103%, carbs 108%, fat 90% — a half extra scoop at dinner tops protein off perfectly without disturbing anything else."
+    "text_html": "Tightest fit yet — <span class=\"kcal\">1,815 kcal</span> (101%), protein 103%, carbs 109%, fat 93% — evening out the dinner nuts/seeds to 5g each nudges everything a little closer to target."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "169g",
+      "value": "170g",
       "target": "/ 165g",
       "pct": 103,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "140g",
+      "value": "141g",
       "target": "/ 130g",
-      "pct": 108,
+      "pct": 109,
       "status": "good"
     },
     {
       "name": "Fat",
-      "value": "63g",
+      "value": "65g",
       "target": "/ 70g",
-      "pct": 90,
+      "pct": 93,
       "status": "good"
     }
   ],
@@ -51,32 +56,32 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,784 / 1,800 (99%)",
-      "note": "The extra half scoop of whey brings this almost exactly to target too"
+      "coverage": "1,815 / 1,800 (101%)",
+      "note": "Evening out the dinner nuts/seeds to 5g each adds ~31 kcal, landing this essentially exact"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "169g / 165g (103%)",
+      "coverage": "170g / 165g (103%)",
       "note": "Chicken breast 200g + 1.5 whey scoops + eggs — pushed just past 100% as requested"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "140g / 130g (108%)",
+      "coverage": "141g / 130g (109%)",
       "note": "Bread, oat, rice, and a whole apple land comfortably in range"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "63g / 70g (90%)",
-      "note": "Three modest 5g olive oil portions plus egg yolks — well controlled"
+      "coverage": "65g / 70g (93%)",
+      "note": "The evened-out nuts/seeds add a little more fat, still comfortably inside the good range"
     },
     {
       "status": "warn",
       "name": "Fiber",
-      "coverage": "~22g / 30g (74%)",
-      "note": "Oat, legume sauté, apple, and kiwi contribute, but no potato/banana today"
+      "coverage": "~23g / 30g (75%)",
+      "note": "Oat, legume sauté, apple, kiwi, and the nuts/seeds contribute, but no potato/banana today"
     },
     {
       "status": "good",
@@ -139,8 +144,7 @@
     "Cumin & salt (lunch)",
     "1.5 scoops protein powder (dinner, ↑ from 1)",
     "1 Perly nature (85g)",
-    "10g mixed nuts — almonds, walnuts, cashews, pistachios (2.5g each)",
-    "10g pumpkin seeds",
+    "25g mixed nuts/seeds — almonds, walnuts, cashews, pistachios, pumpkin seeds (5g each)",
     "1 kiwi (~80g)",
     "Cumin & salt (dinner — added)"
   ],
@@ -150,8 +154,8 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "169g / 165g (103%)",
-      "note": "Chicken breast 200g + 2.5 whey scoops + eggs — pushed just past target"
+      "coverage": "170g / 165g (103%)",
+      "note": "Chicken breast 200g + 1.5 whey scoops + eggs — pushed just past target"
     },
     {
       "n": 2,
@@ -166,8 +170,8 @@
       "nutrient": "Fiber",
       "impact": "Constipation, gut issues",
       "status": "warn",
-      "coverage": "~22g / 30g (74%)",
-      "note": "Oat, legume sauté, apple, and kiwi contribute, but no potato/banana today"
+      "coverage": "~23g / 30g (75%)",
+      "note": "Oat, legume sauté, apple, kiwi, and the evened-out nuts/seeds contribute, but no potato/banana today"
     },
     {
       "n": 4,
@@ -206,8 +210,8 @@
       "nutrient": "Magnesium",
       "impact": "Cramps, poor sleep",
       "status": "warn",
-      "coverage": "~189mg / 400mg (47%)",
-      "note": "Oat 55g + pumpkin seeds 10g are the main sources"
+      "coverage": "~197mg / 400mg (49%)",
+      "note": "Oat 55g + the evened-out nuts/seeds — slightly better than pumpkin seeds alone"
     },
     {
       "n": 9,
@@ -325,9 +329,9 @@
       "n": 23,
       "nutrient": "Copper",
       "impact": "Anemia, weak bones",
-      "status": "bad",
-      "coverage": "~0.28mg / 0.9mg (31%)",
-      "note": "Nuts + chicken — modest contributions only, no kefta today"
+      "status": "warn",
+      "coverage": "~0.37mg / 0.9mg (41%)",
+      "note": "More almonds/walnuts/cashews/pistachios (5g each vs 2.5g) nudges this from bad to warn — no kefta today though"
     },
     {
       "n": 24,
