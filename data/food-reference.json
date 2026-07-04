@@ -982,6 +982,22 @@
       ]
     },
     {
+      "id": "mayonnaise-raw-egg",
+      "emoji": "🥄",
+      "name": "Mayonnaise (homemade, raw egg base)",
+      "note": "1 whole raw beldi egg + 1 tsp mustard + 1 tsp lemon juice + pinch salt + 100g olive oil — the richer, classic-texture version; carries raw-egg food-safety considerations",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 616,
+      "protein": 3.8,
+      "carbs": 0.6,
+      "fat": 67.9,
+      "fiber": 0.1,
+      "extra": [
+        {"name": "Sodium", "value": "~170mg"}
+      ]
+    },
+    {
       "id": "black-coffee",
       "emoji": "☕",
       "name": "Black coffee",
