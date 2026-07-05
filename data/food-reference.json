@@ -742,6 +742,20 @@
       "extra": []
     },
     {
+      "id": "lettuce",
+      "emoji": "🥬",
+      "name": "Lettuce (iceberg, raw)",
+      "note": "Standard USDA raw iceberg lettuce values",
+      "category": "Vegetable",
+      "serving": "per 100g",
+      "kcal": 14,
+      "protein": 0.9,
+      "carbs": 3.0,
+      "fat": 0.1,
+      "fiber": 1.2,
+      "extra": []
+    },
+    {
       "id": "grapes",
       "emoji": "🍇",
       "name": "Grapes",
