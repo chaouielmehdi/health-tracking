@@ -1,7 +1,7 @@
 {
   "date": "July 4, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 1 perly nature\n| — 25g Almonds & Walnuts & Cashews & Pistachios & pumpkin seeds (5g each)\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 25g Almonds & Walnuts & Cashews & Pistachios & pumpkin seeds (5g each)\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Oat 35g + warm water",
@@ -22,33 +22,38 @@
       "from": "10g Almonds/Walnuts/Cashews/Pistachios (2.5g each) + 10g pumpkin seeds separately",
       "to": "25g Almonds/Walnuts/Cashews/Pistachios/pumpkin seeds (5g each)",
       "reason": "Requested: evaluate and apply an even 5g-each split across all 5 instead of pumpkin seeds standing alone at 10g. Slight improvement across the board — calories 99%→101%, fat 90%→93%, fiber 74%→75% — all still comfortably in the good range."
+    },
+    {
+      "from": "1 Perly nature (85g)",
+      "to": "250g homemade raib (from Jaouda Sans Lactose)",
+      "reason": "Requested: swap Perly for a full 250g raib serving instead of an equal-weight swap. Raib is less calcium-dense than Perly per gram, so the same 85g would actually have been a step backward — the bigger serving is what makes it worthwhile: calcium rises from 20% to 31%, at the cost of nudging carbs to 115% (still under the 125% bad line)."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "Tightest fit yet — <span class=\"kcal\">1,815 kcal</span> (101%), protein 103%, carbs 109%, fat 93% — evening out the dinner nuts/seeds to 5g each nudges everything a little closer to target."
+    "text_html": "Calcium finally moves — <span class=\"kcal\">1,881 kcal</span> (105%), protein 104%, carbs 115%, fat 98% — swapping Perly for 250g raib pushes calcium from 20% to 31%, the best calcium day logged yet."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "170g",
+      "value": "172g",
       "target": "/ 165g",
-      "pct": 103,
+      "pct": 104,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "141g",
+      "value": "150g",
       "target": "/ 130g",
-      "pct": 109,
+      "pct": 115,
       "status": "good"
     },
     {
       "name": "Fat",
-      "value": "65g",
+      "value": "69g",
       "target": "/ 70g",
-      "pct": 93,
+      "pct": 98,
       "status": "good"
     }
   ],
@@ -56,26 +61,26 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,815 / 1,800 (101%)",
-      "note": "Evening out the dinner nuts/seeds to 5g each adds ~31 kcal, landing this essentially exact"
+      "coverage": "1,881 / 1,800 (105%)",
+      "note": "250g raib adds ~67 kcal over the Perly serving it replaced"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "170g / 165g (103%)",
-      "note": "Chicken breast 200g + 1.5 whey scoops + eggs — pushed just past 100% as requested"
+      "coverage": "172g / 165g (104%)",
+      "note": "Chicken breast 200g + 1.5 whey scoops + eggs + raib — pushed a bit further past 100%"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "141g / 130g (109%)",
-      "note": "Bread, oat, rice, and a whole apple land comfortably in range"
+      "coverage": "150g / 130g (115%)",
+      "note": "Raib's extra carbs push this from 109% to 115% — still well under the 125% bad line"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "65g / 70g (93%)",
-      "note": "The evened-out nuts/seeds add a little more fat, still comfortably inside the good range"
+      "coverage": "69g / 70g (98%)",
+      "note": "Raib's 250g adds more fat than the 85g Perly it replaced, but still comfortably inside the good range"
     },
     {
       "status": "warn",
@@ -115,10 +120,10 @@
     }
   ],
   "good": [
-    "Protein now sits at 103% — pushed just past target with a half extra whey scoop, while carbs (108%) and fat (90%) stay comfortably in range",
+    "Calcium jumps from 20% to 31% — the best calcium day logged yet, thanks to swapping Perly for a full 250g raib serving",
     "Protocol adherence is the best of any day so far — bread once, cumin in all three meals, dinner well before 22:00",
     "Vitamin A (140%), Selenium (205%), Vitamin C (129%), Niacin (146%), and Biotin (250%) are all comfortably covered",
-    "Chicken breast + whole apple + garlic make for a lighter, cleaner lunch than kefta-based days"
+    "Protein (104%) and fat (98%) both still comfortably in the good range despite the bigger raib serving"
   ],
   "bad": [
     "Iron drops to ~44.5% — the weakest iron day logged so far, since chicken carries far less than kefta or beef",
@@ -143,7 +148,7 @@
     "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
     "Cumin & salt (lunch)",
     "1.5 scoops protein powder (dinner, ↑ from 1)",
-    "1 Perly nature (85g)",
+    "250g raib, homemade (from Jaouda Sans Lactose)",
     "25g mixed nuts/seeds — almonds, walnuts, cashews, pistachios, pumpkin seeds (5g each)",
     "1 kiwi (~80g)",
     "Cumin & salt (dinner — added)"
@@ -218,8 +223,8 @@
       "nutrient": "Calcium",
       "impact": "Bone loss, fractures",
       "status": "bad",
-      "coverage": "~204mg / 1,000mg (20%)",
-      "note": "Only one perly nature today — no milk (protocol dont), weakest spot of the day"
+      "coverage": "~310mg / 1,000mg (31%)",
+      "note": "250g raib replaces Perly — best calcium day logged yet, though still short of target"
     },
     {
       "n": 10,
@@ -345,9 +350,9 @@
       "n": 25,
       "nutrient": "Probiotics",
       "impact": "Poor gut health",
-      "status": "warn",
-      "coverage": "1 serving (perly)",
-      "note": "Fromage frais mild — consider swapping for raib for better gut value"
+      "status": "good",
+      "coverage": "1 large serving (250g raib)",
+      "note": "Homemade raib replaces Perly — a real live-culture serving instead of a mild fresh cheese"
     },
     {
       "n": 26,

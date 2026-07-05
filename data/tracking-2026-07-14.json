@@ -1,60 +1,66 @@
 {
   "date": "July 14, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 200g raw\n| — kefta cooked with 1 onion (~50g)\n| — kefta cooked with 5g of olive oil\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
-  "adjustments": [],
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 200g raw\n| — kefta cooked with 1 onion (~50g)\n| — kefta cooked with 5g of olive oil\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "adjustments": [
+    {
+      "from": "1 Perly nature (85g)",
+      "to": "250g homemade raib (from Jaouda Sans Lactose)",
+      "reason": "Part of the 2-raib : 1-perly rotation across the 10-day plan. A full 250g serving (not an equal-weight swap) is what actually moves calcium — raib is less calcium-dense than Perly per gram, so 85g would have been a step backward. Calcium rises from 20% to 31%; carbs/fat both nudge up but stay in the good range."
+    }
+  ],
   "verdict": {
-    "status": "good",
-    "icon": "✅",
-    "text_html": "Richest of the rotation's three lunch options — <span class=\"kcal\">1,854 kcal</span> (103%), protein 98%, carbs 108%, fat 107% — still fully in the good range, but the closest to the fat ceiling."
+    "status": "warn",
+    "icon": "⚠️",
+    "text_html": "Calcium boosted via 250g raib — <span class=\"kcal\">1921 kcal</span> (107%), protein 100%, carbs 114%, fat 112% — all still comfortably in the good range, calcium up from 20% to 31%."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "162g",
+      "value": "165g",
       "target": "/ 165g",
-      "pct": 98,
+      "pct": 100,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "140g",
+      "value": "148g",
       "target": "/ 130g",
-      "pct": 108,
-      "status": "good"
+      "pct": 114,
+      "status": "warn"
     },
     {
       "name": "Fat",
-      "value": "75g",
+      "value": "78g",
       "target": "/ 70g",
-      "pct": 107,
+      "pct": 112,
       "status": "good"
     }
   ],
   "coverage": [
     {
-      "status": "good",
+      "status": "warn",
       "name": "Calories",
-      "coverage": "1,854 / 1,800 (103%)",
-      "note": "Part of the 10-day kefta/chicken/thon rotation plan"
+      "coverage": "1,921 / 1,800 (107%)",
+      "note": "250g raib adds ~67 kcal over the Perly serving it replaced"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "162g / 165g (98%)",
+      "coverage": "165g / 165g (100%)",
       "note": "See fullTable for the protein-source breakdown"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Carbs",
-      "coverage": "140g / 130g (108%)",
-      "note": "Bread, oat, rice, and a whole apple land comfortably in range"
+      "coverage": "148g / 130g (114%)",
+      "note": "Raib's extra carbs push this up a bit — still under the 125% bad line"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "75g / 70g (107%)",
-      "note": "Driven mainly by the lunch protein source's own fat content"
+      "coverage": "78g / 70g (112%)",
+      "note": "Raib's 250g adds more fat than the 85g Perly it replaced, still in the good range"
     },
     {
       "status": "warn",
@@ -122,7 +128,7 @@
     "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
     "Cumin & salt (lunch)",
     "1.5 scoops protein powder (dinner)",
-    "1 Perly nature (85g)",
+    "250g raib, homemade (from Jaouda Sans Lactose)",
     "1 kiwi (~80g)",
     "5g Almonds + 5g Walnuts + 5g Cashews + 5g Pistachios + 5g Pumpkin Seeds"
   ],
@@ -132,7 +138,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "~162g / 165g (98.4%)",
+      "coverage": "165g / 165g (100%)",
       "note": "Kefta 200g + 1.5 whey scoops + eggs — comfortably past target"
     },
     {
@@ -196,8 +202,8 @@
       "nutrient": "Calcium",
       "impact": "Bone loss, fractures",
       "status": "bad",
-      "coverage": "~204mg / 1000mg (20.4%)",
-      "note": "Contributes from the day's usual sources"
+      "coverage": "~310mg / 1,000mg (31%)",
+      "note": "250g raib replaces Perly — best calcium day, though still short of target"
     },
     {
       "n": 10,
@@ -323,9 +329,9 @@
       "n": 25,
       "nutrient": "Probiotics",
       "impact": "Poor gut health",
-      "status": "warn",
-      "coverage": "1 serving (perly)",
-      "note": "Fromage frais mild — consider swapping for raib for better gut value"
+      "status": "good",
+      "coverage": "1 large serving (250g raib)",
+      "note": "Homemade raib replaces Perly — a real live-culture serving instead of a mild fresh cheese"
     },
     {
       "n": 26,
