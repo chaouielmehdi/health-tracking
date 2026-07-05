@@ -1,7 +1,7 @@
 {
   "date": "July 7, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 4 beldi eggs (only 2 of them with yolk)\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1.5 scoops of protein powder with water (↑ from 1)\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — 2 boxes of Isabel thon, without its oil (~104g drained)\n| — 5g of olive oil\n| — 2 whole beldi eggs\n| — brown rice 15g raw (↓ from 35g)\n| — 300g legume sauté with no added oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 2 scoops of protein powder (↑ from 1.5)\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 4 beldi eggs (only 2 of them with yolk)\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 25g + warm water (↓ from 35g, to offset restored oil)\n| — 1.5 scoops of protein powder with water (↑ from 1)\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — 2 boxes of Isabel thon, without its oil (~104g drained)\n| — 5g of olive oil\n| — 2 whole beldi eggs\n| — brown rice 20g raw (kept at 20g minimum)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 2 scoops of protein powder (↑ from 1.5)\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "1 scoop of protein powder (breakfast)",
@@ -9,62 +9,62 @@
       "reason": "With only 2 egg yolks at breakfast and tuna (leaner than kefta/chicken) at lunch, protein would sit at just 90% (149g). The extra half scoop (+12.5g protein) brings it to 98% (162g), safely in the good range."
     },
     {
-      "from": "Rice 35g + legume sauté oil 5g + dinner 1.5 scoops whey (protein under 100%, carbs/fat over 100%)",
-      "to": "Rice trimmed to 15g, legume sauté oil removed, dinner whey bumped to 2 scoops",
-      "reason": "New skill rule: protein under 100% must be pushed up, carbs/fat over 100% must be trimmed. Result: protein 98%->104.7%, carbs 104%->94%, fat 104%->96.5%."
+      "from": "Rice trimmed to 15g, legume sauté oil removed, dinner whey bumped to 2 scoops",
+      "to": "Legume sauté oil restored (5g), rice kept at a 20g floor, oat cut 35g→25g to offset, dinner whey stays at 2 scoops",
+      "reason": "Cooking oil is not on the table for removal, and rice never goes below 20g when rice is on the menu. Oat is the lever instead. Carbs stay good (91.7%), but oat's fat content is too low to fully offset the restored 5g oil — fat settles at ~103% (warn, not bad). Kcal 99.2% and protein 103.9% stay good."
     }
   ],
   "verdict": {
-    "status": "good",
-    "icon": "✅",
-    "text_html": "Re-scored under the new directional rules — <span class=\"kcal\">1761 kcal</span> (98%), protein 105%, carbs 94%, fat 96% — all inside the new good bands."
+    "status": "warn",
+    "icon": "⚠️",
+    "text_html": "Rest day, <b>warn</b> — 99% of calories; fat runs ~103% since cooking oil stays and oat can't offset it"
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "173g",
+      "value": "171g",
       "target": "/ 165g",
-      "pct": 105,
+      "pct": 104,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "122g",
+      "value": "119g",
       "target": "/ 130g",
-      "pct": 94,
+      "pct": 92,
       "status": "good"
     },
     {
       "name": "Fat",
-      "value": "68g",
+      "value": "72g",
       "target": "/ 70g",
-      "pct": 96,
-      "status": "good"
+      "pct": 103,
+      "status": "warn"
     }
   ],
   "coverage": [
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,761 / 1,800 (98%)",
+      "coverage": "1,785 / 1,800 (99%)",
       "note": "Re-tuned under the new directional rules (protein floor, carb/fat ceilings)"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "173g / 165g (105%)",
+      "coverage": "171g / 165g (104%)",
       "note": "See fullTable for the protein-source breakdown"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "122g / 130g (94%)",
+      "coverage": "119g / 130g (92%)",
       "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
-      "status": "good",
+      "status": "warn",
       "name": "Fat",
-      "coverage": "68g / 70g (96%)",
+      "coverage": "72g / 70g (103%)",
       "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
@@ -105,7 +105,7 @@
     }
   ],
   "good": [
-    "Protein at 105% thanks to the extra half scoop at breakfast plus the dinner whey bump to 2 scoops — comfortably clear of the floor",
+    "Protein at 104% thanks to the extra half scoop at breakfast plus the dinner whey bump to 2 scoops — comfortably clear of the floor",
     "Vitamin B12 at 147% — much better than a plain-chicken day, tuna is a real B12 source",
     "Vitamin A (130%) and Vitamin C (129%) both comfortably covered",
     "Lowest fat of any version tried so far relative to how lean the protein source is"
@@ -124,13 +124,13 @@
     "2 garlic cloves (~6g, cooked)",
     "Mint tea + 1 tsp sugar",
     "Cumin & salt (breakfast)",
-    "Oat 35g + warm water",
+    "Oat 25g + warm water (↓ from 35g)",
     "1.5 scoops protein powder (breakfast, ↑ from 1)",
     "1 small apple (~150g, whole)",
     "Black coffee (18:00, no sugar)",
     "2 boxes Isabel tuna, drained (~104g), + 5g olive oil + 2 whole beldi eggs",
-    "Brown rice (trimmed) raw",
-    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with no added oil",
+    "Brown rice 20g raw (kept at 20g minimum)",
+    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
     "Cumin & salt (lunch)",
     "2 scoops protein powder (dinner, ↑ from 1.5)",
     "1 Perly nature (85g)",
@@ -143,7 +143,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "173g / 165g (105%)",
+      "coverage": "171g / 165g (104%)",
       "note": "Tuna 104g drained + 1.5 whey scoops + 2 whole eggs + fewer yolks at breakfast — still clears target"
     },
     {
