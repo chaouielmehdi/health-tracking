@@ -1,7 +1,7 @@
 {
   "date": "July 4, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 55g + warm water (↑ from 35g)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 25g Almonds & Walnuts & Cashews & Pistachios & pumpkin seeds (5g each)\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs fried with 5g of olive oil\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water (back to original — trimmed from the 55g bump)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n| — 2 garlic cloves\n-----------------------\n\n14:00 — return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw cooked with 1 tsp of mustard and 5g of olive oil\n| — brown rice 25g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder (↑ from 1)\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 25g Almonds & Walnuts & Cashews & Pistachios & pumpkin seeds (5g each)\n| — 1 kiwi\n| — cumin & salt\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "Oat 35g + warm water",
@@ -27,33 +27,38 @@
       "from": "1 Perly nature (85g)",
       "to": "250g homemade raib (from Jaouda Sans Lactose)",
       "reason": "Requested: swap Perly for a full 250g raib serving instead of an equal-weight swap. Raib is less calcium-dense than Perly per gram, so the same 85g would actually have been a step backward — the bigger serving is what makes it worthwhile: calcium rises from 20% to 31%, at the cost of nudging carbs to 115% (still under the 125% bad line)."
+    },
+    {
+      "from": "Oat 55g + rice 35g (carbs at 115%, over the new 100% ceiling)",
+      "to": "Oat back to 35g, rice trimmed to 20g",
+      "reason": "New skill rule: carbs over 100% must be trimmed, not left in a 'still fine' warn band. This brings carbs from 115% to 96.5%, with kcal/protein/fat all staying comfortably in their new good ranges too."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "Calcium finally moves — <span class=\"kcal\">1,881 kcal</span> (105%), protein 104%, carbs 115%, fat 98% — swapping Perly for 250g raib pushes calcium from 20% to 31%, the best calcium day logged yet."
+    "text_html": "Re-scored under the new directional rules — <span class=\"kcal\">1748 kcal</span> (97%), protein 102%, carbs 97%, fat 95% — carbs trimmed back under the new 100% ceiling."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "172g",
+      "value": "168g",
       "target": "/ 165g",
-      "pct": 104,
+      "pct": 102,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "150g",
+      "value": "126g",
       "target": "/ 130g",
-      "pct": 115,
+      "pct": 97,
       "status": "good"
     },
     {
       "name": "Fat",
-      "value": "69g",
+      "value": "67g",
       "target": "/ 70g",
-      "pct": 98,
+      "pct": 95,
       "status": "good"
     }
   ],
@@ -61,25 +66,25 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,881 / 1,800 (105%)",
-      "note": "250g raib adds ~67 kcal over the Perly serving it replaced"
+      "coverage": "1,748 / 1,800 (97%)",
+      "note": "Oat and rice trimmed back to bring carbs under the new 100% ceiling"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "172g / 165g (104%)",
+      "coverage": "168g / 165g (102%)",
       "note": "Chicken breast 200g + 1.5 whey scoops + eggs + raib — pushed a bit further past 100%"
     },
     {
       "status": "good",
       "name": "Carbs",
-      "coverage": "150g / 130g (115%)",
-      "note": "Raib's extra carbs push this from 109% to 115% — still well under the 125% bad line"
+      "coverage": "126g / 130g (97%)",
+      "note": "Trimmed from 115% (bad under new rules) to 97% (good)"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "69g / 70g (98%)",
+      "coverage": "67g / 70g (95%)",
       "note": "Raib's 250g adds more fat than the 85g Perly it replaced, but still comfortably inside the good range"
     },
     {
@@ -121,9 +126,9 @@
   ],
   "good": [
     "Calcium jumps from 20% to 31% — the best calcium day logged yet, thanks to swapping Perly for a full 250g raib serving",
-    "Protocol adherence is the best of any day so far — bread once, cumin in all three meals, dinner well before 22:00",
+    "All three macros now sit inside the new directional good bands — protein 102% (floor cleared), carbs 97% and fat 95% (both under their ceilings)",
     "Vitamin A (140%), Selenium (205%), Vitamin C (129%), Niacin (146%), and Biotin (250%) are all comfortably covered",
-    "Protein (104%) and fat (98%) both still comfortably in the good range despite the bigger raib serving"
+    "Protocol adherence is the best of any day so far — bread once, cumin in all three meals, dinner well before 22:00"
   ],
   "bad": [
     "Iron drops to ~44.5% — the weakest iron day logged so far, since chicken carries far less than kefta or beef",
@@ -138,7 +143,7 @@
     "5g olive oil (raw)",
     "Mint tea + 1 tsp sugar",
     "Cumin & salt (breakfast)",
-    "Oat 55g + warm water (↑ from 35g)",
+    "Oat 35g + warm water (trimmed back from 55g)",
     "1 scoop protein powder (breakfast)",
     "1 small apple (~150g, whole)",
     "2 garlic cloves (~6g)",
@@ -159,7 +164,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "170g / 165g (103%)",
+      "coverage": "168g / 165g (102%)",
       "note": "Chicken breast 200g + 1.5 whey scoops + eggs — pushed just past target"
     },
     {
