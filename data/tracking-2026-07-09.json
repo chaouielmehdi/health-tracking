@@ -1,7 +1,7 @@
 {
   "date": "July 9, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 26g + warm water (↓ from 35g, to offset the 20g rice floor)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw\n| — chicken cooked with 1 tsp of mustard\n| — chicken cooked with 5g of olive oil\n| — brown rice 20g raw (kept at 20g minimum)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs, boiled (no oil)\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 26g + warm water (↓ from 35g, to offset the 20g rice floor)\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw\n| — chicken cooked with 1 tsp of mustard\n| — chicken cooked with 5g of olive oil\n| — brown rice 20g raw (kept at 20g minimum)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "1 Perly nature (85g)",
@@ -12,12 +12,17 @@
       "from": "Brown rice trimmed to 15g",
       "to": "Brown rice kept at a 20g floor, oat cut 35g→26g to offset",
       "reason": "Rice never goes below 20g when rice is on the menu, so oat is the lever instead. Carbs 132.7%→97.5%, still comfortably under the ceiling; kcal, protein, and fat all stay good too."
+    },
+    {
+      "from": "Eggs fried with 5g oil",
+      "to": "Eggs boiled (no oil)",
+      "reason": "Removes 5g of oil from breakfast without touching the lunch cooking oil. Frees up enough fat headroom to keep the day comfortably good."
     }
   ],
   "verdict": {
     "status": "good",
     "icon": "✅",
-    "text_html": "Rest day, <b>good</b> — all four macros in range (97% calories)"
+    "text_html": "Rest day, <b>good</b> — all four macros in range (95% calories)"
   },
   "macros": [
     {
@@ -36,9 +41,9 @@
     },
     {
       "name": "Fat",
-      "value": "66g",
+      "value": "61g",
       "target": "/ 70g",
-      "pct": 95,
+      "pct": 88,
       "status": "good"
     }
   ],
@@ -46,7 +51,7 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,750 / 1,800 (97%)",
+      "coverage": "1,706 / 1,800 (95%)",
       "note": "Re-tuned under the new directional rules (protein floor, carb/fat ceilings)"
     },
     {
@@ -64,7 +69,7 @@
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "66g / 70g (95%)",
+      "coverage": "61g / 70g (88%)",
       "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
@@ -105,7 +110,7 @@
     }
   ],
   "good": [
-    "All four numbers land in the good range — protein 101%, carbs 98%, fat 95%, calories 97%, without needing an extra whey scoop like kefta/thon",
+    "All four numbers land in the good range — protein 101%, carbs 98%, fat 88%, calories 95%, without needing an extra whey scoop like kefta/thon",
     "Selenium (205%) and Niacin (146%) are chicken's standout strengths",
     "Vitamin A (140%) and Vitamin C (129%) both comfortably covered",
     "Protein clears 165g even before counting the dinner whey bump"
@@ -119,7 +124,7 @@
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
     "Whole wheat bread 35g (breakfast)",
-    "6 egg whites + 3 egg yolks (beldi), fried with 5g olive oil",
+    "6 egg whites + 3 egg yolks (beldi), boiled (no oil)",
     "5g olive oil (raw)",
     "2 garlic cloves (~6g, cooked)",
     "Mint tea + 1 tsp sugar",
@@ -263,7 +268,7 @@
       "nutrient": "Vitamin E",
       "impact": "Nerve issues, weak immunity",
       "status": "bad",
-      "coverage": "~3.5mg / 15mg (23.4%)",
+      "coverage": "~2.8mg / 15mg (18.7%)",
       "note": "Contributes from the day's usual sources"
     },
     {
@@ -271,7 +276,7 @@
       "nutrient": "Vitamin K",
       "impact": "Poor blood clotting",
       "status": "warn",
-      "coverage": "~53µg / 120µg (44.4%)",
+      "coverage": "~50µg / 120µg (41.7%)",
       "note": "Contributes from the day's usual sources"
     },
     {

@@ -1,7 +1,7 @@
 {
   "date": "July 13, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 4 beldi eggs (only 2 of them with yolk)\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 25g + warm water (↓ from 35g, to offset restored oil)\n| — 1.5 scoops of protein powder with water (↑ from 1)\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — 2 boxes of Isabel thon, without its oil (~104g drained)\n| — 5g of olive oil\n| — 2 whole beldi eggs\n| — brown rice 20g raw (kept at 20g minimum)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 2 scoops of protein powder (↑ from 1.5)\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 4 beldi eggs (only 2 of them with yolk), boiled (no oil)\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 25g + warm water (↓ from 35g, to offset restored oil)\n| — 1.5 scoops of protein powder with water (↑ from 1)\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — 2 boxes of Isabel thon, without its oil (~104g drained)\n| — 5g of olive oil\n| — 2 whole beldi eggs\n| — brown rice 20g raw (kept at 20g minimum)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 2 scoops of protein powder (↑ from 1.5)\n| — 1 perly nature\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "1 scoop of protein powder (breakfast)",
@@ -12,12 +12,17 @@
       "from": "Rice trimmed to 15g, legume sauté oil removed, dinner whey bumped to 2 scoops",
       "to": "Legume sauté oil restored (5g), rice kept at a 20g floor, oat cut 35g→25g to offset, dinner whey stays at 2 scoops",
       "reason": "Cooking oil is not on the table for removal, and rice never goes below 20g when rice is on the menu. Oat is the lever instead. Carbs stay good (91.7%), but oat's fat content is too low to fully offset the restored 5g oil — fat settles at ~103% (warn, not bad). Kcal 99.2% and protein 103.9% stay good."
+    },
+    {
+      "from": "Eggs fried with 5g oil",
+      "to": "Eggs boiled (no oil)",
+      "reason": "Removes 5g of oil from breakfast without touching the lunch cooking oil. Frees up enough fat headroom to keep the day comfortably good."
     }
   ],
   "verdict": {
-    "status": "warn",
-    "icon": "⚠️",
-    "text_html": "Rest day, <b>warn</b> — 99% of calories; fat runs ~103% since cooking oil stays and oat can't offset it"
+    "status": "good",
+    "icon": "✅",
+    "text_html": "Rest day, <b>good</b> — all four macros in range (97% calories)"
   },
   "macros": [
     {
@@ -36,17 +41,17 @@
     },
     {
       "name": "Fat",
-      "value": "72g",
+      "value": "67g",
       "target": "/ 70g",
-      "pct": 103,
-      "status": "warn"
+      "pct": 96,
+      "status": "good"
     }
   ],
   "coverage": [
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,785 / 1,800 (99%)",
+      "coverage": "1,741 / 1,800 (97%)",
       "note": "Re-tuned under the new directional rules (protein floor, carb/fat ceilings)"
     },
     {
@@ -62,9 +67,9 @@
       "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
-      "status": "warn",
+      "status": "good",
       "name": "Fat",
-      "coverage": "72g / 70g (103%)",
+      "coverage": "67g / 70g (96%)",
       "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
@@ -105,7 +110,7 @@
     }
   ],
   "good": [
-    "Protein at 104% thanks to the extra half scoop at breakfast plus the dinner whey bump to 2 scoops — comfortably clear of the floor",
+    "Protein at 104% thanks to the extra half scoop at breakfast plus the dinner whey bump to 2 scoops — comfortably clear of the floor, and fat now sits at 96% (good) with the fried oil gone",
     "Vitamin B12 at 147% — much better than a plain-chicken day, tuna is a real B12 source",
     "Vitamin A (130%) and Vitamin C (129%) both comfortably covered",
     "Lowest fat of any version tried so far relative to how lean the protein source is"
@@ -119,7 +124,7 @@
   "loggedItems": [
     "Black coffee + 1 tsp sugar (13:00)",
     "Whole wheat bread 35g (breakfast)",
-    "4 egg whites + 2 egg yolks (beldi), fried with 5g olive oil",
+    "4 egg whites + 2 egg yolks (beldi), boiled (no oil)",
     "5g olive oil (raw)",
     "2 garlic cloves (~6g, cooked)",
     "Mint tea + 1 tsp sugar",
@@ -263,7 +268,7 @@
       "nutrient": "Vitamin E",
       "impact": "Nerve issues, weak immunity",
       "status": "bad",
-      "coverage": "~3.5mg / 15mg (23.4%)",
+      "coverage": "~2.8mg / 15mg (18.7%)",
       "note": "Contributes from the day's usual sources"
     },
     {
@@ -271,7 +276,7 @@
       "nutrient": "Vitamin K",
       "impact": "Poor blood clotting",
       "status": "warn",
-      "coverage": "~53µg / 120µg (44.4%)",
+      "coverage": "~50µg / 120µg (41.7%)",
       "note": "Contributes from the day's usual sources"
     },
     {
