@@ -3,20 +3,7 @@
     "title": "Health & Body Food Reference",
     "updated": "2026-07-03"
   },
-  "categories": [
-    "Supplement",
-    "Poultry",
-    "Meat",
-    "Fish",
-    "Egg",
-    "Grain/Carb",
-    "Fat/Nut",
-    "Vegetable",
-    "Fruit",
-    "Drink",
-    "Condiment",
-    "Dairy"
-  ],
+  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
     {
       "id": "whey-iso100-100g",
@@ -31,14 +18,8 @@
       "fat": 1.7,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "~1.7g"
-        },
-        {
-          "name": "BCAAs",
-          "value": "18.3g"
-        }
+        {"name": "Sugar", "value": "~1.7g"},
+        {"name": "BCAAs", "value": "18.3g"}
       ]
     },
     {
@@ -54,14 +35,8 @@
       "fat": 0.5,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "~0.5g"
-        },
-        {
-          "name": "BCAAs",
-          "value": "5.5g"
-        }
+        {"name": "Sugar", "value": "~0.5g"},
+        {"name": "BCAAs", "value": "5.5g"}
       ]
     },
     {
@@ -77,18 +52,9 @@
       "fat": 2.6,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "63mg"
-        },
-        {
-          "name": "Potassium",
-          "value": "256mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.3µg"
-        }
+        {"name": "Sodium", "value": "63mg"},
+        {"name": "Potassium", "value": "256mg"},
+        {"name": "Vitamin B12", "value": "0.3µg"}
       ]
     },
     {
@@ -104,18 +70,9 @@
       "fat": 3.6,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "74mg"
-        },
-        {
-          "name": "Potassium",
-          "value": "256mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.3µg"
-        }
+        {"name": "Sodium", "value": "74mg"},
+        {"name": "Potassium", "value": "256mg"},
+        {"name": "Vitamin B12", "value": "0.3µg"}
       ]
     },
     {
@@ -131,18 +88,9 @@
       "fat": 7.1,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "69mg"
-        },
-        {
-          "name": "Potassium",
-          "value": "165mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.34µg"
-        }
+        {"name": "Sodium", "value": "69mg"},
+        {"name": "Potassium", "value": "165mg"},
+        {"name": "Vitamin B12", "value": "0.34µg"}
       ]
     },
     {
@@ -158,18 +106,9 @@
       "fat": 6,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "75mg"
-        },
-        {
-          "name": "Potassium",
-          "value": "213mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.26µg"
-        }
+        {"name": "Sodium", "value": "75mg"},
+        {"name": "Potassium", "value": "213mg"},
+        {"name": "Vitamin B12", "value": "0.26µg"}
       ]
     },
     {
@@ -185,18 +124,9 @@
       "fat": 13.7,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "77mg"
-        },
-        {
-          "name": "Potassium",
-          "value": "204mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.26µg"
-        }
+        {"name": "Sodium", "value": "77mg"},
+        {"name": "Potassium", "value": "204mg"},
+        {"name": "Vitamin B12", "value": "0.26µg"}
       ]
     },
     {
@@ -212,22 +142,10 @@
       "fat": 20,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "66mg"
-        },
-        {
-          "name": "Iron",
-          "value": "1.9mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "4.2mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2.1µg"
-        }
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "1.9mg"},
+        {"name": "Zinc", "value": "4.2mg"},
+        {"name": "Vitamin B12", "value": "2.1µg"}
       ]
     },
     {
@@ -243,22 +161,10 @@
       "fat": 17,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "88mg"
-        },
-        {
-          "name": "Iron",
-          "value": "2.5mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "5.6mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2.8µg"
-        }
+        {"name": "Sodium", "value": "88mg"},
+        {"name": "Iron", "value": "2.5mg"},
+        {"name": "Zinc", "value": "5.6mg"},
+        {"name": "Vitamin B12", "value": "2.8µg"}
       ]
     },
     {
@@ -274,22 +180,10 @@
       "fat": 8,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "66mg"
-        },
-        {
-          "name": "Iron",
-          "value": "2.1mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "4.4mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2.2µg"
-        }
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "2.1mg"},
+        {"name": "Zinc", "value": "4.4mg"},
+        {"name": "Vitamin B12", "value": "2.2µg"}
       ]
     },
     {
@@ -305,22 +199,10 @@
       "fat": 7,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "88mg"
-        },
-        {
-          "name": "Iron",
-          "value": "2.8mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "5.9mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2.9µg"
-        }
+        {"name": "Sodium", "value": "88mg"},
+        {"name": "Iron", "value": "2.8mg"},
+        {"name": "Zinc", "value": "5.9mg"},
+        {"name": "Vitamin B12", "value": "2.9µg"}
       ]
     },
     {
@@ -336,22 +218,10 @@
       "fat": 10,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "66mg"
-        },
-        {
-          "name": "Iron",
-          "value": "2.1mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "4.6mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2.3µg"
-        }
+        {"name": "Sodium", "value": "66mg"},
+        {"name": "Iron", "value": "2.1mg"},
+        {"name": "Zinc", "value": "4.6mg"},
+        {"name": "Vitamin B12", "value": "2.3µg"}
       ]
     },
     {
@@ -367,22 +237,10 @@
       "fat": 17,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "56mg"
-        },
-        {
-          "name": "Iron",
-          "value": "1.6mg"
-        },
-        {
-          "name": "Zinc",
-          "value": "2.5mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "2µg"
-        }
+        {"name": "Sodium", "value": "56mg"},
+        {"name": "Iron", "value": "1.6mg"},
+        {"name": "Zinc", "value": "2.5mg"},
+        {"name": "Vitamin B12", "value": "2µg"}
       ]
     },
     {
@@ -403,7 +261,7 @@
       "id": "egg",
       "emoji": "🥚",
       "name": "Egg (average size)",
-      "note": "Corrected 2026-07 — Mehdi weighed his actual rumi (regular) eggs at ~65g raw with shell; shell is ~11% of weight, so edible portion is ~58g. Values rescaled from the USDA per-100g density (previously mislabeled at ~44g).",
+      "note": "Corrected 2026-07 — Mehdi weighed his actual rumi (regular) eggs at ~65g raw with shell; shell is ~11% of weight, so edible portion is ~58g. Values rescaled from the USDA per-100g density (previously mislabeled at ~44g)",
       "category": "Egg",
       "serving": "per egg (~58g edible, ~65g raw with shell)",
       "kcal": 83,
@@ -412,25 +270,16 @@
       "fat": 5.5,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "82mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.58µg"
-        },
-        {
-          "name": "Choline",
-          "value": "170mg"
-        }
+        {"name": "Sodium", "value": "82mg"},
+        {"name": "Vitamin B12", "value": "0.58µg"},
+        {"name": "Choline", "value": "170mg"}
       ]
     },
     {
       "id": "egg-beldi",
       "emoji": "🥚",
       "name": "Egg (Beldi, free-range)",
-      "note": "Corrected 2026-07 — Mehdi weighed his actual beldi eggs at ~48g raw with shell; shell is ~11% of weight, so edible portion is ~43g. Values rescaled from the previously-implied per-100g density (was mislabeled at ~44g, same as rumi, which understated the real size gap). Beldi stays richer per gram (more protein/fat density, deeper yolk) but is a physically smaller egg than rumi.",
+      "note": "Corrected 2026-07 — Mehdi weighed his actual beldi eggs at ~48g raw with shell; shell is ~11% of weight, so edible portion is ~43g. Values rescaled from the previously-implied per-100g density (was mislabeled at ~44g, same as rumi, which understated the real size gap). Beldi stays richer per gram (more protein/fat density, deeper yolk) but is a physically smaller egg than rumi",
       "category": "Egg",
       "serving": "per egg (~43g edible, ~48g raw with shell)",
       "kcal": 65,
@@ -439,26 +288,11 @@
       "fat": 4.9,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "57mg"
-        },
-        {
-          "name": "Vitamin B12",
-          "value": "0.45µg"
-        },
-        {
-          "name": "Choline",
-          "value": "129mg"
-        },
-        {
-          "name": "Omega-3",
-          "value": "~88mg"
-        },
-        {
-          "name": "Vitamin A",
-          "value": "~83µg RAE"
-        }
+        {"name": "Sodium", "value": "57mg"},
+        {"name": "Vitamin B12", "value": "0.45µg"},
+        {"name": "Choline", "value": "129mg"},
+        {"name": "Omega-3", "value": "~88mg"},
+        {"name": "Vitamin A", "value": "~83µg RAE"}
       ]
     },
     {
@@ -474,10 +308,7 @@
       "fat": 3.6,
       "fiber": 6,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "490mg"
-        }
+        {"name": "Sodium", "value": "490mg"}
       ]
     },
     {
@@ -493,10 +324,7 @@
       "fat": 6.9,
       "fiber": 10.6,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "2mg"
-        }
+        {"name": "Sodium", "value": "2mg"}
       ]
     },
     {
@@ -512,10 +340,7 @@
       "fat": 2.7,
       "fiber": 3.5,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "5mg"
-        }
+        {"name": "Sodium", "value": "5mg"}
       ]
     },
     {
@@ -531,10 +356,7 @@
       "fat": 0.1,
       "fiber": 2.1,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "6mg"
-        }
+        {"name": "Sodium", "value": "6mg"}
       ]
     },
     {
@@ -550,10 +372,7 @@
       "fat": 1.4,
       "fiber": 12.9,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "17mg"
-        }
+        {"name": "Sodium", "value": "17mg"}
       ]
     },
     {
@@ -569,10 +388,7 @@
       "fat": 1.2,
       "fiber": 15.6,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "9mg"
-        }
+        {"name": "Sodium", "value": "9mg"}
       ]
     },
     {
@@ -588,18 +404,9 @@
       "fat": 1.1,
       "fiber": 10.7,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "6mg"
-        },
-        {
-          "name": "Iron",
-          "value": "7.5mg"
-        },
-        {
-          "name": "Folate",
-          "value": "479µg"
-        }
+        {"name": "Sodium", "value": "6mg"},
+        {"name": "Iron", "value": "7.5mg"},
+        {"name": "Folate", "value": "479µg"}
       ]
     },
     {
@@ -615,10 +422,7 @@
       "fat": 1.5,
       "fiber": 25,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "13mg"
-        }
+        {"name": "Sodium", "value": "13mg"}
       ]
     },
     {
@@ -634,10 +438,7 @@
       "fat": 0.85,
       "fiber": 15.3,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "16mg"
-        }
+        {"name": "Sodium", "value": "16mg"}
       ]
     },
     {
@@ -653,26 +454,11 @@
       "fat": 100,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Vitamin E",
-          "value": "14mg"
-        },
-        {
-          "name": "Vitamin K",
-          "value": "60µg"
-        },
-        {
-          "name": "Saturated fat",
-          "value": "14g"
-        },
-        {
-          "name": "Monounsaturated fat",
-          "value": "73g"
-        },
-        {
-          "name": "Polyunsaturated fat",
-          "value": "11g"
-        }
+        {"name": "Vitamin E", "value": "14mg"},
+        {"name": "Vitamin K", "value": "60µg"},
+        {"name": "Saturated fat", "value": "14g"},
+        {"name": "Monounsaturated fat", "value": "73g"},
+        {"name": "Polyunsaturated fat", "value": "11g"}
       ]
     },
     {
@@ -688,10 +474,7 @@
       "fat": 14.7,
       "fiber": 6.7,
       "extra": [
-        {
-          "name": "Potassium",
-          "value": "485mg"
-        }
+        {"name": "Potassium", "value": "485mg"}
       ]
     },
     {
@@ -707,10 +490,7 @@
       "fat": 65.2,
       "fiber": 6.7,
       "extra": [
-        {
-          "name": "Omega-3",
-          "value": "9.1g"
-        }
+        {"name": "Omega-3", "value": "9.1g"}
       ]
     },
     {
@@ -726,10 +506,7 @@
       "fat": 49.9,
       "fiber": 12.5,
       "extra": [
-        {
-          "name": "Magnesium",
-          "value": "270mg"
-        }
+        {"name": "Magnesium", "value": "270mg"}
       ]
     },
     {
@@ -745,10 +522,7 @@
       "fat": 45.3,
       "fiber": 10.6,
       "extra": [
-        {
-          "name": "Potassium",
-          "value": "1025mg"
-        }
+        {"name": "Potassium", "value": "1025mg"}
       ]
     },
     {
@@ -778,14 +552,8 @@
       "fat": 49,
       "fiber": 6,
       "extra": [
-        {
-          "name": "Zinc",
-          "value": "7.6mg"
-        },
-        {
-          "name": "Magnesium",
-          "value": "262mg"
-        }
+        {"name": "Zinc", "value": "7.6mg"},
+        {"name": "Magnesium", "value": "262mg"}
       ]
     },
     {
@@ -801,14 +569,8 @@
       "fat": 33,
       "fiber": 5,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "~2200mg"
-        },
-        {
-          "name": "Saturated fat",
-          "value": "~4.4g"
-        }
+        {"name": "Sodium", "value": "~2200mg"},
+        {"name": "Saturated fat", "value": "~4.4g"}
       ]
     },
     {
@@ -1006,10 +768,7 @@
       "fat": 0.2,
       "fiber": 0.9,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "16g"
-        }
+        {"name": "Sugar", "value": "16g"}
       ]
     },
     {
@@ -1025,10 +784,7 @@
       "fat": 0.4,
       "fiber": 1.6,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "13.7g"
-        }
+        {"name": "Sugar", "value": "13.7g"}
       ]
     },
     {
@@ -1044,10 +800,7 @@
       "fat": 0.2,
       "fiber": 0.4,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "6.2g"
-        }
+        {"name": "Sugar", "value": "6.2g"}
       ]
     },
     {
@@ -1063,10 +816,7 @@
       "fat": 0.3,
       "fiber": 2.6,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "12.2g"
-        }
+        {"name": "Sugar", "value": "12.2g"}
       ]
     },
     {
@@ -1082,10 +832,7 @@
       "fat": 0.4,
       "fiber": 8,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "63g"
-        }
+        {"name": "Sugar", "value": "63g"}
       ]
     },
     {
@@ -1101,10 +848,7 @@
       "fat": 0.2,
       "fiber": 2.4,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "10.4g"
-        }
+        {"name": "Sugar", "value": "10.4g"}
       ]
     },
     {
@@ -1120,10 +864,7 @@
       "fat": 0.1,
       "fiber": 2.4,
       "extra": [
-        {
-          "name": "Vitamin C",
-          "value": "53mg"
-        }
+        {"name": "Vitamin C", "value": "53mg"}
       ]
     },
     {
@@ -1167,14 +908,8 @@
       "fat": 0.25,
       "fiber": 1.5,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "8.4g"
-        },
-        {
-          "name": "Vitamin C",
-          "value": "6.6mg"
-        }
+        {"name": "Sugar", "value": "8.4g"},
+        {"name": "Vitamin C", "value": "6.6mg"}
       ]
     },
     {
@@ -1190,10 +925,7 @@
       "fat": 0.3,
       "fiber": 2,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "4.9g"
-        }
+        {"name": "Sugar", "value": "4.9g"}
       ]
     },
     {
@@ -1209,22 +941,10 @@
       "fat": 0.3,
       "fiber": 2.4,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "10g"
-        },
-        {
-          "name": "Vitamin C",
-          "value": "10mg"
-        },
-        {
-          "name": "Vitamin K",
-          "value": "19µg"
-        },
-        {
-          "name": "Manganese",
-          "value": "0.3mg"
-        }
+        {"name": "Sugar", "value": "10g"},
+        {"name": "Vitamin C", "value": "10mg"},
+        {"name": "Vitamin K", "value": "19µg"},
+        {"name": "Manganese", "value": "0.3mg"}
       ]
     },
     {
@@ -1240,10 +960,7 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Sugar",
-          "value": "100g"
-        }
+        {"name": "Sugar", "value": "100g"}
       ]
     },
     {
@@ -1259,10 +976,7 @@
       "fat": 4.0,
       "fiber": 3.3,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "1100mg"
-        }
+        {"name": "Sodium", "value": "1100mg"}
       ]
     },
     {
@@ -1278,10 +992,7 @@
       "fat": 47.6,
       "fiber": 0.2,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "~216mg"
-        }
+        {"name": "Sodium", "value": "~216mg"}
       ]
     },
     {
@@ -1297,10 +1008,7 @@
       "fat": 67.9,
       "fiber": 0.1,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "~170mg"
-        }
+        {"name": "Sodium", "value": "~170mg"}
       ]
     },
     {
@@ -1316,10 +1024,7 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Caffeine",
-          "value": "~40mg/100ml"
-        }
+        {"name": "Caffeine", "value": "~40mg/100ml"}
       ]
     },
     {
@@ -1349,10 +1054,7 @@
       "fat": 0.6,
       "fiber": 1.3,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "1mg"
-        }
+        {"name": "Sodium", "value": "1mg"}
       ]
     },
     {
@@ -1368,10 +1070,7 @@
       "fat": 2.7,
       "fiber": 3.5,
       "extra": [
-        {
-          "name": "Sodium",
-          "value": "5mg"
-        }
+        {"name": "Sodium", "value": "5mg"}
       ]
     },
     {
@@ -1387,10 +1086,7 @@
       "fat": 6.0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "240mg"
-        }
+        {"name": "Calcium", "value": "240mg"}
       ]
     },
     {
@@ -1406,18 +1102,9 @@
       "fat": 3.0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "124mg"
-        },
-        {
-          "name": "Saturated fat",
-          "value": "1.3g"
-        },
-        {
-          "name": "Lactose",
-          "value": "0.1g"
-        }
+        {"name": "Calcium", "value": "124mg"},
+        {"name": "Saturated fat", "value": "1.3g"},
+        {"name": "Lactose", "value": "0.1g"}
       ]
     },
     {
@@ -1433,18 +1120,9 @@
       "fat": 3.3,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "124mg"
-        },
-        {
-          "name": "Live cultures",
-          "value": "Lactobacillus, Streptococcus (from starter)"
-        },
-        {
-          "name": "Lactose",
-          "value": "~0g"
-        }
+        {"name": "Calcium", "value": "124mg"},
+        {"name": "Live cultures", "value": "Lactobacillus, Streptococcus (from starter)"},
+        {"name": "Lactose", "value": "~0g"}
       ]
     },
     {
@@ -1460,18 +1138,9 @@
       "fat": 1.0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "116mg"
-        },
-        {
-          "name": "Live cultures",
-          "value": "Lactobacillus, Streptococcus (from starter)"
-        },
-        {
-          "name": "Lactose",
-          "value": "~0g"
-        }
+        {"name": "Calcium", "value": "116mg"},
+        {"name": "Live cultures", "value": "Lactobacillus, Streptococcus (from starter)"},
+        {"name": "Lactose", "value": "~0g"}
       ]
     },
     {
@@ -1487,38 +1156,14 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "12mg"
-        },
-        {
-          "name": "Magnesium",
-          "value": "9mg"
-        },
-        {
-          "name": "Sodium",
-          "value": "26mg"
-        },
-        {
-          "name": "Bicarbonates",
-          "value": "104mg"
-        },
-        {
-          "name": "Chlorides",
-          "value": "14mg"
-        },
-        {
-          "name": "Sulfates",
-          "value": "42mg"
-        },
-        {
-          "name": "TDS",
-          "value": "186mg"
-        },
-        {
-          "name": "pH",
-          "value": "7.5"
-        }
+        {"name": "Calcium", "value": "12mg"},
+        {"name": "Magnesium", "value": "9mg"},
+        {"name": "Sodium", "value": "26mg"},
+        {"name": "Bicarbonates", "value": "104mg"},
+        {"name": "Chlorides", "value": "14mg"},
+        {"name": "Sulfates", "value": "42mg"},
+        {"name": "TDS", "value": "186mg"},
+        {"name": "pH", "value": "7.5"}
       ]
     },
     {
@@ -1534,34 +1179,13 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "Calcium",
-          "value": "25.7mg"
-        },
-        {
-          "name": "Magnesium",
-          "value": "23.8mg"
-        },
-        {
-          "name": "Sodium",
-          "value": "19.2mg"
-        },
-        {
-          "name": "Bicarbonates",
-          "value": "275mg"
-        },
-        {
-          "name": "Chlorides",
-          "value": "130mg"
-        },
-        {
-          "name": "Nitrates",
-          "value": "1.3mg"
-        },
-        {
-          "name": "TDS",
-          "value": "317mg"
-        }
+        {"name": "Calcium", "value": "25.7mg"},
+        {"name": "Magnesium", "value": "23.8mg"},
+        {"name": "Sodium", "value": "19.2mg"},
+        {"name": "Bicarbonates", "value": "275mg"},
+        {"name": "Chlorides", "value": "130mg"},
+        {"name": "Nitrates", "value": "1.3mg"},
+        {"name": "TDS", "value": "317mg"}
       ]
     },
     {
@@ -1591,10 +1215,7 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {
-          "name": "TDS",
-          "value": "~4mg"
-        }
+        {"name": "TDS", "value": "~4mg"}
       ]
     }
   ]
