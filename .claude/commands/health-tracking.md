@@ -46,6 +46,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 4. **Score the day, then fold in adjustments — the report only ever shows one final version.** Score the raw input against protocol targets internally to decide what (if anything) needs tweaking, then produce the final day:
    - Keep changes small and realistic — 1–3 targeted changes max; when multiple macros are significantly off, it's fine to address each with its own tweak; prioritize the worst-status macro first
+   - **Directional priority:** if protein is under 100%, look for a tweak that pushes it up (extra scoop, more of the protein source) — don't leave it sitting under target. If carbs or fat are over 100%, look for a tweak that trims them down — don't leave an overshoot unaddressed just because it's still in a "warn" band. A protein overshoot or a carb/fat undershoot is never something to "fix" — only the reverse direction needs a tweak
    - Ground every tweak in `data/protocol.json` rules, issues, or goals
    - Record each tweak as `{ from, to, reason }` in `adjustments` — this is the only place the "before" ever shows up (rendered as the "Changes Applied" list). If the day already meets the targets with no tweaks needed, `adjustments` is just an empty array — never invent a change to fill it.
    - Calculate every score (verdict, macros, coverage, good, bad, fullTable) from the **final** food list (raw input + adjustments applied) — there is no separate "original" scoring kept around
@@ -96,9 +97,10 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
    If `git checkout main` fails because the branch doesn't exist locally yet, use `git checkout -b main origin/main` instead.
 
-8. **Status field logic** (used throughout DATA — `"good" | "warn" | "bad"`):
-   - Protein/Carbs: good = 90–110% of target, warn = 75–90% or 110–125%, bad = <75% or >125%
-   - Fat: good = 85–115%, warn = 70–85% or 115–140%, bad = <70% or >140%
+8. **Status field logic** (used throughout DATA — `"good" | "warn" | "bad"`) — **directional, not symmetric.** Protein is a floor (overshoot costs little, undershoot risks muscle); carbs and fat are ceilings (undershoot is fine, overshoot is what actually works against the fat-loss goal):
+   - Protein: good = 100–120% of target, warn = 90–100% or 120–135%, bad = <90% or >135%
+   - Carbs: good = 85–100% of target, warn = 70–85% or 100–115%, bad = <70% or >115%
+   - Fat: good = 80–100%, warn = 70–80% or 100–115%, bad = <70% or >115%
    - Calories: good = within 100 kcal of target, warn = 100–300 kcal off, bad = >300 kcal off
    - Gas/bloat risk and Protocol adherence: judge qualitatively from the `rules` array in `data/protocol.json` (dont entries with reason "gas" are the trigger list)
 
