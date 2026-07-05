@@ -1,66 +1,71 @@
 {
   "date": "July 11, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 200g raw\n| — kefta cooked with 1 onion (~50g)\n| — kefta cooked with 5g of olive oil\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — kefta 90/10 200g raw\n| — kefta cooked with 1 onion (~50g)\n| — kefta cooked without added oil (kefta's own fat is enough)\n| — brown rice 8g raw (↓ from 35g)\n| — 300g legume sauté with no added oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 2 scoops of protein powder (↑ from 1.5)\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "1 Perly nature (85g)",
       "to": "250g homemade raib (from Jaouda Sans Lactose)",
       "reason": "Part of the 2-raib : 1-perly rotation across the 10-day plan. A full 250g serving (not an equal-weight swap) is what actually moves calcium — raib is less calcium-dense than Perly per gram, so 85g would have been a step backward. Calcium rises from 20% to 31%; carbs/fat both nudge up but stay in the good range."
+    },
+    {
+      "from": "Kefta lunch with 2x5g cooking oil, rice 35g, dinner 1.5 scoops whey (carbs 114%, fat 112% — both over the new 100% ceiling)",
+      "to": "Both cooking oils removed, rice trimmed to 8g, dinner whey bumped to 2 scoops",
+      "reason": "New skill rule: carbs/fat over 100% must be trimmed, protein under 100% must be pushed up. Kefta already carries plenty of fat on its own, so the added cooking oil was pure excess; rice needed a bigger trim given kefta's richer profile. Result: carbs 114%->99.6%, fat 112%->96.6%, protein 99.8%->106.2%."
     }
   ],
   "verdict": {
-    "status": "warn",
-    "icon": "⚠️",
-    "text_html": "Calcium boosted via 250g raib — <span class=\"kcal\">1921 kcal</span> (107%), protein 100%, carbs 114%, fat 112% — all still comfortably in the good range, calcium up from 20% to 31%."
+    "status": "good",
+    "icon": "✅",
+    "text_html": "Re-scored under the new directional rules — <span class=\"kcal\">1788 kcal</span> (99%), protein 106%, carbs 100%, fat 97% — all inside the new good bands."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "165g",
+      "value": "175g",
       "target": "/ 165g",
-      "pct": 100,
+      "pct": 106,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "148g",
+      "value": "129g",
       "target": "/ 130g",
-      "pct": 114,
-      "status": "warn"
+      "pct": 100,
+      "status": "good"
     },
     {
       "name": "Fat",
-      "value": "78g",
+      "value": "68g",
       "target": "/ 70g",
-      "pct": 112,
+      "pct": 97,
       "status": "good"
     }
   ],
   "coverage": [
     {
-      "status": "warn",
+      "status": "good",
       "name": "Calories",
-      "coverage": "1,921 / 1,800 (107%)",
-      "note": "250g raib adds ~67 kcal over the Perly serving it replaced"
+      "coverage": "1,788 / 1,800 (99%)",
+      "note": "Re-tuned under the new directional rules (protein floor, carb/fat ceilings)"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "165g / 165g (100%)",
+      "coverage": "175g / 165g (106%)",
       "note": "See fullTable for the protein-source breakdown"
     },
     {
-      "status": "warn",
+      "status": "good",
       "name": "Carbs",
-      "coverage": "148g / 130g (114%)",
-      "note": "Raib's extra carbs push this up a bit — still under the 125% bad line"
+      "coverage": "129g / 130g (100%)",
+      "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
       "status": "good",
       "name": "Fat",
-      "coverage": "78g / 70g (112%)",
-      "note": "Raib's 250g adds more fat than the 85g Perly it replaced, still in the good range"
+      "coverage": "68g / 70g (97%)",
+      "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
       "status": "warn",
@@ -100,14 +105,14 @@
     }
   ],
   "good": [
-    "All four numbers land in the good range — protein 98%, carbs 108%, fat 107%, calories 103%",
+    "All four numbers land in the good range — protein 106%, carbs 100%, fat 97%, calories 99%",
     "Vitamin B12 at 241% and Selenium at 162% — kefta's strongest points",
     "Vitamin A (140%) and Vitamin C (129%) both comfortably covered",
     "Biotin (250%) and B5 (128%) round out a solid micronutrient day"
   ],
   "bad": [
     "Calcium (20%), Vitamin D (10%), Chromium (9%), Vitamin E (23%) — the usual structural gaps, no dairy/fish/avocado",
-    "Fat is the closest to its ceiling of the three versions (107%) — kefta's the richest lunch option",
+    "Fat is the closest to its ceiling of the three versions (97%) — kefta's the richest lunch option",
     "Iron (69%) and Magnesium (39%) both mid-pack — better than chicken/thon but not strong",
     "Fiber still short at ~72% — no potato/banana in the rotation"
   ],
@@ -123,11 +128,11 @@
     "1 scoop protein powder (breakfast)",
     "1 small apple (~150g, whole)",
     "Black coffee (18:00, no sugar)",
-    "Kefta 90/10 200g raw, cooked with 1 onion (~50g) and 5g olive oil",
-    "Brown rice 35g raw",
-    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
+    "Kefta 90/10 200g raw, cooked with 1 onion (~50g), no added oil",
+    "Brown rice (trimmed) raw",
+    "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with no added oil",
     "Cumin & salt (lunch)",
-    "1.5 scoops protein powder (dinner)",
+    "2 scoops protein powder (dinner, ↑ from 1.5)",
     "250g raib, homemade (from Jaouda Sans Lactose)",
     "1 kiwi (~80g)",
     "5g Almonds + 5g Walnuts + 5g Cashews + 5g Pistachios + 5g Pumpkin Seeds"
@@ -138,7 +143,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "165g / 165g (100%)",
+      "coverage": "175g / 165g (106%)",
       "note": "Kefta 200g + 1.5 whey scoops + eggs — comfortably past target"
     },
     {

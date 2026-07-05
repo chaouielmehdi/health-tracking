@@ -1,33 +1,38 @@
 {
   "date": "July 9, 2026",
   "dayType": "Rest day",
-  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw\n| — chicken cooked with 1 tsp of mustard\n| — chicken cooked with 5g of olive oil\n| — brown rice 35g raw\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
+  "routineText": "09:00 — Wake up & go to Work\n09:00\n      — (4h) Work & Water 1L\n13:00\n13:00 — Black Coffee + 1 tsp of sugar\n\n-----------------------\n| 14:00 — 🌅 Breakfast\n| — whole wheat bread 35g\n| — 6 whites & 3 yolks of beldi eggs\n| — eggs fried with 5g of olive oil\n| — 2 garlic cloves cooked\n| — 5g of raw olive oil\n| — mint tea + 1 tsp of sugar\n| — cumin & salt\n| — oat 35g + warm water\n| — 1 scoop of protein powder with water\n| — 1 apple (small, ~150g)\n-----------------------\n\n14:00 — Return to Work\n14:00\n      — (4h) Work & Water 1L\n18:00\n18:00 — Out from work\n\n-----------------------\n| 18:00 — ☀️ Lunch\n| — chicken breast 200g raw\n| — chicken cooked with 1 tsp of mustard\n| — chicken cooked with 5g of olive oil\n| — brown rice 15g raw (↓ from 35g)\n| — 300g legume sauté with 5g of olive oil (40% carrot, 40% courgette, 20% onion)\n| — cumin & salt\n-----------------------\n\n18:00 — Black Coffee\n18:00\n      — (4h) Rest or Billard & Water 1L\n21:00\n21:00 — Back Home\n\n-----------------------\n| 21:00 — 🌙 Dinner\n| — 1.5 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — 1 kiwi\n| — 5g Almonds\n| — 5g Walnuts\n| — 5g Cashews\n| — 5g Pistachios\n| — 5g Pumpkin Seeds\n-----------------------\n\n01:00 — Sleep",
   "adjustments": [
     {
       "from": "1 Perly nature (85g)",
       "to": "250g homemade raib (from Jaouda Sans Lactose)",
       "reason": "Part of the 2-raib : 1-perly rotation across the 10-day plan. A full 250g serving (not an equal-weight swap) is what actually moves calcium — raib is less calcium-dense than Perly per gram, so 85g would have been a step backward. Calcium rises from 20% to 31%; carbs/fat both nudge up but stay in the good range."
+    },
+    {
+      "from": "Brown rice 35g (carbs at 110%, over the new 100% ceiling)",
+      "to": "Brown rice trimmed to 15g",
+      "reason": "New skill rule: carbs over 100% must be trimmed. Chicken's own fat is already low, so this single trim was enough — carbs 110%->99.3%, everything else stays comfortably in its new good range."
     }
   ],
   "verdict": {
-    "status": "warn",
-    "icon": "⚠️",
-    "text_html": "Calcium boosted via 250g raib — <span class=\"kcal\">1840 kcal</span> (102%), protein 103%, carbs 110%, fat 96% — all still comfortably in the good range, calcium up from 20% to 31%."
+    "status": "good",
+    "icon": "✅",
+    "text_html": "Re-scored under the new directional rules — <span class=\"kcal\">1767 kcal</span> (98%), protein 102%, carbs 99%, fat 96% — all inside the new good bands."
   },
   "macros": [
     {
       "name": "Protein",
-      "value": "169g",
+      "value": "168g",
       "target": "/ 165g",
-      "pct": 103,
+      "pct": 102,
       "status": "good"
     },
     {
       "name": "Carbs",
-      "value": "144g",
+      "value": "129g",
       "target": "/ 130g",
-      "pct": 110,
-      "status": "warn"
+      "pct": 99,
+      "status": "good"
     },
     {
       "name": "Fat",
@@ -41,26 +46,26 @@
     {
       "status": "good",
       "name": "Calories",
-      "coverage": "1,840 / 1,800 (102%)",
-      "note": "250g raib adds ~67 kcal over the Perly serving it replaced"
+      "coverage": "1,767 / 1,800 (98%)",
+      "note": "Re-tuned under the new directional rules (protein floor, carb/fat ceilings)"
     },
     {
       "status": "good",
       "name": "Protein",
-      "coverage": "169g / 165g (103%)",
+      "coverage": "168g / 165g (102%)",
       "note": "See fullTable for the protein-source breakdown"
     },
     {
-      "status": "warn",
+      "status": "good",
       "name": "Carbs",
-      "coverage": "144g / 130g (110%)",
-      "note": "Raib's extra carbs push this up a bit — still under the 125% bad line"
+      "coverage": "129g / 130g (99%)",
+      "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
       "status": "good",
       "name": "Fat",
       "coverage": "67g / 70g (96%)",
-      "note": "Raib's 250g adds more fat than the 85g Perly it replaced, still in the good range"
+      "note": "Trimmed to sit under the new 100% ceiling"
     },
     {
       "status": "warn",
@@ -100,7 +105,7 @@
     }
   ],
   "good": [
-    "The best-centered macros of the three rotation days — fat sits at a comfortable 92%, furthest from the ceiling",
+    "All four numbers land in the good range — protein 102%, carbs 99%, fat 96%, calories 98%, without needing an extra whey scoop like kefta/thon",
     "Selenium (205%) and Niacin (146%) are chicken's standout strengths",
     "Vitamin A (140%) and Vitamin C (129%) both comfortably covered",
     "Protein clears 165g even before counting the dinner whey bump"
@@ -124,7 +129,7 @@
     "1 small apple (~150g, whole)",
     "Black coffee (18:00, no sugar)",
     "Chicken breast 200g raw, cooked with 1 tsp mustard and 5g olive oil",
-    "Brown rice 35g raw",
+    "Brown rice (trimmed) raw",
     "300g légumes sautés (carrot 120g, courgette 120g, onion 60g) with 5g olive oil",
     "Cumin & salt (lunch)",
     "1.5 scoops protein powder (dinner)",
@@ -138,7 +143,7 @@
       "nutrient": "Protein",
       "impact": "Muscle loss, weakness",
       "status": "good",
-      "coverage": "169g / 165g (103%)",
+      "coverage": "168g / 165g (102%)",
       "note": "Chicken breast 200g + 1.5 whey scoops + eggs — clears target"
     },
     {
