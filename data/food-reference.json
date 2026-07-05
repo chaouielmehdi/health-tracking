@@ -261,38 +261,38 @@
       "id": "egg",
       "emoji": "🥚",
       "name": "Egg (average size)",
-      "note": "Corrected 2026-07 — fat/carbs were slightly overstated vs. USDA raw whole egg scaled to 44g",
+      "note": "Corrected 2026-07 — Mehdi weighed his actual rumi (regular) eggs at ~65g raw with shell; shell is ~11% of weight, so edible portion is ~58g. Values rescaled from the USDA per-100g density (previously mislabeled at ~44g)",
       "category": "Egg",
-      "serving": "per egg (~44g)",
-      "kcal": 63,
-      "protein": 5.5,
-      "carbs": 0.3,
-      "fat": 4.2,
+      "serving": "per egg (~58g edible, ~65g raw with shell)",
+      "kcal": 83,
+      "protein": 7.3,
+      "carbs": 0.4,
+      "fat": 5.5,
       "fiber": 0,
       "extra": [
-        {"name": "Sodium", "value": "62mg"},
-        {"name": "Vitamin B12", "value": "0.44µg"},
-        {"name": "Choline", "value": "129mg"}
+        {"name": "Sodium", "value": "82mg"},
+        {"name": "Vitamin B12", "value": "0.58µg"},
+        {"name": "Choline", "value": "170mg"}
       ]
     },
     {
       "id": "egg-beldi",
       "emoji": "🥚",
       "name": "Egg (Beldi, free-range)",
-      "note": "Smaller white-shelled free-range egg, deeper orange yolk than industrial (rumi) eggs; typical weight 40-55g. Slightly richer in fat and omega-3/vitamin A from varied free-range diet — estimated from general free-range vs conventional egg comparisons, not lab-analyzed for a specific source",
+      "note": "Corrected 2026-07 — Mehdi weighed his actual beldi eggs at ~48g raw with shell; shell is ~11% of weight, so edible portion is ~43g. Values rescaled from the previously-implied per-100g density (was mislabeled at ~44g, same as rumi, which understated the real size gap). Beldi stays richer per gram (more protein/fat density, deeper yolk) but is a physically smaller egg than rumi",
       "category": "Egg",
-      "serving": "per egg (~44g)",
-      "kcal": 67,
-      "protein": 5.6,
+      "serving": "per egg (~43g edible, ~48g raw with shell)",
+      "kcal": 65,
+      "protein": 5.5,
       "carbs": 0.3,
-      "fat": 5.0,
+      "fat": 4.9,
       "fiber": 0,
       "extra": [
-        {"name": "Sodium", "value": "58mg"},
-        {"name": "Vitamin B12", "value": "0.46µg"},
-        {"name": "Choline", "value": "132mg"},
-        {"name": "Omega-3", "value": "~90mg"},
-        {"name": "Vitamin A", "value": "~85µg RAE"}
+        {"name": "Sodium", "value": "57mg"},
+        {"name": "Vitamin B12", "value": "0.45µg"},
+        {"name": "Choline", "value": "129mg"},
+        {"name": "Omega-3", "value": "~88mg"},
+        {"name": "Vitamin A", "value": "~83µg RAE"}
       ]
     },
     {
