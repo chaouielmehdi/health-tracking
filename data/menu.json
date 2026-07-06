@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "updated": "2026-07-06",
+    "note": "Standard menu — one fixed recipe per meal slot, with a small number of interchangeable choices per slot. Pick whichever option you have on hand; each option is pre-balanced against the day's targets. Add/replace options here (e.g. a new fruit) without touching any page code."
+  },
+  "targets": {
+    "rest": { "kcal": 1800, "protein": 165, "carbs": 130, "fat": 70 },
+    "training": { "kcal": 2300, "protein": 165, "carbs": 250, "fat": 70 }
+  },
+  "meals": {
+    "breakfast": {
+      "label": "🌅 Breakfast",
+      "items": [
+        { "label": "6 egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
+        { "label": "3 egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
+        { "label": "1 scoop whey protein", "food": "whey-iso100-30g", "qty": 30 },
+        { "label": "1 apple (~150g)", "food": "apple", "qty": 150 },
+        { "label": "2 garlic cloves (~6g)", "food": "garlic", "qty": 6 },
+        { "label": "30g avocado (replaces raw oil)", "food": "avocado", "qty": 30 }
+      ],
+      "choice": {
+        "id": "carb",
+        "label": "Carb source",
+        "options": [
+          { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
+          { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } }
+        ]
+      }
+    },
+    "lunch": {
+      "label": "☀️ Lunch",
+      "choice": {
+        "id": "protein",
+        "label": "Protein source",
+        "options": [
+          { "label": "Kefta 90/10 · 250g, no added oil", "items": [
+            { "food": "kefta-9010", "qty": 250 }
+          ]},
+          { "label": "Chicken breast · 250g, mustard + oil", "items": [
+            { "food": "chicken-breast", "qty": 250 },
+            { "food": "mustard", "qty": 5 },
+            { "food": "olive-oil", "qty": 5 }
+          ]},
+          { "label": "Tuna + 2 eggs · 100g tuna, 2 whole eggs", "items": [
+            { "food": "tuna-isabel", "qty": 100 },
+            { "food": "egg-beldi", "qty": 86 }
+          ]}
+        ]
+      },
+      "items": [
+        { "label": "Brown rice", "food": "brown-rice", "qty": { "rest": 20, "training": 100 } },
+        { "label": "Carrot (sautéed)", "food": "carrot", "qty": 120 },
+        { "label": "Courgette (sautéed)", "food": "zucchini", "qty": 120 },
+        { "label": "Onion (sautéed)", "food": "onion", "qty": 60 },
+        { "label": "Sauté oil", "food": "olive-oil", "qty": 5 }
+      ]
+    },
+    "snack": {
+      "label": "🍎 Post-Lunch Snack",
+      "items": [
+        { "label": "1 apple (~150g)", "food": "apple", "qty": 150 },
+        { "label": "0.5 scoop whey protein", "food": "whey-iso100-30g", "qty": 15 }
+      ],
+      "trainingOnly": [
+        { "label": "1 banana (~120g)", "food": "banana", "qty": 120 },
+        { "label": "~4 dates (~32g)", "food": "dates", "qty": 32 }
+      ]
+    },
+    "dinner": {
+      "label": "🌙 Dinner",
+      "choice": {
+        "id": "dairy",
+        "label": "Dairy (2 raib : 1 perly rotation)",
+        "options": [
+          { "label": "Raib, homemade · 250g", "items": [
+            { "food": "raib", "qty": 250 }
+          ]},
+          { "label": "Perly Nature · 85g", "items": [
+            { "food": "jaouda-perly-nature", "qty": 85 }
+          ]}
+        ]
+      },
+      "items": [
+        { "label": "Kiwi", "food": "kiwi", "qty": 80 },
+        { "label": "Almonds", "food": "almonds", "qty": 5 },
+        { "label": "Walnuts", "food": "walnuts", "qty": 5 },
+        { "label": "Cashews", "food": "cashews", "qty": 5 },
+        { "label": "Pistachios", "food": "pistachios", "qty": 5 },
+        { "label": "Pumpkin seeds", "food": "pumpkin-seeds", "qty": 5 },
+        { "label": "2 scoops whey protein", "food": "whey-iso100-30g", "qty": 60 }
+      ]
+    }
+  }
+}
