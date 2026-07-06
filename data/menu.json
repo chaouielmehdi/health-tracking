@@ -14,12 +14,26 @@
         { "label": "6 egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
         { "label": "3 egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
-        { "label": "Apple", "food": "apple", "qty": 150 },
         { "label": "2 garlic cloves", "food": "garlic", "qty": 6 },
         { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
         { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } }
       ],
       "choices": [
+        {
+          "id": "fruit",
+          "label": "Fruit",
+          "options": [
+            { "label": "Apple", "food": "apple", "qty": 150 },
+            { "label": "Grapes", "food": "grapes", "qty": 114 },
+            { "label": "Mango", "food": "mango", "qty": 138 },
+            { "label": "Watermelon", "food": "watermelon", "qty": 272 },
+            { "label": "Orange", "food": "orange", "qty": 175 },
+            { "label": "Clementine", "food": "clementine", "qty": 172 },
+            { "label": "Peach", "food": "peach", "qty": 217 },
+            { "label": "Strawberry", "food": "strawberry", "qty": 269 },
+            { "label": "Blueberries", "food": "blueberries-fresh", "qty": 143 }
+          ]
+        },
         {
           "id": "fat",
           "label": "Fat source",
@@ -61,7 +75,6 @@
     "snack": {
       "label": "🍎 Post-Lunch Snack",
       "items": [
-        { "label": "Apple", "food": "apple", "qty": 150 },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
       ],
       "trainingOnly": [
