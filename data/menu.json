@@ -95,9 +95,23 @@
             { "food": "jaouda-perly-nature", "qty": 85 }
           ]}
         ]
+      }, {
+        "id": "dinnerFruit",
+        "label": "Fruit",
+        "options": [
+          { "label": "Kiwi", "food": "kiwi", "qty": 80 },
+          { "label": "Apple", "food": "apple", "qty": 85 },
+          { "label": "Orange", "food": "orange", "qty": 100 },
+          { "label": "Clementine", "food": "clementine", "qty": 98 },
+          { "label": "Mango", "food": "mango", "qty": 78 },
+          { "label": "Blueberries", "food": "blueberries-fresh", "qty": 81 },
+          { "label": "Grapes", "food": "grapes", "qty": 65 },
+          { "label": "Peach", "food": "peach", "qty": 123 },
+          { "label": "Strawberry", "food": "strawberry", "qty": 153 },
+          { "label": "Watermelon", "food": "watermelon", "qty": 155 }
+        ]
       }],
       "items": [
-        { "label": "Kiwi", "food": "kiwi", "qty": 80 },
         { "label": "Almonds", "food": "almonds", "qty": 5 },
         { "label": "Walnuts", "food": "walnuts", "qty": 5 },
         { "label": "Cashews", "food": "cashews", "qty": 5 },
