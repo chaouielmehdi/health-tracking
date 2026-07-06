@@ -11,11 +11,11 @@
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
-        { "label": "Egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
-        { "label": "Egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
+        { "label": "6 egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
+        { "label": "3 egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
         { "label": "Apple", "food": "apple", "qty": 150 },
-        { "label": "Garlic cloves", "food": "garlic", "qty": 6 }
+        { "label": "2 garlic cloves", "food": "garlic", "qty": 6 }
       ],
       "choices": [
         {
@@ -50,7 +50,7 @@
             { "food": "mustard", "qty": 5 },
             { "food": "olive-oil", "qty": 5 }
           ]},
-          { "label": "Tuna + whole eggs", "items": [
+          { "label": "Tuna + 2 whole eggs", "items": [
             { "food": "tuna-isabel", "qty": 100 },
             { "food": "egg-beldi", "qty": 86 }
           ]}
@@ -72,7 +72,7 @@
       ],
       "trainingOnly": [
         { "label": "Banana", "food": "banana", "qty": 120 },
-        { "label": "Dates", "food": "dates", "qty": 32 }
+        { "label": "4 dates", "food": "dates", "qty": 32 }
       ]
     },
     "dinner": {
