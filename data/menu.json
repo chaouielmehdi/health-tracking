@@ -11,42 +11,51 @@
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
-        { "label": "6 egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
-        { "label": "3 egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
-        { "label": "1 scoop whey protein", "food": "whey-iso100-30g", "qty": 30 },
-        { "label": "1 apple (~150g)", "food": "apple", "qty": 150 },
-        { "label": "2 garlic cloves (~6g)", "food": "garlic", "qty": 6 },
-        { "label": "30g avocado (replaces raw oil)", "food": "avocado", "qty": 30 }
+        { "label": "Egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
+        { "label": "Egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
+        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
+        { "label": "Apple", "food": "apple", "qty": 150 },
+        { "label": "Garlic cloves", "food": "garlic", "qty": 6 }
       ],
-      "choice": {
-        "id": "carb",
-        "label": "Carb source",
-        "options": [
-          { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
-          { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } }
-        ]
-      }
+      "choices": [
+        {
+          "id": "carb",
+          "label": "Carb source",
+          "options": [
+            { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
+            { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } }
+          ]
+        },
+        {
+          "id": "fat",
+          "label": "Fat source",
+          "options": [
+            { "label": "Avocado", "food": "avocado", "qty": 30 },
+            { "label": "Raw olive oil", "food": "olive-oil", "qty": 5 }
+          ]
+        }
+      ]
     },
     "lunch": {
       "label": "☀️ Lunch",
-      "choice": {
+      "choices": [{
         "id": "protein",
         "label": "Protein source",
         "options": [
-          { "label": "Kefta 90/10 · 250g, no added oil", "items": [
+          { "label": "Kefta 90/10, no added oil", "items": [
             { "food": "kefta-9010", "qty": 250 }
           ]},
-          { "label": "Chicken breast · 250g, mustard + oil", "items": [
+          { "label": "Chicken breast, mustard + oil", "items": [
             { "food": "chicken-breast", "qty": 250 },
             { "food": "mustard", "qty": 5 },
             { "food": "olive-oil", "qty": 5 }
           ]},
-          { "label": "Tuna + 2 eggs · 100g tuna, 2 whole eggs", "items": [
+          { "label": "Tuna + whole eggs", "items": [
             { "food": "tuna-isabel", "qty": 100 },
             { "food": "egg-beldi", "qty": 86 }
           ]}
         ]
-      },
+      }],
       "items": [
         { "label": "Brown rice", "food": "brown-rice", "qty": { "rest": 20, "training": 100 } },
         { "label": "Carrot (sautéed)", "food": "carrot", "qty": 120 },
@@ -58,28 +67,28 @@
     "snack": {
       "label": "🍎 Post-Lunch Snack",
       "items": [
-        { "label": "1 apple (~150g)", "food": "apple", "qty": 150 },
-        { "label": "1 scoop whey protein", "food": "whey-iso100-30g", "qty": 30 }
+        { "label": "Apple", "food": "apple", "qty": 150 },
+        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
       ],
       "trainingOnly": [
-        { "label": "1 banana (~120g)", "food": "banana", "qty": 120 },
-        { "label": "~4 dates (~32g)", "food": "dates", "qty": 32 }
+        { "label": "Banana", "food": "banana", "qty": 120 },
+        { "label": "Dates", "food": "dates", "qty": 32 }
       ]
     },
     "dinner": {
       "label": "🌙 Dinner",
-      "choice": {
+      "choices": [{
         "id": "dairy",
         "label": "Dairy (2 raib : 1 perly rotation)",
         "options": [
-          { "label": "Raib, homemade · 250g", "items": [
-            { "food": "raib", "qty": 250 }
+          { "label": "Raib, homemade", "items": [
+            { "food": "raib", "qty": 200 }
           ]},
-          { "label": "Perly Nature · 85g", "items": [
+          { "label": "Perly Nature", "items": [
             { "food": "jaouda-perly-nature", "qty": 85 }
           ]}
         ]
-      },
+      }],
       "items": [
         { "label": "Kiwi", "food": "kiwi", "qty": 80 },
         { "label": "Almonds", "food": "almonds", "qty": 5 },
@@ -87,7 +96,7 @@
         { "label": "Cashews", "food": "cashews", "qty": 5 },
         { "label": "Pistachios", "food": "pistachios", "qty": 5 },
         { "label": "Pumpkin seeds", "food": "pumpkin-seeds", "qty": 5 },
-        { "label": "1 scoop whey protein", "food": "whey-iso100-30g", "qty": 30 }
+        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
       ]
     }
   }

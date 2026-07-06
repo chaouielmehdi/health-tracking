@@ -68,8 +68,8 @@
   .item-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
   .item-row:last-child{border-bottom:none;}
   .item-label{font-size:12.5px;color:var(--text-dim);line-height:1.4;}
-  .item-macro{font-family:var(--mono);font-size:11px;color:var(--text-dim2);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:10px;}
-  .item-qty{color:var(--accent);font-weight:600;}
+  .item-macro{font-family:var(--mono);font-size:11px;color:var(--text-dim2);white-space:nowrap;flex-shrink:0;}
+  .item-qty{font-family:var(--mono);color:var(--text-dim2);font-size:11.5px;}
 
   /* CHOICE PICKER */
   .choice-block{margin:10px 0 4px;}
@@ -80,7 +80,7 @@
   .choice-opt.selected{border-color:var(--accent);background:var(--accent-soft);}
   .choice-opt input{accent-color:var(--accent);flex-shrink:0;}
   .choice-opt-label{font-size:12.5px;color:var(--text);flex:1;}
-  .choice-opt-macro{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);white-space:nowrap;display:flex;align-items:center;gap:10px;}
+  .choice-opt-macro{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);white-space:nowrap;}
 
   .training-tag{display:inline-block;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:100px;padding:2px 8px;margin-left:8px;}
 
@@ -106,7 +106,7 @@
 
 <script>
 let MENU = null, FOODS = null;
-let state = { day: 'rest', protein: 0, carb: 0, dairy: 0 };
+let state = { day: 'rest', protein: 0, carb: 0, fat: 0, dairy: 0 };
 
 // food-reference.json stores most foods per 100g, but a few (whey scoops,
 // whole eggs) are stored per-serving instead — scale against the right basis.
@@ -179,13 +179,11 @@ function formatQty(item){
 function renderMealItems(items){
   return items.map(it=>{
     const m = itemMacro(it);
-    return `<div class="item-row"><span class="item-label">${it.label}</span><span class="item-macro"><span class="item-qty">${formatQty(it)}</span>${Math.round(m.kcal)} kcal</span></div>`;
+    return `<div class="item-row"><span class="item-label">${it.label} <span class="item-qty">(${formatQty(it)})</span></span><span class="item-macro">${Math.round(m.kcal)} kcal</span></div>`;
   }).join('');
 }
 
-function renderChoice(meal, mealKey){
-  const c = meal.choice;
-  if(!c) return '';
+function renderChoice(c){
   const selIdx = state[c.id];
   const opts = c.options.map((opt,i)=>{
     const items = opt.items || [{food:opt.food, qty:opt.qty}];
@@ -194,14 +192,18 @@ function renderChoice(meal, mealKey){
     const qtyStr = items.map(formatQty).join(' + ');
     return `<label class="choice-opt ${sel}">
       <input type="radio" name="${c.id}" value="${i}" ${i===selIdx?'checked':''} onchange="selectChoice('${c.id}',${i})">
-      <span class="choice-opt-label">${opt.label}</span>
-      <span class="choice-opt-macro"><span class="item-qty">${qtyStr}</span>${Math.round(m.kcal)} kcal</span>
+      <span class="choice-opt-label">${opt.label} <span class="item-qty">(${qtyStr})</span></span>
+      <span class="choice-opt-macro">${Math.round(m.kcal)} kcal</span>
     </label>`;
   }).join('');
   return `<div class="choice-block">
     <div class="choice-label">${c.label} — pick one</div>
     <div class="choice-options">${opts}</div>
   </div>`;
+}
+function renderChoices(meal){
+  if(!meal.choices) return '';
+  return meal.choices.map(renderChoice).join('');
 }
 
 function selectChoice(id, idx){
@@ -216,10 +218,12 @@ function selectDay(day){
 function mealTotal(mealKey, meal){
   let total = zero();
   if(meal.items) total = add(total, itemsMacro(meal.items));
-  if(meal.choice){
-    const opt = meal.choice.options[state[meal.choice.id]];
-    const items = opt.items || [{food:opt.food, qty:opt.qty}];
-    total = add(total, itemsMacro(items));
+  if(meal.choices){
+    meal.choices.forEach(c=>{
+      const opt = c.options[state[c.id]];
+      const items = opt.items || [{food:opt.food, qty:opt.qty}];
+      total = add(total, itemsMacro(items));
+    });
   }
   if(meal.trainingOnly && state.day==='training') total = add(total, itemsMacro(meal.trainingOnly));
   return total;
@@ -232,7 +236,7 @@ function render(){
     const total = mealTotal(key, meal);
     dayTotal = add(dayTotal, total);
     const fixedHtml = meal.items ? renderMealItems(meal.items) : '';
-    const choiceHtml = renderChoice(meal, key);
+    const choiceHtml = renderChoices(meal);
     const trainingHtml = (meal.trainingOnly && state.day==='training')
       ? `<div class="choice-label" style="margin-top:10px;">Training addition</div>${renderMealItems(meal.trainingOnly)}`
       : (meal.trainingOnly ? `<div class="item-row"><span class="item-label" style="color:var(--text-dim2);font-style:italic;">+ banana &amp; dates on training days<span class="training-tag">training only</span></span></div>` : '');
