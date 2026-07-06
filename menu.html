@@ -80,7 +80,7 @@
   .choice-opt.selected{border-color:var(--accent);background:var(--accent-soft);}
   .choice-opt input{accent-color:var(--accent);flex-shrink:0;}
   .choice-opt-label{font-size:12.5px;color:var(--text);flex:1;}
-  .choice-opt-macro{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);white-space:nowrap;}
+  .choice-opt-macro{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);white-space:nowrap;display:flex;align-items:center;gap:10px;}
 
   .training-tag{display:inline-block;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:100px;padding:2px 8px;margin-left:8px;}
 
@@ -191,10 +191,11 @@ function renderChoice(meal, mealKey){
     const items = opt.items || [{food:opt.food, qty:opt.qty}];
     const m = itemsMacro(items);
     const sel = i===selIdx ? 'selected' : '';
+    const qtyStr = items.map(formatQty).join(' + ');
     return `<label class="choice-opt ${sel}">
       <input type="radio" name="${c.id}" value="${i}" ${i===selIdx?'checked':''} onchange="selectChoice('${c.id}',${i})">
       <span class="choice-opt-label">${opt.label}</span>
-      <span class="choice-opt-macro">${Math.round(m.kcal)} kcal</span>
+      <span class="choice-opt-macro"><span class="item-qty">${qtyStr}</span>${Math.round(m.kcal)} kcal</span>
     </label>`;
   }).join('');
   return `<div class="choice-block">
