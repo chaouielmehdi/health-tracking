@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard Menu · Mehdi</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="header.js"></script>
+<style>
+  :root{
+    --bg:#1A1D1F;
+    --panel:#21252A;
+    --panel-border:#2E3338;
+    --text:#F2F0EC;
+    --text-dim:#9A9FA3;
+    --text-dim2:#8B9096;
+    --accent:#8B9474;
+    --accent-soft:rgba(139,148,116,0.16);
+    --warn:#D9A05B;
+    --warn-soft:rgba(217,160,91,0.14);
+    --bad:#C2604F;
+    --bad-soft:rgba(194,96,79,0.14);
+    --good:#7FAE8E;
+    --good-soft:rgba(127,174,142,0.14);
+    --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+    --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);padding:28px;-webkit-font-smoothing:antialiased;}
+  #page-header{max-width:680px;margin:0 auto 28px;}
+  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:var(--text);}
+  #page-header h1 em{font-style:normal;color:var(--accent);}
+  .app{max-width:680px;margin:0 auto;}
+
+  /* DAY TYPE TOGGLE */
+  .daytype{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;}
+  .daytype-btn{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;}
+  .daytype-btn.active{border-color:var(--accent);background:var(--accent-soft);}
+  .daytype-name{font-size:13.5px;font-weight:700;margin-bottom:2px;}
+  .daytype-kcal{font-family:var(--mono);font-size:11.5px;color:var(--text-dim2);}
+  .daytype-btn.active .daytype-kcal{color:var(--accent);}
+
+  /* MACRO GAUGES (reused from tracking template) */
+  .macros{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:24px;}
+  .macro-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:14px 12px;}
+  .macro-name{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;margin-bottom:8px;}
+  .macro-value{font-family:var(--mono);font-size:18px;font-weight:700;line-height:1;margin-bottom:2px;}
+  .macro-target{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);margin-bottom:10px;}
+  .gauge-track{height:6px;background:#171A1C;border-radius:6px;overflow:hidden;position:relative;}
+  .gauge-fill{height:100%;border-radius:6px;transition:width 0.3s ease;}
+  .gauge-fill.good{background:var(--good);}
+  .gauge-fill.warn{background:var(--warn);}
+  .gauge-fill.bad{background:var(--bad);}
+  .macro-pct{font-family:var(--mono);font-size:11px;font-weight:700;margin-top:6px;text-align:right;}
+  .macro-pct.good{color:var(--good);}
+  .macro-pct.warn{color:var(--warn);}
+  .macro-pct.bad{color:var(--bad);}
+
+  .section-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;margin:24px 0 10px;}
+
+  /* MEAL CARD */
+  .meal-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;margin-bottom:14px;}
+  .meal-header{padding:14px 18px;border-bottom:1px solid var(--panel-border);display:flex;align-items:center;justify-content:space-between;}
+  .meal-name{font-size:14.5px;font-weight:700;}
+  .meal-kcal{font-family:var(--mono);font-size:12px;color:var(--text-dim2);}
+  .meal-body{padding:6px 18px 14px;}
+
+  .item-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .item-row:last-child{border-bottom:none;}
+  .item-label{font-size:12.5px;color:var(--text-dim);line-height:1.4;}
+  .item-macro{font-family:var(--mono);font-size:11px;color:var(--text-dim2);white-space:nowrap;flex-shrink:0;}
+
+  /* CHOICE PICKER */
+  .choice-block{margin:10px 0 4px;}
+  .choice-label{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px;}
+  .choice-options{display:flex;flex-direction:column;gap:6px;}
+  .choice-opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.02);border:1px solid var(--panel-border);border-radius:10px;padding:9px 12px;cursor:pointer;transition:border-color .15s,background .15s;}
+  .choice-opt:hover{border-color:rgba(139,148,116,0.4);}
+  .choice-opt.selected{border-color:var(--accent);background:var(--accent-soft);}
+  .choice-opt input{accent-color:var(--accent);flex-shrink:0;}
+  .choice-opt-label{font-size:12.5px;color:var(--text);flex:1;}
+  .choice-opt-macro{font-family:var(--mono);font-size:10.5px;color:var(--text-dim2);white-space:nowrap;}
+
+  .training-tag{display:inline-block;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:100px;padding:2px 8px;margin-left:8px;}
+
+  .footer-note{margin-top:22px;font-size:11px;color:var(--text-dim2);text-align:center;}
+
+  @media(max-width:560px){
+    .macros{grid-template-columns:1fr 1fr;}
+    .macro-value{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+  <div id="page-header"
+    data-badge="The Menu"
+    data-back-href="index.html"
+    data-back-label="Health Tracking"
+    data-title="Standard Menu"
+    data-deploy-path="data/deploy.json">
+  </div>
+  <div class="app" id="app">
+    <div class="skel loading" style="height:400px"></div>
+  </div>
+
+<script>
+let MENU = null, FOODS = null;
+let state = { day: 'rest', protein: 0, carb: 0, dairy: 0 };
+
+// food-reference.json stores most foods per 100g, but a few (whey scoops,
+// whole eggs) are stored per-serving instead — scale against the right basis.
+const SERVING_BASIS_G = { 'whey-iso100-30g': 30, 'whey-iso100-100g': 100, 'egg': 58, 'egg-beldi': 43 };
+function foodMacros(id){
+  const f = FOODS[id];
+  if(!f) return {kcal:0,protein:0,carbs:0,fat:0};
+  return f;
+}
+function scale(id, grams){
+  const f = foodMacros(id);
+  const basis = SERVING_BASIS_G[id] || 100;
+  const r = grams/basis;
+  return { kcal: f.kcal*r, protein: f.protein*r, carbs: f.carbs*r, fat: f.fat*r };
+}
+function add(a,b){ return {kcal:a.kcal+b.kcal, protein:a.protein+b.protein, carbs:a.carbs+b.carbs, fat:a.fat+b.fat}; }
+function zero(){ return {kcal:0,protein:0,carbs:0,fat:0}; }
+function qtyFor(qty){ return (typeof qty === 'object') ? qty[state.day] : qty; }
+
+function itemMacro(item){ return scale(item.food, qtyFor(item.qty)); }
+function itemsMacro(items){ return items.reduce((acc,it)=>add(acc,itemMacro(it)), zero()); }
+
+function fmt1(n){ return Math.round(n*10)/10; }
+function statusFor(pct, kind){
+  // directional bands matching the health-tracking skill
+  if(kind==='protein'){
+    if(pct>=100&&pct<=120) return 'good';
+    if((pct>=90&&pct<100)||(pct>120&&pct<=135)) return 'warn';
+    return 'bad';
+  }
+  if(kind==='carbs'){
+    if(pct>=85&&pct<=100) return 'good';
+    if((pct>=70&&pct<85)||(pct>100&&pct<=115)) return 'warn';
+    return 'bad';
+  }
+  if(kind==='fat'){
+    if(pct>=80&&pct<=100) return 'good';
+    if((pct>=70&&pct<80)||(pct>100&&pct<=115)) return 'warn';
+    return 'bad';
+  }
+  // kcal: within 100 good, 100-300 warn, else bad — pct here is abs diff already handled by caller
+  return pct;
+}
+function kcalStatus(actual, target){
+  const diff = Math.abs(actual-target);
+  if(diff<=100) return 'good';
+  if(diff<=300) return 'warn';
+  return 'bad';
+}
+
+function macroCard(name, value, target, pct, status, unit){
+  return `<div class="macro-card">
+    <div class="macro-name">${name}</div>
+    <div class="macro-value">${value}${unit||''}</div>
+    <div class="macro-target">/ ${target}${unit||''}</div>
+    <div class="gauge-track"><div class="gauge-fill ${status}" style="width:${Math.min(pct,100)}%"></div></div>
+    <div class="macro-pct ${status}">${Math.round(pct)}%</div>
+  </div>`;
+}
+
+function renderMealItems(items){
+  return items.map(it=>{
+    const m = itemMacro(it);
+    return `<div class="item-row"><span class="item-label">${it.label}</span><span class="item-macro">${Math.round(m.kcal)} kcal</span></div>`;
+  }).join('');
+}
+
+function renderChoice(meal, mealKey){
+  const c = meal.choice;
+  if(!c) return '';
+  const selIdx = state[c.id];
+  const opts = c.options.map((opt,i)=>{
+    const items = opt.items || [{food:opt.food, qty:opt.qty}];
+    const m = itemsMacro(items);
+    const sel = i===selIdx ? 'selected' : '';
+    return `<label class="choice-opt ${sel}">
+      <input type="radio" name="${c.id}" value="${i}" ${i===selIdx?'checked':''} onchange="selectChoice('${c.id}',${i})">
+      <span class="choice-opt-label">${opt.label}</span>
+      <span class="choice-opt-macro">${Math.round(m.kcal)} kcal</span>
+    </label>`;
+  }).join('');
+  return `<div class="choice-block">
+    <div class="choice-label">${c.label} — pick one</div>
+    <div class="choice-options">${opts}</div>
+  </div>`;
+}
+
+function selectChoice(id, idx){
+  state[id] = idx;
+  render();
+}
+function selectDay(day){
+  state.day = day;
+  render();
+}
+
+function mealTotal(mealKey, meal){
+  let total = zero();
+  if(meal.items) total = add(total, itemsMacro(meal.items));
+  if(meal.choice){
+    const opt = meal.choice.options[state[meal.choice.id]];
+    const items = opt.items || [{food:opt.food, qty:opt.qty}];
+    total = add(total, itemsMacro(items));
+  }
+  if(meal.trainingOnly && state.day==='training') total = add(total, itemsMacro(meal.trainingOnly));
+  return total;
+}
+
+function render(){
+  const target = MENU.targets[state.day];
+  let dayTotal = zero();
+  const mealBlocks = Object.entries(MENU.meals).map(([key, meal])=>{
+    const total = mealTotal(key, meal);
+    dayTotal = add(dayTotal, total);
+    const fixedHtml = meal.items ? renderMealItems(meal.items) : '';
+    const choiceHtml = renderChoice(meal, key);
+    const trainingHtml = (meal.trainingOnly && state.day==='training')
+      ? `<div class="choice-label" style="margin-top:10px;">Training addition</div>${renderMealItems(meal.trainingOnly)}`
+      : (meal.trainingOnly ? `<div class="item-row"><span class="item-label" style="color:var(--text-dim2);font-style:italic;">+ banana &amp; dates on training days<span class="training-tag">training only</span></span></div>` : '');
+    return `<div class="meal-card">
+      <div class="meal-header">
+        <span class="meal-name">${meal.label}</span>
+        <span class="meal-kcal">${Math.round(total.kcal)} kcal</span>
+      </div>
+      <div class="meal-body">
+        ${choiceHtml}
+        ${fixedHtml}
+        ${trainingHtml}
+      </div>
+    </div>`;
+  }).join('');
+
+  const kStatus = kcalStatus(dayTotal.kcal, target.kcal);
+  const pPct = dayTotal.protein/target.protein*100;
+  const cPct = dayTotal.carbs/target.carbs*100;
+  const fPct = dayTotal.fat/target.fat*100;
+  const kPct = dayTotal.kcal/target.kcal*100;
+
+  const macrosHtml = [
+    macroCard('Calories', Math.round(dayTotal.kcal), target.kcal.toLocaleString(), kPct, kStatus, ''),
+    macroCard('Protein', fmt1(dayTotal.protein), target.protein, pPct, statusFor(pPct,'protein'), 'g'),
+    macroCard('Carbs', fmt1(dayTotal.carbs), target.carbs, cPct, statusFor(cPct,'carbs'), 'g'),
+    macroCard('Fat', fmt1(dayTotal.fat), target.fat, fPct, statusFor(fPct,'fat'), 'g'),
+  ].join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="daytype">
+      <div class="daytype-btn ${state.day==='rest'?'active':''}" onclick="selectDay('rest')">
+        <div class="daytype-name">Rest day</div>
+        <div class="daytype-kcal">${MENU.targets.rest.kcal.toLocaleString()} kcal target</div>
+      </div>
+      <div class="daytype-btn ${state.day==='training'?'active':''}" onclick="selectDay('training')">
+        <div class="daytype-name">Training day</div>
+        <div class="daytype-kcal">${MENU.targets.training.kcal.toLocaleString()} kcal target</div>
+      </div>
+    </div>
+
+    <div class="section-title">Day Total vs Target</div>
+    <div class="macros">${macrosHtml}</div>
+
+    <div class="section-title">The Menu</div>
+    ${mealBlocks}
+
+    <div class="footer-note">Pick whichever option you have on hand — each is pre-balanced to hit the same day target. Only micronutrients vary.</div>
+  `;
+}
+
+(async function(){
+  try{
+    const [menuResp, foodResp] = await Promise.all([
+      fetch('data/menu.json?v='+Date.now()),
+      fetch('data/food-reference.json?v='+Date.now())
+    ]);
+    MENU = await menuResp.json();
+    const foodData = await foodResp.json();
+    const list = foodData.foods || foodData;
+    FOODS = {};
+    list.forEach(f=>{ FOODS[f.id] = f; });
+  }catch(e){
+    document.getElementById('app').innerHTML = '<p style="padding:20px;color:var(--bad)">Failed to load menu data.</p>';
+    return;
+  }
+  render();
+})();
+</script>
+</body>
+</html>

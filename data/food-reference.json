@@ -296,6 +296,34 @@
       ]
     },
     {
+      "id": "egg-white",
+      "emoji": "🥚",
+      "name": "Egg white (raw)",
+      "note": "Standard USDA raw egg white values — used when a recipe separates whites from yolks (e.g. the standard menu breakfast)",
+      "category": "Egg",
+      "serving": "per 100g",
+      "kcal": 52,
+      "protein": 10.9,
+      "carbs": 0.7,
+      "fat": 0.2,
+      "fiber": 0,
+      "extra": []
+    },
+    {
+      "id": "egg-yolk",
+      "emoji": "🥚",
+      "name": "Egg yolk (raw)",
+      "note": "Standard USDA raw egg yolk values — used when a recipe separates whites from yolks (e.g. the standard menu breakfast)",
+      "category": "Egg",
+      "serving": "per 100g",
+      "kcal": 322,
+      "protein": 15.9,
+      "carbs": 3.6,
+      "fat": 26.5,
+      "fiber": 0,
+      "extra": []
+    },
+    {
       "id": "khobz-complet",
       "emoji": "🫓",
       "name": "Khobz complet (whole wheat bread, packaged)",
