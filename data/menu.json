@@ -31,7 +31,8 @@
             { "label": "Clementine", "food": "clementine", "qty": 172 },
             { "label": "Peach", "food": "peach", "qty": 217 },
             { "label": "Strawberry", "food": "strawberry", "qty": 269 },
-            { "label": "Blueberries", "food": "blueberries-fresh", "qty": 143 }
+            { "label": "Blueberries", "food": "blueberries-fresh", "qty": 143 },
+            { "label": "Nothing (skip)", "items": [] }
           ]
         },
         {
@@ -39,7 +40,8 @@
           "label": "Fat source",
           "options": [
             { "label": "Avocado", "food": "avocado", "qty": 30 },
-            { "label": "Raw olive oil", "food": "olive-oil", "qty": 5 }
+            { "label": "Raw olive oil", "food": "olive-oil", "qty": 5 },
+            { "label": "Nothing (skip)", "items": [] }
           ]
         }
       ]
@@ -61,7 +63,8 @@
           { "label": "Tuna + 2 whole eggs", "items": [
             { "food": "tuna-isabel", "qty": 100 },
             { "food": "egg-beldi", "qty": 86 }
-          ]}
+          ]},
+          { "label": "Nothing (skip)", "items": [] }
         ]
       }],
       "items": [
@@ -93,7 +96,8 @@
           ]},
           { "label": "Perly Nature", "items": [
             { "food": "jaouda-perly-nature", "qty": 85 }
-          ]}
+          ]},
+          { "label": "Nothing (skip)", "items": [] }
         ]
       }, {
         "id": "dinnerFruit",
@@ -108,7 +112,8 @@
           { "label": "Grapes", "food": "grapes", "qty": 65 },
           { "label": "Peach", "food": "peach", "qty": 123 },
           { "label": "Strawberry", "food": "strawberry", "qty": 153 },
-          { "label": "Watermelon", "food": "watermelon", "qty": 155 }
+          { "label": "Watermelon", "food": "watermelon", "qty": 155 },
+          { "label": "Nothing (skip)", "items": [] }
         ]
       }],
       "items": [

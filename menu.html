@@ -189,7 +189,7 @@ function renderChoice(c){
     const items = opt.items || [{food:opt.food, qty:opt.qty}];
     const m = itemsMacro(items);
     const sel = i===selIdx ? 'selected' : '';
-    const qtyStr = items.map(formatQty).join(' + ');
+    const qtyStr = items.length ? items.map(formatQty).join(' + ') : '0g';
     return `<label class="choice-opt ${sel}">
       <input type="radio" name="${c.id}" value="${i}" ${i===selIdx?'checked':''} onchange="selectChoice('${c.id}',${i})">
       <span class="choice-opt-label">${opt.label} <span class="item-qty">(${qtyStr})</span></span>
