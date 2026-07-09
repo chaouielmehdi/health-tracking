@@ -16,7 +16,9 @@
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
         { "label": "2 garlic cloves", "food": "garlic", "qty": 6 },
         { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
-        { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } }
+        { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } },
+        { "label": "Mint tea", "food": "mint-tea", "qty": 200 },
+        { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 }
       ],
       "choices": [
         {

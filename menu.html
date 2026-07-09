@@ -167,11 +167,15 @@ function macroCard(name, value, target, pct, status, unit){
   </div>`;
 }
 
+const ML_FOODS = ['mint-tea', 'black-coffee', 'water-sidi-ali', 'water-ciel', 'water-ghayt', 'water-aquafina'];
 function formatQty(item){
   const grams = qtyFor(item.qty);
   if(item.food && item.food.indexOf('whey-iso100') === 0){
     const scoops = grams/30;
     return (scoops % 1 === 0 ? scoops : scoops.toFixed(1)) + (scoops===1 ? ' scoop' : ' scoops');
+  }
+  if(item.food && ML_FOODS.indexOf(item.food) !== -1){
+    return Math.round(grams) + 'ml';
   }
   return Math.round(grams) + 'g';
 }
