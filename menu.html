@@ -86,6 +86,30 @@
 
   .footer-note{margin-top:22px;font-size:11px;color:var(--text-dim2);text-align:center;}
 
+  /* FULL NUTRIENT TABLE (matching tracking report UI) */
+  .full-table-wrap{margin-top:24px;border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
+  table.full-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+  table.full-table th{background:var(--panel);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;text-align:left;padding:10px 10px;border-bottom:1px solid var(--panel-border);}
+  table.full-table th:first-child{width:5%;text-align:center;}
+  table.full-table th:nth-child(2){width:18%;}
+  table.full-table th:nth-child(3){width:32%;}
+  table.full-table th:nth-child(4){width:45%;}
+  table.full-table td{font-size:11.5px;line-height:1.4;padding:9px 10px;border-bottom:1px solid var(--panel-border);vertical-align:top;color:var(--text);}
+  table.full-table tr:last-child td{border-bottom:none;}
+  table.full-table tr:nth-child(even){background:rgba(255,255,255,0.015);}
+  .ft-num{text-align:center;color:var(--text-dim2);font-family:var(--mono);font-size:11px;}
+  .ft-nutrient{font-weight:600;}
+  .ft-impact{color:var(--text-dim2);font-size:11px;}
+  .ft-coverage{font-family:var(--mono);font-weight:700;font-size:11px;white-space:nowrap;}
+  .ft-coverage.good{color:var(--good);}
+  .ft-coverage.warn{color:var(--warn);}
+  .ft-coverage.bad{color:var(--bad);}
+
+  @media (max-width:600px){
+    table.full-table{table-layout:auto;}
+    table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+  }
+
   @media(max-width:560px){
     .macros{grid-template-columns:1fr 1fr;}
     .macro-value{font-size:16px;}
@@ -128,6 +152,163 @@ function qtyFor(qty){ return (typeof qty === 'object') ? qty[state.day] : qty; }
 
 function itemMacro(item){ return scale(item.food, qtyFor(item.qty)); }
 function itemsMacro(items){ return items.reduce((acc,it)=>add(acc,itemMacro(it)), zero()); }
+function itemFiber(item){
+  const f = FOODS[item.food];
+  if(!f) return 0;
+  const basis = SERVING_BASIS_G[item.food] || 100;
+  return (f.fiber||0) * qtyFor(item.qty)/basis;
+}
+
+// ---- 32-nutrient table ----
+const NUTRIENT_DEFS = [
+  {n:1,  name:'Protein',       unit:'g',  target:165,  impact:'Muscle loss, weakness', special:'protein'},
+  {n:2,  name:'Water',         unit:'L',  target:3,    impact:'Dehydration, fatigue', special:'water'},
+  {n:3,  name:'Fiber',         unit:'g',  target:30,   impact:'Constipation, gut issues', special:'fiber'},
+  {n:4,  name:'Omega-3',       unit:'g',  target:1.6,  impact:'Inflammation, poor recovery'},
+  {n:5,  name:'Vitamin D',     unit:'µg', target:15,   impact:'Bone weakness, low mood'},
+  {n:6,  name:'Iron',          unit:'mg', target:11,   impact:'Fatigue, anemia'},
+  {n:7,  name:'Vitamin B12',   unit:'µg', target:2.4,  impact:'Nerve damage, fatigue'},
+  {n:8,  name:'Magnesium',     unit:'mg', target:400,  impact:'Cramps, poor sleep'},
+  {n:9,  name:'Calcium',       unit:'mg', target:1000, impact:'Bone loss, fractures'},
+  {n:10, name:'Zinc',          unit:'mg', target:11,   impact:'Poor immunity, slow healing'},
+  {n:11, name:'Potassium',     unit:'mg', target:4700, impact:'Cramps, irregular heartbeat'},
+  {n:12, name:'Folate B9',     unit:'µg', target:400,  impact:'Anemia, fatigue'},
+  {n:13, name:'Vitamin C',     unit:'mg', target:90,   impact:'Weak immunity, slow healing'},
+  {n:14, name:'Vitamin A',     unit:'µg', target:900,  impact:'Poor vision, weak immunity'},
+  {n:15, name:'Iodine',        unit:'µg', target:150,  impact:'Thyroid issues, fatigue'},
+  {n:16, name:'Vitamin E',     unit:'mg', target:15,   impact:'Nerve issues, weak immunity'},
+  {n:17, name:'Vitamin K',     unit:'µg', target:120,  impact:'Poor blood clotting'},
+  {n:18, name:'Vitamin B6',    unit:'mg', target:1.7,  impact:'Mood issues, fatigue'},
+  {n:19, name:'Selenium',      unit:'µg', target:55,   impact:'Weak immunity, thyroid issues'},
+  {n:20, name:'Thiamine B1',   unit:'mg', target:1.2,  impact:'Fatigue, nerve issues'},
+  {n:21, name:'Riboflavin B2', unit:'mg', target:1.3,  impact:'Skin issues, fatigue'},
+  {n:22, name:'Niacin B3',     unit:'mg', target:16,   impact:'Skin issues, fatigue'},
+  {n:23, name:'Copper',        unit:'mg', target:0.9,  impact:'Anemia, weak bones'},
+  {n:24, name:'Choline',       unit:'mg', target:550,  impact:'Liver issues, memory issues'},
+  {n:25, name:'Probiotics',    special:'probiotics',   impact:'Poor gut health'},
+  {n:26, name:'Sodium',        special:'sodium',       impact:'Cramps or bloating'},
+  {n:27, name:'Antioxidants',  special:'antioxidants', impact:'Faster aging, inflammation'},
+  {n:28, name:'Phosphorus',    unit:'mg', target:700,  impact:'Bone/teeth weakness, fatigue'},
+  {n:29, name:'Manganese',     unit:'mg', target:2.3,  impact:'Weak bones, poor metabolism'},
+  {n:30, name:'Chromium',      unit:'µg', target:35,   impact:'Poor blood sugar control'},
+  {n:31, name:'Vitamin B5',    unit:'mg', target:5,    impact:'Fatigue, irritability', altNames:['Pantothenic Acid (B5)']},
+  {n:32, name:'Biotin B7',     unit:'µg', target:30,   impact:'Hair/skin issues, fatigue'},
+];
+const UNIT_TO_MG = {g:1000, mg:1, 'µg':0.001};
+
+function parseNutrientValue(str){
+  const m = String(str).replace('~','').match(/([\d.]+)\s*(g|mg|µg)/);
+  if(!m) return null;
+  return { num: parseFloat(m[1]), unit: m[2] };
+}
+
+// flat list of every {food, qty} item contributing to the day right now
+function collectAllItems(){
+  const items = [];
+  Object.values(MENU.meals).forEach(meal=>{
+    if(meal.items) items.push(...meal.items);
+    if(meal.choices) meal.choices.forEach(c=>{
+      const opt = c.options[state[c.id]];
+      const optItems = opt.items || (opt.food ? [{food:opt.food, qty:opt.qty}] : []);
+      items.push(...optItems);
+    });
+    if(meal.trainingOnly && state.day==='training') items.push(...meal.trainingOnly);
+  });
+  return items;
+}
+
+function computeMicronutrients(){
+  const items = collectAllItems();
+  const totals = {}; // nutrient name (from NUTRIENT_DEFS) -> mg-equivalent sum
+  let sodiumMg = 0;
+  let fiberG = 0;
+
+  items.forEach(it=>{
+    const f = FOODS[it.food];
+    if(!f) return;
+    const basis = SERVING_BASIS_G[it.food] || 100;
+    const r = qtyFor(it.qty)/basis;
+    fiberG += (f.fiber||0) * r;
+    (f.extra||[]).forEach(e=>{
+      const parsed = parseNutrientValue(e.value);
+      if(!parsed) return;
+      const mgEq = parsed.num * UNIT_TO_MG[parsed.unit] * r;
+      if(e.name === 'Sodium') sodiumMg += mgEq;
+      const def = NUTRIENT_DEFS.find(d => d.name === e.name || (d.altNames||[]).includes(e.name));
+      if(def) totals[def.name] = (totals[def.name]||0) + mgEq;
+    });
+  });
+
+  return { totals, sodiumMg, fiberG };
+}
+
+function microStatus(pct){
+  if(pct>=90) return 'good';
+  if(pct>=50) return 'warn';
+  return 'bad';
+}
+function fmtNutrient(mgEq, unit){
+  const val = mgEq / UNIT_TO_MG[unit];
+  const decimals = val < 10 ? (val < 1 ? 2 : 1) : 0;
+  return (Math.round(val*Math.pow(10,decimals))/Math.pow(10,decimals));
+}
+
+function renderFullTable(dayTotal, proteinPct){
+  const {totals, sodiumMg, fiberG} = computeMicronutrients();
+  const dairyOpt = MENU.meals.dinner.choices.find(c=>c.id==='dairy').options[state.dairy];
+  const dairyIsRaib = dairyOpt.label.toLowerCase().includes('raib');
+  const dairyIsNothing = dairyOpt.label.toLowerCase().includes('nothing');
+  const bfFruitEmpty = MENU.meals.breakfast.choices.find(c=>c.id==='fruit').options[state.fruit].label.includes('Nothing');
+  const dinFruitEmpty = MENU.meals.dinner.choices.find(c=>c.id==='dinnerFruit').options[state.dinnerFruit].label.includes('Nothing');
+
+  const rows = NUTRIENT_DEFS.map(def=>{
+    let coverage, status;
+    if(def.special==='protein'){
+      status = statusFor(proteinPct, 'protein');
+      coverage = `${fmt1(dayTotal.protein)}g / ${def.target}g (${Math.round(proteinPct)}%)`;
+    } else if(def.special==='water'){
+      status = 'warn';
+      coverage = `Not in menu — drink 3L/day separately`;
+    } else if(def.special==='fiber'){
+      const pct = fiberG/def.target*100;
+      status = microStatus(pct);
+      coverage = `~${fmt1(fiberG)}g / ${def.target}g (${Math.round(pct)}%)`;
+    } else if(def.special==='sodium'){
+      status = sodiumMg < 1500 ? 'good' : sodiumMg < 2300 ? 'warn' : 'bad';
+      const label = sodiumMg < 1500 ? 'low' : sodiumMg < 2300 ? 'moderate' : 'high';
+      coverage = `~${Math.round(sodiumMg)}mg (${label})`;
+    } else if(def.special==='probiotics'){
+      if(dairyIsRaib){ status='good'; coverage='Raib — fermented, live cultures'; }
+      else if(dairyIsNothing){ status='bad'; coverage='No dairy today'; }
+      else { status='warn'; coverage='Perly — fresh, not fermented'; }
+    } else if(def.special==='antioxidants'){
+      const fruitCount = (bfFruitEmpty?0:1) + (dinFruitEmpty?0:1);
+      if(fruitCount===2){ status='good'; coverage='Good variety (2 fruits + veg)'; }
+      else if(fruitCount===1){ status='warn'; coverage='Limited — only one fruit today'; }
+      else { status='bad'; coverage='No fruit today, veg only'; }
+    } else {
+      const mgEq = totals[def.name] || 0;
+      const targetMgEq = def.target * UNIT_TO_MG[def.unit];
+      const pct = mgEq/targetMgEq*100;
+      status = microStatus(pct);
+      coverage = `~${fmtNutrient(mgEq, def.unit)}${def.unit} / ${def.target}${def.unit} (${Math.round(pct)}%)`;
+    }
+    return `<tr>
+      <td class="ft-num">${def.n}</td>
+      <td class="ft-nutrient">${def.name}</td>
+      <td class="ft-impact">${def.impact}</td>
+      <td class="ft-coverage ${status}">${coverage}</td>
+    </tr>`;
+  }).join('');
+
+  return `<div class="section-title">Nutrient Coverage Tracker</div>
+    <div class="full-table-wrap">
+      <table class="full-table">
+        <thead><tr><th>#</th><th>Nutrient</th><th>Impact if missing</th><th>Coverage</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
 
 function fmt1(n){ return Math.round(n*10)/10; }
 function statusFor(pct, kind){
@@ -287,6 +468,8 @@ function render(){
 
     <div class="section-title">The Menu</div>
     ${mealBlocks}
+
+    ${renderFullTable(dayTotal, pPct)}
 
     <div class="footer-note">Pick whichever option you have on hand — each is pre-balanced to hit the same day target. Only micronutrients vary.</div>
   `;
