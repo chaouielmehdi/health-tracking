@@ -10,8 +10,18 @@
   "meals": {
     "other": {
       "label": "☕ All-Day Staples",
+      "choices": [{
+        "id": "water",
+        "label": "Water (3L)",
+        "options": [
+          { "label": "Sidi Ali", "food": "water-sidi-ali", "qty": 3000 },
+          { "label": "Ciel", "food": "water-ciel", "qty": 3000 },
+          { "label": "Ghayt", "food": "water-ghayt", "qty": 3000 },
+          { "label": "Aquafina", "food": "water-aquafina", "qty": 3000 },
+          { "label": "Nothing (skip)", "items": [] }
+        ]
+      }],
       "items": [
-        { "label": "Water", "food": "water-sidi-ali", "qty": 3000 },
         { "label": "Black coffee (2 cups)", "food": "black-coffee", "qty": 200 },
         { "label": "Sugar (2×5g)", "food": "sugar-white", "qty": 10 }
       ]
