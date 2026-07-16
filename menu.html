@@ -134,7 +134,11 @@ let state = { day: 'rest', protein: 0, fruit: 0, fat: 0, dairy: 0, dinnerFruit: 
 
 // food-reference.json stores most foods per 100g, but a few (whey scoops,
 // whole eggs) are stored per-serving instead — scale against the right basis.
-const SERVING_BASIS_G = { 'whey-iso100-30g': 30, 'whey-iso100-100g': 100, 'egg': 58, 'egg-beldi': 43 };
+const SERVING_BASIS_G = {
+  'whey-iso100-30g': 30, 'whey-iso100-100g': 100, 'egg': 58, 'egg-beldi': 43,
+  'water-sidi-ali': 1000, 'water-ciel': 1000, 'water-ghayt': 1000, 'water-aquafina': 1000
+};
+const WATER_FOODS = ['water-sidi-ali', 'water-ciel', 'water-ghayt', 'water-aquafina'];
 function foodMacros(id){
   const f = FOODS[id];
   if(!f) return {kcal:0,protein:0,carbs:0,fat:0};
@@ -222,6 +226,7 @@ function computeMicronutrients(){
   const totals = {}; // nutrient name (from NUTRIENT_DEFS) -> mg-equivalent sum
   let sodiumMg = 0;
   let fiberG = 0;
+  let waterMl = 0;
 
   items.forEach(it=>{
     const f = FOODS[it.food];
@@ -229,6 +234,7 @@ function computeMicronutrients(){
     const basis = SERVING_BASIS_G[it.food] || 100;
     const r = qtyFor(it.qty)/basis;
     fiberG += (f.fiber||0) * r;
+    if(WATER_FOODS.indexOf(it.food) !== -1) waterMl += qtyFor(it.qty);
     (f.extra||[]).forEach(e=>{
       const parsed = parseNutrientValue(e.value);
       if(!parsed) return;
@@ -239,7 +245,7 @@ function computeMicronutrients(){
     });
   });
 
-  return { totals, sodiumMg, fiberG };
+  return { totals, sodiumMg, fiberG, waterMl };
 }
 
 function microStatus(pct){
@@ -254,7 +260,7 @@ function fmtNutrient(mgEq, unit){
 }
 
 function renderFullTable(dayTotal, proteinPct){
-  const {totals, sodiumMg, fiberG} = computeMicronutrients();
+  const {totals, sodiumMg, fiberG, waterMl} = computeMicronutrients();
   const dairyOpt = MENU.meals.dinner.choices.find(c=>c.id==='dairy').options[state.dairy];
   const dairyIsRaib = dairyOpt.label.toLowerCase().includes('raib');
   const dairyIsNothing = dairyOpt.label.toLowerCase().includes('nothing');
@@ -267,8 +273,10 @@ function renderFullTable(dayTotal, proteinPct){
       status = statusFor(proteinPct, 'protein');
       coverage = `${fmt1(dayTotal.protein)}g / ${def.target}g (${Math.round(proteinPct)}%)`;
     } else if(def.special==='water'){
-      status = 'warn';
-      coverage = `Not in menu — drink 3L/day separately`;
+      const waterL = waterMl/1000;
+      const pct = waterL/def.target*100;
+      status = microStatus(pct);
+      coverage = `${fmt1(waterL)}L / ${def.target}L (${Math.round(pct)}%)`;
     } else if(def.special==='fiber'){
       const pct = fiberG/def.target*100;
       status = microStatus(pct);

@@ -8,6 +8,14 @@
     "training": { "kcal": 2300, "protein": 165, "carbs": 250, "fat": 70 }
   },
   "meals": {
+    "other": {
+      "label": "☕ All-Day Staples",
+      "items": [
+        { "label": "Water", "food": "water-sidi-ali", "qty": 3000 },
+        { "label": "Black coffee (2 cups)", "food": "black-coffee", "qty": 200 },
+        { "label": "Sugar (2×5g)", "food": "sugar-white", "qty": 10 }
+      ]
+    },
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
