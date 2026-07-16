@@ -401,7 +401,10 @@ function renderMealItems(items){
 
 function renderChoice(c){
   const selIdx = state[c.id];
-  const opts = c.options.map((opt,i)=>{
+  // show the currently-selected option first, keep the rest in their original order
+  const order = [selIdx, ...c.options.map((_,i)=>i).filter(i=>i!==selIdx)];
+  const opts = order.map(i=>{
+    const opt = c.options[i];
     const items = opt.items || [{food:opt.food, qty:opt.qty}];
     const m = itemsMacro(items);
     const sel = i===selIdx ? 'selected' : '';
