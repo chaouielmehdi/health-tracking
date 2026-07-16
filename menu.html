@@ -507,7 +507,7 @@ function announceImpact(before, after){
     const targetMgEq = def.target * UNIT_TO_MG[def.unit];
     const pctDelta = (a-b)/targetMgEq*100;
     if(Math.abs(pctDelta) > 1){
-      microDeltas.push([def.name, pctDelta, a-b, def.unit]);
+      microDeltas.push([def.name, pctDelta, (a-b)/UNIT_TO_MG[def.unit], def.unit]);
     }
   });
   // fiber too
@@ -519,9 +519,10 @@ function announceImpact(before, after){
 
   const bottomEl = document.getElementById('toast-bottom');
   if(top.length){
-    const rows = top.map(([name,pctDelta])=>
-      `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${pctDelta>0?'good':'bad'}">${fmtDelta(pctDelta,0)}pp</span></div>`
-    ).join('');
+    const rows = top.map(([name,pctDelta,rawDelta,unit])=>{
+      const decimals = Math.abs(rawDelta) < 1 ? 2 : (Math.abs(rawDelta) < 10 ? 1 : 0);
+      return `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${rawDelta>0?'good':'bad'}">${fmtDelta(rawDelta,decimals)}${unit}</span></div>`;
+    }).join('');
     showToast(bottomEl, `<div class="impact-title">Micronutrient impact</div>${rows}`);
   }
 }
