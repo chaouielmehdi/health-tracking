@@ -23,14 +23,12 @@
       }],
       "items": [
         { "label": "Black coffee (2 cups)", "food": "black-coffee", "qty": 200 },
-        { "label": "Sugar (2×5g)", "food": "sugar-white", "qty": 10 }
+        { "label": "Sugar (2×1 tsp)", "food": "sugar-white", "qty": 8 }
       ]
     },
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
-        { "label": "6 egg whites (beldi), boiled", "food": "egg-white", "qty": 174 },
-        { "label": "3 egg yolks (beldi), boiled", "food": "egg-yolk", "qty": 42 },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
         { "label": "2 garlic cloves", "food": "garlic", "qty": 6 },
         { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
@@ -39,6 +37,22 @@
         { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 }
       ],
       "choices": [
+        {
+          "id": "eggPrep",
+          "label": "Eggs",
+          "options": [
+            { "label": "6 egg whites & 3 yolks (beldi), boiled", "items": [
+              { "food": "egg-white", "qty": 174 },
+              { "food": "egg-yolk", "qty": 42 }
+            ]},
+            { "label": "6 egg whites & 3 yolks (beldi), fried with 5g oil + 1 garlic clove", "items": [
+              { "food": "egg-white", "qty": 174 },
+              { "food": "egg-yolk", "qty": 42 },
+              { "food": "olive-oil", "qty": 5 },
+              { "food": "garlic", "qty": 3 }
+            ]}
+          ]
+        },
         {
           "id": "fruit",
           "label": "Fruit",
@@ -60,7 +74,7 @@
           "label": "Fat source",
           "options": [
             { "label": "Avocado", "food": "avocado", "qty": 30 },
-            { "label": "Raw olive oil", "food": "olive-oil", "qty": 5 },
+            { "label": "Raw olive oil", "food": "olive-oil", "qty": 10 },
             { "label": "Nothing (skip)", "items": [] }
           ]
         }
