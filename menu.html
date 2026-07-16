@@ -154,9 +154,9 @@
 <script>
 let MENU = null, FOODS = null;
 let state = { day: 'rest', protein: 0, fruit: 0, fat: 0, dairy: 0, dinnerFruit: 0, water: 2, eggPrep: 1 };
-// tracks which choice groups the user has actively picked from — only those
-// get their selection moved to the top; untouched groups keep menu.json's order
-let touched = {};
+// each choice group's display order is fixed once at load (default option
+// first) and never changes again, no matter what the user picks afterward
+let DISPLAY_ORDER = {};
 
 // food-reference.json stores most foods per 100g, but a few (whey scoops,
 // whole eggs) are stored per-serving instead — scale against the right basis.
@@ -404,10 +404,7 @@ function renderMealItems(items){
 
 function renderChoice(c){
   const selIdx = state[c.id];
-  // menu.json's authored order shows as-is until the user actively picks from
-  // this group — only then does the chosen option jump to the top
-  const naturalOrder = c.options.map((_,i)=>i);
-  const order = touched[c.id] ? [selIdx, ...naturalOrder.filter(i=>i!==selIdx)] : naturalOrder;
+  const order = DISPLAY_ORDER[c.id];
   const opts = order.map(i=>{
     const opt = c.options[i];
     const items = opt.items || [{food:opt.food, qty:opt.qty}];
@@ -433,7 +430,6 @@ function renderChoices(meal){
 function selectChoice(id, idx){
   const before = snapshotState();
   state[id] = idx;
-  touched[id] = true;
   render();
   announceImpact(before, snapshotState());
 }
@@ -609,6 +605,15 @@ function render(){
     document.getElementById('app').innerHTML = '<p style="padding:20px;color:var(--bad)">Failed to load menu data.</p>';
     return;
   }
+  // fix each choice group's display order once, default option first —
+  // this order never changes again regardless of later selections
+  Object.values(MENU.meals).forEach(meal=>{
+    (meal.choices||[]).forEach(c=>{
+      const selIdx = state[c.id];
+      const naturalOrder = c.options.map((_,i)=>i);
+      DISPLAY_ORDER[c.id] = [selIdx, ...naturalOrder.filter(i=>i!==selIdx)];
+    });
+  });
   render();
 })();
 </script>
