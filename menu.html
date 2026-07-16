@@ -86,6 +86,27 @@
 
   .footer-note{margin-top:22px;font-size:11px;color:var(--text-dim2);text-align:center;}
 
+  /* IMPACT TOASTS */
+  .impact-toast{
+    position:fixed; left:50%; transform:translateX(-50%);
+    max-width:560px; width:calc(100% - 36px);
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:14px;
+    padding:12px 16px; box-shadow:0 8px 28px rgba(0,0,0,0.35);
+    z-index:50; opacity:0; transition:opacity .25s ease, transform .25s ease;
+    pointer-events:none;
+  }
+  .impact-toast.top{top:14px; transform:translateX(-50%) translateY(-8px);}
+  .impact-toast.bottom{bottom:14px; transform:translateX(-50%) translateY(8px);}
+  .impact-toast.show{opacity:1;}
+  .impact-toast.show.top{transform:translateX(-50%) translateY(0);}
+  .impact-toast.show.bottom{transform:translateX(-50%) translateY(0);}
+  .impact-title{font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;margin-bottom:8px;}
+  .impact-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:3px 0;font-size:12.5px;}
+  .impact-name{color:var(--text-dim);}
+  .impact-delta{font-family:var(--mono);font-weight:700;white-space:nowrap;}
+  .impact-delta.good{color:var(--good);}
+  .impact-delta.bad{color:var(--bad);}
+
   /* FULL NUTRIENT TABLE (matching tracking report UI) */
   .full-table-wrap{margin-top:24px;border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
   table.full-table{width:100%;border-collapse:collapse;table-layout:fixed;}
@@ -127,6 +148,8 @@
   <div class="app" id="app">
     <div class="skel loading" style="height:400px"></div>
   </div>
+  <div id="toast-top" class="impact-toast top"></div>
+  <div id="toast-bottom" class="impact-toast bottom"></div>
 
 <script>
 let MENU = null, FOODS = null;
@@ -400,12 +423,16 @@ function renderChoices(meal){
 }
 
 function selectChoice(id, idx){
+  const before = snapshotState();
   state[id] = idx;
   render();
+  announceImpact(before, snapshotState());
 }
 function selectDay(day){
+  const before = snapshotState();
   state.day = day;
   render();
+  announceImpact(before, snapshotState());
 }
 
 function mealTotal(mealKey, meal){
@@ -420,6 +447,80 @@ function mealTotal(mealKey, meal){
   }
   if(meal.trainingOnly && state.day==='training') total = add(total, itemsMacro(meal.trainingOnly));
   return total;
+}
+
+function computeDayTotal(){
+  return Object.entries(MENU.meals).reduce((acc,[key,meal])=>add(acc, mealTotal(key, meal)), zero());
+}
+
+// ---- impact toasts ----
+const CEILING_MACROS = {carbs:true, fat:true}; // more = worse; protein is a floor, more = better
+function macroDeltaGood(key, delta){
+  if(CEILING_MACROS[key]) return delta < 0;
+  return delta > 0;
+}
+function fmtDelta(n, decimals){
+  const v = Math.round(n*Math.pow(10,decimals))/Math.pow(10,decimals);
+  return (v>0?'+':'') + v;
+}
+function showToast(el, html){
+  el.innerHTML = html;
+  el.classList.add('show');
+  clearTimeout(el._hideTimer);
+  el._hideTimer = setTimeout(()=>{ el.classList.remove('show'); }, 5000);
+}
+
+function snapshotState(){
+  return { macros: computeDayTotal(), micros: computeMicronutrients() };
+}
+
+function announceImpact(before, after){
+  const target = MENU.targets[state.day];
+
+  // --- macro toast (top) ---
+  const macroDeltas = [
+    ['Calories', after.macros.kcal - before.macros.kcal, 0, 'kcal', null],
+    ['Protein', after.macros.protein - before.macros.protein, 1, 'g', 'protein'],
+    ['Carbs', after.macros.carbs - before.macros.carbs, 1, 'g', 'carbs'],
+    ['Fat', after.macros.fat - before.macros.fat, 1, 'g', 'fat'],
+  ].filter(([,d]) => Math.abs(d) > 0.05);
+
+  const topEl = document.getElementById('toast-top');
+  if(macroDeltas.length){
+    const kcalBefore = Math.abs(before.macros.kcal - target.kcal);
+    const kcalAfter = Math.abs(after.macros.kcal - target.kcal);
+    const rows = macroDeltas.map(([name,d,dec,unit,kind])=>{
+      const good = kind ? macroDeltaGood(kind, d) : (kcalAfter <= kcalBefore);
+      return `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${good?'good':'bad'}">${fmtDelta(d,dec)}${unit}</span></div>`;
+    }).join('');
+    showToast(topEl, `<div class="impact-title">Macro impact</div>${rows}`);
+  }
+
+  // --- micronutrient toast (bottom) ---
+  const microDeltas = [];
+  NUTRIENT_DEFS.filter(d=>!d.special).forEach(def=>{
+    const b = before.micros.totals[def.name] || 0;
+    const a = after.micros.totals[def.name] || 0;
+    const targetMgEq = def.target * UNIT_TO_MG[def.unit];
+    const pctDelta = (a-b)/targetMgEq*100;
+    if(Math.abs(pctDelta) > 1){
+      microDeltas.push([def.name, pctDelta, a-b, def.unit]);
+    }
+  });
+  // fiber too
+  const fiberDeltaPct = (after.micros.fiberG - before.micros.fiberG)/30*100;
+  if(Math.abs(fiberDeltaPct) > 1) microDeltas.push(['Fiber', fiberDeltaPct, after.micros.fiberG-before.micros.fiberG, 'g']);
+
+  microDeltas.sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
+  const top = microDeltas.slice(0,6);
+
+  const bottomEl = document.getElementById('toast-bottom');
+  if(top.length){
+    const rows = top.map(([name,pctDelta])=>
+      `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${pctDelta>0?'good':'bad'}">${fmtDelta(pctDelta,0)}pp</span></div>`
+    ).join('');
+    showToast(bottomEl, `<div class="impact-title">Micronutrient impact</div>${rows}`);
+  }
 }
 
 function render(){
