@@ -101,8 +101,9 @@
   .impact-toast.show.top{transform:translateX(-50%) translateY(0);}
   .impact-toast.show.bottom{transform:translateX(-50%) translateY(0);}
   .impact-title{font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;margin-bottom:8px;}
-  .impact-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:3px 0;font-size:12.5px;}
-  .impact-name{color:var(--text-dim);}
+  .impact-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:3px 0;font-size:12.5px;}
+  .impact-name{color:var(--text-dim);flex-shrink:0;}
+  .impact-value{font-family:var(--mono);font-size:11px;color:var(--text-dim2);white-space:nowrap;text-align:right;}
   .impact-delta{font-family:var(--mono);font-weight:700;white-space:nowrap;}
   .impact-delta.good{color:var(--good);}
   .impact-delta.bad{color:var(--bad);}
@@ -479,52 +480,57 @@ function snapshotState(){
   return { macros: computeDayTotal(), micros: computeMicronutrients() };
 }
 
+function fmtPct(n){ return (n>0?'+':'') + Math.round(n); }
+
 function announceImpact(before, after){
   const target = MENU.targets[state.day];
 
-  // --- macro toast (top) ---
-  const macroDeltas = [
-    ['Calories', after.macros.kcal - before.macros.kcal, 0, 'kcal', null],
-    ['Protein', after.macros.protein - before.macros.protein, 1, 'g', 'protein'],
-    ['Carbs', after.macros.carbs - before.macros.carbs, 1, 'g', 'carbs'],
-    ['Fat', after.macros.fat - before.macros.fat, 1, 'g', 'fat'],
-  ].filter(([,d]) => Math.abs(d) > 0.05);
-
+  // --- macro toast (top): current value/target(pct%) + (Δpp%) ---
+  const macroDefs = [
+    ['Calories', 'kcal', 0, target.kcal, null],
+    ['Protein', 'g', 1, target.protein, 'protein'],
+    ['Carbs', 'g', 1, target.carbs, 'carbs'],
+    ['Fat', 'g', 1, target.fat, 'fat'],
+  ];
+  const macroRows = [];
+  macroDefs.forEach(([name,unit,dec,tgt,kind])=>{
+    const key = name==='Calories'?'kcal':name.toLowerCase();
+    const b = before.macros[key], a = after.macros[key];
+    const pctBefore = b/tgt*100, pctAfter = a/tgt*100;
+    const ppDelta = pctAfter - pctBefore;
+    if(Math.abs(ppDelta) < 0.5) return;
+    const good = kind ? macroDeltaGood(kind, a-b) : (Math.abs(a-target.kcal) <= Math.abs(b-target.kcal));
+    const val = dec===0 ? Math.round(a) : fmt1(a);
+    macroRows.push(`<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-value">~${val}${unit} / ${tgt}${unit} (${Math.round(pctAfter)}%) <span class="impact-delta ${good?'good':'bad'}">(${fmtPct(ppDelta)}%)</span></span></div>`);
+  });
   const topEl = document.getElementById('toast-top');
-  if(macroDeltas.length){
-    const kcalBefore = Math.abs(before.macros.kcal - target.kcal);
-    const kcalAfter = Math.abs(after.macros.kcal - target.kcal);
-    const rows = macroDeltas.map(([name,d,dec,unit,kind])=>{
-      const good = kind ? macroDeltaGood(kind, d) : (kcalAfter <= kcalBefore);
-      return `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${good?'good':'bad'}">${fmtDelta(d,dec)}${unit}</span></div>`;
-    }).join('');
-    showToast(topEl, `<div class="impact-title">Macro impact</div>${rows}`);
-  }
+  if(macroRows.length) showToast(topEl, `<div class="impact-title">Macro impact</div>${macroRows.join('')}`);
 
-  // --- micronutrient toast (bottom) ---
+  // --- micronutrient toast (bottom): same format as the table row + (Δpp%) ---
   const microDeltas = [];
   NUTRIENT_DEFS.filter(d=>!d.special).forEach(def=>{
     const b = before.micros.totals[def.name] || 0;
     const a = after.micros.totals[def.name] || 0;
     const targetMgEq = def.target * UNIT_TO_MG[def.unit];
-    const pctDelta = (a-b)/targetMgEq*100;
-    if(Math.abs(pctDelta) > 1){
-      microDeltas.push([def.name, pctDelta, (a-b)/UNIT_TO_MG[def.unit], def.unit]);
+    const ppDelta = (a-b)/targetMgEq*100;
+    if(Math.abs(ppDelta) > 1){
+      microDeltas.push({name:def.name, ppDelta, aVal:fmtNutrient(a, def.unit), unit:def.unit, target:def.target, pctAfter:a/targetMgEq*100});
     }
   });
-  // fiber too
-  const fiberDeltaPct = (after.micros.fiberG - before.micros.fiberG)/30*100;
-  if(Math.abs(fiberDeltaPct) > 1) microDeltas.push(['Fiber', fiberDeltaPct, after.micros.fiberG-before.micros.fiberG, 'g']);
+  // fiber uses its own g-based total, not the mg-equivalent map
+  const fiberPpDelta = (after.micros.fiberG - before.micros.fiberG)/30*100;
+  if(Math.abs(fiberPpDelta) > 1){
+    microDeltas.push({name:'Fiber', ppDelta:fiberPpDelta, aVal:fmt1(after.micros.fiberG), unit:'g', target:30, pctAfter:after.micros.fiberG/30*100});
+  }
 
-  microDeltas.sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));
+  microDeltas.sort((x,y)=>Math.abs(y.ppDelta)-Math.abs(x.ppDelta));
   const top = microDeltas.slice(0,6);
 
   const bottomEl = document.getElementById('toast-bottom');
   if(top.length){
-    const rows = top.map(([name,pctDelta,rawDelta,unit])=>{
-      const decimals = Math.abs(rawDelta) < 1 ? 2 : (Math.abs(rawDelta) < 10 ? 1 : 0);
-      return `<div class="impact-row"><span class="impact-name">${name}</span><span class="impact-delta ${rawDelta>0?'good':'bad'}">${fmtDelta(rawDelta,decimals)}${unit}</span></div>`;
-    }).join('');
+    const rows = top.map(d=>
+      `<div class="impact-row"><span class="impact-name">${d.name}</span><span class="impact-value">~${d.aVal}${d.unit} / ${d.target}${d.unit} (${Math.round(d.pctAfter)}%) <span class="impact-delta ${d.ppDelta>0?'good':'bad'}">(${fmtPct(d.ppDelta)}%)</span></span></div>`
+    ).join('');
     showToast(bottomEl, `<div class="impact-title">Micronutrient impact</div>${rows}`);
   }
 }
