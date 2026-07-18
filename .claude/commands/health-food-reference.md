@@ -72,3 +72,4 @@ Adds a new food/product entry to `data/food-reference.json` in the **chaouielmeh
 - Never modify any file other than `data/food-reference.json`.
 - Don't recalculate or touch existing entries unless Mehdi explicitly asks to correct one.
 - Keep `note` short — one line, same tone as existing entries (e.g. `"~20% fat raw mince, standard Moroccan kefta"`).
+- **When correcting an existing entry, write the note as if it's the first time the values are being recorded — no correction history.** Never write "Corrected 2026-07 — was X, changed to Y because..." or reference what the old value used to be. Just state the fact plainly (e.g. `"Light, low-mineral table water (TDS 130mg/L)"`, not `"Corrected from label — previous values were wrong"`). The git commit message is where the "what changed and why" belongs, not the JSON note field.
