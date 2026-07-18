@@ -1994,7 +1994,7 @@
       "id": "water-ciel",
       "emoji": "💧",
       "name": "Eau Ciel (table water, Coca-Cola)",
-      "note": "#2 — richest in Ca & Mg of the 4, high bicarbonates; table water with notably high chlorides (130mg/L)",
+      "note": "Corrected 2026-07 from Mehdi's actual bottle label (\"Composition indicative moyenne en mg/L\") — previous values were wrong on every mineral. Ciel is actually low-mineral table water, not the richest in Ca/Mg of the 4",
       "category": "Drink",
       "serving": "per 1L",
       "kcal": 0,
@@ -2003,13 +2003,15 @@
       "fat": 0,
       "fiber": 0,
       "extra": [
-        {"name": "Calcium", "value": "25.7mg"},
-        {"name": "Magnesium", "value": "23.8mg"},
-        {"name": "Sodium", "value": "19.2mg"},
-        {"name": "Bicarbonates", "value": "275mg"},
-        {"name": "Chlorides", "value": "130mg"},
-        {"name": "Nitrates", "value": "1.3mg"},
-        {"name": "TDS", "value": "317mg"}
+        {"name": "Calcium", "value": "10mg"},
+        {"name": "Magnesium", "value": "13mg"},
+        {"name": "Sodium", "value": "3mg"},
+        {"name": "Potassium", "value": "1mg"},
+        {"name": "Bicarbonates", "value": "36mg"},
+        {"name": "Chlorides", "value": "14mg"},
+        {"name": "Sulfates", "value": "1mg"},
+        {"name": "Nitrates", "value": "2mg"},
+        {"name": "TDS", "value": "130mg"}
       ]
     },
     {
