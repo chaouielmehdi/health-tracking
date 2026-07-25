@@ -1,0 +1,390 @@
+{
+  "date": "July 25, 2026",
+  "dayType": "Rest day",
+  "routineText": "-----------------------\n| 🌅 Breakfast\n| — whole wheat bread 100g\n| — oat 20g + warm water (or Jaouda Sans Lactose milk)\n| — 1 banana (~120g)\n| — mint tea (2 cups) + 2 tsp sugar\n-----------------------\n\n-----------------------\n| ☀️ Lunch\n| — minced meat (kefta 90/10) 250g raw\n| — legume sauté ~300g (carrot / courgette / onion), as always\n| — 5g raw olive oil (↓ from 20g) + 10g cooking olive oil\n| — cumin & salt\n-----------------------\n\n-----------------------\n| 🌙 Dinner\n| — 3 scoops of protein powder\n| — 250g raib (homemade, from Jaouda Sans Lactose)\n| — nuts, 5g of each: almonds, walnuts, cashews, pistachios, pumpkin seeds\n-----------------------\n\n💧 Water — 3L across the day",
+  "adjustments": [
+    {
+      "from": "Olive oil — 20g raw + 10g cooking (30g total)",
+      "to": "5g raw + 10g cooking (15g total)",
+      "reason": "The 20g raw drizzle is 4× your usual 5g and single-handedly pushed fat to the 114% ceiling. Trimming only the raw pour — cooking oil untouched — lands fat at 93% and calories at 96%, with all four macros in range. Ties to the 70g fat ceiling and the belly-fat goal."
+    },
+    {
+      "from": "Oats with 'a little milk'",
+      "to": "Oats with warm water (or the Jaouda Sans Lactose milk)",
+      "reason": "Your standard oats prep is warm water. Plain milk is on the gas list, so if the 'bits of milk' were regular milk, switch to warm water; if it was the lactose-free Jaouda, you're fine. Either way the macro effect is negligible (~30 kcal)."
+    }
+  ],
+  "verdict": {
+    "status": "good",
+    "icon": "✅",
+    "text_html": "Rest day, <b>good</b> — all four macros land in range once the oversized 20g raw-oil pour is trimmed to 5g (96% calories, ~70 under)"
+  },
+  "macros": [
+    {
+      "name": "Protein",
+      "value": "161g",
+      "target": "/ 165g",
+      "pct": 98,
+      "status": "good"
+    },
+    {
+      "name": "Carbs",
+      "value": "137g",
+      "target": "/ 130g",
+      "pct": 105,
+      "status": "good"
+    },
+    {
+      "name": "Fat",
+      "value": "65g",
+      "target": "/ 70g",
+      "pct": 93,
+      "status": "good"
+    }
+  ],
+  "coverage": [
+    {
+      "status": "good",
+      "name": "Calories",
+      "coverage": "1,731 / 1,800 (96%)",
+      "note": "After trimming the raw olive-oil pour from 20g to 5g"
+    },
+    {
+      "status": "good",
+      "name": "Protein",
+      "coverage": "161g / 165g (98%)",
+      "note": "Kefta 250g + 3 whey scoops carry it right to the floor"
+    },
+    {
+      "status": "good",
+      "name": "Carbs",
+      "coverage": "137g / 130g (105%)",
+      "note": "Bread 100g + banana are the main sources — no rice today"
+    },
+    {
+      "status": "good",
+      "name": "Fat",
+      "coverage": "65g / 70g (93%)",
+      "note": "Lands in range once the 20g raw drizzle comes down to 5g"
+    },
+    {
+      "status": "warn",
+      "name": "Fiber",
+      "coverage": "~19g / 30g (63%)",
+      "note": "Bread, banana, oats, legume sauté — no potato and no kiwi/apple today"
+    },
+    {
+      "status": "warn",
+      "name": "Gas / bloat risk",
+      "coverage": "Low–moderate",
+      "note": "Bread once ✓, onion cooked ✓ — only the 'bits of milk' is a variable (fine if lactose-free)"
+    },
+    {
+      "status": "good",
+      "name": "Protocol adherence",
+      "coverage": "Good",
+      "note": "Bread once ✓, legume sauté ✓ — the one flag is the oversized raw-oil pour"
+    },
+    {
+      "status": "bad",
+      "name": "Vitamin C",
+      "coverage": "~30mg / 90mg (33%)",
+      "note": "No kiwi or apple today — only banana + cooked veg"
+    },
+    {
+      "status": "bad",
+      "name": "Calcium",
+      "coverage": "~400mg / 1,000mg (40%)",
+      "note": "250g raib + a little milk — best in the rotation, still short of target"
+    },
+    {
+      "status": "good",
+      "name": "Vitamin A",
+      "coverage": "~1,080µg / 900µg (120%)",
+      "note": "Carrot 120g in the legume sauté carries it"
+    }
+  ],
+  "good": [
+    "All four macros land good after one change — protein 98%, carbs 105%, fat 93%, calories 96% — trimming only the oversized raw-oil pour did it",
+    "Kefta 250g is a powerhouse — B12 275%, Zinc 118%, and the day's iron (~86%) is the best in a while",
+    "250g raib (+ a little milk) makes this the rotation's best calcium day and a real live-culture probiotic serving",
+    "Carrot in the legume sauté carries Vitamin A to 120%"
+  ],
+  "bad": [
+    "The 20g raw olive-oil pour was 4× your usual 5g — it alone pushed fat to the 114% ceiling before the trim",
+    "No eggs today, so Choline (45%) and Biotin (67%) drop well below their usual levels",
+    "No kiwi or apple — Vitamin C falls to ~33%, the day's weakest vitamin",
+    "Usual structural gaps stay: Vitamin D (7%), Chromium (11%), Iodine (17%), Vitamin E (27%); fiber short at 63%"
+  ],
+  "loggedItems": [
+    "Whole wheat bread 100g (breakfast)",
+    "Oats (a little) + a little milk",
+    "1 banana (~120g)",
+    "Mint tea (2 cups) + 2 tsp sugar",
+    "Minced meat (kefta 90/10) 250g",
+    "Legume sauté ~300g (carrot / courgette / onion), as always",
+    "Olive oil — 20g raw + 10g cooking",
+    "3 scoops protein powder (dinner)",
+    "250g raib, homemade (from Jaouda Sans Lactose)",
+    "Nuts, 5g each — almonds, walnuts, cashews, pistachios, pumpkin seeds",
+    "Water — 3L across the day"
+  ],
+  "fullTable": [
+    {
+      "n": 1,
+      "nutrient": "Protein",
+      "impact": "Muscle loss, weakness",
+      "status": "good",
+      "coverage": "161g / 165g (97.6%)",
+      "note": "Kefta 250g + 3 whey scoops + raib — right at the floor"
+    },
+    {
+      "n": 2,
+      "nutrient": "Water",
+      "impact": "Dehydration, fatigue",
+      "status": "good",
+      "coverage": "3L / 3L (100%)",
+      "note": "3 × 1L blocks across the day"
+    },
+    {
+      "n": 3,
+      "nutrient": "Fiber",
+      "impact": "Constipation, gut issues",
+      "status": "warn",
+      "coverage": "~19g / 30g (62.6%)",
+      "note": "Bread 100g, banana, oats, legume sauté — no potato and no kiwi/apple today"
+    },
+    {
+      "n": 4,
+      "nutrient": "Omega-3",
+      "impact": "Inflammation, poor recovery",
+      "status": "warn",
+      "coverage": "~0.6g / 1.6g (37.5%)",
+      "note": "Walnuts 5g + a trace from the other nuts; no fish or flax"
+    },
+    {
+      "n": 5,
+      "nutrient": "Vitamin D",
+      "impact": "Bone weakness, low mood",
+      "status": "bad",
+      "coverage": "~1µg / 15µg (6.7%)",
+      "note": "No eggs or fish today — only a trace from milk"
+    },
+    {
+      "n": 6,
+      "nutrient": "Iron",
+      "impact": "Fatigue, anemia",
+      "status": "warn",
+      "coverage": "~9.4mg / 11mg (85.5%)",
+      "note": "Kefta 250g + whole-wheat bread 100g + oats — the best iron day in a while"
+    },
+    {
+      "n": 7,
+      "nutrient": "Vitamin B12",
+      "impact": "Nerve damage, fatigue",
+      "status": "good",
+      "coverage": "~6.6µg / 2.4µg (275%)",
+      "note": "Kefta 250g clears the target on its own"
+    },
+    {
+      "n": 8,
+      "nutrient": "Magnesium",
+      "impact": "Cramps, poor sleep",
+      "status": "warn",
+      "coverage": "~245mg / 400mg (61.3%)",
+      "note": "Bread, oats, nuts, banana — bread + banana lift it above the usual"
+    },
+    {
+      "n": 9,
+      "nutrient": "Calcium",
+      "impact": "Bone loss, fractures",
+      "status": "bad",
+      "coverage": "~400mg / 1,000mg (40%)",
+      "note": "250g raib + a little milk + whey — best in the rotation, still short"
+    },
+    {
+      "n": 10,
+      "nutrient": "Zinc",
+      "impact": "Poor immunity, slow healing",
+      "status": "good",
+      "coverage": "~13mg / 11mg (118%)",
+      "note": "Kefta 250g + pumpkin seeds"
+    },
+    {
+      "n": 11,
+      "nutrient": "Potassium",
+      "impact": "Cramps, irregular heartbeat",
+      "status": "warn",
+      "coverage": "~2,350mg / 4,700mg (50%)",
+      "note": "Banana + kefta + veg + raib — banana helps"
+    },
+    {
+      "n": 12,
+      "nutrient": "Folate B9",
+      "impact": "Anemia, fatigue",
+      "status": "warn",
+      "coverage": "~185µg / 400µg (46.3%)",
+      "note": "Bread + legume sauté + banana"
+    },
+    {
+      "n": 13,
+      "nutrient": "Vitamin C",
+      "impact": "Weak immunity, slow healing",
+      "status": "bad",
+      "coverage": "~30mg / 90mg (33.3%)",
+      "note": "Only banana + cooked veg; no kiwi or apple today — the day's weakest vitamin"
+    },
+    {
+      "n": 14,
+      "nutrient": "Vitamin A",
+      "impact": "Poor vision, weak immunity",
+      "status": "good",
+      "coverage": "~1,080µg / 900µg (120%)",
+      "note": "Carrot 120g in the legume sauté carries it"
+    },
+    {
+      "n": 15,
+      "nutrient": "Iodine",
+      "impact": "Thyroid issues, fatigue",
+      "status": "bad",
+      "coverage": "~25µg / 150µg (16.7%)",
+      "note": "A little from milk/raib; no fish or iodised staple"
+    },
+    {
+      "n": 16,
+      "nutrient": "Vitamin E",
+      "impact": "Nerve issues, weak immunity",
+      "status": "bad",
+      "coverage": "~4mg / 15mg (26.7%)",
+      "note": "Olive oil (trimmed) + nuts"
+    },
+    {
+      "n": 17,
+      "nutrient": "Vitamin K",
+      "impact": "Poor blood clotting",
+      "status": "bad",
+      "coverage": "~35µg / 120µg (29.2%)",
+      "note": "Courgette + onion + olive oil"
+    },
+    {
+      "n": 18,
+      "nutrient": "Vitamin B6",
+      "impact": "Mood issues, fatigue",
+      "status": "warn",
+      "coverage": "~1.4mg / 1.7mg (82.4%)",
+      "note": "Banana + kefta + bread"
+    },
+    {
+      "n": 19,
+      "nutrient": "Selenium",
+      "impact": "Weak immunity, thyroid issues",
+      "status": "good",
+      "coverage": "~62µg / 55µg (112.7%)",
+      "note": "Whole-wheat bread + kefta + whey"
+    },
+    {
+      "n": 20,
+      "nutrient": "Thiamine B1",
+      "impact": "Fatigue, nerve issues",
+      "status": "warn",
+      "coverage": "~0.9mg / 1.2mg (75%)",
+      "note": "Bread + oats + whey"
+    },
+    {
+      "n": 21,
+      "nutrient": "Riboflavin B2",
+      "impact": "Skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~1.0mg / 1.3mg (76.9%)",
+      "note": "Milk + raib + whey + bread"
+    },
+    {
+      "n": 22,
+      "nutrient": "Niacin B3",
+      "impact": "Skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~13mg / 16mg (81.3%)",
+      "note": "Kefta + bread"
+    },
+    {
+      "n": 23,
+      "nutrient": "Copper",
+      "impact": "Anemia, weak bones",
+      "status": "warn",
+      "coverage": "~0.7mg / 0.9mg (77.8%)",
+      "note": "Nuts + oats + bread"
+    },
+    {
+      "n": 24,
+      "nutrient": "Choline",
+      "impact": "Liver issues, memory issues",
+      "status": "bad",
+      "coverage": "~250mg / 550mg (45.5%)",
+      "note": "Kefta only — no eggs today, so it drops well below target"
+    },
+    {
+      "n": 25,
+      "nutrient": "Probiotics",
+      "impact": "Poor gut health",
+      "status": "good",
+      "coverage": "1 large serving (250g raib)",
+      "note": "Homemade raib — a real live-culture serving"
+    },
+    {
+      "n": 26,
+      "nutrient": "Sodium",
+      "impact": "Cramps or bloating",
+      "status": "good",
+      "coverage": "~520mg (low-moderate)",
+      "note": "Bread + salt — within normal range"
+    },
+    {
+      "n": 27,
+      "nutrient": "Antioxidants",
+      "impact": "Faster aging, inflammation",
+      "status": "good",
+      "coverage": "Good variety",
+      "note": "Carrot, courgette, onion, banana, nuts, olive oil — a broad spread"
+    },
+    {
+      "n": 28,
+      "nutrient": "Phosphorus",
+      "impact": "Bone/teeth weakness, fatigue",
+      "status": "good",
+      "coverage": "~710mg / 700mg (101%)",
+      "note": "Kefta + whey + bread + raib + nuts"
+    },
+    {
+      "n": 29,
+      "nutrient": "Manganese",
+      "impact": "Weak bones, poor metabolism",
+      "status": "good",
+      "coverage": "~2.4mg / 2.3mg (104%)",
+      "note": "Whole grains — bread + oats + banana"
+    },
+    {
+      "n": 30,
+      "nutrient": "Chromium",
+      "impact": "Poor blood sugar control",
+      "status": "bad",
+      "coverage": "~4µg / 35µg (11.4%)",
+      "note": "Only a trace from whole grains"
+    },
+    {
+      "n": 31,
+      "nutrient": "Vitamin B5",
+      "impact": "Fatigue, irritability",
+      "status": "good",
+      "coverage": "~5.2mg / 5mg (104%)",
+      "note": "Whey + kefta + veg"
+    },
+    {
+      "n": 32,
+      "nutrient": "Biotin B7",
+      "impact": "Hair/skin issues, fatigue",
+      "status": "warn",
+      "coverage": "~20µg / 30µg (66.7%)",
+      "note": "Nuts + whey; no eggs today, so lower than usual"
+    }
+  ]
+}
