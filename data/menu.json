@@ -1,11 +1,11 @@
 {
   "meta": {
-    "updated": "2026-07-06",
-    "note": "Standard menu — one fixed recipe per meal slot, with a small number of interchangeable choices per slot. Pick whichever option you have on hand; each option is pre-balanced against the day's targets. Add/replace options here (e.g. a new fruit) without touching any page code."
+    "updated": "2026-07-26",
+    "note": "Standard menu — same recipes as always, tuned toward olive oil. Breakfast fat defaults to a generous 2 tbsp of raw olive oil, and starches are trimmed a little (not removed) so the day leans lower-carb / higher-fat. Everything else is unchanged. One fixed recipe per meal slot with interchangeable choices — pick whichever you have on hand; each option is pre-balanced against the day's targets. Add/replace options here without touching page code."
   },
   "targets": {
-    "rest": { "kcal": 1800, "protein": 165, "carbs": 130, "fat": 70 },
-    "training": { "kcal": 2300, "protein": 165, "carbs": 250, "fat": 70 }
+    "rest": { "kcal": 1900, "protein": 170, "carbs": 125, "fat": 90 },
+    "training": { "kcal": 2500, "protein": 175, "carbs": 245, "fat": 92 }
   },
   "meals": {
     "other": {
@@ -29,10 +29,10 @@
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
-        { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
+        { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 20, "training": 55 } },
         { "label": "Mint tea", "food": "mint-tea", "qty": 200 },
         { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 },
-        { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } },
+        { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 35 } },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
       ],
       "choices": [
@@ -72,8 +72,8 @@
           "id": "fat",
           "label": "Fat source",
           "options": [
+            { "label": "Raw olive oil (2 tbsp)", "food": "olive-oil", "qty": 20 },
             { "label": "Avocado", "food": "avocado", "qty": 30 },
-            { "label": "Raw olive oil", "food": "olive-oil", "qty": 10 },
             { "label": "Nothing (skip)", "items": [] }
           ]
         }
@@ -101,7 +101,7 @@
         ]
       }],
       "items": [
-        { "label": "Brown rice", "food": "brown-rice", "qty": { "rest": 20, "training": 100 } },
+        { "label": "Brown rice", "food": "brown-rice", "qty": { "rest": 15, "training": 75 } },
         { "label": "Carrot (sautéed)", "food": "carrot", "qty": 120 },
         { "label": "Courgette (sautéed)", "food": "zucchini", "qty": 120 },
         { "label": "Onion (sautéed)", "food": "onion", "qty": 60 },
