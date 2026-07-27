@@ -163,7 +163,8 @@ let DISPLAY_ORDER = {};
 // whole eggs) are stored per-serving instead — scale against the right basis.
 const SERVING_BASIS_G = {
   'whey-iso100-30g': 30, 'whey-iso100-100g': 100, 'egg': 58, 'egg-beldi': 43,
-  'water-sidi-ali': 1000, 'water-ciel': 1000, 'water-ghayt': 1000, 'water-aquafina': 1000
+  'water-sidi-ali': 1000, 'water-ciel': 1000, 'water-ghayt': 1000, 'water-aquafina': 1000,
+  'now-vitamin-d3-k2': 1, 'grassberg-omega3-premium': 1
 };
 const WATER_FOODS = ['water-sidi-ali', 'water-ciel', 'water-ghayt', 'water-aquafina'];
 function foodMacros(id){
@@ -389,6 +390,10 @@ function formatQty(item){
   if(item.food && item.food.indexOf('whey-iso100') === 0){
     const scoops = grams/30;
     return (scoops % 1 === 0 ? scoops : scoops.toFixed(1)) + (scoops===1 ? ' scoop' : ' scoops');
+  }
+  const capF = FOODS[item.food];
+  if(capF && /capsule|softgel/i.test(capF.serving||'')){
+    return (grams % 1 === 0 ? grams : grams.toFixed(1)) + (grams===1 ? ' capsule' : ' capsules');
   }
   if(item.food && ML_FOODS.indexOf(item.food) !== -1){
     return Math.round(grams) + 'ml';

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-07-06",
+    "updated": "2026-07-27",
     "note": "Standard menu — one fixed recipe per meal slot, with a small number of interchangeable choices per slot. Pick whichever option you have on hand; each option is pre-balanced against the day's targets. Add/replace options here (e.g. a new fruit) without touching any page code."
   },
   "targets": {
@@ -33,7 +33,9 @@
         { "label": "Mint tea", "food": "mint-tea", "qty": 200 },
         { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 },
         { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } },
-        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
+        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
+        { "label": "Vitamin D3 & K2", "food": "now-vitamin-d3-k2", "qty": 1 },
+        { "label": "Omega-3", "food": "grassberg-omega3-premium", "qty": 1 }
       ],
       "choices": [
         {
