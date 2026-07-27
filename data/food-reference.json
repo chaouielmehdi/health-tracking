@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-03"
+    "updated": "2026-07-27"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -45,6 +45,41 @@
         {"name": "Iron", "value": "0.2mg"},
         {"name": "Zinc", "value": "0.3mg"},
         {"name": "Riboflavin B2", "value": "0.1mg"}
+      ]
+    },
+    {
+      "id": "now-vitamin-d3-k2",
+      "emoji": "💊",
+      "name": "Vitamin D3 & K2 — NOW Foods",
+      "note": "1,000 IU (25µg) D3 from lanolin + 45µg K2 (as MK-4) per capsule. Added 2026-07 to cover the menu's two hardest gaps: Vitamin D (indoor work, near-zero from food) and Vitamin K (no leafy greens). K2 also directs calcium to bone. Negligible calories.",
+      "category": "Supplement",
+      "serving": "per capsule",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Vitamin D", "value": "25µg (1,000 IU)"},
+        {"name": "Vitamin K", "value": "45µg (MK-4)"}
+      ]
+    },
+    {
+      "id": "grassberg-omega3-premium",
+      "emoji": "🐟",
+      "name": "Omega-3 Premium — Grassberg",
+      "note": "Ultra-pure fish oil concentrate, 60% omega-3. One softgel = 1,200mg fish oil providing 720mg omega-3 (EPA 420mg + DHA 300mg). One-a-day. Added 2026-07 to cover the menu's marine EPA/DHA gap (the tuna here is packed in vegetable oil). Store below 25°C, out of sunlight.",
+      "category": "Supplement",
+      "serving": "per capsule (1,200mg fish oil)",
+      "kcal": 11,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 1.2,
+      "fiber": 0,
+      "extra": [
+        {"name": "Omega-3", "value": "720mg"},
+        {"name": "EPA", "value": "420mg"},
+        {"name": "DHA", "value": "300mg"}
       ]
     },
     {
