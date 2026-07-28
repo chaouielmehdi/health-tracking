@@ -34,7 +34,7 @@
         { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 },
         { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } },
         { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
-        { "label": "Vitamin D3 & K2", "food": "now-vitamin-d3-k2", "qty": 1 },
+        { "label": "Vitamin D3 & K2", "food": "now-vitamin-d3-k2", "qty": 2 },
         { "label": "Omega-3", "food": "grassberg-omega3-premium", "qty": 1 }
       ],
       "choices": [
