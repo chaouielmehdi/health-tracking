@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-27"
+    "updated": "2026-07-29"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -533,7 +533,7 @@
       "id": "khobz-complet",
       "emoji": "🫓",
       "name": "Khobz complet (whole wheat bread, packaged)",
-      "note": null,
+      "note": "Fully whole wheat — but pick the palest loaf of the batch: lightly baked, soft crust, never the dark over-baked ones. Colour from baking, not from a whiter (less whole) flour.",
       "category": "Grain/Carb",
       "serving": "per 100g",
       "kcal": 247,
