@@ -33,10 +33,11 @@
   .app{max-width:680px;margin:0 auto;}
 
   /* DAY TYPE TOGGLE */
-  .daytype{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;}
-  .daytype-btn{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;}
+  .daytype{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px;}
+  .daytype-btn{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;}
   .daytype-btn.active{border-color:var(--accent);background:var(--accent-soft);}
-  .daytype-name{font-size:13.5px;font-weight:700;margin-bottom:2px;}
+  .daytype-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+  .daytype-desc{font-size:10px;color:var(--text-dim2);line-height:1.35;margin-bottom:4px;}
   .daytype-kcal{font-family:var(--mono);font-size:11.5px;color:var(--text-dim2);}
   .daytype-btn.active .daytype-kcal{color:var(--accent);}
 
@@ -180,7 +181,15 @@ function scale(id, grams){
 }
 function add(a,b){ return {kcal:a.kcal+b.kcal, protein:a.protein+b.protein, carbs:a.carbs+b.carbs, fat:a.fat+b.fat}; }
 function zero(){ return {kcal:0,protein:0,carbs:0,fat:0}; }
-function qtyFor(qty){ return (typeof qty === 'object') ? qty[state.day] : qty; }
+function qtyFor(qty){
+  if(typeof qty !== 'object') return qty;
+  const v = qty[state.day];
+  return (v === undefined || v === null) ? (qty.rest || 0) : v;
+}
+// items a meal contributes only on certain day modes
+function extraItems(meal){
+  return (meal.extraByDay && meal.extraByDay[state.day]) || [];
+}
 
 function itemMacro(item){ return scale(item.food, qtyFor(item.qty)); }
 function itemsMacro(items){ return items.reduce((acc,it)=>add(acc,itemMacro(it)), zero()); }
@@ -244,7 +253,7 @@ function collectAllItems(){
       const optItems = opt.items || (opt.food ? [{food:opt.food, qty:opt.qty}] : []);
       items.push(...optItems);
     });
-    if(meal.trainingOnly && state.day==='training') items.push(...meal.trainingOnly);
+    items.push(...extraItems(meal));
   });
   return items;
 }
@@ -456,7 +465,7 @@ function mealTotal(mealKey, meal){
       total = add(total, itemsMacro(items));
     });
   }
-  if(meal.trainingOnly && state.day==='training') total = add(total, itemsMacro(meal.trainingOnly));
+  total = add(total, itemsMacro(extraItems(meal)));
   return total;
 }
 
@@ -548,9 +557,11 @@ function render(){
     dayTotal = add(dayTotal, total);
     const fixedHtml = meal.items ? renderMealItems(meal.items) : '';
     const choiceHtml = renderChoices(meal);
-    const trainingHtml = (meal.trainingOnly && state.day==='training')
-      ? `<div class="choice-label" style="margin-top:10px;">Training addition</div>${renderMealItems(meal.trainingOnly)}`
-      : (meal.trainingOnly ? `<div class="item-row"><span class="item-label" style="color:var(--text-dim2);font-style:italic;">+ banana &amp; dates on training days<span class="training-tag">training only</span></span></div>` : '');
+    const extras = extraItems(meal);
+    const trainingHtml = extras.length
+      ? `<div class="choice-label" style="margin-top:10px;">${MENU.targets[state.day].label} addition</div>${renderMealItems(extras)}`
+      : (meal.extraByDay ? `<div class="item-row"><span class="item-label" style="color:var(--text-dim2);font-style:italic;">${meal.restNote || 'Nothing on this day'}</span></div>` : '');
+    const noteHtml = meal.note ? `<div class="item-row"><span class="item-label" style="color:var(--text-dim2);font-style:italic;">${meal.note}</span></div>` : '';
     return `<div class="meal-card">
       <div class="meal-header">
         <span class="meal-name">${meal.label}</span>
@@ -559,6 +570,7 @@ function render(){
       <div class="meal-body">
         ${choiceHtml}
         ${fixedHtml}
+        ${noteHtml}
         ${trainingHtml}
       </div>
     </div>`;
@@ -579,14 +591,14 @@ function render(){
 
   document.getElementById('app').innerHTML = `
     <div class="daytype">
-      <div class="daytype-btn ${state.day==='rest'?'active':''}" onclick="selectDay('rest')">
-        <div class="daytype-name">Rest day</div>
-        <div class="daytype-kcal">${MENU.targets.rest.kcal.toLocaleString()} kcal target</div>
-      </div>
-      <div class="daytype-btn ${state.day==='training'?'active':''}" onclick="selectDay('training')">
-        <div class="daytype-name">Training day</div>
-        <div class="daytype-kcal">${MENU.targets.training.kcal.toLocaleString()} kcal target</div>
-      </div>
+      ${(MENU.dayOrder || Object.keys(MENU.targets)).map(d=>{
+        const t = MENU.targets[d];
+        return `<div class="daytype-btn ${state.day===d?'active':''}" onclick="selectDay('${d}')">
+          <div class="daytype-name">${t.icon||''} ${t.label||d}</div>
+          <div class="daytype-desc">${t.desc||''}</div>
+          <div class="daytype-kcal">${t.kcal.toLocaleString()} kcal</div>
+        </div>`;
+      }).join('')}
     </div>
 
     <div class="section-title">Day Total vs Target</div>

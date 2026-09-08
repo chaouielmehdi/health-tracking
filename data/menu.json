@@ -1,164 +1,501 @@
 {
   "meta": {
-    "updated": "2026-07-27",
-    "note": "Standard menu — one fixed recipe per meal slot, with a small number of interchangeable choices per slot. Pick whichever option you have on hand; each option is pre-balanced against the day's targets. Add/replace options here (e.g. a new fruit) without touching any page code."
+    "updated": "2026-09-08",
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat are fixed across all three modes; only carbs move. Every mode runs the same ~300 kcal deficit, so a fully-rest week and a fully-training week lose the same amount — no penalty for missing a session, no need to decide the day type in advance."
   },
   "targets": {
-    "rest": { "kcal": 1800, "protein": 165, "carbs": 130, "fat": 70 },
-    "training": { "kcal": 2300, "protein": 165, "carbs": 250, "fat": 70 }
+    "rest": {
+      "kcal": 1800,
+      "protein": 165,
+      "carbs": 120,
+      "fat": 85,
+      "label": "Rest",
+      "icon": "🛋️",
+      "desc": "Desk day, no structured movement",
+      "tdee": 2100
+    },
+    "move": {
+      "kcal": 2000,
+      "protein": 165,
+      "carbs": 165,
+      "fat": 85,
+      "label": "Move",
+      "icon": "🚶",
+      "desc": "45–60 min walk (~6,000 steps)",
+      "tdee": 2300
+    },
+    "training": {
+      "kcal": 2400,
+      "protein": 165,
+      "carbs": 250,
+      "fat": 85,
+      "label": "Training",
+      "icon": "⚽",
+      "desc": "Football or workout",
+      "tdee": 2700
+    }
   },
   "meals": {
     "other": {
       "label": "☕ All-Day Staples",
-      "choices": [{
-        "id": "water",
-        "label": "Water (3L)",
-        "options": [
-          { "label": "Sidi Ali", "food": "water-sidi-ali", "qty": 3000 },
-          { "label": "Ciel", "food": "water-ciel", "qty": 3000 },
-          { "label": "Ghayt", "food": "water-ghayt", "qty": 3000 },
-          { "label": "Aquafina", "food": "water-aquafina", "qty": 3000 },
-          { "label": "Nothing (skip)", "items": [] }
-        ]
-      }],
+      "choices": [
+        {
+          "id": "water",
+          "label": "Water (3L)",
+          "options": [
+            {
+              "label": "Sidi Ali",
+              "food": "water-sidi-ali",
+              "qty": 3000
+            },
+            {
+              "label": "Ciel",
+              "food": "water-ciel",
+              "qty": 3000
+            },
+            {
+              "label": "Ghayt",
+              "food": "water-ghayt",
+              "qty": 3000
+            },
+            {
+              "label": "Aquafina",
+              "food": "water-aquafina",
+              "qty": 3000
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
+          ]
+        }
+      ],
       "items": [
-        { "label": "Black coffee (2 cups)", "food": "black-coffee", "qty": 200 },
-        { "label": "Sugar (2×1 tsp)", "food": "sugar-white", "qty": 8 }
+        {
+          "label": "Black coffee (2 cups)",
+          "food": "black-coffee",
+          "qty": 200
+        },
+        {
+          "label": "Sugar (2×1 tsp)",
+          "food": "sugar-white",
+          "qty": 8
+        }
       ]
     },
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
-        { "label": "Bread (whole wheat)", "food": "khobz-complet", "qty": { "rest": 35, "training": 70 } },
-        { "label": "Mint tea", "food": "mint-tea", "qty": 200 },
-        { "label": "Sugar (1 tsp)", "food": "sugar-white", "qty": 4 },
-        { "label": "Oats", "food": "oats", "qty": { "rest": 20, "training": 40 } },
-        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 },
-        { "label": "Vitamin D3 & K2", "food": "now-vitamin-d3-k2", "qty": 2 },
-        { "label": "Omega-3", "food": "grassberg-omega3-premium", "qty": 1 }
+        {
+          "label": "Oats",
+          "food": "oats",
+          "qty": 20
+        },
+        {
+          "label": "Whey protein",
+          "food": "whey-iso100-30g",
+          "qty": 30
+        },
+        {
+          "label": "Mint tea",
+          "food": "mint-tea",
+          "qty": 200
+        },
+        {
+          "label": "Sugar (1 tsp)",
+          "food": "sugar-white",
+          "qty": 4
+        },
+        {
+          "label": "Vitamin D3 & K2",
+          "food": "now-vitamin-d3-k2",
+          "qty": 2
+        },
+        {
+          "label": "Omega-3",
+          "food": "grassberg-omega3-premium",
+          "qty": 1
+        }
       ],
       "choices": [
         {
           "id": "eggPrep",
           "label": "Eggs",
           "options": [
-            { "label": "6 egg whites & 3 yolks (beldi), boiled", "items": [
-              { "food": "egg-white", "qty": 174 },
-              { "food": "egg-yolk", "qty": 42 }
-            ]},
-            { "label": "6 egg whites & 3 yolks (beldi), fried with 5g oil + 1 garlic clove", "items": [
-              { "food": "egg-white", "qty": 174 },
-              { "food": "egg-yolk", "qty": 42 },
-              { "food": "olive-oil", "qty": 5 },
-              { "food": "garlic", "qty": 3 }
-            ]}
+            {
+              "label": "6 egg whites & 3 yolks (beldi), boiled",
+              "items": [
+                {
+                  "food": "egg-white",
+                  "qty": 174
+                },
+                {
+                  "food": "egg-yolk",
+                  "qty": 42
+                }
+              ]
+            },
+            {
+              "label": "6 egg whites & 3 yolks (beldi), fried with 6g oil + 1 garlic clove",
+              "items": [
+                {
+                  "food": "egg-white",
+                  "qty": 174
+                },
+                {
+                  "food": "egg-yolk",
+                  "qty": 42
+                },
+                {
+                  "food": "olive-oil",
+                  "qty": 6
+                },
+                {
+                  "food": "garlic",
+                  "qty": 3
+                }
+              ]
+            }
           ]
         },
         {
           "id": "fruit",
           "label": "Fruit",
           "options": [
-            { "label": "Apple", "food": "apple", "qty": 150 },
-            { "label": "Grapes", "food": "grapes", "qty": 114 },
-            { "label": "Mango", "food": "mango", "qty": 138 },
-            { "label": "Watermelon", "food": "watermelon", "qty": 272 },
-            { "label": "Orange", "food": "orange", "qty": 175 },
-            { "label": "Clementine", "food": "clementine", "qty": 172 },
-            { "label": "Peach", "food": "peach", "qty": 217 },
-            { "label": "Strawberry", "food": "strawberry", "qty": 269 },
-            { "label": "Blueberries", "food": "blueberries-fresh", "qty": 143 },
-            { "label": "Nothing (skip)", "items": [] }
+            {
+              "label": "Apple",
+              "food": "apple",
+              "qty": 60
+            },
+            {
+              "label": "Grapes",
+              "food": "grapes",
+              "qty": 46
+            },
+            {
+              "label": "Mango",
+              "food": "mango",
+              "qty": 53
+            },
+            {
+              "label": "Watermelon",
+              "food": "watermelon",
+              "qty": 107
+            },
+            {
+              "label": "Orange",
+              "food": "orange",
+              "qty": 68
+            },
+            {
+              "label": "Clementine",
+              "food": "clementine",
+              "qty": 68
+            },
+            {
+              "label": "Peach",
+              "food": "peach",
+              "qty": 82
+            },
+            {
+              "label": "Strawberry",
+              "food": "strawberry",
+              "qty": 100
+            },
+            {
+              "label": "Blueberries",
+              "food": "blueberries-fresh",
+              "qty": 56
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
           ]
         },
         {
           "id": "fat",
           "label": "Fat source",
           "options": [
-            { "label": "Avocado", "food": "avocado", "qty": 30 },
-            { "label": "Raw olive oil", "food": "olive-oil", "qty": 10 },
-            { "label": "Nothing (skip)", "items": [] }
+            {
+              "label": "Avocado",
+              "food": "avocado",
+              "qty": 35
+            },
+            {
+              "label": "Raw olive oil",
+              "food": "olive-oil",
+              "qty": 6
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
           ]
         }
       ]
     },
     "lunch": {
       "label": "☀️ Lunch",
-      "choices": [{
-        "id": "protein",
-        "label": "Protein source",
-        "options": [
-          { "label": "Kefta 90/10, no added oil", "items": [
-            { "food": "kefta-9010", "qty": 250 }
-          ]},
-          { "label": "Chicken breast, mustard + oil", "items": [
-            { "food": "chicken-breast", "qty": 250 },
-            { "food": "mustard", "qty": 5 },
-            { "food": "olive-oil", "qty": 5 }
-          ]},
-          { "label": "Tuna + 2 whole eggs", "items": [
-            { "food": "tuna-isabel", "qty": 100 },
-            { "food": "egg-beldi", "qty": 86 }
-          ]},
-          { "label": "Nothing (skip)", "items": [] }
-        ]
-      }],
+      "choices": [
+        {
+          "id": "protein",
+          "label": "Protein source",
+          "options": [
+            {
+              "label": "Kefta 90/10, no added oil",
+              "items": [
+                {
+                  "food": "kefta-9010",
+                  "qty": 180
+                }
+              ]
+            },
+            {
+              "label": "Chicken breast, mustard + oil",
+              "items": [
+                {
+                  "food": "chicken-breast",
+                  "qty": 190
+                },
+                {
+                  "food": "mustard",
+                  "qty": 5
+                }
+              ]
+            },
+            {
+              "label": "Tuna + 2 whole eggs",
+              "items": [
+                {
+                  "food": "tuna-isabel",
+                  "qty": 100
+                },
+                {
+                  "food": "egg-beldi",
+                  "qty": 86
+                }
+              ]
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
+          ]
+        }
+      ],
       "items": [
-        { "label": "Brown rice", "food": "brown-rice", "qty": { "rest": 20, "training": 100 } },
-        { "label": "Carrot (sautéed)", "food": "carrot", "qty": 120 },
-        { "label": "Courgette (sautéed)", "food": "zucchini", "qty": 120 },
-        { "label": "Onion (sautéed)", "food": "onion", "qty": 60 },
-        { "label": "Sauté oil", "food": "olive-oil", "qty": 5 }
+        {
+          "label": "Carrot (sautéed)",
+          "food": "carrot",
+          "qty": 150
+        },
+        {
+          "label": "Courgette (sautéed)",
+          "food": "zucchini",
+          "qty": 200
+        },
+        {
+          "label": "Tomato (sautéed)",
+          "food": "tomato",
+          "qty": 150
+        },
+        {
+          "label": "Spinach (sautéed)",
+          "food": "spinach",
+          "qty": 150
+        },
+        {
+          "label": "Onion (sautéed)",
+          "food": "onion",
+          "qty": 60
+        },
+        {
+          "label": "Sauté oil",
+          "food": "olive-oil",
+          "qty": 8
+        }
       ]
     },
     "snack": {
       "label": "🍎 Post-Lunch Snack",
       "items": [
-        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
-      ],
-      "trainingOnly": [
-        { "label": "Banana", "food": "banana", "qty": 120 },
-        { "label": "4 dates", "food": "dates", "qty": 32 }
+        {
+          "label": "Whey protein",
+          "food": "whey-iso100-30g",
+          "qty": 30
+        }
       ]
     },
     "dinner": {
       "label": "🌙 Dinner",
-      "choices": [{
-        "id": "dairy",
-        "label": "Dairy (2 raib : 1 perly rotation)",
-        "options": [
-          { "label": "Raib, homemade", "items": [
-            { "food": "raib", "qty": 200 }
-          ]},
-          { "label": "Perly Nature", "items": [
-            { "food": "jaouda-perly-nature", "qty": 85 }
-          ]},
-          { "label": "Nothing (skip)", "items": [] }
-        ]
-      }, {
-        "id": "dinnerFruit",
-        "label": "Fruit",
-        "options": [
-          { "label": "Kiwi", "food": "kiwi", "qty": 80 },
-          { "label": "Apple", "food": "apple", "qty": 85 },
-          { "label": "Orange", "food": "orange", "qty": 100 },
-          { "label": "Clementine", "food": "clementine", "qty": 98 },
-          { "label": "Mango", "food": "mango", "qty": 78 },
-          { "label": "Blueberries", "food": "blueberries-fresh", "qty": 81 },
-          { "label": "Grapes", "food": "grapes", "qty": 65 },
-          { "label": "Peach", "food": "peach", "qty": 123 },
-          { "label": "Strawberry", "food": "strawberry", "qty": 153 },
-          { "label": "Watermelon", "food": "watermelon", "qty": 155 },
-          { "label": "Nothing (skip)", "items": [] }
-        ]
-      }],
+      "choices": [
+        {
+          "id": "dairy",
+          "label": "Dairy — 2 portions, every day",
+          "options": [
+            {
+              "label": "Raib, homemade ×2",
+              "items": [
+                {
+                  "food": "raib",
+                  "qty": 400
+                }
+              ]
+            },
+            {
+              "label": "Raib ×1 + Perly Nature",
+              "items": [
+                {
+                  "food": "raib",
+                  "qty": 200
+                },
+                {
+                  "food": "jaouda-perly-nature",
+                  "qty": 85
+                }
+              ]
+            },
+            {
+              "label": "Perly Nature ×2",
+              "items": [
+                {
+                  "food": "jaouda-perly-nature",
+                  "qty": 170
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dinnerFruit",
+          "label": "Fruit",
+          "options": [
+            {
+              "label": "Kiwi",
+              "food": "kiwi",
+              "qty": 80
+            },
+            {
+              "label": "Apple",
+              "food": "apple",
+              "qty": 85
+            },
+            {
+              "label": "Orange",
+              "food": "orange",
+              "qty": 100
+            },
+            {
+              "label": "Clementine",
+              "food": "clementine",
+              "qty": 98
+            },
+            {
+              "label": "Mango",
+              "food": "mango",
+              "qty": 78
+            },
+            {
+              "label": "Blueberries",
+              "food": "blueberries-fresh",
+              "qty": 81
+            },
+            {
+              "label": "Grapes",
+              "food": "grapes",
+              "qty": 65
+            },
+            {
+              "label": "Peach",
+              "food": "peach",
+              "qty": 123
+            },
+            {
+              "label": "Strawberry",
+              "food": "strawberry",
+              "qty": 153
+            },
+            {
+              "label": "Watermelon",
+              "food": "watermelon",
+              "qty": 155
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
+          ]
+        }
+      ],
       "items": [
-        { "label": "Almonds", "food": "almonds", "qty": 5 },
-        { "label": "Walnuts", "food": "walnuts", "qty": 5 },
-        { "label": "Cashews", "food": "cashews", "qty": 5 },
-        { "label": "Pistachios", "food": "pistachios", "qty": 5 },
-        { "label": "Pumpkin seeds", "food": "pumpkin-seeds", "qty": 5 },
-        { "label": "Whey protein", "food": "whey-iso100-30g", "qty": 30 }
+        {
+          "label": "Almonds",
+          "food": "almonds",
+          "qty": 12
+        },
+        {
+          "label": "Walnuts",
+          "food": "walnuts",
+          "qty": 10
+        },
+        {
+          "label": "Pumpkin seeds",
+          "food": "pumpkin-seeds",
+          "qty": 8
+        },
+        {
+          "label": "Whey protein",
+          "food": "whey-iso100-30g",
+          "qty": 30
+        }
       ]
+    },
+    "earned": {
+      "label": "🔓 Earned Block",
+      "note": "Only after the walk or the session actually happened. Skipped it? Eat nothing here.",
+      "restNote": "Nothing on a rest day — the core already covers you.",
+      "extraByDay": {
+        "move": [
+          {
+            "label": "Banana",
+            "food": "banana",
+            "qty": 120
+          },
+          {
+            "label": "3 dates",
+            "food": "dates",
+            "qty": 24
+          }
+        ],
+        "training": [
+          {
+            "label": "Banana",
+            "food": "banana",
+            "qty": 120
+          },
+          {
+            "label": "4 dates",
+            "food": "dates",
+            "qty": 32
+          },
+          {
+            "label": "White rice (dry)",
+            "food": "cigala-white-rice",
+            "qty": 80
+          },
+          {
+            "label": "Bread (whole wheat)",
+            "food": "khobz-complet",
+            "qty": 40
+          }
+        ]
+      }
     }
-  }
+  },
+  "dayOrder": [
+    "rest",
+    "move",
+    "training"
+  ]
 }

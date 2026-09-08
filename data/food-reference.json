@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-07-29"
+    "updated": "2026-09-08"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -1097,7 +1097,7 @@
       "id": "spinach",
       "emoji": "🌿",
       "name": "Spinach",
-      "note": null,
+      "note": "USDA raw spinach — full micronutrient profile",
       "category": "Vegetable",
       "serving": "per 100g",
       "kcal": 23,
@@ -1105,7 +1105,30 @@
       "carbs": 3.6,
       "fat": 0.4,
       "fiber": 2.2,
-      "extra": []
+      "extra": [
+        {"name": "Folate B9", "value": "194µg"},
+        {"name": "Vitamin K", "value": "483µg"},
+        {"name": "Vitamin A", "value": "469µg"},
+        {"name": "Magnesium", "value": "79mg"},
+        {"name": "Potassium", "value": "558mg"},
+        {"name": "Calcium", "value": "99mg"},
+        {"name": "Iron", "value": "2.7mg"},
+        {"name": "Vitamin C", "value": "28mg"},
+        {"name": "Vitamin E", "value": "2.03mg"},
+        {"name": "Manganese", "value": "0.9mg"},
+        {"name": "Riboflavin B2", "value": "0.19mg"},
+        {"name": "Vitamin B6", "value": "0.195mg"},
+        {"name": "Thiamine B1", "value": "0.078mg"},
+        {"name": "Niacin B3", "value": "0.72mg"},
+        {"name": "Phosphorus", "value": "49mg"},
+        {"name": "Zinc", "value": "0.53mg"},
+        {"name": "Copper", "value": "0.13mg"},
+        {"name": "Choline", "value": "19mg"},
+        {"name": "Sodium", "value": "79mg"},
+        {"name": "Pantothenic Acid (B5)", "value": "0.065mg"},
+        {"name": "Selenium", "value": "1µg"},
+        {"name": "Vitamin D", "value": "0µg"}
+      ]
     },
     {
       "id": "bell-pepper",
@@ -1201,7 +1224,7 @@
       "id": "tomato",
       "emoji": "🍅",
       "name": "Tomato",
-      "note": null,
+      "note": "USDA raw red tomato — full micronutrient profile",
       "category": "Vegetable",
       "serving": "per 100g",
       "kcal": 18,
@@ -1209,7 +1232,29 @@
       "carbs": 3.9,
       "fat": 0.2,
       "fiber": 1.2,
-      "extra": []
+      "extra": [
+        {"name": "Vitamin C", "value": "13.7mg"},
+        {"name": "Potassium", "value": "237mg"},
+        {"name": "Folate B9", "value": "15µg"},
+        {"name": "Vitamin K", "value": "7.9µg"},
+        {"name": "Vitamin A", "value": "42µg"},
+        {"name": "Vitamin E", "value": "0.54mg"},
+        {"name": "Magnesium", "value": "11mg"},
+        {"name": "Calcium", "value": "10mg"},
+        {"name": "Phosphorus", "value": "24mg"},
+        {"name": "Iron", "value": "0.27mg"},
+        {"name": "Manganese", "value": "0.114mg"},
+        {"name": "Niacin B3", "value": "0.594mg"},
+        {"name": "Vitamin B6", "value": "0.08mg"},
+        {"name": "Thiamine B1", "value": "0.037mg"},
+        {"name": "Riboflavin B2", "value": "0.019mg"},
+        {"name": "Choline", "value": "6.7mg"},
+        {"name": "Sodium", "value": "5mg"},
+        {"name": "Zinc", "value": "0.17mg"},
+        {"name": "Copper", "value": "0.059mg"},
+        {"name": "Pantothenic Acid (B5)", "value": "0.089mg"},
+        {"name": "Vitamin D", "value": "0µg"}
+      ]
     },
     {
       "id": "cucumber",

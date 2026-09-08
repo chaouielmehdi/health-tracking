@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-06-28"
+    "updated": "2026-09-08"
   },
   "profile": {
     "name": "Mehdi",
@@ -10,14 +10,16 @@
     "location": "Casablanca, Sidi Maârouf",
     "bmr": 1756,
     "tdee": 2100,
-    "target": 1950,
+    "target": 2000,
     "cycling": {
       "rest": 1800,
-      "training": 2300
+      "move": 2000,
+      "training": 2400
     },
     "context_tags": [
       "💼 Software Engineer · 9h–18h · sedentary",
-"⚽ Football · 1×/week",
+      "⚽ Football · 1×/week",
+      "🚶 Family walk · 45–60 min · Move days",
       "🏃 Workout · 1×/week",
       "📅 Protocol started · June 2026"
     ]
@@ -40,19 +42,24 @@
     }
   },
   "pillars": [
-    { "name": "Calories",        "note": "~2,100 real TDEE · target 1,950 · Rest 1,800 / Training 2,300", "status": "good" },
-    { "name": "Protein",         "note": "165g / day min",                                                 "status": "good" },
-    { "name": "Carbs",           "note": "Rest ~130g · Training ~250g · low-FODMAP only",                 "status": "good" },
-    { "name": "Fat",             "note": "70g / day",                                                      "status": "warn" },
-    { "name": "Fiber",           "note": "25–30g / day · soluble sources only",                            "status": "warn" },
+    { "name": "Calories",        "note": "Rest 1,800 · Move 2,000 · Training 2,400 · same −300/day deficit", "status": "good" },
+    { "name": "Protein",         "note": "165g / day min · fixed across all three modes",                  "status": "good" },
+    { "name": "Carbs",           "note": "Rest ~120g · Move ~165g · Training ~250g · the only macro that moves", "status": "good" },
+    { "name": "Fat",             "note": "85g / day · fixed across all modes · a ceiling, not a target",   "status": "good" },
+    { "name": "Fiber",           "note": "25–30g / day · soluble sources first",                           "status": "warn" },
+    { "name": "Movement",        "note": "Move day = 45–60 min walk (~6,000 steps) · earn the block after", "status": "good" },
     { "name": "Hydration",       "note": "3L / day · not w/ meals",                                        "status": "good" },
-    { "name": "Micronutrients",  "note": "Vitamin D · Omega-3 · Mg · Probiotics",                         "status": "warn" }
+    { "name": "Micronutrients",  "note": "Vitamin D · Omega-3 · Mg · Probiotics (2× raib daily)",          "status": "warn" }
   ],
   "rules": [
     { "type": "do",   "text": "Eat slowly always",            "reason": "sensitive gut" },
     { "type": "do",   "text": "Cumin in every meal",         "reason": "anti-gas"      },
     { "type": "do",   "text": "Consistent 7–8h · same schedule weekends", "reason": "cortisol · gut" },
     { "type": "do",   "text": "Dinner by 22h max",            "reason": "gut · circadian" },
+    { "type": "do",   "text": "Eat the core first, earn the block after", "reason": "no day depends on a plan" },
+    { "type": "do",   "text": "Walk 45–60 min on Move days",            "reason": "fat loss · digestion · family" },
+    { "type": "do",   "text": "Walk 10–15 min after dinner",            "reason": "gastric emptying · bloating" },
+    { "type": "do",   "text": "2 portions of raib every day",           "reason": "probiotics · calcium" },
     { "type": "dont", "text": "Water during meals",          "reason": "enzymes"       },
     { "type": "dont", "text": "Fruit juice",                 "reason": "sugar"         },
     { "type": "dont", "text": "Smida",                       "reason": "insulin"       },
@@ -80,10 +87,10 @@
     { "name": "Iron",         "status": "good" },
     { "name": "Vitamin B12",  "status": "good" },
     { "name": "Magnesium",    "status": "warn" },
-    { "name": "Calcium",      "status": "warn" },
+    { "name": "Calcium",      "status": "good" },
     { "name": "Zinc",         "status": "good" },
     { "name": "Potassium",    "status": "warn" },
-    { "name": "Folate B9",    "status": "bad"  },
+    { "name": "Folate B9",    "status": "good"  },
     { "name": "Vitamin C",    "status": "good" },
     { "name": "Vitamin A",    "status": "warn" },
     { "name": "Iodine",       "status": "warn" },
@@ -96,7 +103,7 @@
     { "name": "Niacin B3",    "status": "good" },
     { "name": "Copper",       "status": "warn" },
     { "name": "Choline",      "status": "good" },
-    { "name": "Probiotics",   "status": "warn" },
+    { "name": "Probiotics",   "status": "good" },
     { "name": "Sodium",       "status": "good" },
     { "name": "Antioxidants", "status": "warn" },
     { "name": "Phosphorus",   "status": "good" },
