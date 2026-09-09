@@ -123,6 +123,32 @@
           "label": "Eggs",
           "options": [
             {
+              "label": "3 whole eggs, boiled",
+              "items": [
+                {
+                  "food": "egg",
+                  "qty": 174
+                }
+              ]
+            },
+            {
+              "label": "3 whole eggs, fried with 6g oil + 1 garlic clove",
+              "items": [
+                {
+                  "food": "egg",
+                  "qty": 174
+                },
+                {
+                  "food": "olive-oil",
+                  "qty": 6
+                },
+                {
+                  "food": "garlic",
+                  "qty": 3
+                }
+              ]
+            },
+            {
               "label": "6 egg whites & 3 yolks (beldi), boiled",
               "items": [
                 {
