@@ -17,7 +17,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
 
 2. **Determine date and day type.**
    - Date: today (`YYYY-MM-DD` from current date) unless the input specifies another date explicitly
-   - Day type: rest vs training — infer from routine text (look for "Training", "Football", "Running", "Workout", "max effort") or ask once if ambiguous
+   - Day type: rest | move | training — infer from routine text ("Training", "Football", "Running", "Workout", "max effort" → training; a walk of 45-60 min / ~6,000 steps → move; nothing structured → rest). Ask once if ambiguous
 
 3. **Verify completeness, then calculate macros precisely.** This skill is exigent about inputs — a report that looks precise but was built on guesses is worse than no report. Ask rather than assume; never let convenience win over accuracy.
 
@@ -57,7 +57,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    ```json
    {
      "date": "YYYY-MM-DD",
-     "dayType": "rest|training",
+     "dayType": "rest|move|training",
      "routineText": "<raw input text verbatim>",
      "savedAt": "<ISO timestamp>"
    }
@@ -66,7 +66,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    Update `data/routines-index.json` — insert or replace the entry for this date (sorted newest first, no duplicates):
    ```json
    [
-     { "date": "YYYY-MM-DD", "dayType": "rest|training" }
+     { "date": "YYYY-MM-DD", "dayType": "rest|move|training" }
    ]
    ```
 
@@ -109,7 +109,7 @@ Mehdi explicitly wants this to feel like a health app screen he opens every day 
    ```js
    const DATA = {
      date,          // "Month DD, YYYY"
-     dayType,       // "Rest day" or "Training day"
+     dayType,       // "Rest day", "Move day" or "Training day"
      routineText,   // FINAL log — same format as the raw input (schedule/timestamps preserved), with
                      // adjustments already folded in; this is the only version shown in the report, plain text (no diff markup)
 

@@ -38,6 +38,7 @@
   .day-header{padding:14px 18px;border-bottom:1px solid var(--panel-border);display:flex;align-items:center;justify-content:space-between;gap:12px;}
   .day-date{font-size:14px;font-weight:700;}
   .day-type{font-size:10.5px;font-family:var(--mono);color:var(--text-dim2);background:rgba(255,255,255,0.05);border:1px solid var(--panel-border);border-radius:100px;padding:2px 10px;white-space:nowrap;}
+  .day-type.move{color:var(--accent);border-color:rgba(139,148,116,0.3);}
   .day-type.training{color:var(--good);border-color:rgba(127,174,142,0.25);}
   .today-tag{font-size:9.5px;font-family:var(--mono);font-weight:700;letter-spacing:0.06em;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(139,148,116,0.3);border-radius:100px;padding:2px 8px;margin-left:8px;vertical-align:middle;}
   .day-card.today{border-color:rgba(139,148,116,0.35);}
@@ -69,6 +70,7 @@
   </div>
 </div>
 <script>
+const DAY_TYPES={rest:{label:'Rest day'},move:{label:'Move day'},training:{label:'Training day'}};
   fetch('data/routines-index.json?v='+Date.now())
     .then(r=>r.json())
     .then(days=>{
@@ -83,7 +85,7 @@
         return`<div class="day-card${isToday?' today':''}">
           <div class="day-header">
             <span class="day-date">📅 ${d.date}${isToday?'<span class="today-tag">TODAY</span>':''}</span>
-            <span class="day-type${d.dayType==='training'?' training':''}">${d.dayType==='training'?'Training day':'Rest day'}</span>
+            <span class="day-type ${DAY_TYPES[d.dayType]?d.dayType:'rest'}">${(DAY_TYPES[d.dayType]||DAY_TYPES.rest).label}</span>
           </div>
           <div class="day-footer">
             <a href="assets/tracking-${d.date}.html" class="report-link">View Nutrition Report &rarr;</a>
