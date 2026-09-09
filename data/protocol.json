@@ -47,7 +47,6 @@
     { "name": "Carbs",           "note": "Rest ~120g · Move ~165g · Training ~250g · the only macro that moves", "status": "good" },
     { "name": "Fat",             "note": "85g / day · fixed across all modes · a ceiling, not a target",   "status": "good" },
     { "name": "Fiber",           "note": "25–30g / day · soluble sources first",                           "status": "warn" },
-    { "name": "Movement",        "note": "Move day = 45–60 min walk (~6,000 steps) · earn the block after", "status": "good" },
     { "name": "Hydration",       "note": "3L / day · not w/ meals",                                        "status": "good" },
     { "name": "Micronutrients",  "note": "Vitamin D · Omega-3 · Mg · Probiotics (2× raib daily)",          "status": "warn" }
   ],
