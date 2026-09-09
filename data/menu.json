@@ -1,13 +1,13 @@
 {
   "meta": {
     "updated": "2026-09-08",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat are fixed across all three modes; only carbs move. Every mode runs the same ~300 kcal deficit, so a fully-rest week and a fully-training week lose the same amount — no penalty for missing a session, no need to decide the day type in advance."
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat are fixed across all three modes; only carbs move. Every mode runs the same ~300 kcal deficit, so a fully-rest week and a fully-training week lose the same amount — no penalty for missing a session, no need to decide the day type in advance. Bread appears once a day, at breakfast only."
   },
   "targets": {
     "rest": {
       "kcal": 1800,
-      "protein": 165,
-      "carbs": 120,
+      "protein": 145,
+      "carbs": 130,
       "fat": 85,
       "label": "Rest",
       "icon": "🛋️",
@@ -16,8 +16,8 @@
     },
     "move": {
       "kcal": 2000,
-      "protein": 165,
-      "carbs": 165,
+      "protein": 145,
+      "carbs": 175,
       "fat": 85,
       "label": "Move",
       "icon": "🚶",
@@ -26,8 +26,8 @@
     },
     "training": {
       "kcal": 2400,
-      "protein": 165,
-      "carbs": 250,
+      "protein": 145,
+      "carbs": 270,
       "fat": 85,
       "label": "Training",
       "icon": "⚽",
@@ -86,6 +86,11 @@
     "breakfast": {
       "label": "🌅 Breakfast",
       "items": [
+        {
+          "label": "Bread (whole wheat)",
+          "food": "khobz-complet",
+          "qty": 40
+        },
         {
           "label": "Oats",
           "food": "oats",
@@ -343,16 +348,6 @@
         }
       ]
     },
-    "snack": {
-      "label": "🍎 Post-Lunch Snack",
-      "items": [
-        {
-          "label": "Whey protein",
-          "food": "whey-iso100-30g",
-          "qty": 30
-        }
-      ]
-    },
     "dinner": {
       "label": "🌙 Dinner",
       "choices": [
@@ -518,12 +513,7 @@
           {
             "label": "White rice (dry)",
             "food": "cigala-white-rice",
-            "qty": 80
-          },
-          {
-            "label": "Bread (whole wheat)",
-            "food": "khobz-complet",
-            "qty": 40
+            "qty": 115
           }
         ]
       }
