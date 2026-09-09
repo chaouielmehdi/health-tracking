@@ -432,7 +432,7 @@
         {
           "label": "Almonds",
           "food": "almonds",
-          "qty": 12
+          "qty": 5
         },
         {
           "label": "Walnuts",
@@ -440,9 +440,19 @@
           "qty": 10
         },
         {
+          "label": "Cashews",
+          "food": "cashews",
+          "qty": 5
+        },
+        {
+          "label": "Pistachios",
+          "food": "pistachios",
+          "qty": 5
+        },
+        {
           "label": "Pumpkin seeds",
           "food": "pumpkin-seeds",
-          "qty": 8
+          "qty": 5
         },
         {
           "label": "Whey protein",
