@@ -218,14 +218,14 @@
           "label": "Fat source",
           "options": [
             {
-              "label": "Avocado",
-              "food": "avocado",
-              "qty": 35
-            },
-            {
               "label": "Raw olive oil",
               "food": "olive-oil",
               "qty": 6
+            },
+            {
+              "label": "Avocado",
+              "food": "avocado",
+              "qty": 35
             },
             {
               "label": "Nothing (skip)",
