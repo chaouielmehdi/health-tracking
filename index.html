@@ -51,12 +51,13 @@
   .stat-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim2);font-weight:600;margin-bottom:6px;}
   .stat-value{font-size:22px;font-weight:700;font-family:var(--mono);letter-spacing:-0.02em;}
   .stat-unit{font-size:11px;color:var(--text-dim2);font-family:var(--mono);margin-top:2px;}
-  .calorie-cycling{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--panel-border);}
-  .cycling-block{padding:14px 18px;border-right:1px solid var(--panel-border);}
+  .calorie-cycling{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--panel-border);}
+  .cycling-block{padding:14px 12px;border-right:1px solid var(--panel-border);}
   .cycling-block:last-child{border-right:none;}
   .cycling-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim2);margin-bottom:5px;}
-  .cycling-kcal{font-family:var(--mono);font-size:18px;font-weight:700;}
+  .cycling-kcal{font-family:var(--mono);font-size:16.5px;font-weight:700;}
   .cycling-kcal.rest{color:var(--text-dim);}
+  .cycling-kcal.move{color:var(--accent);}
   .cycling-kcal.training{color:var(--good);}
   .context-row{padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px;}
   .ctx-tag{font-size:11.5px;background:rgba(255,255,255,0.04);border:1px solid var(--panel-border);border-radius:100px;padding:4px 12px;color:var(--text-dim);}
@@ -238,11 +239,13 @@
           <div class="profile-stats">
             <div class="stat-block"><div class="stat-label">BMR</div><div class="stat-value">${p.bmr.toLocaleString()}</div><div class="stat-unit">kcal / day</div></div>
             <div class="stat-block"><div class="stat-label">TDEE</div><div class="stat-value">${p.tdee.toLocaleString()}</div><div class="stat-unit">kcal / day &middot; sedentary</div></div>
-            <div class="stat-block"><div class="stat-label">Target</div><div class="stat-value">${p.target.toLocaleString()}</div><div class="stat-unit">kcal / day &middot; &minus;10%</div></div>
+            <div class="stat-block"><div class="stat-label">Target</div><div class="stat-value">${p.target.toLocaleString()}</div><div class="stat-unit">kcal / day &middot; &minus;300 every mode</div></div>
           </div>
           <div class="calorie-cycling">
-            <div class="cycling-block"><div class="cycling-label">Rest days</div><div class="cycling-kcal rest">${p.cycling.rest.toLocaleString()} kcal</div></div>
-            <div class="cycling-block"><div class="cycling-label">Training days</div><div class="cycling-kcal training">${p.cycling.training.toLocaleString()} kcal</div></div>
+            ${['rest','move','training'].filter(k=>p.cycling[k]!=null).map(k=>{
+              const names = {rest:'Rest days', move:'Move days', training:'Training days'};
+              return `<div class="cycling-block"><div class="cycling-label">${names[k]}</div><div class="cycling-kcal ${k}">${p.cycling[k].toLocaleString()} kcal</div></div>`;
+            }).join('')}
           </div>
           <div class="context-row">${p.context_tags.map(t=>`<span class="ctx-tag">${t}</span>`).join('')}</div>
         </div>`;
