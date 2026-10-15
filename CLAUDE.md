@@ -22,6 +22,7 @@ The site has five pages:
 | `data/protocol.json` | Mehdi's profile, targets, goals, pillars, rules, nutrients — the single source of truth for the protocol |
 | `data/food-reference.json` | Personal food database with macros + extra nutrients for each entry |
 | `data/history.json` | Monthly history entries (weight, scores, notes) |
+| `data/menu.json` | Standard menu: targets per day type, meals, choices and the earned block. Used by `menu.html` and `checkin.html` |
 | `data/routines-index.json` | Sorted list of tracked days `[{ date, dayType }]` — newest first |
 | `data/routine-YYYY-MM-DD.json` | Per-day routine: raw input text + optimized version |
 | `data/deploy.json` | Written by CI on each GitHub Pages deploy; shows last deploy time in the header |

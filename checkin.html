@@ -7,7 +7,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="header.js"></script>
 <style>
-  /* Layout: one 680px column (header, day setup, live totals, meal cards as tick lists, the day card) with a fixed bar at the bottom that keeps running totals and Send in reach. */
+  /* Layout: one 680px column (header, day setup, live totals, meal cards as tick lists, the day card) with a fixed bar at the bottom that keeps running totals and the send buttons in reach. */
   :root{
     color-scheme:dark;
     --bg:#1A1D1F;
@@ -36,14 +36,14 @@
     --sans:-apple-system,'Inter',Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;
     padding-block:28px calc(150px + env(safe-area-inset-bottom,0px));
     padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));}
   .app{max-width:680px;margin:0 auto;}
   button,input,textarea{font:inherit;color:inherit;}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:var(--text);}
+  #page-header h1{font-size:26px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin:0;text-wrap:balance;color:var(--text);}
   #page-header h1 em{font-style:normal;color:var(--accent);}
   .lede{font-size:13px;line-height:1.55;color:var(--text-dim);margin:10px 0 0;max-width:62ch;}
   .lede b{color:var(--text);font-weight:600;}
@@ -195,33 +195,33 @@
     data-title="Today vs the &lt;em&gt;Standard Menu&lt;/em&gt;"
     data-deploy-path="data/deploy.json">
   </div>
-  <p class="lede">Tick what you ate and fix the grams when they differ. Untick what you skipped, and leave a meal untouched if you haven't eaten it yet. Anything else you ate goes in the notes under each meal. When you're done, tap <b>Copy text</b> and paste it into the chat with Claude. On your phone, the <a href="https://claude.ai/artifact/R3Y44Qt728os9XcHZud4jJ" target="_blank" rel="noopener">Claude version</a> of this page can send it directly.</p>
+  <p class="lede">Tick what you ate and fix the grams when they differ. Leave anything you skipped unticked. A meal you leave untouched counts as not eaten yet; skipped a whole meal? Say so in its notes. Anything else you ate goes in the notes too. When you're done, tap <b>Copy text</b> and paste it into the chat with Claude. On your phone, the <a href="https://claude.ai/artifact/R3Y44Qt728os9XcHZud4jJ" target="_blank" rel="noopener">Claude version</a> of this page can send it directly.</p>
 
   <section class="setup" aria-label="Day">
     <div class="date-row">
       <label for="date">Day</label>
-      <input type="date" id="date" class="field">
+      <input type="date" id="date" class="field" disabled>
     </div>
     <p class="setup-hint" id="daytype-hint">What did the day turn out to be? Pick Move or Training only if the walk or the session happened.</p>
-    <div class="daytype" id="daytype" role="group" aria-labelledby="daytype-hint"></div>
+    <div class="daytype" id="daytype" role="group" aria-labelledby="daytype-hint"><div class="skel loading" style="height:84px;grid-column:1 / -1"></div></div>
   </section>
 
   <div class="section-title">So far, from the ticked items</div>
-  <div id="totals"></div>
+  <div id="totals"><div class="skel loading" style="height:110px"></div></div>
 
   <div class="section-title">The menu</div>
   <div id="meals"><div class="skel loading" style="height:420px"></div></div>
 
   <div class="section-title">The rest of the day</div>
-  <div class="day-card" id="daycard"></div>
+  <div class="day-card" id="daycard"><div class="skel loading" style="height:160px;margin-top:12px"></div></div>
 </div>
 
-<div class="bar" id="bar" role="region" aria-label="Send">
+<div class="bar" id="bar" role="region" aria-label="Check-in summary">
   <div class="bar-inner">
     <div class="bar-tot" id="bar-tot"></div>
     <div class="bar-status" id="bar-status" aria-live="polite">Saved on this device as you go.</div>
     <div class="bar-actions">
-      <button class="btn primary" id="copy-btn" type="button">Copy text</button>
+      <button class="btn primary" id="copy-btn" type="button" disabled>Copy text</button>
     </div>
   </div>
 </div>
@@ -262,6 +262,13 @@ const PLACEHOLDER = {
   earned:'e.g. 2 dates instead of the banana'
 };
 const STORE_PREFIX = 'menu-checkin:';
+// the day this tab was on, so a reload after midnight doesn't jump to a blank "today"
+function rememberDate(d){ try{ sessionStorage.setItem(STORE_PREFIX+'last', d); }catch(e){} }
+function startDate(){
+  const today=todayStr();
+  try{ const last=sessionStorage.getItem(STORE_PREFIX+'last'); if(last && last<=today && localStorage.getItem(STORE_PREFIX+last)) return last; }catch(e){}
+  return today;
+}
 
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const r1 = n => Math.round(n*10)/10;
@@ -485,7 +492,7 @@ function updateLive(){
       ${macroCard('Fat', r1(d.fat), t.fat, fP, statusFor(fP,'fat'), 'g')}
     </div>
     <div class="subtotals"><span>Fiber <b>${r1(d.fiber)}g</b> / 30g</span><span>Water <b>${r1(d.water/1000)}L</b> / 3L</span><span>Ticked <b>${p.done}</b> of ${p.total}</span></div>
-    <p class="muted-note">Menu items only. What you write in the notes gets counted in my report.</p>`;
+    <p class="muted-note">Menu items only. What you write in the notes gets counted in Claude's report.</p>`;
   document.querySelectorAll('[data-mk]').forEach(el=>{ const k=el.dataset.mk;
     el.innerHTML = `<b>${fmtInt(mealReported(k).kcal)}</b> / ${fmtInt(mealPlanned(k).kcal)} kcal`; });
   document.getElementById('bar-tot').textContent = `${fmtInt(d.kcal)} / ${fmtInt(t.kcal)} kcal · P ${Math.round(d.protein)} · C ${Math.round(d.carbs)} · F ${Math.round(d.fat)}`;
@@ -602,7 +609,7 @@ document.getElementById('date').addEventListener('change', e=>{
   const d=e.target.value;
   if(!d){ e.target.value=S.date; return; }
   if(d===S.date) return;
-  flushLocal(); saveLocal(); S = loadLocal(d) || blank(d); renderAll();
+  flushLocal(); saveLocal(); S = loadLocal(d) || blank(d); statusOverride=null; rememberDate(d); renderAll();
 });
 let resetArmed=false, resetTimer=null;
 function disarmReset(){ resetArmed=false; clearTimeout(resetTimer); }
@@ -610,8 +617,8 @@ document.getElementById('daycard').addEventListener('click', e=>{
   const b=e.target.closest('#reset-btn'); if(!b) return;
   if(!resetArmed){ resetArmed=true; b.textContent='Tap again to clear everything'; clearTimeout(resetTimer);
     resetTimer=setTimeout(()=>{ resetArmed=false; const x=document.getElementById('reset-btn'); if(x) x.textContent='Clear this day'; }, 4000); return; }
-  const keepDay=S.day, sent=S.sentAt, sentStart=S.sentStartedAt;
-  S=blank(S.date); S.day=keepDay; S.sentAt=sent; S.sentStartedAt=sentStart; renderAll(); touch();
+  const keepDay=S.day;
+  S=blank(S.date); S.day=keepDay; renderAll(); touch();
   const x=document.getElementById('reset-btn'); if(x) x.focus({preventScroll:true});
 });
 
@@ -684,10 +691,7 @@ function hhmm(iso){ const d=new Date(iso); return String(d.getHours()).padStart(
 function refreshStatus(){
   if(statusOverride && Date.now()-statusOverride.at<4000) return;
   statusOverride=null;
-  if(S.sentAt){
-    if(S.updatedAt > (S.sentStartedAt||Date.parse(S.sentAt))) paintStatus('Changed since you sent it at '+hhmm(S.sentAt)+'. Send again.','warn');
-    else paintStatus('Sent at '+hhmm(S.sentAt)+'. Tell Claude in the chat.','ok');
-  } else paintStatus('Saved on this device. Tap Copy text and paste it into the chat with Claude.','');
+  paintStatus('Saved on this device. Tap Copy text and paste it into the chat with Claude.','');
 }
 
 // keep the last controls clear of the fixed bar, whatever its height
@@ -705,16 +709,24 @@ function refreshStatus(){
     FOODS = {}; (foodData.foods || foodData).forEach(f=>{ FOODS[f.id] = f; });
     RULES = (await protR.json()).rules || [];
   }catch(e){
-    document.getElementById('meals').innerHTML = '<p class="empty-line" style="color:var(--bad)">Failed to load the menu data.</p>';
+    // nothing works without the data: say so and keep every control off
+    document.querySelectorAll('.app > :not(#page-header)').forEach(el=>{ el.hidden=true; });
+    const msg=document.createElement('p'); msg.className='lede'; msg.style.color='var(--bad)';
+    msg.textContent='Couldn’t load the menu, the food reference or the protocol from data/. Reload the page to try again.';
+    document.querySelector('.app').appendChild(msg);
+    paintStatus('Data didn’t load. Reload to try again.','err');
     return;
   }
   // every choice gets a way to say "I didn't have it", so a skip never looks like a blank
   Object.values(MENU.meals).forEach(meal=>(meal.choices||[]).forEach(c=>{
     if(!c.options.some(o=>!(o.items||[]).length && !o.food)) c.options.push({label:'Didn’t have it', items:[]});
   }));
-  const d=todayStr();
+  const d=startDate();
+  document.getElementById('date').max=todayStr();
   S = loadLocal(d) || blank(d);
   renderAll();
+  document.getElementById('date').disabled=false;
+  document.getElementById('copy-btn').disabled=false;
 })();
 </script>
 </body>
