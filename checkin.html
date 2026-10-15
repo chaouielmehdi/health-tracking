@@ -544,10 +544,14 @@ app.addEventListener('change', e=>{
   } else if(act==='opt'){
     const [k,cid]=el.dataset.path.split('|'), c=MENU.meals[k].choices.find(x=>x.id===cid), cs=choiceSt(k,cid);
     const prev=cs.opt, next=+el.value;
-    // carry edited grams across options for the same food (e.g. 2 eggs fried -> 2 eggs boiled)
+    // carry an edited amount across options only when both plan the same amount of that food
+    // (2 eggs fried -> 2 eggs boiled), never between Raib ×2 (400g) and Raib ×1 (200g)
     if(prev!=null && cs.qtys[prev] && !cs.qtys[next]){
       const old=optItems(c.options[prev]), carried={};
-      optItems(c.options[next]).forEach((it,j)=>{ const oj=old.findIndex(o=>o.food===it.food); if(oj>=0 && cs.qtys[prev][oj]!=null) carried[j]=cs.qtys[prev][oj]; });
+      optItems(c.options[next]).forEach((it,j)=>{
+        const oj=old.findIndex(o=>o.food===it.food), q=oj>=0 ? cs.qtys[prev][oj] : null;
+        if(q!=null && old[oj].qty===it.qty && q!==old[oj].qty) carried[j]=q;
+      });
       if(Object.keys(carried).length) cs.qtys[next]=carried;
     }
     cs.opt=next;
