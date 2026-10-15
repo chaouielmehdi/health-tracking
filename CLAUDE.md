@@ -6,10 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal health & nutrition tracking system. A fully static site deployed on GitHub Pages — no build step, no framework, no package manager. All pages are plain HTML/CSS/JS; all data lives in JSON files under `data/`.
 
-The site has three pages:
+The site has five pages:
 - `index.html` — dashboard: profile, goals, protocol, today's routine editor, history
 - `routines.html` — log of all tracked days linking to their nutrition reports
 - `food-reference.html` — searchable personal food database
+- `menu.html` — the standard menu (Rest / Move / Training), rendered from `data/menu.json`
+- `checkin.html` — daily check-in: tick what was eaten against the standard menu, then copy the text summary to Claude. Draft state lives in `localStorage` only. A Claude-hosted copy (linked from the page) can send the day straight to Claude.
 
 `header.js` is a shared IIFE that injects the page header (badge, title, back link, deploy timestamp) into any `<div id="page-header">` element.
 
