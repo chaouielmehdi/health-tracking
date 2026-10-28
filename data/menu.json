@@ -1,7 +1,7 @@
 {
   "meta": {
     "updated": "2026-10-28",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 8g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar."
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar."
   },
   "targets": {
     "rest": {
@@ -269,7 +269,7 @@
           "label": "Protein source",
           "options": [
             {
-              "label": "Kefta 80/20, veg cooked in its own fat",
+              "label": "Kefta 80/20 (raw weight), veg cooked in its own fat",
               "items": [
                 {
                   "food": "kefta-8020",
@@ -278,7 +278,7 @@
               ]
             },
             {
-              "label": "Chicken breast, mustard + oil",
+              "label": "Chicken breast (raw weight), mustard + oil",
               "items": [
                 {
                   "food": "chicken-breast",
@@ -295,7 +295,7 @@
               ]
             },
             {
-              "label": "Tuna + 2 whole eggs",
+              "label": "Tuna + 2 whole eggs, veg cooked in the tuna oil",
               "items": [
                 {
                   "food": "tuna-isabel",
@@ -318,12 +318,12 @@
           "label": "Starch",
           "options": [
             {
-              "label": "Brown rice (dry)",
+              "label": "Brown rice (dry, ≈60g cooked)",
               "food": "brown-rice",
               "qty": 20
             },
             {
-              "label": "White rice (dry)",
+              "label": "White rice (dry, ≈55g cooked)",
               "food": "cigala-white-rice",
               "qty": 18
             },
@@ -494,7 +494,7 @@
         {
           "label": "Almonds",
           "food": "almonds",
-          "qty": 15
+          "qty": 20
         },
         {
           "label": "Walnuts",
@@ -514,7 +514,7 @@
         {
           "label": "Pumpkin seeds",
           "food": "pumpkin-seeds",
-          "qty": 8
+          "qty": 4
         },
         {
           "label": "Whey protein",

@@ -235,19 +235,19 @@
       "id": "kefta-8020-cooked",
       "emoji": "🥩",
       "name": "Kefta 80/20 (beef/veal mix, cooked/grilled)",
-      "note": "~20% fat, weighed after grilling — moisture loss concentrates protein/minerals, some fat renders out in drippings",
+      "note": "~20% fat, weighed after grilling — the USDA raw 80/20 values at a ~71% cooked yield, with some fat rendered into the drippings",
       "category": "Meat",
       "serving": "per 100g",
-      "kcal": 260,
-      "protein": 28,
+      "kcal": 250,
+      "protein": 24,
       "carbs": 0,
       "fat": 17,
       "fiber": 0,
       "extra": [
-        {"name": "Sodium", "value": "88mg"},
-        {"name": "Iron", "value": "2.5mg"},
-        {"name": "Zinc", "value": "5.6mg"},
-        {"name": "Vitamin B12", "value": "2.8µg"}
+        {"name": "Sodium", "value": "92mg"},
+        {"name": "Iron", "value": "2.7mg"},
+        {"name": "Zinc", "value": "5.9mg"},
+        {"name": "Vitamin B12", "value": "3µg"}
       ]
     },
     {

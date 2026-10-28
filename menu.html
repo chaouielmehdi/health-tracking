@@ -321,7 +321,7 @@ function renderFullTable(dayTotal, proteinPct){
     } else if(def.special==='untracked'){
       // most foods in the reference carry no chromium value, so a percentage would only measure missing data
       status = '';
-      coverage = 'Not tracked: most foods have no chromium data';
+      coverage = '<span title="Most foods in the reference have no chromium value">Not tracked</span>';
     } else if(def.special==='sodium'){
       status = sodiumMg < 1500 ? 'good' : sodiumMg < 2300 ? 'warn' : 'bad';
       const label = sodiumMg < 1500 ? 'low' : sodiumMg < 2300 ? 'moderate' : 'high';
@@ -613,7 +613,7 @@ function render(){
 
     ${renderFullTable(dayTotal, pPct)}
 
-    <div class="footer-note">Pick whichever option you have on hand — each is pre-balanced to hit the same day target. Only micronutrients vary.</div>
+    <div class="footer-note">Swap freely within a group — options are pre-balanced. Two exceptions: the fat source is for chicken days only, and bread at lunch means bread twice (avoid list).</div>
   `;
 }
 
