@@ -343,7 +343,8 @@ function normalize(st){
     let idx = cs.label!=null ? c.options.findIndex(o=>o.label===cs.label) : -1;
     // v2 saves had no labels; their dairy "Didn't have it" sat at index 3, before the sweet raib options existed
     if(idx<0 && st.v===2 && c.id==='dairy' && cs.opt===3) idx=c.options.length-1;
-    if(idx<0) idx = cs.opt<c.options.length ? cs.opt : null;
+    // only label-less (v2) saves fall back to the old position; a labelled pick whose option is gone reads as not filled
+    if(idx<0) idx = (cs.label==null && cs.opt<c.options.length) ? cs.opt : null;
     if(idx!==cs.opt){ const q=cs.qtys||{}, moved={}; if(idx!=null && q[cs.opt]) moved[idx]=q[cs.opt]; cs.qtys=moved; cs.opt=idx; }
     if(idx!=null) cs.label=c.options[idx].label; else delete cs.label;
   }));
