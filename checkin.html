@@ -286,7 +286,7 @@ function parseQty(v){
 }
 
 let S = null;
-function blank(date){ return {v:2,date,day:'rest',activity:'',sleep:'',bloating:null,rules:{},broke:{},notes:'',meals:{},updatedAt:0,sentAt:null,sentStartedAt:0}; }
+function blank(date){ return {v:3,date,day:'rest',activity:'',sleep:'',bloating:null,rules:{},broke:{},notes:'',meals:{},updatedAt:0,sentAt:null,sentStartedAt:0}; }
 function M(k){ return S.meals[k] || (S.meals[k] = {time:'',note:'',items:{},choices:{},extra:{}}); }
 
 // ---------- menu helpers ----------
@@ -334,6 +334,21 @@ function qOr(st, planned){ return st && st.qty!=null ? st.qty : planned; }
 function itemSt(k,i,item){ const st=M(k).items[i]; return {on:!!(st&&st.on), qty:qOr(st, plannedQty(item.qty))}; }
 function extraSt(k,row){ const st=M(k).extra[row.food]; return {on:!!(st&&st.on), qty:qOr(st, row.planned)}; }
 function choiceSt(k,cid){ const m=M(k); return m.choices[cid] || (m.choices[cid]={opt:null,qtys:{}}); }
+// a pick is saved with its option label, so adding options to the menu never re-points an old pick
+function pickOpt(k,c,idx){ const cs=choiceSt(k,c.id); cs.opt=idx; cs.label=c.options[idx].label; return cs; }
+function normalize(st){
+  Object.entries(MENU.meals).forEach(([k,meal])=>(meal.choices||[]).forEach(c=>{
+    const cs=st.meals[k] && st.meals[k].choices && st.meals[k].choices[c.id];
+    if(!cs || cs.opt==null) return;
+    let idx = cs.label!=null ? c.options.findIndex(o=>o.label===cs.label) : -1;
+    // v2 saves had no labels; their dairy "Didn't have it" sat at index 3, before the sweet raib options existed
+    if(idx<0 && st.v===2 && c.id==='dairy' && cs.opt===3) idx=c.options.length-1;
+    if(idx<0) idx = cs.opt<c.options.length ? cs.opt : null;
+    if(idx!==cs.opt){ const q=cs.qtys||{}, moved={}; if(idx!=null && q[cs.opt]) moved[idx]=q[cs.opt]; cs.qtys=moved; cs.opt=idx; }
+    if(idx!=null) cs.label=c.options[idx].label; else delete cs.label;
+  }));
+  st.v=3; return st;
+}
 function subQty(k,cid,j,it){ const cs=choiceSt(k,cid), e=cs.qtys[cs.opt]; return e && e[j]!=null ? e[j] : it.qty; }
 
 function mealReported(k){
@@ -521,7 +536,7 @@ function touch(){
 function saveLocal(){ try{ localStorage.setItem(STORE_PREFIX+S.date, JSON.stringify(S)); }catch(e){} }
 function flushLocal(){ if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; saveLocal(); } }
 function loadLocal(date){
-  try{ const raw=localStorage.getItem(STORE_PREFIX+date); if(raw){ const o=JSON.parse(raw); if(o && o.date===date && o.v===2) return o; } }catch(e){}
+  try{ const raw=localStorage.getItem(STORE_PREFIX+date); if(raw){ const o=JSON.parse(raw); if(o && o.date===date && (o.v===2 || o.v===3)) return normalize(o); } }catch(e){}
   return null;
 }
 addEventListener('pagehide', flushLocal);
@@ -554,7 +569,7 @@ app.addEventListener('change', e=>{
       });
       if(Object.keys(carried).length) cs.qtys[next]=carried;
     }
-    cs.opt=next;
+    pickOpt(k,c,next);
     document.querySelector(`[data-choice="${k}|${cid}"]`).outerHTML = choiceHtml(k,c);
     const again=document.getElementById(`opt-${k}-${cid}-${next}`); if(again) again.focus({preventScroll:true});
     updateLive(); touch();
@@ -603,7 +618,7 @@ app.addEventListener('click', e=>{
     // fill only what's still empty; never overwrite a pick or an edited amount
     const k=btn.dataset.meal, meal=MENU.meals[k], m=M(k);
     (meal.items||[]).forEach((it,i)=>{ if(!m.items[i]) m.items[i]={on:true}; });
-    (meal.choices||[]).forEach(c=>{ const cs=choiceSt(k,c.id); if(cs.opt==null) cs.opt=defOpt(c.id); });
+    (meal.choices||[]).forEach(c=>{ if(choiceSt(k,c.id).opt==null) pickOpt(k,c,defOpt(c.id)); });
     ((meal.extraByDay&&meal.extraByDay[S.day])||[]).forEach(it=>{ if(!m.extra[it.food]) m.extra[it.food]={on:true}; });
     renderMeal(k); updateLive(); touch();
     const again=document.querySelector(`[data-act="plan"][data-meal="${k}"]`); if(again) again.focus({preventScroll:true});
