@@ -1,7 +1,7 @@
 {
   "meta": {
     "updated": "2026-10-28",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat are fixed across all three modes; only carbs move. Every mode runs the same ~300 kcal deficit, so a fully-rest week and a fully-training week lose the same amount — no penalty for missing a session, no need to decide the day type in advance. Bread appears once a day, at breakfast only."
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar."
   },
   "targets": {
     "rest": {
@@ -72,14 +72,9 @@
       ],
       "items": [
         {
-          "label": "Black coffee (2 cups)",
+          "label": "Black coffee (2 cups), no sugar",
           "food": "black-coffee",
           "qty": 200
-        },
-        {
-          "label": "Sugar (2×1 tsp)",
-          "food": "sugar-white",
-          "qty": 8
         }
       ]
     },
@@ -89,7 +84,7 @@
         {
           "label": "Bread (whole wheat)",
           "food": "khobz-complet",
-          "qty": 40
+          "qty": 25
         },
         {
           "label": "Oats",
@@ -107,9 +102,9 @@
           "qty": 200
         },
         {
-          "label": "Sugar (1 tsp)",
+          "label": "Sugar in the tea (½ tsp)",
           "food": "sugar-white",
-          "qty": 4
+          "qty": 2
         },
         {
           "label": "Vitamin D3 & K2",
@@ -137,7 +132,7 @@
               ]
             },
             {
-              "label": "3 whole eggs, fried with 6g oil + 1 garlic clove",
+              "label": "3 whole eggs, fried with 3g oil + 1 garlic clove",
               "items": [
                 {
                   "food": "egg",
@@ -145,7 +140,7 @@
                 },
                 {
                   "food": "olive-oil",
-                  "qty": 6
+                  "qty": 3
                 },
                 {
                   "food": "garlic",
@@ -167,7 +162,7 @@
               ]
             },
             {
-              "label": "6 egg whites & 3 yolks (beldi), fried with 6g oil + 1 garlic clove",
+              "label": "6 egg whites & 3 yolks (beldi), fried with 3g oil + 1 garlic clove",
               "items": [
                 {
                   "food": "egg-white",
@@ -179,7 +174,7 @@
                 },
                 {
                   "food": "olive-oil",
-                  "qty": 6
+                  "qty": 3
                 },
                 {
                   "food": "garlic",
@@ -246,8 +241,12 @@
         },
         {
           "id": "fat",
-          "label": "Fat source",
+          "label": "Fat source — chicken days only",
           "options": [
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            },
             {
               "label": "Raw olive oil",
               "food": "olive-oil",
@@ -257,10 +256,6 @@
               "label": "Avocado",
               "food": "avocado",
               "qty": 35
-            },
-            {
-              "label": "Nothing (skip)",
-              "items": []
             }
           ]
         }
@@ -274,33 +269,37 @@
           "label": "Protein source",
           "options": [
             {
-              "label": "Kefta 90/10, no added oil",
+              "label": "Kefta 80/20 (raw weight), veg cooked in its own fat",
               "items": [
                 {
-                  "food": "kefta-9010",
-                  "qty": 180
+                  "food": "kefta-8020",
+                  "qty": 115
                 }
               ]
             },
             {
-              "label": "Chicken breast, mustard + oil",
+              "label": "Chicken breast (raw weight), mustard + oil",
               "items": [
                 {
                   "food": "chicken-breast",
-                  "qty": 190
+                  "qty": 150
                 },
                 {
                   "food": "mustard",
                   "qty": 5
+                },
+                {
+                  "food": "olive-oil",
+                  "qty": 10
                 }
               ]
             },
             {
-              "label": "Tuna + 2 whole eggs",
+              "label": "Tuna + 2 whole eggs, veg cooked in the tuna oil",
               "items": [
                 {
                   "food": "tuna-isabel",
-                  "qty": 100
+                  "qty": 90
                 },
                 {
                   "food": "egg-beldi",
@@ -313,23 +312,48 @@
               "items": []
             }
           ]
+        },
+        {
+          "id": "starch",
+          "label": "Starch",
+          "options": [
+            {
+              "label": "Brown rice (dry, ≈60g cooked)",
+              "food": "brown-rice",
+              "qty": 20
+            },
+            {
+              "label": "White rice (dry, ≈55g cooked)",
+              "food": "cigala-white-rice",
+              "qty": 18
+            },
+            {
+              "label": "Bread (whole wheat) — 2nd bread today, on your avoid list",
+              "food": "khobz-complet",
+              "qty": 30
+            },
+            {
+              "label": "Nothing (skip)",
+              "items": []
+            }
+          ]
         }
       ],
       "items": [
         {
           "label": "Carrot (sautéed)",
           "food": "carrot",
-          "qty": 150
+          "qty": 100
         },
         {
           "label": "Courgette (sautéed)",
           "food": "zucchini",
-          "qty": 200
+          "qty": 250
         },
         {
           "label": "Tomato (sautéed)",
           "food": "tomato",
-          "qty": 150
+          "qty": 200
         },
         {
           "label": "Spinach (sautéed)",
@@ -339,12 +363,7 @@
         {
           "label": "Onion (sautéed)",
           "food": "onion",
-          "qty": 60
-        },
-        {
-          "label": "Sauté oil",
-          "food": "olive-oil",
-          "qty": 8
+          "qty": 40
         }
       ]
     },
@@ -475,7 +494,7 @@
         {
           "label": "Almonds",
           "food": "almonds",
-          "qty": 5
+          "qty": 20
         },
         {
           "label": "Walnuts",
@@ -495,12 +514,12 @@
         {
           "label": "Pumpkin seeds",
           "food": "pumpkin-seeds",
-          "qty": 5
+          "qty": 4
         },
         {
           "label": "Whey protein",
           "food": "whey-iso100-30g",
-          "qty": 30
+          "qty": 45
         }
       ]
     },
@@ -535,7 +554,7 @@
           {
             "label": "White rice (dry)",
             "food": "cigala-white-rice",
-            "qty": 115
+            "qty": 110
           }
         ]
       }

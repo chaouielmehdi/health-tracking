@@ -155,7 +155,7 @@
 
 <script>
 let MENU = null, FOODS = null;
-let state = { day: 'rest', protein: 0, fruit: 0, fat: 0, dairy: 0, dinnerFruit: 0, water: 2, eggPrep: 0 };
+let state = { day: 'rest', protein: 0, starch: 0, fruit: 0, fat: 0, dairy: 0, dinnerFruit: 0, water: 2, eggPrep: 0 };
 // each choice group's display order is fixed once at load (default option
 // first) and never changes again, no matter what the user picks afterward
 let DISPLAY_ORDER = {};
@@ -202,12 +202,12 @@ function itemFiber(item){
 
 // ---- 32-nutrient table ----
 const NUTRIENT_DEFS = [
-  {n:1,  name:'Protein',       unit:'g',  target:165,  impact:'Muscle loss, weakness', special:'protein'},
+  {n:1,  name:'Protein',       unit:'g',  target:145,  impact:'Muscle loss, weakness', special:'protein'},
   {n:2,  name:'Water',         unit:'L',  target:3,    impact:'Dehydration, fatigue', special:'water'},
   {n:3,  name:'Fiber',         unit:'g',  target:30,   impact:'Constipation, gut issues', special:'fiber'},
   {n:4,  name:'Omega-3',       unit:'g',  target:1.6,  impact:'Inflammation, poor recovery'},
   {n:5,  name:'Vitamin D',     unit:'µg', target:15,   impact:'Bone weakness, low mood'},
-  {n:6,  name:'Iron',          unit:'mg', target:11,   impact:'Fatigue, anemia'},
+  {n:6,  name:'Iron',          unit:'mg', target:8,    impact:'Fatigue, anemia'},
   {n:7,  name:'Vitamin B12',   unit:'µg', target:2.4,  impact:'Nerve damage, fatigue'},
   {n:8,  name:'Magnesium',     unit:'mg', target:400,  impact:'Cramps, poor sleep'},
   {n:9,  name:'Calcium',       unit:'mg', target:1000, impact:'Bone loss, fractures'},
@@ -231,7 +231,7 @@ const NUTRIENT_DEFS = [
   {n:27, name:'Antioxidants',  special:'antioxidants', impact:'Faster aging, inflammation'},
   {n:28, name:'Phosphorus',    unit:'mg', target:700,  impact:'Bone/teeth weakness, fatigue'},
   {n:29, name:'Manganese',     unit:'mg', target:2.3,  impact:'Weak bones, poor metabolism'},
-  {n:30, name:'Chromium',      unit:'µg', target:35,   impact:'Poor blood sugar control'},
+  {n:30, name:'Chromium',      unit:'µg', target:35,   impact:'Poor blood sugar control', special:'untracked'},
   {n:31, name:'Vitamin B5',    unit:'mg', target:5,    impact:'Fatigue, irritability', altNames:['Pantothenic Acid (B5)']},
   {n:32, name:'Biotin B7',     unit:'µg', target:30,   impact:'Hair/skin issues, fatigue'},
 ];
@@ -308,7 +308,7 @@ function renderFullTable(dayTotal, proteinPct){
     let coverage, status;
     if(def.special==='protein'){
       status = statusFor(proteinPct, 'protein');
-      coverage = `${fmt1(dayTotal.protein)}g / ${def.target}g (${Math.round(proteinPct)}%)`;
+      coverage = `${fmt1(dayTotal.protein)}g / ${MENU.targets[state.day].protein}g (${Math.round(proteinPct)}%)`;
     } else if(def.special==='water'){
       const waterL = waterMl/1000;
       const pct = waterL/def.target*100;
@@ -318,6 +318,10 @@ function renderFullTable(dayTotal, proteinPct){
       const pct = fiberG/def.target*100;
       status = microStatus(pct);
       coverage = `~${fmt1(fiberG)}g / ${def.target}g (${Math.round(pct)}%)`;
+    } else if(def.special==='untracked'){
+      // most foods in the reference carry no chromium value, so a percentage would only measure missing data
+      status = '';
+      coverage = '<span title="Most foods in the reference have no chromium value">Not tracked</span>';
     } else if(def.special==='sodium'){
       status = sodiumMg < 1500 ? 'good' : sodiumMg < 2300 ? 'warn' : 'bad';
       const label = sodiumMg < 1500 ? 'low' : sodiumMg < 2300 ? 'moderate' : 'high';
@@ -609,7 +613,7 @@ function render(){
 
     ${renderFullTable(dayTotal, pPct)}
 
-    <div class="footer-note">Pick whichever option you have on hand — each is pre-balanced to hit the same day target. Only micronutrients vary.</div>
+    <div class="footer-note">Swap freely within a group — options are pre-balanced. Two exceptions: the fat source is for chicken days only, and bread at lunch means bread twice (avoid list).</div>
   `;
 }
 
