@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-09-08"
+    "updated": "2026-10-28"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
   "foods": [
@@ -2014,6 +2014,49 @@
         {"name": "Vitamin B6", "value": "0.03mg"},
         {"name": "Magnesium", "value": "12mg"},
         {"name": "Sodium", "value": "46mg"},
+        {"name": "Choline", "value": "15mg"},
+        {"name": "Folate B9", "value": "5µg"},
+        {"name": "Niacin B3", "value": "0.1mg"},
+        {"name": "Thiamine B1", "value": "0.03mg"},
+        {"name": "Iodine", "value": "14µg"},
+        {"name": "Copper", "value": "0.01mg"},
+        {"name": "Manganese", "value": "0.004mg"},
+        {"name": "Iron", "value": "0.05mg"},
+        {"name": "Vitamin D", "value": "0.05µg"},
+        {"name": "Vitamin E", "value": "0.06mg"},
+        {"name": "Vitamin K", "value": "0.2µg"},
+        {"name": "Vitamin C", "value": "1mg"},
+        {"name": "Biotin B7", "value": "2µg"}
+      ]
+    },
+    {
+      "id": "raib-sweet",
+      "emoji": "🥣",
+      "name": "Raib, sweet (homemade, from Jaouda Sans Lactose)",
+      "note": "Same raib, sweetened with 4 level tbsp of white sugar (~50g) per 2L of milk; values computed from the raib entry",
+      "category": "Dairy",
+      "serving": "per 100g",
+      "kcal": 69,
+      "protein": 3.4,
+      "carbs": 7.0,
+      "fat": 3.2,
+      "fiber": 0,
+      "extra": [
+        {"name": "Calcium", "value": "121mg"},
+        {"name": "Added sugar", "value": "2.4g"},
+        {"name": "Live cultures", "value": "Lactobacillus, Streptococcus (from starter)"},
+        {"name": "Lactose", "value": "~0g"},
+        {"name": "Vitamin B12", "value": "0.5µg"},
+        {"name": "Riboflavin B2", "value": "0.14mg"},
+        {"name": "Phosphorus", "value": "93mg"},
+        {"name": "Potassium", "value": "138mg"},
+        {"name": "Vitamin A", "value": "26µg"},
+        {"name": "Zinc", "value": "0.6mg"},
+        {"name": "Selenium", "value": "2µg"},
+        {"name": "Pantothenic Acid (B5)", "value": "0.38mg"},
+        {"name": "Vitamin B6", "value": "0.03mg"},
+        {"name": "Magnesium", "value": "12mg"},
+        {"name": "Sodium", "value": "45mg"},
         {"name": "Choline", "value": "15mg"},
         {"name": "Folate B9", "value": "5µg"},
         {"name": "Niacin B3", "value": "0.1mg"},

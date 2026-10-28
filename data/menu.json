@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-09-08",
+    "updated": "2026-10-28",
     "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat are fixed across all three modes; only carbs move. Every mode runs the same ~300 kcal deficit, so a fully-rest week and a fully-training week lose the same amount — no penalty for missing a session, no need to decide the day type in advance. Bread appears once a day, at breakfast only."
   },
   "targets": {
@@ -383,6 +383,28 @@
                 {
                   "food": "jaouda-perly-nature",
                   "qty": 170
+                }
+              ]
+            },
+            {
+              "label": "Sweet raib, homemade ×2",
+              "items": [
+                {
+                  "food": "raib-sweet",
+                  "qty": 400
+                }
+              ]
+            },
+            {
+              "label": "Sweet raib ×1 + Perly Nature",
+              "items": [
+                {
+                  "food": "raib-sweet",
+                  "qty": 200
+                },
+                {
+                  "food": "jaouda-perly-nature",
+                  "qty": 85
                 }
               ]
             }
