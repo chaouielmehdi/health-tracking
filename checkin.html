@@ -656,7 +656,11 @@ function buildText(sentIso){
   if(ex.length) L.push(ex.join(' · '));
   Object.entries(MENU.meals).forEach(([k,meal])=>{
     const m=M(k); L.push(''); L.push(meal.label.replace(/^\S+\s/,'').toUpperCase()+(m.time?' · '+m.time:''));
-    if(!touched(k)){ L.push('  ? not filled in (not eaten yet, or forgot)'); return; }
+    if(!touched(k)){
+      // a block with nothing planned today (the earned block on a rest day) isn't "unfilled"
+      const plannedToday=(meal.items||[]).length || (meal.choices||[]).length || ((meal.extraByDay&&meal.extraByDay[S.day])||[]).length;
+      L.push(plannedToday ? '  ? not filled in (not eaten yet, or forgot)' : '  (rest day: nothing planned here)'); return;
+    }
     (meal.items||[]).forEach((it,i)=>{ const s=itemSt(k,i,it); L.push(line(s.on, it.label, it.food, s.qty, plannedQty(it.qty))); });
     (meal.choices||[]).forEach(c=>{ const cs=choiceSt(k,c.id);
       if(cs.opt==null){ L.push(`  ? ${c.label}: not filled`); return; }
