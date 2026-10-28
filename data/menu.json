@@ -1,7 +1,7 @@
 {
   "meta": {
     "updated": "2026-10-28",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar."
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar. All salt is iodized: about ½ tsp (3g) a day for cooking and the table."
   },
   "targets": {
     "rest": {
@@ -75,6 +75,11 @@
           "label": "Black coffee (2 cups), no sugar",
           "food": "black-coffee",
           "qty": 200
+        },
+        {
+          "label": "Iodized salt (cooking + table, ½ tsp)",
+          "food": "salt-iodized",
+          "qty": 3
         }
       ]
     },

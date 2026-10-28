@@ -1817,6 +1817,23 @@
       ]
     },
     {
+      "id": "salt-iodized",
+      "emoji": "🧂",
+      "name": "Salt, iodized (Moroccan table salt)",
+      "note": "Sel iodé (KIO3); iodine set to ~10 mg/kg as eaten — Moroccan household salt tests far below the 20–40 mg/kg factory level",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "fiber": 0,
+      "extra": [
+        {"name": "Sodium", "value": "38758mg"},
+        {"name": "Iodine", "value": "1000µg"}
+      ]
+    },
+    {
       "id": "mustard",
       "emoji": "🟡",
       "name": "Mustard (prepared, yellow)",
