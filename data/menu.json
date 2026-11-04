@@ -1,7 +1,7 @@
 {
   "meta": {
-    "updated": "2026-10-28",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar. All salt is iodized: about ½ tsp (3g) a day for cooking and the table."
+    "updated": "2026-11-04",
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar. All salt is iodized: about ½ tsp (3g) a day for cooking and the table. Breakfast can be eggs with oats, bread and a whey shake, or protein pancakes sized to the same macros."
   },
   "targets": {
     "rest": {
@@ -87,21 +87,6 @@
       "label": "🌅 Breakfast",
       "items": [
         {
-          "label": "Bread (whole wheat)",
-          "food": "khobz-complet",
-          "qty": 25
-        },
-        {
-          "label": "Oats",
-          "food": "oats",
-          "qty": 20
-        },
-        {
-          "label": "Whey protein",
-          "food": "whey-iso100-30g",
-          "qty": 30
-        },
-        {
           "label": "Mint tea",
           "food": "mint-tea",
           "qty": 200
@@ -125,19 +110,31 @@
       "choices": [
         {
           "id": "eggPrep",
-          "label": "Eggs",
+          "label": "Breakfast — eggs or pancakes",
           "options": [
             {
-              "label": "3 whole eggs, boiled",
+              "label": "3 whole eggs, boiled + oats, bread, whey shake",
               "items": [
                 {
                   "food": "egg",
                   "qty": 174
+                },
+                {
+                  "food": "oats",
+                  "qty": 20
+                },
+                {
+                  "food": "khobz-complet",
+                  "qty": 25
+                },
+                {
+                  "food": "whey-iso100-30g",
+                  "qty": 30
                 }
               ]
             },
             {
-              "label": "3 whole eggs, fried with 3g oil + 1 garlic clove",
+              "label": "3 whole eggs, fried with 3g oil + 1 garlic clove + oats, bread, whey shake",
               "items": [
                 {
                   "food": "egg",
@@ -150,11 +147,23 @@
                 {
                   "food": "garlic",
                   "qty": 3
+                },
+                {
+                  "food": "oats",
+                  "qty": 20
+                },
+                {
+                  "food": "khobz-complet",
+                  "qty": 25
+                },
+                {
+                  "food": "whey-iso100-30g",
+                  "qty": 30
                 }
               ]
             },
             {
-              "label": "6 egg whites & 3 yolks (beldi), boiled",
+              "label": "6 egg whites & 3 yolks (beldi), boiled + oats, bread, whey shake",
               "items": [
                 {
                   "food": "egg-white",
@@ -163,11 +172,23 @@
                 {
                   "food": "egg-yolk",
                   "qty": 42
+                },
+                {
+                  "food": "oats",
+                  "qty": 20
+                },
+                {
+                  "food": "khobz-complet",
+                  "qty": 25
+                },
+                {
+                  "food": "whey-iso100-30g",
+                  "qty": 30
                 }
               ]
             },
             {
-              "label": "6 egg whites & 3 yolks (beldi), fried with 3g oil + 1 garlic clove",
+              "label": "6 egg whites & 3 yolks (beldi), fried with 3g oil + 1 garlic clove + oats, bread, whey shake",
               "items": [
                 {
                   "food": "egg-white",
@@ -184,6 +205,55 @@
                 {
                   "food": "garlic",
                   "qty": 3
+                },
+                {
+                  "food": "oats",
+                  "qty": 20
+                },
+                {
+                  "food": "khobz-complet",
+                  "qty": 25
+                },
+                {
+                  "food": "whey-iso100-30g",
+                  "qty": 30
+                }
+              ]
+            },
+            {
+              "label": "Protein pancakes — 2 eggs + 3 whites, 1 scoop whey, 20g oats, ¼ small banana, 4 almonds, blended; 3g olive oil in the pan; ½ tsp honey",
+              "items": [
+                {
+                  "food": "egg",
+                  "qty": 116
+                },
+                {
+                  "food": "egg-white",
+                  "qty": 99
+                },
+                {
+                  "food": "whey-iso100-30g",
+                  "qty": 30
+                },
+                {
+                  "food": "oats",
+                  "qty": 20
+                },
+                {
+                  "food": "banana",
+                  "qty": 25
+                },
+                {
+                  "food": "almonds",
+                  "qty": 5
+                },
+                {
+                  "food": "olive-oil",
+                  "qty": 3
+                },
+                {
+                  "food": "honey",
+                  "qty": 4
                 }
               ]
             }
