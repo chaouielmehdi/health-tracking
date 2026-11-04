@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-10-28"
+    "updated": "2026-11-04"
   },
-  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy"],
+  "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy", "Recipe"],
   "foods": [
     {
       "id": "whey-iso100-100g",
@@ -1817,6 +1817,39 @@
       ]
     },
     {
+      "id": "honey",
+      "emoji": "🍯",
+      "name": "Honey",
+      "note": "1 tsp ≈ 7g — values from USDA honey",
+      "category": "Condiment",
+      "serving": "per 100g",
+      "kcal": 304,
+      "protein": 0.3,
+      "carbs": 82.4,
+      "fat": 0,
+      "fiber": 0.2,
+      "extra": [
+        {"name": "Sugar", "value": "82.1g"},
+        {"name": "Potassium", "value": "52mg"},
+        {"name": "Calcium", "value": "6mg"},
+        {"name": "Iron", "value": "0.42mg"},
+        {"name": "Magnesium", "value": "2mg"},
+        {"name": "Phosphorus", "value": "4mg"},
+        {"name": "Zinc", "value": "0.22mg"},
+        {"name": "Sodium", "value": "4mg"},
+        {"name": "Copper", "value": "0.036mg"},
+        {"name": "Manganese", "value": "0.08mg"},
+        {"name": "Selenium", "value": "0.8µg"},
+        {"name": "Vitamin C", "value": "0.5mg"},
+        {"name": "Riboflavin B2", "value": "0.038mg"},
+        {"name": "Niacin B3", "value": "0.121mg"},
+        {"name": "Pantothenic Acid (B5)", "value": "0.068mg"},
+        {"name": "Vitamin B6", "value": "0.024mg"},
+        {"name": "Folate B9", "value": "2µg"},
+        {"name": "Choline", "value": "2.2mg"}
+      ]
+    },
+    {
       "id": "salt-iodized",
       "emoji": "🧂",
       "name": "Salt, iodized (Moroccan table salt)",
@@ -2218,6 +2251,47 @@
       "fiber": 0,
       "extra": [
         {"name": "TDS", "value": "~4mg"}
+      ]
+    },
+    {
+      "id": "protein-pancakes",
+      "emoji": "🥞",
+      "name": "Protein pancakes (homemade recipe)",
+      "note": "Whole batch ≈ 517g raw: 100g oats, 1 banana, 4 eggs, 1 scoop whey, ~20g almonds, blended and pan-cooked in ~5g olive oil, ~10g honey on top",
+      "category": "Recipe",
+      "serving": "per 100g of the raw batch",
+      "kcal": 218,
+      "protein": 14.8,
+      "carbs": 21.2,
+      "fat": 8.7,
+      "fiber": 3.1,
+      "extra": [
+        {"name": "Magnesium", "value": "57.9mg"},
+        {"name": "Vitamin E", "value": "1.71mg"},
+        {"name": "Manganese", "value": "1.11mg"},
+        {"name": "Copper", "value": "0.191mg"},
+        {"name": "Phosphorus", "value": "232mg"},
+        {"name": "Riboflavin B2", "value": "0.346mg"},
+        {"name": "Calcium", "value": "31.0mg"},
+        {"name": "Iron", "value": "1.55mg"},
+        {"name": "Potassium", "value": "291mg"},
+        {"name": "Zinc", "value": "1.49mg"},
+        {"name": "Vitamin B6", "value": "0.146mg"},
+        {"name": "Folate B9", "value": "40.4µg"},
+        {"name": "Niacin B3", "value": "0.506mg"},
+        {"name": "Thiamine B1", "value": "0.181mg"},
+        {"name": "Pantothenic Acid (B5)", "value": "1.08mg"},
+        {"name": "Choline", "value": "144mg"},
+        {"name": "Sodium", "value": "73.8mg"},
+        {"name": "Selenium", "value": "21.3µg"},
+        {"name": "Vitamin A", "value": "47.1µg"},
+        {"name": "Vitamin C", "value": "2.03mg"},
+        {"name": "Vitamin D", "value": "1.01µg"},
+        {"name": "Vitamin K", "value": "1.20µg"},
+        {"name": "Iodine", "value": "13.0µg"},
+        {"name": "Chromium", "value": "0.967µg"},
+        {"name": "Biotin B7", "value": "13.9µg"},
+        {"name": "Vitamin B12", "value": "0.449µg"}
       ]
     }
   ]
