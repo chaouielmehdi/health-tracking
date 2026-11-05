@@ -417,6 +417,7 @@ function progress(){
 
 // ---------- status bands (same as the menu page) ----------
 function statusFor(pct, kind){
+  pct=Math.round(pct); // judge the same whole percent the card shows, so colour and number agree
   if(kind==='protein'){ if(pct>=100&&pct<=120) return 'good'; if((pct>=90&&pct<100)||(pct>120&&pct<=135)) return 'warn'; return 'bad'; }
   if(kind==='carbs'){ if(pct>=85&&pct<=100) return 'good'; if((pct>=70&&pct<85)||(pct>100&&pct<=115)) return 'warn'; return 'bad'; }
   if(kind==='fat'){ if(pct>=80&&pct<=100) return 'good'; if((pct>=70&&pct<80)||(pct>100&&pct<=115)) return 'warn'; return 'bad'; }

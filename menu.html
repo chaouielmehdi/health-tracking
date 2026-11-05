@@ -108,9 +108,13 @@
   .impact-delta{font-family:var(--mono);font-weight:700;white-space:nowrap;}
   .impact-delta.good{color:var(--good);}
   .impact-delta.bad{color:var(--bad);}
+  .impact-pct{font-weight:700;}
+  .impact-pct.good{color:var(--good);}
+  .impact-pct.warn{color:var(--warn);}
+  .impact-pct.bad{color:var(--bad);}
 
   /* FULL NUTRIENT TABLE (matching tracking report UI) */
-  .full-table-wrap{margin-top:24px;border:1px solid var(--panel-border);border-radius:14px;overflow:hidden;}
+  .full-table-wrap{margin-top:24px;border:1px solid var(--panel-border);border-radius:14px;overflow-x:auto;}
   table.full-table{width:100%;border-collapse:collapse;table-layout:fixed;}
   table.full-table th{background:var(--panel);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim2);font-weight:700;text-align:left;padding:10px 10px;border-bottom:1px solid var(--panel-border);}
   table.full-table th:first-child{width:5%;text-align:center;}
@@ -131,6 +135,7 @@
   @media (max-width:600px){
     table.full-table{table-layout:auto;}
     table.full-table th, table.full-table td{padding:8px 7px;font-size:10.5px;}
+    .ft-coverage{white-space:normal;}
   }
 
   @media(max-width:560px){
@@ -286,6 +291,7 @@ function computeMicronutrients(){
 }
 
 function microStatus(pct){
+  pct = Math.round(pct); // judge the same whole percent the page shows, so colour and number agree
   if(pct>=90) return 'good';
   if(pct>=50) return 'warn';
   return 'bad';
@@ -362,6 +368,7 @@ function renderFullTable(dayTotal, proteinPct){
 function fmt1(n){ return Math.round(n*10)/10; }
 function statusFor(pct, kind){
   // directional bands matching the health-tracking skill
+  pct = Math.round(pct); // judge the same whole percent the page shows, so colour and number agree
   if(kind==='protein'){
     if(pct>=100&&pct<=120) return 'good';
     if((pct>=90&&pct<100)||(pct>120&&pct<=135)) return 'warn';
@@ -526,29 +533,30 @@ function announceImpact(before, after){
 
   // --- micronutrient toast (bottom): same format as the table row + (Δpp%) ---
   const microDeltas = [];
+  // a row whose colour changes (green ↔ amber ↔ red) always makes the list, even when the change is small
+  const pushDelta = (name, bPct, aPct, aVal, unit, tgt)=>{
+    const ppDelta = aPct - bPct, crossed = microStatus(bPct) !== microStatus(aPct);
+    if(Math.abs(ppDelta) > 1 || crossed) microDeltas.push({name, ppDelta, aVal, unit, target:tgt, pctAfter:aPct, crossed});
+  };
   NUTRIENT_DEFS.filter(d=>!d.special).forEach(def=>{
     const b = before.micros.totals[def.name] || 0;
     const a = after.micros.totals[def.name] || 0;
     const targetMgEq = def.target * UNIT_TO_MG[def.unit];
-    const ppDelta = (a-b)/targetMgEq*100;
-    if(Math.abs(ppDelta) > 1){
-      microDeltas.push({name:def.name, ppDelta, aVal:fmtNutrient(a, def.unit), unit:def.unit, target:def.target, pctAfter:a/targetMgEq*100});
-    }
+    pushDelta(def.name, b/targetMgEq*100, a/targetMgEq*100, fmtNutrient(a, def.unit), def.unit, def.target);
   });
   // fiber uses its own g-based total, not the mg-equivalent map
-  const fiberPpDelta = (after.micros.fiberG - before.micros.fiberG)/30*100;
-  if(Math.abs(fiberPpDelta) > 1){
-    microDeltas.push({name:'Fiber', ppDelta:fiberPpDelta, aVal:fmt1(after.micros.fiberG), unit:'g', target:30, pctAfter:after.micros.fiberG/30*100});
-  }
+  pushDelta('Fiber', before.micros.fiberG/30*100, after.micros.fiberG/30*100, fmt1(after.micros.fiberG), 'g', 30);
 
-  microDeltas.sort((x,y)=>Math.abs(y.ppDelta)-Math.abs(x.ppDelta));
-  const top = microDeltas.slice(0,6);
+  // colour changes first, then the biggest moves
+  microDeltas.sort((x,y)=>(y.crossed-x.crossed) || (Math.abs(y.ppDelta)-Math.abs(x.ppDelta)));
+  const top = microDeltas.slice(0, Math.max(6, microDeltas.filter(d=>d.crossed).length));
 
   const bottomEl = document.getElementById('toast-bottom');
   if(top.length){
-    const rows = top.map(d=>
-      `<div class="impact-row"><span class="impact-name">${d.name}</span><span class="impact-value">~${d.aVal}${d.unit} / ${d.target}${d.unit} (${Math.round(d.pctAfter)}%) <span class="impact-delta ${d.ppDelta>0?'good':'bad'}">(${fmtPct(d.ppDelta)}%)</span></span></div>`
-    ).join('');
+    const rows = top.map(d=>{
+      const pct = d.crossed ? `<span class="impact-pct ${microStatus(d.pctAfter)}">(${Math.round(d.pctAfter)}%)</span>` : `(${Math.round(d.pctAfter)}%)`;
+      return `<div class="impact-row"><span class="impact-name">${d.name}</span><span class="impact-value">~${d.aVal}${d.unit} / ${d.target}${d.unit} ${pct} <span class="impact-delta ${d.ppDelta>0?'good':'bad'}">(${fmtPct(d.ppDelta)}%)</span></span></div>`;
+    }).join('');
     showToast(bottomEl, `<div class="impact-title">Micronutrient impact</div>${rows}`);
   }
 }
