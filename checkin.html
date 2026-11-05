@@ -286,7 +286,7 @@ function parseQty(v){
 }
 
 let S = null;
-function blank(date){ return {v:3,date,day:'rest',activity:'',sleep:'',bloating:null,rules:{},broke:{},notes:'',meals:{},updatedAt:0,sentAt:null,sentStartedAt:0}; }
+function blank(date){ return {v:4,date,day:'rest',activity:'',sleep:'',bloating:null,rules:{},broke:{},notes:'',meals:{},updatedAt:0,sentAt:null,sentStartedAt:0}; }
 function M(k){ return S.meals[k] || (S.meals[k] = {time:'',note:'',items:{},choices:{},extra:{}}); }
 
 // ---------- menu helpers ----------
@@ -336,7 +336,38 @@ function extraSt(k,row){ const st=M(k).extra[row.food]; return {on:!!(st&&st.on)
 function choiceSt(k,cid){ const m=M(k); return m.choices[cid] || (m.choices[cid]={opt:null,qtys:{}}); }
 // a pick is saved with its option label, so adding options to the menu never re-points an old pick
 function pickOpt(k,c,idx){ const cs=choiceSt(k,c.id); cs.opt=idx; cs.label=c.options[idx].label; return cs; }
+// v2/v3 saves had 7 fixed breakfast rows (bread, oats, whey, tea, sugar, D3K2, omega).
+// Bread, oats and whey now sit inside each egg option, so their ticks move into the egg pick.
+const OLD_BF_ROWS = ['khobz-complet','oats','whey-iso100-30g'];
+function eggChoice(){ return ((MENU.meals.breakfast||{}).choices||[]).find(c=>c.id==='eggPrep'); }
+function unfoldOldBreakfast(b){
+  const it=b.items||{}, old=[it[0],it[1],it[2]];
+  b.items={}; [3,4,5,6].forEach((o,n)=>{ if(it[o]) b.items[n]=it[o]; });
+  // an old egg label is the start of the new one: "3 whole eggs, boiled" → "3 whole eggs, boiled + oats, bread, whey shake"
+  const c=eggChoice(), cs=b.choices && b.choices.eggPrep;
+  if(c && cs && cs.label!=null){ const o=c.options.find(o=>o.label.startsWith(cs.label+' + ')); if(o) cs.label=o.label; }
+  // label-less (v2) saves: "Didn't have it" sat at index 4, where the pancakes are now
+  if(c && cs && cs.label==null && cs.opt===4){ cs.opt=c.options.length-1; cs.qtys={}; }
+  return old;
+}
+function foldOldBreakfast(b, old){
+  const c=eggChoice(); if(!c) return;
+  b.choices=b.choices||{};
+  let cs=b.choices.eggPrep;
+  const holds=i=>optItems(c.options[i]).some(x=>OLD_BF_ROWS.includes(x.food));
+  if(!cs || cs.opt==null || !holds(cs.opt)){
+    // bread/oats/whey ticked without eggs: keep them under the first egg option with the eggs at 0
+    if(!old.some(s=>s&&s.on) || !holds(0)) return;
+    const q={}; optItems(c.options[0]).forEach((x,j)=>{ if(!OLD_BF_ROWS.includes(x.food)) q[j]=0; });
+    cs=b.choices.eggPrep={opt:0, label:c.options[0].label, qtys:{0:q}};
+  }
+  const its=optItems(c.options[cs.opt]), q=Object.assign({}, (cs.qtys||{})[cs.opt]);
+  OLD_BF_ROWS.forEach((food,i)=>{ const j=its.findIndex(x=>x.food===food), s=old[i]; if(j<0) return;
+    if(!s || !s.on) q[j]=0; else if(s.qty!=null) q[j]=s.qty; });
+  cs.qtys=cs.qtys||{}; cs.qtys[cs.opt]=q;
+}
 function normalize(st){
+  const ob = st.v<4 ? st.meals.breakfast : null, oldRows = ob ? unfoldOldBreakfast(ob) : null;
   Object.entries(MENU.meals).forEach(([k,meal])=>(meal.choices||[]).forEach(c=>{
     const cs=st.meals[k] && st.meals[k].choices && st.meals[k].choices[c.id];
     if(!cs || cs.opt==null) return;
@@ -348,7 +379,8 @@ function normalize(st){
     if(idx!==cs.opt){ const q=cs.qtys||{}, moved={}; if(idx!=null && q[cs.opt]) moved[idx]=q[cs.opt]; cs.qtys=moved; cs.opt=idx; }
     if(idx!=null) cs.label=c.options[idx].label; else delete cs.label;
   }));
-  st.v=3; return st;
+  if(ob) foldOldBreakfast(ob, oldRows);
+  st.v=4; return st;
 }
 function subQty(k,cid,j,it){ const cs=choiceSt(k,cid), e=cs.qtys[cs.opt]; return e && e[j]!=null ? e[j] : it.qty; }
 
@@ -537,7 +569,7 @@ function touch(){
 function saveLocal(){ try{ localStorage.setItem(STORE_PREFIX+S.date, JSON.stringify(S)); }catch(e){} }
 function flushLocal(){ if(saveTimer){ clearTimeout(saveTimer); saveTimer=null; saveLocal(); } }
 function loadLocal(date){
-  try{ const raw=localStorage.getItem(STORE_PREFIX+date); if(raw){ const o=JSON.parse(raw); if(o && o.date===date && (o.v===2 || o.v===3)) return normalize(o); } }catch(e){}
+  try{ const raw=localStorage.getItem(STORE_PREFIX+date); if(raw){ const o=JSON.parse(raw); if(o && o.date===date && (o.v>=2 && o.v<=4)) return normalize(o); } }catch(e){}
   return null;
 }
 addEventListener('pagehide', flushLocal);

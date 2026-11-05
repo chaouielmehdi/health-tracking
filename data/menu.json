@@ -85,6 +85,7 @@
     },
     "breakfast": {
       "label": "🌅 Breakfast",
+      "note": "Pancakes match the eggs on calories and macros. With one whole egg fewer and no bread, they bring a little less iodine and vitamin B1, so those two can read just under target on pancake days.",
       "items": [
         {
           "label": "Mint tea",
@@ -110,7 +111,7 @@
       "choices": [
         {
           "id": "eggPrep",
-          "label": "Breakfast — eggs or pancakes",
+          "label": "Eggs or pancakes",
           "options": [
             {
               "label": "3 whole eggs, boiled + oats, bread, whey shake",
@@ -229,7 +230,7 @@
                 },
                 {
                   "food": "egg-white",
-                  "qty": 99
+                  "qty": 87
                 },
                 {
                   "food": "whey-iso100-30g",
@@ -253,7 +254,7 @@
                 },
                 {
                   "food": "honey",
-                  "qty": 4
+                  "qty": 3.5
                 }
               ]
             }
