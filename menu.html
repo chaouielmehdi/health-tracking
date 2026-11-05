@@ -388,7 +388,7 @@ function statusFor(pct, kind){
   return pct;
 }
 function kcalStatus(actual, target){
-  const diff = Math.abs(actual-target);
+  const diff = Math.abs(Math.round(actual)-target); // the card shows whole kcal, so judge whole kcal
   if(diff<=100) return 'good';
   if(diff<=300) return 'warn';
   return 'bad';
@@ -534,9 +534,11 @@ function announceImpact(before, after){
   // --- micronutrient toast (bottom): same format as the table row + (Δpp%) ---
   const microDeltas = [];
   // a row whose colour changes (green ↔ amber ↔ red) always makes the list, even when the change is small
-  const pushDelta = (name, bPct, aPct, aVal, unit, tgt)=>{
+  const pushDelta = (name, bPct, aPct, aVal, unit, tgt, approx=true)=>{
     const ppDelta = aPct - bPct, crossed = microStatus(bPct) !== microStatus(aPct);
-    if(Math.abs(ppDelta) > 1 || crossed) microDeltas.push({name, ppDelta, aVal, unit, target:tgt, pctAfter:aPct, crossed});
+    // the delta shown is the change in the whole percents the page displays, so a colour change never reads "+0%"
+    const shownDelta = Math.round(aPct) - Math.round(bPct);
+    if(Math.abs(ppDelta) > 1 || crossed) microDeltas.push({name, ppDelta, shownDelta, aVal, unit, target:tgt, pctAfter:aPct, crossed, approx});
   };
   NUTRIENT_DEFS.filter(d=>!d.special).forEach(def=>{
     const b = before.micros.totals[def.name] || 0;
@@ -546,6 +548,9 @@ function announceImpact(before, after){
   });
   // fiber uses its own g-based total, not the mg-equivalent map
   pushDelta('Fiber', before.micros.fiberG/30*100, after.micros.fiberG/30*100, fmt1(after.micros.fiberG), 'g', 30);
+  // water is counted in litres against its own 3L row
+  const waterDef = NUTRIENT_DEFS.find(d=>d.special==='water');
+  if(waterDef) pushDelta('Water', before.micros.waterMl/10/waterDef.target, after.micros.waterMl/10/waterDef.target, fmt1(after.micros.waterMl/1000), 'L', waterDef.target, false);
 
   // colour changes first, then the biggest moves
   microDeltas.sort((x,y)=>(y.crossed-x.crossed) || (Math.abs(y.ppDelta)-Math.abs(x.ppDelta)));
@@ -555,7 +560,7 @@ function announceImpact(before, after){
   if(top.length){
     const rows = top.map(d=>{
       const pct = d.crossed ? `<span class="impact-pct ${microStatus(d.pctAfter)}">(${Math.round(d.pctAfter)}%)</span>` : `(${Math.round(d.pctAfter)}%)`;
-      return `<div class="impact-row"><span class="impact-name">${d.name}</span><span class="impact-value">~${d.aVal}${d.unit} / ${d.target}${d.unit} ${pct} <span class="impact-delta ${d.ppDelta>0?'good':'bad'}">(${fmtPct(d.ppDelta)}%)</span></span></div>`;
+      return `<div class="impact-row"><span class="impact-name">${d.name}</span><span class="impact-value">${d.approx?'~':''}${d.aVal}${d.unit} / ${d.target}${d.unit} ${pct} <span class="impact-delta ${d.shownDelta>0?'good':'bad'}">(${fmtPct(d.shownDelta)}%)</span></span></div>`;
     }).join('');
     showToast(bottomEl, `<div class="impact-title">Micronutrient impact</div>${rows}`);
   }

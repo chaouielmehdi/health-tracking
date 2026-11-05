@@ -423,7 +423,7 @@ function statusFor(pct, kind){
   if(kind==='fat'){ if(pct>=80&&pct<=100) return 'good'; if((pct>=70&&pct<80)||(pct>100&&pct<=115)) return 'warn'; return 'bad'; }
   return 'good';
 }
-function kcalStatus(a,t){ const d=Math.abs(a-t); return d<=100?'good':d<=300?'warn':'bad'; }
+function kcalStatus(a,t){ const d=Math.abs(Math.round(a)-t); // the card shows whole kcal return d<=100?'good':d<=300?'warn':'bad'; }
 function macroCard(name, value, target, pct, status, unit){
   return `<div class="macro-card"><div class="macro-name">${name}</div>
     <div class="macro-value">${value}${unit}</div><div class="macro-target">/ ${target}${unit}</div>
