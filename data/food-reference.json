@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Health & Body Food Reference",
-    "updated": "2026-11-05"
+    "updated": "2026-11-20"
   },
   "categories": ["Supplement", "Poultry", "Meat", "Fish", "Egg", "Grain/Carb", "Fat/Nut", "Vegetable", "Fruit", "Drink", "Condiment", "Dairy", "Recipe"],
   "foods": [
@@ -39,13 +39,57 @@
         {"name": "Sugar", "value": "~0.5g"},
         {"name": "BCAAs", "value": "5.5g"},
         {"name": "Calcium", "value": "~120mg"},
-        {"name": "Sodium", "value": "50mg"},
-        {"name": "Potassium", "value": "170mg"},
+        {"name": "Sodium", "value": "~110mg"},
+        {"name": "Potassium", "value": "~100mg"},
         {"name": "Phosphorus", "value": "90mg"},
         {"name": "Magnesium", "value": "8mg"},
         {"name": "Iron", "value": "0.2mg"},
         {"name": "Zinc", "value": "0.3mg"},
         {"name": "Riboflavin B2", "value": "0.1mg"}
+      ]
+    },
+    {
+      "id": "whey-hydropure-100g",
+      "emoji": "🥤",
+      "name": "Whey protein — Nutrabolics Hydropure",
+      "note": "Hydrolyzed whey (WPH90 + WPH80), Chocolate Peanut Butter. Contains peanut flour; sucralose + stevia; xanthan & cellulose gum",
+      "category": "Supplement",
+      "serving": "per 100g",
+      "kcal": 363,
+      "protein": 78.2,
+      "carbs": 8.4,
+      "fat": 2.8,
+      "fiber": 2.8,
+      "extra": [
+        {"name": "Sugar", "value": "<2.8g"},
+        {"name": "Saturated fat", "value": "1.4g"},
+        {"name": "BCAAs", "value": "17g"},
+        {"name": "Calcium", "value": "335mg"},
+        {"name": "Sodium", "value": "223mg"},
+        {"name": "Potassium", "value": "754mg"},
+        {"name": "Iron", "value": "1.7mg"}
+      ]
+    },
+    {
+      "id": "whey-hydropure-scoop",
+      "emoji": "🥤",
+      "name": "Whey protein — Nutrabolics Hydropure",
+      "note": "Hydrolyzed whey (WPH90 + WPH80), Chocolate Peanut Butter. Contains peanut flour; sucralose + stevia; xanthan & cellulose gum",
+      "category": "Supplement",
+      "serving": "per scoop (35.8g)",
+      "kcal": 130,
+      "protein": 28,
+      "carbs": 3,
+      "fat": 1,
+      "fiber": 1,
+      "extra": [
+        {"name": "Sugar", "value": "<1g"},
+        {"name": "Saturated fat", "value": "0.5g"},
+        {"name": "BCAAs", "value": "6.1g"},
+        {"name": "Calcium", "value": "120mg"},
+        {"name": "Sodium", "value": "80mg"},
+        {"name": "Potassium", "value": "270mg"},
+        {"name": "Iron", "value": "0.6mg"}
       ]
     },
     {

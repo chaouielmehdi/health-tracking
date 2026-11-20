@@ -238,14 +238,14 @@
 let MENU = null, FOODS = null, RULES = null;
 
 // most foods are stored per 100g; these are per serving
-const BASIS = {'whey-iso100-30g':30,'whey-iso100-100g':100,'egg':58,'egg-beldi':43,
+const BASIS = {'whey-iso100-30g':30,'whey-iso100-100g':100,'whey-hydropure-scoop':35.8,'whey-hydropure-100g':100,'egg':58,'egg-beldi':43,
   'water-sidi-ali':1000,'water-ciel':1000,'water-ghayt':1000,'water-aquafina':1000,
   'now-vitamin-d3-k2':1,'grassberg-omega3-premium':1};
 const ML = ['mint-tea','black-coffee','water-sidi-ali','water-ciel','water-ghayt','water-aquafina'];
 const CAPS = ['now-vitamin-d3-k2','grassberg-omega3-premium'];
 // grams per piece, for the "≈ 3 eggs" hints
 const PIECE = {'egg':[58,'egg','eggs'],'egg-beldi':[43,'egg','eggs'],'egg-white':[29,'white','whites'],'egg-yolk':[14,'yolk','yolks'],
-  'whey-iso100-30g':[30,'scoop','scoops'],'banana':[120,'banana','bananas'],'dates':[8,'date','dates'],'kiwi':[80,'kiwi','kiwis'],
+  'whey-iso100-30g':[30,'scoop','scoops'],'whey-hydropure-100g':[35.8,'scoop','scoops'],'whey-hydropure-scoop':[35.8,'scoop','scoops'],'banana':[120,'banana','bananas'],'dates':[8,'date','dates'],'kiwi':[80,'kiwi','kiwis'],
   'raib':[200,'portion','portions'],'raib-sweet':[200,'portion','portions'],'jaouda-perly-nature':[85,'cup','cups'],'black-coffee':[100,'cup','cups'],
   'sugar-white':[4,'tsp','tsp'],'salt-iodized':[6,'tsp','tsp'],'honey':[7,'tsp','tsp'],'almonds':[1.2,'almond','almonds'],'garlic':[3,'clove','cloves'],'mint-tea':[200,'glass','glasses']};
 const TIMED = {breakfast:1,lunch:1,dinner:1,earned:1};
@@ -354,15 +354,16 @@ function foldOldBreakfast(b, old){
   const c=eggChoice(); if(!c) return;
   b.choices=b.choices||{};
   let cs=b.choices.eggPrep;
-  const holds=i=>optItems(c.options[i]).some(x=>OLD_BF_ROWS.includes(x.food));
+  const oldRow=x=>OLD_BF_ROWS.includes(x.food) || /^whey-/.test(x.food); // the old whey row was ISO100; the menu's whey may differ
+  const holds=i=>optItems(c.options[i]).some(oldRow);
   if(!cs || cs.opt==null || !holds(cs.opt)){
     // bread/oats/whey ticked without eggs: keep them under the first egg option with the eggs at 0
     if(!old.some(s=>s&&s.on) || !holds(0)) return;
-    const q={}; optItems(c.options[0]).forEach((x,j)=>{ if(!OLD_BF_ROWS.includes(x.food)) q[j]=0; });
+    const q={}; optItems(c.options[0]).forEach((x,j)=>{ if(!oldRow(x)) q[j]=0; });
     cs=b.choices.eggPrep={opt:0, label:c.options[0].label, qtys:{0:q}};
   }
   const its=optItems(c.options[cs.opt]), q=Object.assign({}, (cs.qtys||{})[cs.opt]);
-  OLD_BF_ROWS.forEach((food,i)=>{ const j=its.findIndex(x=>x.food===food), s=old[i]; if(j<0) return;
+  OLD_BF_ROWS.forEach((food,i)=>{ const j=its.findIndex(x=>x.food===food || (i===2 && /^whey-/.test(x.food))), s=old[i]; if(j<0) return;
     if(!s || !s.on) q[j]=0; else if(s.qty!=null) q[j]=s.qty; });
   cs.qtys=cs.qtys||{}; cs.qtys[cs.opt]=q;
 }
@@ -372,6 +373,8 @@ function normalize(st){
     const cs=st.meals[k] && st.meals[k].choices && st.meals[k].choices[c.id];
     if(!cs || cs.opt==null) return;
     let idx = cs.label!=null ? c.options.findIndex(o=>o.label===cs.label) : -1;
+    // an option whose details were reworded keeps its name before " — " ("Protein pancakes — …"): match on that name when only one option has it
+    if(idx<0 && cs.label!=null && cs.label.includes(' — ')){ const head=cs.label.split(' — ')[0], hits=c.options.map((o,i)=>o.label.split(' — ')[0]===head?i:-1).filter(i=>i>=0); if(hits.length===1) idx=hits[0]; }
     // v2 saves had no labels; their dairy "Didn't have it" sat at index 3, before the sweet raib options existed
     if(idx<0 && st.v===2 && c.id==='dairy' && cs.opt===3) idx=c.options.length-1;
     // only label-less (v2) saves fall back to the old position; a labelled pick whose option is gone reads as not filled
