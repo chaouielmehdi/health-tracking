@@ -1,7 +1,7 @@
 {
   "meta": {
-    "updated": "2026-11-04",
-    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar. All salt is iodized: about ½ tsp (3g) a day for cooking and the table. Breakfast can be eggs with oats, bread and a whey shake, or protein pancakes sized to the same macros."
+    "updated": "2026-11-20",
+    "note": "Standard menu — one CORE eaten identically every day (= the Rest day), plus an EARNED BLOCK added only after the activity actually happened. Protein and fat stay the same across all three modes; only carbs move, and every mode runs the same ~300 kcal deficit. Lunch comes with a small starch (rice, or bread on days you accept bread twice). Kefta is counted as 80/20 and cooks the vegetables in its own fat; chicken brings its own 10g of oil. Coffee is unsweetened and the tea takes ½ tsp of sugar. All salt is iodized: about ½ tsp (3g) a day for cooking and the table. Breakfast can be eggs with oats, bread and a whey shake, or protein pancakes sized to the same macros. The whey is Nutrabolics Hydropure, weighed in grams: 32g at breakfast (about 1 scoop) and 48g in the evening (about 1⅓ scoops)."
   },
   "targets": {
     "rest": {
@@ -122,15 +122,15 @@
                 },
                 {
                   "food": "oats",
-                  "qty": 20
+                  "qty": 18
                 },
                 {
                   "food": "khobz-complet",
                   "qty": 25
                 },
                 {
-                  "food": "whey-iso100-30g",
-                  "qty": 30
+                  "food": "whey-hydropure-100g",
+                  "qty": 32
                 }
               ]
             },
@@ -151,15 +151,15 @@
                 },
                 {
                   "food": "oats",
-                  "qty": 20
+                  "qty": 18
                 },
                 {
                   "food": "khobz-complet",
                   "qty": 25
                 },
                 {
-                  "food": "whey-iso100-30g",
-                  "qty": 30
+                  "food": "whey-hydropure-100g",
+                  "qty": 32
                 }
               ]
             },
@@ -176,15 +176,15 @@
                 },
                 {
                   "food": "oats",
-                  "qty": 20
+                  "qty": 18
                 },
                 {
                   "food": "khobz-complet",
                   "qty": 25
                 },
                 {
-                  "food": "whey-iso100-30g",
-                  "qty": 30
+                  "food": "whey-hydropure-100g",
+                  "qty": 32
                 }
               ]
             },
@@ -209,20 +209,20 @@
                 },
                 {
                   "food": "oats",
-                  "qty": 20
+                  "qty": 18
                 },
                 {
                   "food": "khobz-complet",
                   "qty": 25
                 },
                 {
-                  "food": "whey-iso100-30g",
-                  "qty": 30
+                  "food": "whey-hydropure-100g",
+                  "qty": 32
                 }
               ]
             },
             {
-              "label": "Protein pancakes — 2 eggs + 3 whites, 1 scoop whey, 20g oats, ¼ small banana, 4 almonds, blended; 3g olive oil in the pan; ½ tsp honey",
+              "label": "Protein pancakes — 2 eggs + 3 whites, 32g whey (about 1 scoop), 18g oats, ¼ small banana, 4 almonds, blended; 3g olive oil in the pan; ½ tsp honey",
               "items": [
                 {
                   "food": "egg",
@@ -233,12 +233,12 @@
                   "qty": 87
                 },
                 {
-                  "food": "whey-iso100-30g",
-                  "qty": 30
+                  "food": "whey-hydropure-100g",
+                  "qty": 32
                 },
                 {
                   "food": "oats",
-                  "qty": 20
+                  "qty": 18
                 },
                 {
                   "food": "banana",
@@ -575,7 +575,7 @@
         {
           "label": "Walnuts",
           "food": "walnuts",
-          "qty": 10
+          "qty": 9
         },
         {
           "label": "Cashews",
@@ -594,8 +594,8 @@
         },
         {
           "label": "Whey protein",
-          "food": "whey-iso100-30g",
-          "qty": 45
+          "food": "whey-hydropure-100g",
+          "qty": 48
         }
       ]
     },
