@@ -62,6 +62,7 @@
       "fiber": 2.8,
       "extra": [
         {"name": "Sugar", "value": "<2.8g"},
+        {"name": "Saturated fat", "value": "1.4g"},
         {"name": "BCAAs", "value": "17g"},
         {"name": "Calcium", "value": "335mg"},
         {"name": "Sodium", "value": "223mg"},
@@ -83,6 +84,7 @@
       "fiber": 1,
       "extra": [
         {"name": "Sugar", "value": "<1g"},
+        {"name": "Saturated fat", "value": "0.5g"},
         {"name": "BCAAs", "value": "6.1g"},
         {"name": "Calcium", "value": "120mg"},
         {"name": "Sodium", "value": "80mg"},

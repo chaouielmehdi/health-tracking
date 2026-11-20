@@ -354,11 +354,12 @@ function foldOldBreakfast(b, old){
   const c=eggChoice(); if(!c) return;
   b.choices=b.choices||{};
   let cs=b.choices.eggPrep;
-  const holds=i=>optItems(c.options[i]).some(x=>OLD_BF_ROWS.includes(x.food) || /^whey-/.test(x.food));
+  const oldRow=x=>OLD_BF_ROWS.includes(x.food) || /^whey-/.test(x.food); // the old whey row was ISO100; the menu's whey may differ
+  const holds=i=>optItems(c.options[i]).some(oldRow);
   if(!cs || cs.opt==null || !holds(cs.opt)){
     // bread/oats/whey ticked without eggs: keep them under the first egg option with the eggs at 0
     if(!old.some(s=>s&&s.on) || !holds(0)) return;
-    const q={}; optItems(c.options[0]).forEach((x,j)=>{ if(!OLD_BF_ROWS.includes(x.food)) q[j]=0; });
+    const q={}; optItems(c.options[0]).forEach((x,j)=>{ if(!oldRow(x)) q[j]=0; });
     cs=b.choices.eggPrep={opt:0, label:c.options[0].label, qtys:{0:q}};
   }
   const its=optItems(c.options[cs.opt]), q=Object.assign({}, (cs.qtys||{})[cs.opt]);
@@ -372,8 +373,8 @@ function normalize(st){
     const cs=st.meals[k] && st.meals[k].choices && st.meals[k].choices[c.id];
     if(!cs || cs.opt==null) return;
     let idx = cs.label!=null ? c.options.findIndex(o=>o.label===cs.label) : -1;
-    // an option whose details were reworded keeps its name before " — " ("Protein pancakes — …"): match on that name when only one option has it, with the amounts back to plan
-    if(idx<0 && cs.label!=null && cs.label.includes(' — ')){ const head=cs.label.split(' — ')[0], hits=c.options.map((o,i)=>o.label.split(' — ')[0]===head?i:-1).filter(i=>i>=0); if(hits.length===1){ idx=hits[0]; cs.qtys={}; } }
+    // an option whose details were reworded keeps its name before " — " ("Protein pancakes — …"): match on that name when only one option has it
+    if(idx<0 && cs.label!=null && cs.label.includes(' — ')){ const head=cs.label.split(' — ')[0], hits=c.options.map((o,i)=>o.label.split(' — ')[0]===head?i:-1).filter(i=>i>=0); if(hits.length===1) idx=hits[0]; }
     // v2 saves had no labels; their dairy "Didn't have it" sat at index 3, before the sweet raib options existed
     if(idx<0 && st.v===2 && c.id==='dairy' && cs.opt===3) idx=c.options.length-1;
     // only label-less (v2) saves fall back to the old position; a labelled pick whose option is gone reads as not filled
